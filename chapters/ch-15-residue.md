@@ -98,7 +98,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **What would force it.** That case, which has already happened; and a promotion it could decide.
 
-**Likely mechanism.** A mixture over stakes with a regret bound against the best fixed stake — Cover's universal portfolio, or Waudby-Smith and Ramdas's predictable mixture — entering as a brief rule with a stop condition, the old stake's wealth printed beside it for one window [counsel's C2c draft, agent-court#20]. With it, counsel's draft proposes a *load line* — writs per hour against merges per hour — that any brief changing a cadence would have to quote, because the cadence raised on 2 November past the merge path's measured capacity is what produced the expiries [agent-court#20: 6.8 forecasts an hour against 1.8 merges]. Both are candidates, not facts.
+**Likely mechanism.** A mixture over stakes with a regret bound against the best fixed stake, in Cover's universal-portfolio manner, with the betting strategies Waudby-Smith and Ramdas compare for bounded means as the practical candidates — entering as a brief rule with a stop condition, the old stake's wealth printed beside it for one window [counsel's C2c draft, agent-court#20]. With it, counsel's draft proposes a *load line* — writs per hour against merges per hour — that any brief changing a cadence would have to quote, because the cadence raised on 2 November past the merge path's measured capacity is what produced the expiries [agent-court#20: 6.8 forecasts an hour against 1.8 merges]. Both are candidates, not facts.
 
 **Bet.** A stake rule other than A4.3's decides a promotion on the log before 2027-03-31: *p* 0.3.
 
