@@ -6,33 +6,43 @@ name: book
 on:
   push:
     branches: [master]
-    paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml"]
+    paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
   pull_request:
-    paths: ["chapters/**", "book.toml", "theme/**"]
+    paths: ["chapters/**", "book.toml", "theme/**", ".github/workflows/book.yml",
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GFRMINSITE_DISPATCH_TOKEN: ${{ secrets.GFRMINSITE_DISPATCH_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+      # The version and its sha256 are pinned in .mdbook-version / .mdbook-sha256;
+      # gfrminsite's publish workflow runs this same script, so both builds agree.
       - name: Install mdBook
-        run: |
-          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.52/mdbook-v0.4.52-x86_64-unknown-linux-gnu.tar.gz | tar xz
-          ./mdbook --version
+        run: scripts/install-mdbook.sh
+      # site-url (/book/) comes from book.toml alone; do not override it here.
       - name: Build
-        run: MDBOOK_OUTPUT__HTML__SITE_URL=/book/ ./mdbook build
+        run: ./mdbook build
       - uses: actions/upload-artifact@v4
         with:
           name: book-site
           path: book-site
           retention-days: 14
+      # Ask gfrm.in to republish /book/ at this commit. Optional: without the secret,
+      # gfrminsite's nightly run picks the book up instead. The secret is a
+      # fine-grained PAT on gfrmin/gfrminsite with Actions: write and nothing else.
+      # That permission starts a workflow_dispatch run but cannot push code. The
+      # repository_dispatch endpoint would need Contents: write, which can.
       - name: Ask gfrm.in to republish /book/
-        if: github.event_name == 'push' && env.TOKEN != ''
-        env:
-          TOKEN: ${{ secrets.GFRMINSITE_DISPATCH_TOKEN }}
+        if: github.event_name == 'push' && env.GFRMINSITE_DISPATCH_TOKEN != ''
         run: |
-          curl -sS -X POST -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/gfrmin/gfrminsite/dispatches \
-            -d '{"event_type":"book-updated","client_payload":{"sha":"${{ github.sha }}"}}'
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $GFRMINSITE_DISPATCH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/gfrmin/gfrminsite/actions/workflows/publish.yml/dispatches \
+            -d '{"ref":"master","inputs":{"book_sha":"${{ github.sha }}"}}'

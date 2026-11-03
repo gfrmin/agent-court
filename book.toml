@@ -12,7 +12,7 @@ create-missing = false
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "ayu"
-mathjax-support = true
+mathjax-support = false
 git-repository-url = "https://github.com/gfrmin/agent-court"
 edit-url-template = "https://github.com/gfrmin/agent-court/edit/master/{path}"
 site-url = "/book/"
