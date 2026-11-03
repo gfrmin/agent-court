@@ -53,6 +53,24 @@ The score, recomputed by the author from the log and not copied from counsel's r
 
 The adviser is also subject to the clerk. Counsel's obligations are writs — W3 and W4 are held by counsel [BRIEF-C1b §The clerk] — and the four forecasts that expired in counsel's custody in C1a [seqs 45, 46, 47, 56] are the window's recorded failure and C1b's forcing witness. The designer of the court is inside it. That is Ostrom's principle, that monitors are accountable to the monitored, applied to the one party that had the pen.
 
+The best case on the record that the adviser is checked by the same machinery as everyone else is a single morning, 3 November. Four things happened.
+
+**Counsel's bets were writs, and four of them expired.** Counsel had entered seven roadmap forecasts about C2a's crossing. Four reached their 06:00Z deadline with no resolver session, and the liveness process lost a factor of 4.2 [seqs 517, 521, 623, 625; chapter 6 §6.4]. The reviewer resolved all seven by 08:50Z, six at 0 and one at 1 [seqs 865–871; jack PR #216]. The sovereign then ruled that counsel enters on the ledger only the forecasts a brief requires of it, and that the roadmap series stops. His reason, as counsel records it, was that what matters is the system and not counsel's calibration [`data/counsel-notes.md`, 07:00Z; the ruling is in counsel's session, not on the log]. So an adviser's unattended bets cost the institution, and the adviser's scope was narrowed afterwards, through the same writ machinery as anyone's.
+
+**A resolver prompt asserted what counsel had not computed.** The first session counsel opened to resolve those claims was told that liveness alone settled them. That was false: liveness stood at 42.5 at the window's opening. The session's own stop condition caught it, and it stopped rather than resolve. A later session computed the joint table and resolved [runner issues #169 and #173, as counsel reports them in agent-court#21; not read by the author].
+
+**Counsel misquoted the record.** BRIEF-C2b's first amendment and its opening note gave a reviewer's forecast as 0.40. The log holds 550‰ at seq 633; 400‰ is an earlier forecast, at seq 612. The reviewer caught it [REVIEW-C2b-am1, F25, as counsel reports it]. Counsel made the same kind of error again in its own notes, putting the 06:00Z loss at "about a factor of 2.6" from memory, and corrected it to 4.2 by recomputation [`data/counsel-notes.md`, 11:50Z].
+
+**Counsel bound itself in response.** It adopted four rules [COUNSEL-OPEN rows 24–30, in the C2a report's pull request, as `data/counsel-notes.md` 09:00Z records them; to be cited from jack `main` once merged]:
+- every recommendation carries a price block: what it spends, whether it is reversible, its evidence, what doing nothing costs, a trial form, a stop condition and a confidence;
+- no charter text without a brief rule that has refused or decided an act;
+- a cite check that ties every quoted probability to its seq;
+- escalation as an act, not a printed word.
+
+The second rule has its own witness. The same morning counsel proposed a charter amendment on a misreading of C2a's criteria, and withdrew it after an adversarial read before anything was spent.
+
+None of this shows that counsel advises well, and the sovereign's ruling makes counsel's calibration the wrong thing to measure in any case. What it shows is the claim of this section. The adviser's errors arrived the way everyone's do: as expired writs, refused resolutions and a reviewer's finding. They were priced on the same ledger, and the remedies are rules with witnesses, not promises. (Raised by counsel as agent-court#21.)
+
 ## 12.4 The sovereign ends in the owner of the utility
 
 What holds the one who holds the keys? Here the design stops deliberately at an authority, and the chapter says why and what is done about it.
