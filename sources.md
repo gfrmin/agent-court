@@ -55,7 +55,7 @@
 
 ## Law
 
-- **Hart, H. L. A. (1961).** *The Concept of Law.* Clarendon Press. (Ch. V.) — *Design principle by elimination.* Primary rules plus recognition, change and adjudication; a regime lacking one cannot answer one of three questions. Taken: C0 is exactly the three. Chs. 3, 4, app. A.
+- **Hart, H. L. A. (1961).** *The Concept of Law.* Clarendon Press. (Ch. V.) — *Design principle by elimination.* Primary rules plus recognition, change and adjudication; a regime lacking one cannot answer one of three questions. Taken: C0 is exactly the three. Verified against the third edition (2012), 3 Nov: the three defects and their remedies (ch. V §3); the three together are sufficient for "indisputably a legal system", and Hart does not claim them necessary — the defect-for-defect reading is the book's. Chs. 3, 4, app. A.
 - **Fuller, L. L. (1964).** *The Morality of Law.* Yale University Press. (Ch. II.) doi:10.12987/9780300191653 (revised edition, 1969). — *Design principle with a catalogue of failures.* Eight ways to fail to make law. Taken: eight checks; congruence as the one prompt-based harnesses fail. Verified against the revised edition, 3 Nov: the eight in Fuller's order (ch. II, pp. 38–39); a *total* failure in any one yields no legal system; congruence failures make obedience futile. Chs. 4, 8, 14, app. A.
 - **Coke, E. (1610).** Dr Bonham's Case, 8 Co. Rep. 107a. — *Maxim.* *Nemo iudex in causa sua.* Taken: `self_judged`, by principal. Ch. 4, app. A.
 - **Habeas Corpus Act 1679** (31 Cha. 2 c. 2). — *Institution.* A writ derived from custody and the clock that no custodian may let lapse. Taken: the clerk's writs. Ch. 3, 7.
