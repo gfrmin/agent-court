@@ -20,6 +20,8 @@
 - [15. Residue: what was not built, and what would force it](ch-15-residue.md)
 - [16. How it could be wrong](ch-16-how-it-could-be-wrong.md)
 
+- [Afterword: how this book is made, and how it will change](afterword.md)
+
 # Appendices
 
 - [A. The necessities, row by row](app-a-the-necessities.md)
