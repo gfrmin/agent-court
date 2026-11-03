@@ -67,9 +67,9 @@ Three outputs, one argument, published in the order that gets feedback soonest.
 | 9 | `ch-09-the-law-changes-under-itself.md` | Arrow–Fisher; the amendment path; the five cases; lapse | CHARTER A1–A5 | **drafted 3 Nov** |
 | 10 | `ch-10-the-lock.md` | Löb, Gödel, grain of truth; keys not instructions; the two ways to get it wrong; the agent as it will be bound | — | **drafted 3 Nov** |
 | 11 | `ch-11-the-loops-and-the-bootstrap.md` | the eight loops with their witnesses; the ninth; what bootstraps is authority; Gall; convergence tests | assize's record | **drafted 3 Nov** (draft 2) |
-| 12 | `ch-12-the-ground.md` | the seven stops of the regress and the residue at each | [G](ii) for §12.7 | **drafted 3 Nov** (draft 2) |
+| 12 | `ch-12-the-ground.md` | the seven stops of the regress and the residue at each | — | **drafted 3 Nov** (draft 3) |
 | 13 | `ch-13-the-evidence.md` | each window as a pre-registered experiment, every number recomputed; counsel's forecasts scored | `data/<layer>-exit.md` | **draft 0** 3 Nov |
-| 14 | `ch-14-lineage.md` | the same loop run open, seven times; measurements | [G](i) second half | **drafted 3 Nov** (draft 2) |
+| 14 | `ch-14-lineage.md` | the same loop run open, seven times; measurements; the owner's own words from the sessions | — | **drafted 3 Nov** (draft 3) |
 | 15 | `ch-15-how-it-could-be-wrong.md` | the referee's case; the pre-registered falsifiers; what is not claimed | all | **drafted 3 Nov** |
 | A | `app-a-the-necessities.md` | the results row by row (the first draft's chapter 2, kept as the reference table and the arXiv paper's core) | — | kept |
 | B–E | `app-b-*.md` … | the kernel; the pins and mutants; the acts tables; the forecast ledger with log-loss; the charter with amendments | — | assembled at the end |
@@ -133,19 +133,20 @@ Each line is a decision the author took rather than asked; *p* is the author's p
 - **D32** (p 0.75; was R5). The audience is everyone who has run the loop, with statisticians as the referee; cs.AI primary, cross-listed stat.ME and cs.MA; the arXiv paper without figures. Decided from Guy's "firstly an AI project, but to only talk about safety undersells it" and from the thesis being a claim about adaptive intelligence with safety as a corollary.
 - **D33** (p 0.95; was R6). The title is *A Court for Agents: Law, scoring and the self-modifying machine*; Guy chose the subtitle on 3 November, which is confirmation enough.
 - **D34** (p 0.70). The second half of [G](i) is not required for chapter 14 to stand: the chapter's claims rest on the repositories and the cold read, and the **[G]** paragraphs are kept as marked invitations — what each project taught that its repository does not show — which Guy may fill or the book may publish as gaps. The author does not ask again.
+- **D35** (p 0.85). The second half of [G](i) is answered from the record Guy supplied on 3 November — the session transcripts and memory notes on steel (`data/lineage-sessions.md`): his own dated words on each project's lesson, and the sessions' notes. Chapter 14 §14.8 states the cross-lineage lesson the "measurements" frame missed: every predecessor's law was blind about itself and left the owner outside the record; jack's two additions are the law under its own test and the owner inside. Four quotations from the sessions in the chapter, the rest paraphrased with dates; the extraction file published on Guy's authorisation, with nothing private in it.
+- **D36** (p 0.90; supersedes D18, closes [G](ii)). §12.7 names no ideal above Shafer–Vovk. Guy, 3 November: the book reflects what was worked on, and that is Shafer–Vovk; logical induction was counsel's name in the founding list, never considered in the design, and nothing built descends from it. It gets one sentence in chapter 15 §15.3 as a related construction the court does not approximate, because the essay's quoted list means a reader will look for it.
 
 ## 7. Open questions for Guy
 
 Only these; everything else is decided above. **Rule of 3 November (Guy):** the author interviews him for a ruling always, but only when the principles on the record cannot decide. R1–R6, requested earlier that day, were re-examined under that rule and each was found decidable; they are recorded as D28–D33 and withdrawn as questions.
 
-- **[G](ii)** stands as before; D18 is the default.
-- **[G](i), second half:** what tannen and wald taught that their repositories do not show — an invitation, not a question (D34).
+- **[G](i), second half:** closed 3 November from steel's sessions and notes (D35).
 
 
 
 1. **[G](i) The lineage.** *Answered 3 November, first half: the frame is right — the lineage is a sequence of measurements. The second half (what tannen and wald taught that their repositories do not show) is still open.*
     `transcripts/PREDECESSORS-20261026.md` records what each predecessor says about itself (proplang's three termini; tannen's M5 passed with "production bugs found … out of its reach by construction"; wald-charter's "forced by a measurement or not added at all"; wald-arena's brief 002 "met as written" at $38.40). What did tannen and wald teach you that their repositories do not show — and is the chapter's frame right, that the lineage is a sequence of *measurements*, each project finding the next necessity by hitting it, rather than a sequence of failures?
-2. **[G](ii) The ideal for §II.7.** *3 November: Guy wants to think further; D18's default stands meanwhile.*
+2. **[G](ii) The ideal for §II.7.** *Closed 3 November: Shafer–Vovk alone (D36).*
     For "a book that can go bankrupt", is Garrabrant's logical induction the right ideal to name — a market over the institution's own claims that cannot be Dutch-booked in the long run, with jack as a crude priced instance and the missing piece being traders rather than a mixture over a fixed roster — or do you want the regress stopped at Shafer–Vovk, with no market reading?
 3. **[G](iii) Audience first:** *3 November: under discussion — Guy asked first what jack's biggest impact will be once built and agents use it; the audience follows from that.*
     statisticians (anytime-valid inference), AI-safety readers, or institutional economists. Chapter 1's register and the arXiv category follow from this.
