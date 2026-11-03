@@ -8,8 +8,10 @@ on:
     branches: [master]
     paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
             ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
+  # chapters/sources.md and chapters/plan.md are symlinks to the root files, so an
+  # edit to either root file does not match chapters/**; both are listed here.
   pull_request:
-    paths: ["chapters/**", "book.toml", "theme/**", ".github/workflows/book.yml",
+    paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
             ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
   workflow_dispatch:
 permissions:
@@ -17,12 +19,16 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Only whether the dispatch token exists is job-wide; the token itself stays on
+    # the one step that uses it, out of reach of the installer and the mdBook build.
     env:
-      GFRMINSITE_DISPATCH_TOKEN: ${{ secrets.GFRMINSITE_DISPATCH_TOKEN }}
+      HAS_DISPATCH_TOKEN: ${{ secrets.GFRMINSITE_DISPATCH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
-      # The version and its sha256 are pinned in .mdbook-version / .mdbook-sha256;
-      # gfrminsite's publish workflow runs this same script, so both builds agree.
+      # The version and its sha256 are pinned in .mdbook-version / .mdbook-sha256.
+      # gfrminsite pins mdBook separately (its own copies of these files and of the
+      # installer) and only warns when its version differs from this one, so bump
+      # both repositories together.
       - name: Install mdBook
         run: scripts/install-mdbook.sh
       # site-url (/book/) comes from book.toml alone; do not override it here.
@@ -38,8 +44,13 @@ jobs:
       # fine-grained PAT on gfrmin/gfrminsite with Actions: write and nothing else.
       # That permission starts a workflow_dispatch run but cannot push code. The
       # repository_dispatch endpoint would need Contents: write, which can.
+      # A failed dispatch must not fail the run: gfrminsite's fallback builds from the
+      # last *green* push here, so a red run would hide a good book from it as well.
       - name: Ask gfrm.in to republish /book/
-        if: github.event_name == 'push' && env.GFRMINSITE_DISPATCH_TOKEN != ''
+        if: github.event_name == 'push' && env.HAS_DISPATCH_TOKEN == 'true'
+        continue-on-error: true
+        env:
+          GFRMINSITE_DISPATCH_TOKEN: ${{ secrets.GFRMINSITE_DISPATCH_TOKEN }}
         run: |
           curl -fsS -X POST \
             -H "Authorization: Bearer $GFRMINSITE_DISPATCH_TOKEN" \
