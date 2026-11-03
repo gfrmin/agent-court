@@ -297,44 +297,99 @@ CITE = re.compile(
     rf",?\s+\(?(?P<years>\d{{4}}[a-z]?(?:,\s*\d{{4}}[a-z]?)*)\b")
 
 
+def cited_keys(text: str, idx: dict, spelled: dict, ignore: set,
+               where: str | None = None) -> set[tuple[str, str]]:
+    """The sources.md keys one text cites: an Author (Year) whose key is in sources.md,
+    or a bare surname that no other entry shares, spelled as sources.md spells it
+    (capital included, so that an entry for Good, Price or Bell is not taken as cited
+    by the ordinary word). With `where`, an Author (Year) not in sources.md is an error."""
+    text = strip_code(text)
+    keys: set[tuple[str, str]] = set()
+    for m in CITE.finditer(text):
+        names = re.split(r",\s+|\s+and\s+|\s+&\s+", m.group("names").replace(" et al.", ""))
+        first = re.sub(r"['’]s$", "", names[0])
+        if first in MONTHS or first in ignore or first.split()[-1] in ignore:
+            continue
+        for y in re.findall(r"\d{4}", m.group("years")):
+            if not 1600 <= int(y) <= 2030:
+                continue
+            key = (surname_key(first), y)
+            if key in idx:
+                keys.add(key)
+            elif where is not None:
+                err(f"{where}:{line_of(text, m.start())}",
+                    f"cites {first} ({y}), which has no entry in sources.md")
+    flat = plain(text)
+    by_name: dict[str, int] = {}
+    for (name, _y) in idx:
+        by_name[name] = by_name.get(name, 0) + 1
+    for key in idx:
+        if by_name[key[0]] == 1 and re.search(rf"\b{re.escape(spelled[key[0]])}\b", flat):
+            keys.add(key)
+    return keys
+
+
+def chapter_label(p: Path) -> str | None:
+    """How sources.md names a chapter file: "0"…"16", "app. A", "afterword"."""
+    m = re.match(r"ch-(\d\d)-", p.name)
+    if m:
+        return str(int(m.group(1)))
+    return {"app-a-the-necessities.md": "app. A", "afterword.md": "afterword",
+            "front.md": "front matter"}.get(p.name)
+
+
+def claimed_chapters(line: str) -> list[str] | None:
+    """The chapters an entry's closing "Ch. …" clause names, section refs dropped."""
+    m = re.search(r"(?:^|\s)((?:Chs?\. |App\. A|Afterword|Front matter)[^—]*?)\.?\s*$", line)
+    if not m:
+        return None
+    body = re.sub(r"\s*\([^)]*\)", "", re.sub(r"^Chs?\. ", "", m.group(1)))
+    out = [t.strip() for t in body.split(",") if t.strip()]
+    return [t[0].lower() + t[1:] if not t[0].isdigit() else t for t in out]
+
+
 def check_citations(facts: dict, files: list[Path]) -> None:
     conf = facts.get("citations", {})
     ignore = set(conf.get("not_names", []))
     uncited_ok = set(conf.get("uncited_ok", []))
     idx, spelled = sources_index()
     used: set[tuple[str, str]] = set()
+    cited_in: dict[tuple[str, str], set[str]] = {}
     for p in files:
-        raw = p.read_text(encoding="utf-8")
-        text = strip_code(raw)
-        for m in CITE.finditer(text):
-            names = re.split(r",\s+|\s+and\s+|\s+&\s+", m.group("names").replace(" et al.", ""))
-            first = re.sub(r"['’]s$", "", names[0])
-            if first in MONTHS or first in ignore or first.split()[-1] in ignore:
-                continue
-            for y in re.findall(r"\d{4}", m.group("years")):
-                if not 1600 <= int(y) <= 2030:
-                    continue
-                key = (surname_key(first), y)
-                if key in idx:
-                    used.add(key)
-                else:
-                    err(f"{rel(p)}:{line_of(text, m.start())}",
-                        f"cites {first} ({y}), which has no entry in sources.md")
-    # An entry also counts as cited when its surname appears in the prose without a
-    # year and no other entry shares the surname, so the reference is unambiguous. The
-    # surname must appear as sources.md spells it, capital included, so that an entry
-    # for Good, Price or Bell is not taken as cited by the ordinary word.
-    prose = plain(" ".join(strip_code(p.read_text(encoding="utf-8")) for p in files))
-    by_name: dict[str, int] = {}
-    for (name, _y) in idx:
-        by_name[name] = by_name.get(name, 0) + 1
+        keys = cited_keys(p.read_text(encoding="utf-8"), idx, spelled, ignore, where=rel(p))
+        used |= keys
+        label = chapter_label(p)
+        if label is not None:
+            for k in keys:
+                cited_in.setdefault(k, set()).add(label)
     for key, line in sorted(idx.items(), key=lambda kv: kv[1]):
         label = f"{key[0]} {key[1]}"
-        if key not in used and by_name[key[0]] == 1 and re.search(rf"\b{re.escape(spelled[key[0]])}\b", prose):
-            continue
         if key not in used and label not in uncited_ok:
             err(f"sources.md:{line}", f"{label} is cited by no chapter or essay "
                 "(cite it, drop it, or list it under [citations] uncited_ok)")
+    # Each entry's "Ch. …" clause must name exactly the chapters that cite the work:
+    # a chapter it names that does not cite it is stale, and a chapter that cites it
+    # and is not named is missing. An entry with several years (Nachbar 1997, 2005)
+    # is cited where any of its years is.
+    lines = (ROOT / "sources.md").read_text(encoding="utf-8").splitlines()
+    by_line: dict[int, set[str]] = {}
+    for key, ln in idx.items():
+        by_line.setdefault(ln, set()).update(cited_in.get(key, set()))
+    for ln, actual in sorted(by_line.items()):
+        claimed = claimed_chapters(lines[ln - 1])
+        if claimed is None:
+            err(f"sources.md:{ln}", "entry has no closing \"Ch. …\" clause")
+            continue
+        stale = [c for c in claimed if c not in actual]
+        missing = sorted(actual - set(claimed), key=chapter_sort)
+        if stale or missing:
+            err(f"sources.md:{ln}", "chapters " + ", ".join(
+                ([f"named but not citing: {', '.join(stale)}"] if stale else []) +
+                ([f"citing but not named: {', '.join(missing)}"] if missing else [])))
+
+
+def chapter_sort(label: str):
+    return (0, int(label), "") if label.isdigit() else (1, 0, label)
 
 
 # ---------------------------------------------------------------- quotations
