@@ -82,10 +82,20 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **Bet.** Someone other than the author runs a court on jack's kernel for a purpose other than building an agent, before 2027-12-31: *p* 0.25.
 
-## 15.10 What the court will never do
+## 15.10 Escalation on the record
+
+**Not built.** The ladder's first two rungs run as acts of the runner since 3 November, but they are not entries: the record shows the resolutions they produce, not that a rung fired or that it was owed. The third rung, the writ to the sovereign, is a line printed by the clerk (chapter 5 §5.4; chapter 11 §11.14).
+
+**What would force it.** The case is already on the record: four expiries at 06:00Z on 3 November that cost the liveness process a factor of 4.2 [seqs 517, 521, 623, 625; chapter 6 §6.2], each preceded by hours of a printed escalation nobody acted on.
+
+**Likely mechanism.** Counsel's draft for C2c names two: `tools/jack due`, which computes the due list from the record, and an `UNATTENDED` line that refuses `promote` while a writ to the sovereign is unanswered [agent-court#18; design input, not a commitment].
+
+**Bet.** Before C2b's exit, an unanswered writ to the sovereign refuses something — a `promote`, or an entry of the sovereign's — by the kernel or by `status.py`: *p* 0.5.
+
+## 15.11 What the court will never do
 
 Prove its own soundness (chapter 10 §10.2; chapter 12). Score the owner's wishes (chapter 0 §0.1). Decide merit by inspection (chapter 2 §2.2). Reset its wealth (chapter 6 §6.2). These are not residue; they are the construction, and a future edition that reported any of them built would be reporting a different system.
 
-## 15.11 What would show this chapter wrong
+## 15.12 What would show this chapter wrong
 
-The bets, scored. The chapter is written to lose some of them: ten probabilities between 0.2 and 0.6 should resolve about half and half, and a second edition in which they all came true would mean the author bet too safely, as counsel's early forecasts on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+The bets, scored. The chapter is written to lose some of them: thirteen probabilities between 0.2 and 0.6 should resolve about half and half, and a second edition in which they all came true would mean the author bet too safely, as counsel's early forecasts on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.

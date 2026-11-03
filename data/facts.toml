@@ -177,6 +177,16 @@ phrase = [
   { text = "One of the {words} fails", in = ["essays/necessities/index.md"] },
 ]
 
+[count.residue_bets]
+# Chapter 15's bets, each written "*p* 0.xx". The first draft said "ten" when it
+# held twelve; this count is why that cannot recur.
+file = "chapters/ch-15-residue.md"
+pattern = '\*p\* 0\.\d+'
+expect = 13
+phrase = [
+  { text = "{words} probabilities between", in = ["chapters/ch-15-residue.md"] },
+]
+
 # ------------------------------------------------------------------ citations
 
 [citations]
