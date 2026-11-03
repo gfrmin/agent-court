@@ -160,6 +160,8 @@ Only these; everything else is decided above. **Rulings requested on 3 November*
 
 - **F4** (issue #2, 3 November). `REPORT.md`'s C1b section counts the sovereign's acts in the window as two revocations and the promotion; the log holds five [seqs 197, 201, 216, 217, 337], all decisions. The book cites the seqs.
 
+- **F5** (issue #3, 3 November). The enforcement map `tools/enforcement.json` is chapter 8's measure of how much law compiled; the book needs it current at every exit and named in `data/<layer>-exit.md`.
+
 **Errata for Guy** — statements in published text of his that the record does not support; the author follows the record.
 
 - **E1.** The founding essay says "Three older maxims became kernel rules" and gives *lex non cogit ad impossibilia* as "the rule that every rule is admitted with a witness that violates it and one that satisfies it". No such rule is in the kernel: no primary rule has been admitted, by A2.1 the law language enters only when a first case arises, and none has (C1a report §1; C1b report). What the kernel does refuse as impossible is narrower — a weak public key no one could be the sole holder of (`bad_key`, [SPEC §7]) and a `key` entry that would leave no key with the `key` power [CHARTER A2.5]. The book states the witness rule as law-in-waiting. Whether to amend the essay is yours.
