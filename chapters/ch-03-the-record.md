@@ -1,0 +1,37 @@
+# 3. The record
+
+*Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The kernel quoted is the one at that commit; appendix B carries it whole.*
+
+## The figure: the mast
+
+Ulysses wanted to hear the sirens and knew he would want, when he heard them, to go to them. So he had himself bound to the mast and told the crew to tighten the ropes if he asked to be freed. The point of the ropes is not that they are strong; it is that the Ulysses who tied them is not the one who will want them untied, and the ropes do not care which Ulysses is asking. A vow is the same thing in words: a commitment made by someone who knows that the person who will have to keep it will have reasons not to. The record this chapter builds is a mast for a system: every entry on it was put there by someone, at a position, under a signature, and no later party — not the one who wrote it, not the one who governs it — can move it. The loop of chapter 1 will want to rewrite its past; the record is what makes that impossible rather than forbidden.
+
+## 3.1 What we have, and what it cannot do
+
+We have the form of a suggestion (chapter 2): a probability fixed before an outcome, scored against an outcome recorded by someone else, once. Each clause of that is a fact about *when* and *who*: when the probability was fixed, who recorded the outcome, that it was recorded once. A file in a directory does not carry those facts; it carries whatever was last written to it. We need a structure in which order is a fact, authorship is a fact, and the past is not writable. The smallest such thing is a hash-chained log of signed lines, and this chapter is that and nothing more.
+
+## 3.2 An entry is a line
+
+An entry is one line of `log.jsonl`: a JSON object with exactly seven members — `seq`, `parent`, `ts`, `type`, `proposer`, `body`, `sig` [SPEC §4; `kernel/log.py:TOP_KEYS`]. The line is the entry: the bytes, not a parse of them. For that to be a sound statement the serialisation must be unique, so the record admits exactly one — keys sorted by code point, no whitespace, ASCII only with every other code point escaped as four lowercase hex digits, integers only within ±(2⁵³ − 1), nesting at most thirty-two deep [SPEC §2]. The kernel's whole test of canonicity is one comparison: re-serialise the parsed object and compare with the line [`kernel/log.py:parse_line`, `canonical`]. A line that fails is `not_canonical`; one that is not an object, nests too deep or carries a lone surrogate is `malformed_json`, and the second verdict outranks the first so that two checkers cannot disagree about a line with both defects [SPEC §2; §12.15].
+
+## 3.3 Order is a hash
+
+The `parent` of entry *i* is the SHA-256 of line *i* − 1 and its `seq` is *i*; genesis has sixty-four zeros for a parent [SPEC §3; `kernel/log.py:line_hash`, `GENESIS_PARENT`]. Two consequences follow without any further rule. An edited line fails at that line, because its signature no longer verifies; an edited and re-signed line fails at the next line, because the next line's `parent` no longer matches; and a second entry on the same parent is the same failure. Forks and rewrites are refused by the same two checks [SPEC §12.8; CHARTER §9, pins `history_rewritten` and `fork_admitted`]. The record is append-only not because a rule says so but because any other operation on it produces a prefix that no longer verifies. That is the mast: the ropes are arithmetic.
+
+Time is a field, not a clock. Each entry carries a `ts` in a fixed UTC form, in ASCII digits, naming an instant that exists, and the only thing the kernel does with it is refuse an entry whose `ts` is earlier than the previous entry's [SPEC §4, §7; `kernel/check.py` line 59, `ts_decreased`]. The kernel never reads a clock [CHARTER §9, refusal list]. Order comes from the chain and not from wall time — Lamport's (1978) point — and the timestamp is a claim the chain makes monotone, which is all chapter 2 needed: a forecast's probability is fixed at its position, and its position is before its resolution's.
+
+## 3.4 Authorship is a signature
+
+`sig` is an SSHSIG blob — the format `ssh-keygen -Y sign` produces — over the canonical line without its `sig` member, in a fixed namespace, `core-entry` [SPEC §6; `kernel/sig.py:NAMESPACE`]. The public key is in the blob, so the record itself says who signed each line; whether that key is *allowed* to is chapter 4's question, not this one's. Three decisions about the signature are where a first draft went wrong and a review caught it [REPORT.md §4, as transcript], and each is a property the mast needs. The reserved field of the blob must be empty: OpenSSH signs over an empty field whatever the blob carries, so without the rule one signature would have many valid encodings and a line could be re-encoded while staying valid [SPEC §6; §12.5]. Verification is in the kernel, in the standard library, by a strict rule — *S* < *L*, canonical encodings, the cofactorless equation — so that `ssh-keygen` is the signing tool and a test oracle, never part of what is trusted [SPEC §6; §12.2; `kernel/sig.py:ed25519_verify`]. And a public key of small order is refused outright, because it is an identity anyone can sign for [SPEC §6; `kernel/sig.py:weak_key`]. The two places the kernel is stricter than `ssh-keygen -Y verify` are named and tested [`tests/vectors/ssh_keygen_differences.json`]; the kernel follows its own rule, not the tool's.
+
+## 3.5 Outcomes nobody controls
+
+The second half of chapter 2's requirement — outcomes recorded by someone else, from processes nobody in the loop controls — is not a property of the log's format but of what the log points at. The evidence a resolution cites is a page saved and hashed into the tree before the resolution is entered [BRIEF-C1 criterion 4], from a process that reads no entry of the record: a results page, a catalogue's modification time, a test run on a commit [BRIEF-C2a §Scope, the streams]. A resolution is therefore an entry that names a forecast, an outcome and a hash, under a signature that is not the forecaster's. What the record contributes is that the three cannot afterwards be separated: the forecast's position, the resolution's position, and the evidence's hash are each in a line no one can move.
+
+## 3.6 What this chapter leaves open
+
+We have a record: seven members, one serialisation, a hash chain, a signature with one encoding, time as a monotone field. Anyone with a key can append to it, and the record will faithfully say who. It does not yet say who *may* — which keys exist, what each is allowed to write, how that changes — nor what counts as a valid entry beyond its shape, nor who decides when a proposal to extend the record should be accepted. Those are the three questions Hart says every legal system must answer, and answering them with the smallest possible law is chapter 4.
+
+## 3.7 What would show this chapter wrong
+
+A line on the record that two checkers read differently — the differential compares every proper prefix of every seeded log for this reason, and a disagreement turns the judge red [SPEC §9a; §10.5]. A rewrite that verifies: an edit to a past line that leaves the chain intact, which would mean the hash or the signature rule is weaker than stated. A second valid encoding of one signature, which the empty-reserved-field rule exists to exclude. And a timestamp doing more than its rule allows — a tool reading the clock inside a fold — which chapter 1's mechanism rows already forbid.

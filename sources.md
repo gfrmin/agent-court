@@ -2,6 +2,13 @@
 
 *The author session, 3 November 2026. One entry per work the book cites. Each gives the reference, its epistemic status as the book uses it (theorem; impossibility result; necessity theorem under conditions; design principle with a track record; empirical regularity; construction; record), the exact claim the book takes from it, and the chapters that rely on it. Entries are added as chapters are drafted; the charter's §13 is the seed. Where the book's use of a source is narrower than the source's own claim, the entry says so.*
 
+## Decision theory and the owner's utility (for chapter 0)
+
+- **Cox, R. T. (1946).** Probability, frequency and reasonable expectation. *American Journal of Physics* 14(1), 1–13. — *Theorem* (under its regularity conditions). Degrees of belief that are consistent must be probabilities. Taken: "optimally" has one coherent meaning for beliefs. Ch. 0.
+- **Savage, L. J. (1954).** *The Foundations of Statistics.* Wiley. — *Theorem* (representation). Coherent preference under uncertainty is expected utility under a subjective probability. Taken: the utility half of "optimally". Ch. 0.
+- **de Finetti, B. (1974).** *Theory of Probability*, vol. 1. Wiley. — *Theorem* (coherence; Dutch book). Taken with Cox: conditioning as the unique update; previsions first, as credence had it. Ch. 0, 14.
+- **Hadfield-Menell, D., Dragan, A., Abbeel, P. & Russell, S. (2016).** Cooperative inverse reinforcement learning. *Advances in Neural Information Processing Systems* 29. — *Framework.* The agent's utility is the human's, unknown, inferred from behaviour. Taken: the alignment commitment — the owner of the utility is the one unscored party. Ch. 0, 12, 14.
+
 ## Computation and self-reference
 
 - **Rice, H. G. (1953).** Classes of recursively enumerable sets and their decision problems. *Transactions of the American Mathematical Society* 74(2), 358–366. — *Theorem.* Every non-trivial semantic (extensional) property of programs in a Turing-complete language is undecidable. Taken: merit cannot be settled by inspecting the change; statutes must be decidable properties. Not taken: anything about restricted languages, where properties may be decidable. Ch. 2 (§2.2), 3, 10.
