@@ -2,8 +2,7 @@
 """Check that the book's prose agrees with the record, with itself and with its sources.
 
 The prose keeps literal numbers, names and quotations — it is read raw on GitHub, in
-review diffs, and in the essays copied to gfrm.in, which Hugo renders and mdBook does
-not. Nothing is substituted. Instead this script fails when the prose and the thing it
+review diffs and in the book mdBook renders. Nothing is substituted. Instead this script fails when the prose and the thing it
 reports disagree. Four checks:
 
   facts      every figure in data/facts.toml is recomputed from renavondata/jack at
@@ -11,7 +10,7 @@ reports disagree. Four checks:
              recomputed value — wherever the phrase occurs, so a stale copy fails too.
   counts     numbers the book states about itself ("the fifteen rows above") are
              counted from the book's own files.
-  citations  every "Author (Year)" in a chapter or essay has an entry in sources.md,
+  citations  every "Author (Year)" in a chapter has an entry in sources.md,
              and every entry there is cited somewhere or listed as uncited on purpose.
   quotes     every quotation attributed to a jack document (CHARTER, SPEC, LAW, a
              BRIEF, a bare amendment clause such as A2.10) occurs verbatim in that
@@ -57,14 +56,13 @@ def err(where: str, msg: str) -> None:
 # ---------------------------------------------------------------- the book's files
 
 def prose_files() -> list[Path]:
-    """Chapters and essays: the files a reader sees. Symlinks (plan.md, sources.md in
+    """The chapters: the files a reader sees. Symlinks (plan.md, sources.md in
     chapters/) and the summary are excluded; plan.md is the author's working record."""
     out = []
     for p in sorted((ROOT / "chapters").glob("*.md")):
         if p.is_symlink() or p.name == "SUMMARY.md":
             continue
         out.append(p)
-    out += sorted((ROOT / "essays").glob("*/index.md"))
     return out
 
 
@@ -387,7 +385,7 @@ def check_citations(facts: dict, files: list[Path]) -> None:
     for key, line in sorted(idx.items(), key=lambda kv: kv[1]):
         label = f"{key[0]} {key[1]}"
         if key not in used and label not in uncited_ok:
-            err(f"sources.md:{line}", f"{label} is cited by no chapter or essay "
+            err(f"sources.md:{line}", f"{label} is cited by no chapter "
                 "(cite it, drop it, or list it under [citations] uncited_ok)")
     # Each entry's "Ch. …" clause must name exactly the chapters that cite the work:
     # a chapter it names that does not cite it is stale, and a chapter that cites it

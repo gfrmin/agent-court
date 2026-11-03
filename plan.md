@@ -8,9 +8,9 @@ Set by Guy when the session was opened on 3 November and amended by him the same
 
 1. The author holds no keys on jack and files nothing on jack or the runner. It never writes to `renavondata/jack`, `renavondata/assize`, `renavondata/opencode-runner` or the predecessors' repositories, and never edits a court document (`CHARTER.md`, `SPEC.md`, a brief, a review, `RUNBOOK.md`). If the book needs a court document or jack's committed evidence changed, the need is a *finding*: an issue on this repository labelled `finding`, which counsel (watching the repository) answers on the issue and closes with what was done. Findings F1–F3, raised before the move, were answered in `data/counsel-notes.md` and are not re-raised as issues.
 2. Every number comes from `log.jsonl` by seq, recomputed on a clone with `tools/value.py` and `tools/status.py`, or from assize's `REPORT.md` and its ledgers (`reports/L*/forecasts.jsonl`, scored by `harness/ledger.py`). Each number cites the seq or the file. Counsel's forecasts on the ledger are data about counsel, scored like anyone's.
-3. The author writes `plan.md`, `chapters/ch-NN-<slug>.md`, `sources.md`, `data/recompute-*.md` and `essays/<slug>/index.md` here, and `claude/monograph-a-court-for-agents.md` in the Project, which is the author's. Counsel writes only `data/counsel-notes.md` and `data/<layer>-exit.md` here, and the author leaves those files as counsel left them.
-4. Drafts are committed straight to `master`. Essays for Guy's read arrive as pull requests; merging one is his decision to publish it on gfrm.in.
-5. The author decides everything it can and records each decision in §6 with a probability. It asks Guy only the **[G]** questions, the audience, the title, and for a read of each essay before it is published.
+3. The author writes `plan.md`, `chapters/ch-NN-<slug>.md`, `sources.md`, and `data/recompute-*.md` here, and `claude/monograph-a-court-for-agents.md` in the Project, which is the author's. Counsel writes only `data/counsel-notes.md` and `data/<layer>-exit.md` here, and the author leaves those files as counsel left them.
+4. Drafts are committed straight to `master`. This repository is the book's alone: essays are not drafted here, and the author does not write to `gfrmin/gfrminsite`, which other sessions own (D47).
+5. The author decides everything it can and records each decision in §6 with a probability. It asks Guy only the **[G]** questions, the audience, the title, and for a read of each chapter.
 6. Order of work: this plan, then chapter 2 (necessities), which needs no window data; the chapters that need window data wait for counsel's `data/<layer>-exit.md`.
 
 ## 2. Provenance: how a number gets into the book
@@ -81,7 +81,7 @@ Three outputs, one argument, published in the order that gets feedback soonest.
 - **At C2a's crossing** (`data/C2a-exit.md`): chapter 6's value section and chapter 13 §13.5.
 - **At C2b's exit:** chapter 7's record, chapter 13 §13.6; the arXiv paper assembled from appendix A, chapters 6, 7, 12, 13.
 - **While C3 runs:** draft 2 of every chapter against Guy's reads; the appendices; the monograph's first full draft about a month after C2b's exit.
-- **Essays** track the chapters: each chapter, once Guy has read it, is compressed to an essay and sent as a pull request. PR #1 (the necessities) is open.
+- **Essays** are not this repository's (D47). The first, compressed from appendix A, was published on gfrm.in on 3 November from gfrminsite.
 
 ## 4. Register and conventions
 
@@ -148,6 +148,7 @@ Each line is a decision the author took rather than asked; *p* is the author's p
 
 - **D45** (p 0.85). Issue #14 is closed by the checker, not by a second script. Every complete provenance tag in the chapters — a jack tool, its arguments and `@commit` — is rerun at that commit on every build and must succeed (`check_book.py`, `check_tags`); each figure the prose prints is held by `data/facts.toml`, recomputed and matched to its phrase (D44). A tag abbreviated with "…" or a placeholder is not runnable on its own and is covered only through the figures it stands for. What remains unchecked is a figure in the prose that nobody has registered; the remedy is to register it when it is written, and the first edition's cut (D39) includes a pass that registers every figure still loose.
 - **D46** (p 0.75). Issue #16, setting the book in gfrm.in's own Hugo typography, is deferred to after the first edition. The book works in mdBook, with search, a draft banner and the site's analytics and home link (gfrminsite #32). A Hugo rendering would mean a second renderer to keep in step with the first, or a migration whose only gain is appearance, while every chapter is still changing weekly. The decision is revisited at the first edition's cut, when the text is stable enough for typography to matter.
+- **D47** (p 0.95; amends D16, D42 and rules 3–5 of §1). This repository is for the book. Guy, 3 November: "This repo is for the book, no? Not the essays... Leave gfrminsite for other sessions." So `essays/` is removed from this repository, along with the checker's essay phrases, and the author no longer writes to `gfrmin/gfrminsite`. The published essay ("Fifteen Things…") is that repository's and its sessions'. The author's last pull request there, gfrminsite #42, is left open for them: five sentences corrected against the texts, each correction also in the book. Issue #12 (an essay per chapter) is closed as out of scope. Where the book finds a published essay wrong, it says so in an issue on this repository for Guy to route, and does not patch the site.
 ## 7. Open questions for Guy
 
 Only these; everything else is decided above. **Rule of 3 November (Guy):** the author interviews him for a ruling always, but only when the principles on the record cannot decide. R1–R6, requested earlier that day, were re-examined under that rule and each was found decidable; they are recorded as D28–D33 and withdrawn as questions.

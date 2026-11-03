@@ -1,7 +1,7 @@
 # The figures the book prints, each with the commit of renavondata/jack it was
 # recomputed at and the method that recomputes it. tools/check_book.py recomputes
 # every one and fails if it differs from `value`, then finds every phrase below in
-# every chapter and essay and fails if the number printed in it is not `value`.
+# every chapter and fails if the number printed in it is not `value`.
 #
 # A phrase is a template with one placeholder, written as the number would be
 # printed: {n} plain, {comma} with thousands separators, {fraction} as p/q,
@@ -30,8 +30,6 @@ argv = ["tools/count_kernel.py"]
 extract = 'total\s+(\d+)'
 value = 450
 phrase = [
-  { text = "kernel that holds recognition and most of change is {n} lines", in = ["essays/necessities/index.md"] },
-  { text = "{n} lines of kernel", in = ["essays/necessities/index.md"] },
   { text = "kernel that holds recognition and the rest of change is {n} lines", in = ["chapters/app-a-the-necessities.md"] },
   { text = "the kernel is {n} lines" },
   { text = "held by a {n}-line kernel" },
@@ -49,7 +47,7 @@ how = "fold"
 where = { key = "herald-2", seq_gt = 201 }
 value = 83
 phrase = [
-  { text = "every one of the {n} entries", in = ["essays/necessities/index.md", "chapters/app-a-the-necessities.md"] },
+  { text = "every one of the {n} entries", in = ["chapters/app-a-the-necessities.md"] },
 ]
 
 [fact.herald_merge_entries_since_201]
@@ -78,7 +76,6 @@ value = 636392
 phrase = [
   { text = "100,000 seeded logs and {comma} prefixes", in = ["chapters/app-a-the-necessities.md"] },
   { text = "100,000 logs, {comma} prefixes", in = ["chapters/ch-12-the-ground.md"] },
-  { text = "100,000 of them, {comma} prefixes", in = ["essays/necessities/index.md"] },
 ]
 
 [fact.diff_c1a_disagreements]
@@ -112,7 +109,7 @@ extract = 'procedure (\d+) : object'
 value = 127
 phrase = [
   { text = "{n} : 32", in = ["chapters/ch-02-every-suggestion-a-bet.md", "chapters/ch-08-language-into-law.md", "chapters/ch-13-the-evidence.md"] },
-  { text = "{n} procedure entries to 32", in = ["chapters/app-a-the-necessities.md", "essays/necessities/index.md"] },
+  { text = "{n} procedure entries to 32", in = ["chapters/app-a-the-necessities.md"] },
 ]
 
 [fact.c1a_object]
@@ -137,7 +134,7 @@ extract = 'procedure (\d+) : object'
 value = 67
 phrase = [
   { text = "{n} : 82", in = ["chapters/ch-02-every-suggestion-a-bet.md", "chapters/ch-13-the-evidence.md"] },
-  { text = "at {n} to 82", in = ["chapters/app-a-the-necessities.md", "essays/necessities/index.md"] },
+  { text = "at {n} to 82", in = ["chapters/app-a-the-necessities.md"] },
 ]
 
 [fact.c1b_object]
@@ -162,7 +159,7 @@ argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z"
 extract = 'live E (\d+/\d+)'
 value = "214358881/8398080"
 phrase = [
-  { text = "{fraction} ≈", in = ["chapters/app-a-the-necessities.md", "chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md", "essays/necessities/index.md"] },
+  { text = "{fraction} ≈", in = ["chapters/app-a-the-necessities.md", "chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] },
 ]
 
 # ------------------------------------------------------------------ C2a: the joint table
@@ -240,9 +237,6 @@ pattern = '^### A\.\d+ '
 expect = 15
 phrase = [
   { text = "The {words} rows above", in = ["chapters/app-a-the-necessities.md"] },
-  { text = "{Words} Things a Self-Modifying Agent", in = ["essays/necessities/index.md"] },
-  { text = "{Words} old results", in = ["essays/necessities/index.md"] },
-  { text = "One of the {words} fails", in = ["essays/necessities/index.md"] },
 ]
 
 [count.residue_bets]
@@ -261,7 +255,7 @@ phrase = [
 # Capitalised words that the citation pattern can take for a surname before a
 # year. Add to this only after reading the hit; a real citation goes in sources.md.
 not_names = ["In", "LCF", "Share"]
-# Entries in sources.md that no chapter or essay cites by author and year, on
+# Entries in sources.md that no chapter cites by author and year, on
 # purpose, as "surname year" with accents stripped and in lower case. Empty since
 # the three orphaned by the re-cut (D20) were placed again in chapters 0 and 4 (#22).
 uncited_ok = []

@@ -1,8 +1,8 @@
 # A Court for Agents
 
-The research outputs of [jack](https://github.com/renavondata/jack) — essays, an arXiv working paper and a monograph, working title *A Court for Agents* — by Guy Freeman, drafted with Claude sessions in two roles:
+The book about [jack](https://github.com/renavondata/jack), *A Court for Agents*, by Guy Freeman, drafted with Claude sessions in two roles. This repository holds the book only; essays on gfrm.in are written and published from `gfrmin/gfrminsite` by other sessions (plan D47).
 
-- **the author** writes `plan.md`, `chapters/`, `essays/`, `sources.md` and `data/recompute-*.md`;
+- **the author** writes `plan.md`, `chapters/`, `sources.md`, `data/facts.toml`, `tools/` and `data/recompute-*.md`;
 - **counsel** (jack's counsel session) writes only `data/<layer>-exit.md` and `data/counsel-notes.md`.
 
 Neither writes to jack. Every number in a draft carries a provenance tag pointing at an entry of jack's `log.jsonl` by seq, or a tool run on a named commit (see `plan.md` §2), so any reader can recompute it.

@@ -7,21 +7,19 @@ on:
   push:
     branches: [master]
     paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
-            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh",
-            "essays/**", "data/facts.toml", "tools/check_book.py"]
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh", "data/facts.toml", "tools/check_book.py"]
   # chapters/sources.md and chapters/plan.md are symlinks to the root files, so an
   # edit to either root file does not match chapters/**; both are listed here.
   pull_request:
     paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
-            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh",
-            "essays/**", "data/facts.toml", "tools/check_book.py"]
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh", "data/facts.toml", "tools/check_book.py"]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   # The prose against the record, itself and its sources (tools/check_book.py; plan
   # D44): every figure in data/facts.toml recomputed from renavondata/jack at its
-  # pinned commit and found as printed in every chapter and essay; the book's counts
+  # pinned commit and found as printed in every chapter; the book's counts
   # of itself; every Author (Year) against sources.md and back; every quotation of a
   # jack document verbatim. A red check leaves `build` unrun, so the run is red and
   # gfrm.in, which builds only commits this workflow built green, does not publish it.
