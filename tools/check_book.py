@@ -103,7 +103,7 @@ def placeholder_re(style: str) -> str:
         return r"\d{1,3}(?:,\d{3})+|\d+"
     if style == "fraction":
         return r"\d+/\d+"
-    return r"[\d.]+"
+    return r"\d+(?:\.\d+)?"  # not [\d.]+, which takes a sentence's full stop as part of "82."
 
 
 def check_phrases(fid: str, value, phrases: list[dict], files: list[Path]) -> None:
@@ -249,16 +249,22 @@ def check_counts(facts: dict, files: list[Path]) -> None:
 
 # ---------------------------------------------------------------- citations
 
-def surname_key(s: str) -> str:
+def plain(s: str) -> str:
+    """Accents stripped and apostrophes straightened; case kept."""
     s = unicodedata.normalize("NFKD", s)
-    s = "".join(ch for ch in s if not unicodedata.combining(ch))
-    return s.lower().replace("’", "'")
+    return "".join(ch for ch in s if not unicodedata.combining(ch)).replace("’", "'")
 
 
-def sources_index() -> dict[tuple[str, str], int]:
+def surname_key(s: str) -> str:
+    return plain(s).lower()
+
+
+def sources_index() -> tuple[dict[tuple[str, str], int], dict[str, str]]:
     """(first author's surname, year) -> line in sources.md, for every entry and every
-    extra year the entry carries in bold, e.g. Nachbar (1997) ... **(2005)**."""
+    extra year the entry carries in bold, e.g. Nachbar (1997) ... **(2005)**; and each
+    surname key -> the surname as sources.md spells it, case kept."""
     idx = {}
+    spelled = {}
     for i, line in enumerate((ROOT / "sources.md").read_text(encoding="utf-8").splitlines(), 1):
         m = re.match(r"- \*\*(.+?)\*\*", line)
         if not m:
@@ -268,10 +274,11 @@ def sources_index() -> dict[tuple[str, str], int]:
         if not sm:
             continue
         name = surname_key(sm.group(1).strip())
+        spelled[name] = plain(sm.group(1).strip())
         years = re.findall(r"\((\d{4})", head) + re.findall(r"\*\*\((\d{4})\)\*\*", line)
         for y in years:
             idx[(name, y)] = i
-    return idx
+    return idx, spelled
 
 
 NAME = r"(?:de |van |von |Van |De )?[A-Z][\w’']*?[\w](?:-[A-Z][\w]+)?(?:['’]s)?"
@@ -284,7 +291,7 @@ def check_citations(facts: dict, files: list[Path]) -> None:
     conf = facts.get("citations", {})
     ignore = set(conf.get("not_names", []))
     uncited_ok = set(conf.get("uncited_ok", []))
-    idx = sources_index()
+    idx, spelled = sources_index()
     used: set[tuple[str, str]] = set()
     for p in files:
         raw = p.read_text(encoding="utf-8")
@@ -304,14 +311,16 @@ def check_citations(facts: dict, files: list[Path]) -> None:
                     err(f"{rel(p)}:{line_of(text, m.start())}",
                         f"cites {first} ({y}), which has no entry in sources.md")
     # An entry also counts as cited when its surname appears in the prose without a
-    # year and no other entry shares the surname, so the reference is unambiguous.
-    prose = surname_key(" ".join(strip_code(p.read_text(encoding="utf-8")) for p in files))
+    # year and no other entry shares the surname, so the reference is unambiguous. The
+    # surname must appear as sources.md spells it, capital included, so that an entry
+    # for Good, Price or Bell is not taken as cited by the ordinary word.
+    prose = plain(" ".join(strip_code(p.read_text(encoding="utf-8")) for p in files))
     by_name: dict[str, int] = {}
     for (name, _y) in idx:
         by_name[name] = by_name.get(name, 0) + 1
     for key, line in sorted(idx.items(), key=lambda kv: kv[1]):
         label = f"{key[0]} {key[1]}"
-        if key not in used and by_name[key[0]] == 1 and re.search(rf"\b{re.escape(key[0])}\b", prose):
+        if key not in used and by_name[key[0]] == 1 and re.search(rf"\b{re.escape(spelled[key[0]])}\b", prose):
             continue
         if key not in used and label not in uncited_ok:
             err(f"sources.md:{line}", f"{label} is cited by no chapter or essay "
