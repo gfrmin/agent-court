@@ -126,19 +126,20 @@ Each line is a decision the author took rather than asked; *p* is the author's p
 - **D25** (p 0.70). The convergence tests of the bootstrap are the ratio guard and lapse, and the fixed point is "a level at which adding another changes nothing in the law" (ch 11 §11.12). Pending ruling R3.
 - **D26** (p 0.60). The audience is anyone who has run the loop, with the statisticians at the back of the room; the arXiv paper keeps no figures and is appendix A with chapters 6, 7, 12 and 13 compressed; primary category cs.AI. Pending Guy's impact ruling (R5).
 - **D27** (p 0.85). The title is *A Court for Agents: Law, scoring and the self-modifying machine* (Guy, 3 November).
+- **D28** (p 0.85; was R1). Self-governing is the structural property; self-improving is its consequence. Decided from the charter's own build order — "oblige it to control itself" precedes the agent [CHARTER §8; *Federalist* 51] — and from the subtitle Guy chose, which puts law and scoring before the machine.
+- **D29** (p 0.90; was R2). The human never leaves. Decided from the alignment commitment the lineage began with [`credence/CONSTITUTION.md` §2.5] and the charter's "wishes are never scored" [CHARTER §7]: the owner of the utility is the standard and cannot be graded against himself.
+- **D30** (p 0.75; was R3). The ratio guard and lapse are the convergence tests, and the fixed point is a level at which adding another changes nothing in the law. Decided because they are the only two mechanisms in the law that can stop its growth [CHARTER A3.4; §3 Change], and A2.1 already puts the three-rule thesis on trial at C2's exit. No finding is raised: asking the charter to *name* them would add law for a book's reading, against "fail fast, fail cheap" and the rule that nothing enters the law without a case.
+- **D31** (p 0.80; was R4). The figures stay and "we" stays. Decided from what Guy asked for on 3 November — a book with GEB's inevitability, the loop as what every adapting thing does — and from the standing rule that figures illustrate and never evidence (D21).
+- **D32** (p 0.75; was R5). The audience is everyone who has run the loop, with statisticians as the referee; cs.AI primary, cross-listed stat.ME and cs.MA; the arXiv paper without figures. Decided from Guy's "firstly an AI project, but to only talk about safety undersells it" and from the thesis being a claim about adaptive intelligence with safety as a corollary.
+- **D33** (p 0.95; was R6). The title is *A Court for Agents: Law, scoring and the self-modifying machine*; Guy chose the subtitle on 3 November, which is confirmation enough.
+- **D34** (p 0.70). The second half of [G](i) is not required for chapter 14 to stand: the chapter's claims rest on the repositories and the cold read, and the **[G]** paragraphs are kept as marked invitations — what each project taught that its repository does not show — which Guy may fill or the book may publish as gaps. The author does not ask again.
 
 ## 7. Open questions for Guy
 
-Only these; everything else is decided above. **Rulings requested on 3 November** (each stands as the decision cited until ruled):
+Only these; everything else is decided above. **Rule of 3 November (Guy):** the author interviews him for a ruling always, but only when the principles on the record cannot decide. R1–R6, requested earlier that day, were re-examined under that rule and each was found decidable; they are recorded as D28–D33 and withdrawn as questions.
 
-- **R1** — self-governing is the structural property (authority bootstrapped by record under the same three rules); self-improving is its consequence. Yes or no. (D23)
-- **R2** — the human never leaves: chapter 0 states the owner of the utility stays unscored permanently. Yes or no. (D24)
-- **R3** — the ratio guard and lapse are the bootstrap's convergence tests, and the fixed point is "a level at which adding another changes nothing in the law". Yes, no, or a different criterion. (D25) *If yes, the author will raise a finding asking whether the charter should name them so.*
-- **R4** — the figures: one human figure opens each chapter, illustrating and never evidencing; "we" for the construction. Keep or cut. (D21–D22)
-- **R5** — the audience, now that the impact question is settled as you want it: everyone who has run the loop, statisticians as the referee, cs.AI primary; the arXiv paper without figures. (D26)
-- **R6** — the title with subtitle, as D27. Confirm.
 - **[G](ii)** stands as before; D18 is the default.
-- **[G](i), second half:** what tannen and wald taught that their repositories do not show.
+- **[G](i), second half:** what tannen and wald taught that their repositories do not show — an invitation, not a question (D34).
 
 
 
