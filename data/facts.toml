@@ -30,11 +30,11 @@ argv = ["tools/count_kernel.py"]
 extract = 'total\s+(\d+)'
 value = 450
 phrase = [
-  { text = "kernel holding all three is {n} lines", in = ["essays/necessities/index.md"] },
+  { text = "kernel that holds recognition and most of change is {n} lines", in = ["essays/necessities/index.md"] },
   { text = "{n} lines of kernel", in = ["essays/necessities/index.md"] },
-  { text = "kernel that holds all three is {n} lines", in = ["chapters/app-a-the-necessities.md"] },
+  { text = "kernel that holds recognition and the rest of change is {n} lines", in = ["chapters/app-a-the-necessities.md"] },
   { text = "the kernel is {n} lines" },
-  { text = "exactly the three rules, in {n} lines" },
+  { text = "held by a {n}-line kernel" },
 ]
 
 # ------------------------------------------------------------------ the herald
