@@ -77,7 +77,7 @@ What checks the court? Not a proof of its own soundness: Gödel's second theorem
 
 Concretely: each layer's promotion is a bet against a null — that items are completed without repair no more often than the predecessor's rate; that the aggregate forecasts no better than the base rate — and the wealth of that bet, *E*ₜ, is a test supermartingale whose history is one sequence from the layer's first window onward [CHARTER A4.1: "*E* is never set back to 1 and no α is split. Ville's inequality then holds for the whole sequence at the layer's α"]. A window that fails does not start again; it continues the same product. The court's claims about itself — counsel's forecasts that a window will cross, that an amendment will bite, that the kernel will stay within its bound — are on the same ledger as its claims about the world and scored by the same rule [`data/counsel-forecasts.md`; seqs 37–42, 60, 121, 180–185]. So the whole institution is one sequential test against the null that it is not working, and a court that was fooling itself would be seen going broke: its wealth would sit at one, its forecasts about itself would lose to the base rate, and the acts tables would show its operator back in the loop. None of that can be hidden, because all of it is a fold over a log two checkers agree on.
 
-The claim stops here, at Shafer and Vovk: the court is a bettor against its own null, its wealth is its evidence, and the kernel and amendment A4 are what prove it. Nothing is named as an ideal above that, because nothing above it was built or shaped what was built; chapter 15 §15.3 says in one sentence what the book does not claim of a related construction.
+The claim stops here, at Shafer and Vovk: the court is a bettor against its own null, its wealth is its evidence, and the kernel and amendment A4 are what prove it. Nothing is named as an ideal above that, because nothing above it was built or shaped what was built; chapter 16 §16.3 says in one sentence what the book does not claim of a related construction.
 
 ## 12.8 Why here, and not higher or lower
 
@@ -89,7 +89,7 @@ Between the proof that cannot exist and the authority that cannot be trusted, th
 
 ## 12.9 What this chapter leaves open
 
-The construction is complete and its regress is grounded. What remains is to show that it ran: that the windows crossed on the terms pre-stated for them, with every number recomputed; that the lineage is the same loop run open; and that the ways it could be wrong were written before the evidence came in. Chapters 13 to 15.
+The construction is complete and its regress is grounded. What remains is to show that it ran: that the windows crossed on the terms pre-stated for them, with every number recomputed; that the lineage is the same loop run open; and that the ways it could be wrong were written before the evidence came in. Chapters 13 to 16.
 
 ## 12.10 What would show this chapter wrong
 

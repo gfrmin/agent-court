@@ -46,7 +46,8 @@ Each chapter starts from what the previous one built, names the problem it canno
 12. *The ground* — where every chain of justification stops.
 13. *The evidence* — the windows, as pre-registered experiments, every number recomputed.
 14. *Lineage* — the same loop run open, seven times, measured.
-15. *How it could be wrong.*
+15. *Residue* — what was not built, each item a claim with the case that would force it and a probability the next edition scores; and the one limit that is a different theorem.
+16. *How it could be wrong.*
 
 Three conventions hold throughout. Every number carries a tag saying where on the record it came from and how it was recomputed, and a reader with a clone of `renavondata/jack` can repeat it. Each chapter opens with a figure from ordinary human life — a will, a child, a vow, a court, a courier, a canon — because the loop, the lock and the score are things everyone has run; the figures illustrate and never evidence, and the evidence is always the theorem and the log. And every chapter ends with what would show it wrong, because a book about pre-registered falsifiers that did not pre-register its own would be the kind of system it argues against.
 

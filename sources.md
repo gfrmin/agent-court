@@ -61,6 +61,8 @@
 - **Hayek, F. A. (1973).** *Law, Legislation and Liberty*, vol. 1: *Rules and Order.* University of Chicago Press. — *Empirical regularity.* Grown order against made order. Taken: rules are found by cases. Ch. 2 (§2.16), 9.
 - **Suber, P. (1990).** *The Paradox of Self-Amendment.* Peter Lang. — *Analysis.* An entrenched rule is first made mutable, as a separate move. Taken: `decision transmute` before `amend` [SPEC §10.13]. Ch. 3.
 
+- **Arrow, K. J. (1951).** *Social Choice and Individual Values.* Wiley. — *Theorem.* No aggregation of several orderings into one satisfies unrestricted domain, Pareto, independence and non-dictatorship. Taken: the one-owner assumption is a limit of the construction, not an extension (ch. 15 §15.6). Ch. 15.
+
 ## Enforcement
 
 - **Anderson, J. P. (1972).** Computer Security Technology Planning Study. ESD-TR-73-51, vol. II, USAF Electronic Systems Division. — *Design principle.* The reference monitor: always invoked, tamper-proof, small enough to verify. Taken: the judge and the kernel are built to the three words. Ch. 2 (§2.13), 3.
@@ -93,7 +95,7 @@
 - **Herbster, M. & Warmuth, M. K. (1998).** Tracking the best expert. *Machine Learning* 32(2), 151–178. — *Theorem.* Fixed Share. Taken: an entrant, not law. Ch. 5.
 - **Auer, P., Cesa-Bianchi, N., Freund, Y. & Schapire, R. E. (2002).** The nonstochastic multiarmed bandit problem. *SIAM Journal on Computing* 32(1), 48–77. — *Theorem.* EXP3. Taken: the invitation under bandit feedback; an entrant. Ch. 5.
 - **Joulani, P., György, A. & Szepesvári, C. (2013).** Online learning under delayed feedback. *Proceedings of the 30th International Conference on Machine Learning (ICML)*, 1453–1461. — *Theorem.* Interleaving *D* + 1 instances handles delay *D*. Taken: C2b's four EXP3 instances [BRIEF-C2b]. Ch. 5.
-- **Garrabrant, S., Benson-Tilsen, T., Critch, A., Soares, N. & Taylor, J. (2016).** Logical induction. arXiv:1609.03543. — *Construction.* A market of traders over logical sentences whose prices cannot be exploited in the long run. Taken: nothing — named in the founding essay's quoted list, so the book says in one sentence that the court does not approximate it; the shared ancestor is Shafer–Vovk. Ch. 15 (§15.3).
+- **Garrabrant, S., Benson-Tilsen, T., Critch, A., Soares, N. & Taylor, J. (2016).** Logical induction. arXiv:1609.03543. — *Construction.* A market of traders over logical sentences whose prices cannot be exploited in the long run. Taken: nothing — named in the founding essay's quoted list, so the book says in one sentence that the court does not approximate it; the shared ancestor is Shafer–Vovk. Ch. 16 (§16.3).
 
 ## The record (primary sources)
 

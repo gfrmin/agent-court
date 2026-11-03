@@ -1,4 +1,4 @@
-# 15. How it could be wrong
+# 16. How it could be wrong
 
 *Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2.*
 
@@ -6,7 +6,7 @@
 
 A referee's report is the one document about a piece of work that was written by someone with no stake in its being right. The author of this book has every stake, and so has its counsel, whose forecasts about it are on the ledger. So the book does what the court does: it writes the referee's case first, in the referee's terms, and leaves the referee the job of finding what it missed.
 
-## 15.1 The referee's case
+## 16.1 The referee's case
 
 *n* = 1. One operator, one world that charges (two streams of it), one author's lineage, and a few weeks of running. Nothing in the book establishes that the construction transfers to a team, to a world that charges in a different currency, or to an operator who does not share the author's tolerance for formality.
 
@@ -18,7 +18,7 @@ The theorems are applied to an institution, and institutions are not formal syst
 
 And the largest: the agent does not exist yet. Chapters 10 and 11 are about what it may not touch and what it will inherit; the claim that its improvement will be adjudicated rather than asserted is a forecast, and the book says so each time.
 
-## 15.2 The pre-registered falsifiers
+## 16.2 The pre-registered falsifiers
 
 The charter wrote four before any window opened [CHARTER §12], and the book adds what each chapter registered against itself.
 
@@ -33,10 +33,10 @@ The charter wrote four before any window opened [CHARTER §12], and the book add
 - A predecessor that reached a litigant — a scored loop on a world that charged, for longer, cheaper — which would make the lineage a sequence of abandonments and "only the economy is new" false. Chapter 14.
 - The founding essay and the record disagreeing on a point the book takes the record's side of (`plan.md` E1), and a reader finding the essay right.
 
-## 15.3 What the book does not claim
+## 16.3 What the book does not claim
 
 Not optimality of the mechanism; only Wald's narrow optimality of the decision procedure the mechanism forces on every party (appendix A §A.17). Not sufficiency; only minimality, with sufficiency left to the falsifiers above. Not that the court is provably sound; only that its soundness is bet on, in a book that can be seen to go bankrupt. Not that the human leaves; only that his acts are priced, confined to the irreversible, and driven toward a handful of decisions a week. Not novelty of any result; only of the composition, and only because of the economy. And not that the court is, or approximates, a logical inductor (Garrabrant et al. 2016), a name in the founding essay's quoted list: that is a different construction — a market of traders over logical sentences whose prices become unexploitable — and what it shares with the court is only the common ancestor, game-theoretic probability, which chapter 6 takes directly from Shafer and Vovk.
 
-## 15.4 What would show this chapter wrong
+## 16.4 What would show this chapter wrong
 
 A falsifier the construction admits that this list omits. The list is the author's; a referee who adds to it has done the book a service, and the addition belongs here with the referee's name on it.
