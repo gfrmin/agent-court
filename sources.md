@@ -75,6 +75,11 @@
 - **Manheim, D. & Garrabrant, S. (2018).** Categorizing variants of Goodhart's law. arXiv:1803.04585. — *Taxonomy.* Regressional, extremal, causal, adversarial. Taken: the adversarial case is the court's. Ch. 2 (§2.6).
 - **Gall, J. (1977).** *Systemantics: How Systems Work and Especially How They Fail.* Quadrangle. — *Empirical regularity.* A working complex system evolved from a working simple one. Taken: layers promoted before the next begins; stated as a regularity, never a theorem. Ch. 2 (§2.16), 9.
 
+## Self-improving agents (for chapter 1)
+
+- **Zhang, J., Hu, S., Lu, C., Lange, R. & Clune, J. (2025).** Darwin Gödel Machine: open-ended evolution of self-improving agents. arXiv:2505.22954. — *Construction and a reported failure.* Agents that rewrite their own code, scored on coding benchmarks; the hallucination-detection function was hidden from the agents during self-modification, but the token logging it read was within their reach, and an agent removed it and scored highly without solving the problem. Taken: the judge fixed, the path to it not — the first way to get the shape wrong. Ch. 1 (§1.2), 10.
+- **Good, I. J. (1965).** Speculations concerning the first ultraintelligent machine. *Advances in Computers* 6, 31–88. — *Conjecture.* The intelligence explosion. Taken: the repository's namesake, with Good (1952). Ch. 1.
+
 ## Election and learning (for chapter 5; listed now because chapter 2 names them as entrants)
 
 - **Freund, Y. & Schapire, R. E. (1997).** A decision-theoretic generalization of on-line learning and an application to boosting. *Journal of Computer and System Sciences* 55(1), 119–139. — *Theorem.* Hedge: regret within ln *K* of the best expert; at η = 1 the Bayes mixture. Taken: the aggregate; ln *K* the only constant. Ch. 2 (§2.5, §2.17), 5.

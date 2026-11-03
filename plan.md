@@ -53,7 +53,7 @@ Three outputs, one argument, published in the order that gets feedback soonest.
 
 | ch | file | content | needs | state |
 |---|---|---|---|---|
-| 1 | `ch-01-the-question.md` | the founding essay expanded: what a self-modifying agent may not touch; the rigid core and the free edge; what is new (only the economy) | nothing | next |
+| 1 | `ch-01-the-question.md` | the founding essay expanded: what a self-modifying agent may not touch; the rigid core and the free edge; what is new (only the economy) | nothing | **drafted 3 Nov** |
 | 2 | `ch-02-necessities.md` | each necessity stated with its hypotheses, what it forbids or forces, the mechanism that discharges it, what would show it misapplied; minimality and the narrow sense of "optimal" | the record's structure only | **drafted 3 Nov** |
 | 3 | `ch-03-the-smallest-law.md` | Hart, Fuller, Coke, the writ; the kernel read aloud (450 lines, appendix A); the five amendments as the law changing lawfully | kernel, SPEC, CHARTER, seqs of the amendments | **drafted 3 Nov** |
 | 4 | `ch-04-testing-by-betting.md` | Dawid, Ville, e-processes; the liveness and value statistics with their proofs and pins; one wealth, never reset | C1b exit data; C2a exit data | waits for `data/C2a-exit.md` |
