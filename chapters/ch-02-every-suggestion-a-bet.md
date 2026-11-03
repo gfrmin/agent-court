@@ -22,7 +22,7 @@ We have a loop (chapter 1) that keeps suggestions that paid and discards those t
 
 ## 2.3 Only issued forecasts count — Dawid (1984)
 
-**Result** (principle; its force is what it excludes). A forecaster is assessed on nothing but the probability forecasts it actually issued and the outcomes that then occurred — no model of the forecaster, no refitting after the outcomes, no "what it would have said".
+**Result** (principle; its force is what it excludes). A forecaster is assessed on nothing but the probability forecasts it actually issued and the outcomes that then occurred — no model of the forecaster, no revision of an issued forecast after its outcome, no "what it would have said".
 
 **What it forces.** If merit can only be scored, the evidence must be of this form: a probability fixed at a known time before the outcome, and an outcome recorded by someone else, once. Anything else — a revision after the event, a second resolution correcting the first, a score recomputed from forecasts the forecaster did not issue — reopens the inspection Rice closed, through the back door.
 

@@ -12,7 +12,7 @@ We have a law that compiles from sentences (chapter 8) and binds (chapter 4). It
 
 ## 9.2 Only the irreversible gets a gate — Arrow and Fisher (1974)
 
-**Result** (theorem of decision under uncertainty). When information arrives over time and an act cannot be undone, the expected value of acting now, computed correctly, is less than the naive expected value by a non-negative quantity — the quasi-option value — which is the expected value of the information that waiting would bring and the irreversible act would waste. Henry (1974) proved the same effect independently. The converse matters as much: an act that *can* be undone carries no option value in waiting, and a gate before it costs delay and buys nothing.
+**Result** (theorem of decision under uncertainty). When information arrives over time and an act cannot be undone, the expected value of acting now, computed correctly, is less than the naive expected value by a non-negative quantity — the "quasi-option value", their term (Arrow and Fisher 1974, p. 315). Henry (1974) proved the same effect independently. The converse matters as much, and it is the book's inference rather than theirs: an act that can be undone at no cost carries no option value in waiting, so a gate before it costs delay and buys nothing. Arrow and Fisher price irreversibility rather than forbid it; the hard gate is this court's policy, drawn where the price cannot be bounded.
 
 **What it forces.** Hard gates stand only before effects that cannot be undone; everything reversible is priced and scored, never blocked. For the operator this fixes his reserved acts exactly: the acts that change who may act or what the law is.
 
