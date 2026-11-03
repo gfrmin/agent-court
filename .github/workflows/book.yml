@@ -7,17 +7,35 @@ on:
   push:
     branches: [master]
     paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
-            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh",
+            "essays/**", "data/facts.toml", "tools/check_book.py"]
   # chapters/sources.md and chapters/plan.md are symlinks to the root files, so an
   # edit to either root file does not match chapters/**; both are listed here.
   pull_request:
     paths: ["chapters/**", "book.toml", "theme/**", "sources.md", "plan.md", ".github/workflows/book.yml",
-            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh"]
+            ".mdbook-version", ".mdbook-sha256", "scripts/install-mdbook.sh",
+            "essays/**", "data/facts.toml", "tools/check_book.py"]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
+  # The prose against the record, itself and its sources (tools/check_book.py; plan
+  # D44): every figure in data/facts.toml recomputed from renavondata/jack at its
+  # pinned commit and found as printed in every chapter and essay; the book's counts
+  # of itself; every Author (Year) against sources.md and back; every quotation of a
+  # jack document verbatim. A red check leaves `build` unrun, so the run is red and
+  # gfrm.in, which builds only commits this workflow built green, does not publish it.
+  # Its own job, with no secrets and no token, because it runs jack's own tools.
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone renavondata/jack (full history; status.py needs it)
+        run: git clone --quiet --filter=blob:none https://github.com/renavondata/jack .jack
+      - name: Check the book
+        run: python3 tools/check_book.py --jack .jack
   build:
+    needs: check
     runs-on: ubuntu-latest
     # Only whether the dispatch token exists is job-wide; the token itself stays on
     # the one step that uses it, out of reach of the installer and the mdBook build.

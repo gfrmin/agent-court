@@ -36,7 +36,7 @@ The brief therefore says what the draw is and is not — "a deterministic signat
 
 ## 7.5 The election as an entrant
 
-The charter is explicit that the election rule is not law: "Which proposer is invited is an election by Hedge or Fixed Share on proper scores … EXP3 under bandit feedback: an entrant, not law" [CHARTER §5]. Herbster and Warmuth's Fixed Share (1998), which can change its mind about who is best when the experts drift, enters later as a competitor to Hedge, scored like anything else; so would Thompson sampling, a finer prior, any base rate finer than a type. The audit criterion counsel drew from amendment A4 — the law names scores and competitions, never competitors [`claude/literature-review.md` §6] — is what keeps the election from becoming the authority it replaced.
+The charter is explicit that the election rule is not law: "Which proposer is invited is an election by Hedge or Fixed Share on proper scores … EXP3 under bandit feedback … an entrant, not law" [CHARTER §5]. Herbster and Warmuth's Fixed Share (1998), which can change its mind about who is best when the experts drift, enters later as a competitor to Hedge, scored like anything else; so would Thompson sampling, a finer prior, any base rate finer than a type. The audit criterion counsel drew from amendment A4 — the law names scores and competitions, never competitors [`claude/literature-review.md` §6] — is what keeps the election from becoming the authority it replaced.
 
 ## 7.6 What the record shows before the election acts
 

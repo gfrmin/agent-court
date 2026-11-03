@@ -1,0 +1,192 @@
+# The figures the book prints, each with the commit of renavondata/jack it was
+# recomputed at and the method that recomputes it. tools/check_book.py recomputes
+# every one and fails if it differs from `value`, then finds every phrase below in
+# every chapter and essay and fails if the number printed in it is not `value`.
+#
+# A phrase is a template with one placeholder, written as the number would be
+# printed: {n} plain, {comma} with thousands separators, {fraction} as p/q,
+# {words} / {Words} as an English number word. The rest of the phrase is matched
+# literally (spaces match any whitespace), so it should be specific enough to mean
+# only this figure: "100,000 seeded logs and {comma} prefixes", not "{comma}
+# prefixes", which would also catch the other run of record.
+#
+# `in` names the files that must carry the phrase at least once. A phrase found in
+# a file not named is still checked, which is how a stale copy is caught.
+#
+# To change a figure: change `commit` and `value` together, run the checker, and
+# fix every place it names. Never change `value` alone.
+
+[pins]
+# The commit a chapter's quotations are checked against when the chapter does not
+# name one in its header ("the record is `renavondata/jack` at `…`").
+jack = "6ebea1a"
+
+# ------------------------------------------------------------------ the kernel
+
+[fact.kernel_lines]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/count_kernel.py"]
+extract = 'total\s+(\d+)'
+value = 450
+phrase = [
+  { text = "kernel holding all three is {n} lines", in = ["essays/necessities/index.md"] },
+  { text = "{n} lines of kernel", in = ["essays/necessities/index.md"] },
+  { text = "kernel that holds all three is {n} lines", in = ["chapters/app-a-the-necessities.md"] },
+  { text = "the kernel is {n} lines" },
+  { text = "exactly the three rules, in {n} lines" },
+]
+
+# ------------------------------------------------------------------ the herald
+
+[fact.herald_merges_since_201]
+# Every entry signed by the herald since herald-2 was declared at seq 201. The
+# claim in the prose is that all of them are merges; the second fact checks that.
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "fold"
+where = { proposer = "herald", seq_gt = 201 }
+value = 85
+phrase = [
+  { text = "every one of the {n} entries", in = ["essays/necessities/index.md", "chapters/app-a-the-necessities.md"] },
+]
+
+[fact.herald_merge_entries_since_201]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "fold"
+where = { proposer = "herald", type = "merge", seq_gt = 201 }
+value = 85
+
+# ------------------------------------------------------------------ the differential
+
+[fact.diff_c1a_logs]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "files"
+dir = "transcripts/"
+match = 'diff-100000-20261025T1328Z-part\d\d\.json$'
+field = "logs"
+value = 100000
+
+[fact.diff_c1a_prefixes]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "files"
+dir = "transcripts/"
+match = 'diff-100000-20261025T1328Z-part\d\d\.json$'
+field = "prefixes"
+value = 636392
+phrase = [
+  { text = "100,000 seeded logs and {comma} prefixes", in = ["chapters/app-a-the-necessities.md"] },
+  { text = "100,000 logs, {comma} prefixes", in = ["chapters/ch-12-the-ground.md"] },
+  { text = "100,000 of them, {comma} prefixes", in = ["essays/necessities/index.md"] },
+]
+
+[fact.diff_c1a_disagreements]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "files"
+dir = "transcripts/"
+match = 'diff-100000-20261025T1328Z-part\d\d\.json$'
+field = "disagreements"
+value = 0
+
+[fact.diff_c0_prefixes]
+# The earlier run of record, on commit 46543de, before C1a's installation.
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "files"
+dir = "transcripts/"
+match = 'diff-100000-20261017T1001Z-part\d\d\.json$'
+field = "prefixes"
+value = 658885
+phrase = [
+  { text = "100,000 logs and {comma} prefixes", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+# ------------------------------------------------------------------ the windows
+
+[fact.c1a_procedure]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1a", "--as-of", "2026-10-31T10:42:10Z",
+        "--runs", "transcripts/evidence/runs-tests-20261031.json"]
+extract = 'procedure (\d+) : object'
+value = 127
+phrase = [
+  { text = "{n} : 32", in = ["chapters/ch-02-every-suggestion-a-bet.md", "chapters/ch-08-language-into-law.md", "chapters/ch-13-the-evidence.md"] },
+  { text = "{n} procedure entries to 32", in = ["chapters/app-a-the-necessities.md", "essays/necessities/index.md"] },
+]
+
+[fact.c1a_object]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1a", "--as-of", "2026-10-31T10:42:10Z",
+        "--runs", "transcripts/evidence/runs-tests-20261031.json"]
+extract = 'procedure \d+ : object (\d+)'
+value = 32
+phrase = [
+  { text = "127 : {n}" },
+  { text = "127 procedure entries to {n}" },
+]
+
+[fact.c1b_procedure]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json",
+        "--acts", "transcripts/evidence/acts-20261101.csv"]
+extract = 'procedure (\d+) : object'
+value = 67
+phrase = [
+  { text = "{n} : 82", in = ["chapters/ch-02-every-suggestion-a-bet.md", "chapters/ch-13-the-evidence.md"] },
+  { text = "at {n} to 82", in = ["chapters/app-a-the-necessities.md", "essays/necessities/index.md"] },
+]
+
+[fact.c1b_object]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json",
+        "--acts", "transcripts/evidence/acts-20261101.csv"]
+extract = 'procedure \d+ : object (\d+)'
+value = 82
+phrase = [
+  { text = "67 : {n}" },
+  { text = "at 67 to {n}" },
+]
+
+[fact.c1b_live_E]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json",
+        "--acts", "transcripts/evidence/acts-20261101.csv"]
+extract = 'live E (\d+/\d+)'
+value = "214358881/8398080"
+phrase = [
+  { text = "{fraction} ≈", in = ["chapters/app-a-the-necessities.md", "chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md", "essays/necessities/index.md"] },
+]
+
+# ------------------------------------------------------------------ the book about itself
+
+[count.appendix_a_rows]
+# A.2–A.16: each result is a ### heading; A.0, A.1, A.17 and A.18 are ## sections.
+file = "chapters/app-a-the-necessities.md"
+pattern = '^### A\.\d+ '
+expect = 15
+phrase = [
+  { text = "The {words} rows above", in = ["chapters/app-a-the-necessities.md"] },
+  { text = "{Words} Things a Self-Modifying Agent", in = ["essays/necessities/index.md"] },
+  { text = "{Words} old results", in = ["essays/necessities/index.md"] },
+  { text = "One of the {words} fails", in = ["essays/necessities/index.md"] },
+]
+
+# ------------------------------------------------------------------ citations
+
+[citations]
+# Capitalised words that the citation pattern can take for a surname before a
+# year. Add to this only after reading the hit; a real citation goes in sources.md.
+not_names = ["In", "LCF", "Share"]
+# Entries in sources.md that no chapter or essay cites by author and year, on
+# purpose, as "surname year" with accents stripped and in lower case.
+uncited_ok = [
+  # Placed in chapters 1, 3 and 7 of the first draft and orphaned by the re-cut on
+  # the construction (D20). Each is either placed again or dropped: issue to follow.
+  "beer 1972", "blackstone 1765", "good 1965",
+]
