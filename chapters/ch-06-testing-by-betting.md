@@ -34,7 +34,7 @@ where *m*₁ᵢ and *m*₂ᵢ are the mean of *D*ⱼ/*B* and of (*D*ⱼ/*B*)² o
 
 ## 6.3 Unbounded means cannot be certified — Bahadur and Savage (1956)
 
-**Result** (theorem). In the family of all distributions on the real line with a finite mean, no test of the hypothesis that the mean takes a given value has power exceeding its size against any alternative. A distribution can carry an arbitrarily small probability of an arbitrarily large value, so the mean is dominated by what the sample almost never sees. The result disappears for bounded variables.
+**Result** (theorem). In any convex family of distributions in which every member has a finite mean and every real number is some member's mean — all distributions with a finite mean, or all with bounded but unknown support — no test of the hypothesis that the mean takes a given value has power exceeding its size against any alternative (Bahadur and Savage 1956, §2 and Theorem 1). A distribution can carry an arbitrarily small probability of an arbitrarily large value, so the mean is dominated by what the sample almost never sees. The result disappears only when the range is known in advance.
 
 **What it forces.** The quantities an operator most wants to see fall — minutes to merge, dollars per window, repairs per merge — are unbounded, and no procedure can certify that their mean is small. So the court tests only bounded outcomes and reports the rest as what they are: numbers, not evidence.
 

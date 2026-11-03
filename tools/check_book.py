@@ -269,6 +269,9 @@ def surname_key(s: str) -> str:
     return plain(s).lower()
 
 
+COAUTHORS: set[str] = set()  # surnames that appear as a later author of some entry
+
+
 def sources_index() -> tuple[dict[tuple[str, str], int], dict[str, str]]:
     """(first author's surname, year) -> line in sources.md, for every entry and every
     extra year the entry carries in bold, e.g. Nachbar (1997) ... **(2005)**; and each
@@ -285,6 +288,9 @@ def sources_index() -> tuple[dict[tuple[str, str], int], dict[str, str]]:
             continue
         name = surname_key(sm.group(1).strip())
         spelled[name] = plain(sm.group(1).strip())
+        for co in re.findall(r"(?:, |& )((?:de |van |von )?[A-Z][^,&()]*?), (?:[A-Z]\.\s?)+", head)[0:]:
+            if surname_key(co) != name:
+                COAUTHORS.add(surname_key(co))
         years = re.findall(r"\((\d{4})", head) + re.findall(r"\*\*\((\d{4})\)\*\*", line)
         for y in years:
             idx[(name, y)] = i
@@ -324,7 +330,9 @@ def cited_keys(text: str, idx: dict, spelled: dict, ignore: set,
     for (name, _y) in idx:
         by_name[name] = by_name.get(name, 0) + 1
     for key in idx:
-        if by_name[key[0]] == 1 and re.search(rf"\b{re.escape(spelled[key[0]])}\b", flat):
+        # A surname that is also a later author elsewhere (Vovk, in Shafer and Vovk) is
+        # ambiguous bare, so it counts only with its year.
+        if by_name[key[0]] == 1 and key[0] not in COAUTHORS and re.search(rf"\b{re.escape(spelled[key[0]])}\b", flat):
             keys.add(key)
     return keys
 
