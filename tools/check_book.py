@@ -463,6 +463,45 @@ def check_quotes(facts: dict, jack: Jack, files: list[Path]) -> None:
                 pos = i + len(part)
 
 
+# ---------------------------------------------------------------- provenance tags
+
+TAG = re.compile(r"`((?:tools/)?(?:status|value|count_kernel)\.py|jack score)((?:\s+[^`@…<]+?)?)\s+@([0-9a-f]{7,40})`")
+
+
+def check_tags(jack: Jack, files: list[Path]) -> int:
+    """Every complete provenance tag — a jack tool, its arguments, and the commit after
+    "@" — is run at that commit, and must succeed. A tag abbreviated with "…" or a
+    placeholder is not runnable by itself and is skipped; the figures it stands for
+    are held by data/facts.toml. Returns the number of tags run."""
+    seen: dict[tuple[str, str, str], str | None] = {}
+    for p in files:
+        text = p.read_text(encoding="utf-8")
+        for m in TAG.finditer(text):
+            tool, args, commit = m.group(1), m.group(2).split(), m.group(3)
+            key = (tool, " ".join(args), commit)
+            if key not in seen:
+                try:
+                    full = jack.resolve(commit)
+                except subprocess.CalledProcessError:
+                    seen[key] = f"commit {commit} is not in jack"
+                else:
+                    script = ["tools/jack", "score"] if tool == "jack score" else [
+                        tool if tool.startswith("tools/") else f"tools/{tool}"]
+                    k2 = (full, tuple(script + args))
+                    if ("rc",) + k2 not in _RUNS:
+                        r = subprocess.run([sys.executable, *script, *args], cwd=jack.worktree(full),
+                                           capture_output=True, text=True, timeout=600)
+                        _RUNS[k2] = r.stdout + r.stderr
+                        _RUNS[("rc",) + k2] = r.returncode
+                    rc = _RUNS[("rc",) + k2]
+                    seen[key] = None if rc == 0 else (
+                        f"exited {rc}: " + _RUNS[k2].strip().splitlines()[-1][:200] if _RUNS[k2].strip() else f"exited {rc}")
+            if seen[key]:
+                err(f"{rel(p)}:{line_of(text, m.start())}", f"provenance tag `{m.group(0).strip('`')}` "
+                    f"does not rerun: {seen[key]}")
+    return len(seen)
+
+
 # ---------------------------------------------------------------- main
 
 def main() -> int:
@@ -479,13 +518,16 @@ def main() -> int:
         check_facts(facts, jack, files)
         check_counts(facts, files)
         check_citations(facts, files)
+        ntags = 0
         if jack is not None:
             check_quotes(facts, jack, files)
+            ntags = check_tags(jack, files)
     finally:
         if jack is not None:
             jack.close()
 
-    scope = "facts, counts, citations, quotes" if jack else "counts, citations, phrases (no jack)"
+    scope = (f"facts, counts, citations, quotes, {ntags} provenance tags rerun" if jack
+             else "counts, citations, phrases (no jack)")
     if errors:
         print(f"check_book: {len(errors)} problem(s) [{scope}]")
         for e in errors:
