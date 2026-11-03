@@ -61,7 +61,7 @@ Three outputs, one argument, published in the order that gets feedback soonest.
 | 6 | `ch-06-the-ground.md` | where each regress stops and why: size and diversity, theorems or elections, scoring, the owner of the utility, the world, a named assumption, a book that can go bankrupt | [G] question (ii) for §6.7's operative reading (D18 is the default) | **drafted 3 Nov** |
 | 7 | `ch-07-the-loops.md` | the eight loops and the ninth, each with the assize failure that forced it | assize's record (F1–F7, the acts tables) | **drafted 3 Nov** |
 | 8 | `ch-08-the-windows.md` | C0 to C2b as pre-registered experiments, every number recomputed; counsel's forecasts scored | all `data/<layer>-exit.md` | last |
-| 9 | `ch-09-lineage.md` | credence, proplang, tannen, wald, life-agent, assize: what each contributed and where it stopped; the lineage as a sequence of measurements | [G] question (i); clones of the six repositories (attached read-only; `transcripts/PREDECESSORS-20261026.md` is the cold read of record) | after ch 7 |
+| 9 | `ch-09-lineage.md` | credence, proplang, tannen, wald, life-agent, assize: what each contributed and where it stopped; the lineage as a sequence of measurements | [G] question (i) for the **[G]** marks; clones of the five repositories re-checked against `transcripts/PREDECESSORS-20261026.md` | **drafted 3 Nov**, [G] marks open |
 | 10 | `ch-10-what-it-allows.md` | agent operations, procurement by record, agent-run science, promotion gates for deployed AI, the self-improving agent | ch 2 and 6 | after ch 8 |
 | 11 | `ch-11-how-it-could-be-wrong.md` | the referee's objections first; the pre-stated falsifiers; n = 1 | all | last |
 | A–E | `app-*.md` | the charter with amendments; the kernel; the pins and mutants; the acts tables; the forecast ledger with log-loss | — | assembled at the end |
@@ -70,7 +70,7 @@ Chapter files live under `chapters/`; appendices will too. `sources.md` is the b
 
 ### Schedule
 
-- **Now, needing no window data:** chapters 2, 3, 6, 1, in that order; `sources.md` grows with each.
+- **Now, needing no window data:** chapters 2, 3, 6, 1, 7, 9 — all drafted 3 November; `sources.md` grows with each.
 - **At C2a's crossing** (counsel's `data/C2a-exit.md`): chapter 4.
 - **At C2b's exit:** chapters 5, 7, 8; the arXiv paper assembled from 2, 4, 5, 6, 8.
 - **While C3 runs:** 9, 10, 11; the appendices; the monograph's first full draft, about a month after C2b's exit.
