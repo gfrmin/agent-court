@@ -15,7 +15,7 @@ preferred-dark-theme = "ayu"
 mathjax-support = true
 git-repository-url = "https://github.com/gfrmin/agent-court"
 edit-url-template = "https://github.com/gfrmin/agent-court/edit/master/{path}"
-site-url = "/agent-court/"
+site-url = "/book/"
 additional-css = ["theme/draft.css"]
 
 [output.html.search]

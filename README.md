@@ -13,4 +13,4 @@ The founding essay is [The Science Was Done. The Engineering Wasn't.](https://gf
 
 ## Reading the book
 
-The chapters are built into a book site by [mdBook](https://rust-lang.github.io/mdBook/) on every push to `master` (`.github/workflows/book.yml`, `book.toml`, `chapters/SUMMARY.md`) and published by GitHub Pages at <https://gfrmin.github.io/agent-court/>. The site carries a draft banner until the first edition; `sources.md` and `plan.md` are included as back matter. To build locally: `mdbook build` at the repository root, then open `book-site/index.html`.
+The book's home is <https://gfrm.in/book/>: gfrmin/gfrminsite's publish workflow checks out this repository and builds `chapters/` with [mdBook](https://rust-lang.github.io/mdBook/) into `/book/` on every deploy, nightly, and whenever this repository's `book` workflow dispatches it. The `book` workflow here builds on every change (a red build is a broken chapter) and keeps the site as an artifact. The site carries a draft banner until the first edition; `sources.md` and `plan.md` are back matter. To build locally: `mdbook build` at the repository root, then open `book-site/index.html`.
