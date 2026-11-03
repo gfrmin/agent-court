@@ -1,0 +1,26 @@
+[book]
+title = "A Court for Agents"
+authors = ["Guy Freeman"]
+description = "Law, scoring and the self-modifying machine. The research outputs of jack: a monograph in draft, built one inevitable step at a time."
+language = "en"
+src = "chapters"
+
+[build]
+build-dir = "book-site"
+create-missing = false
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "ayu"
+mathjax-support = true
+git-repository-url = "https://github.com/gfrmin/agent-court"
+edit-url-template = "https://github.com/gfrmin/agent-court/edit/master/{path}"
+site-url = "/agent-court/"
+additional-css = ["theme/draft.css"]
+
+[output.html.search]
+enable = true
+limit-results = 20
+
+[output.html.print]
+enable = true
