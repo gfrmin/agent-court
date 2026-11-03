@@ -248,7 +248,7 @@ phrase = [
 # held twelve; this count is why that cannot recur.
 file = "chapters/ch-15-residue.md"
 pattern = '\*p\* 0\.\d+'
-expect = 13
+expect = 14
 phrase = [
   { text = "{words} probabilities between", in = ["chapters/ch-15-residue.md"] },
 ]

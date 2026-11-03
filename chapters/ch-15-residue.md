@@ -92,10 +92,20 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **Bet.** Before C2b's exit, an unanswered writ to the sovereign refuses something — a `promote`, or an entry of the sovereign's — by the kernel or by `status.py`: *p* 0.5.
 
-## 15.11 What the court will never do
+## 15.11 A stake chosen by election
+
+**Not built.** A4.3's liveness stake is valid by derivation and chosen by no theorem (chapter 12 §12.2). The record has priced the choice: at a good record one miss undoes about three successes, and four expiries took the process down by a factor of 4.2.
+
+**What would force it.** That case, which has already happened; and a promotion it could decide.
+
+**Likely mechanism.** A mixture over stakes with a regret bound against the best fixed stake — Cover's universal portfolio, or Waudby-Smith and Ramdas's predictable mixture — entering as a brief rule with a stop condition, the old stake's wealth printed beside it for one window [counsel's C2c draft, agent-court#20]. With it, counsel's draft proposes a *load line* — writs per hour against merges per hour — that any brief changing a cadence would have to quote, because the cadence raised on 2 November past the merge path's measured capacity is what produced the expiries [agent-court#20: 6.8 forecasts an hour against 1.8 merges]. Both are candidates, not facts.
+
+**Bet.** A stake rule other than A4.3's decides a promotion on the log before 2027-03-31: *p* 0.3.
+
+## 15.12 What the court will never do
 
 Prove its own soundness (chapter 10 §10.2; chapter 12). Score the owner's wishes (chapter 0 §0.1). Decide merit by inspection (chapter 2 §2.2). Reset its wealth (chapter 6 §6.2). These are not residue; they are the construction, and a future edition that reported any of them built would be reporting a different system.
 
-## 15.12 What would show this chapter wrong
+## 15.13 What would show this chapter wrong
 
-The bets, scored. The chapter is written to lose some of them: thirteen probabilities between 0.2 and 0.6 should resolve about half and half, and a second edition in which they all came true would mean the author bet too safely, as counsel's early forecasts on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should resolve about half and half, and a second edition in which they all came true would mean the author bet too safely, as counsel's early forecasts on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
