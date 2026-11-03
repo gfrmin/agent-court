@@ -52,7 +52,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 ## 15.6 The owner as a plurality — a limit, not an extension
 
-**Not built, and not a brief away.** The construction assumes one owner: the agent's utility is *the* owner's, unknown and inferred (chapter 0 §0.1), and the one unscored party is one person with one master key [seq 0]. A team's utility is a committee's, and Arrow's theorem (1951) says no rule aggregates the preferences of several into one coherent ordering without a dictator or restrictions on what may be preferred. "For us" with a plural *us* is therefore not an extension of the design; it is a different theorem, and the book should say so rather than list it as future work.
+**Not built, and not a brief away.** The construction assumes one owner: the agent's utility is *the* owner's, unknown and inferred (chapter 0 §0.1), and the one unscored party is one person with one master key [seq 0]. A team's utility is a committee's, and Arrow's impossibility theorem (Arrow 1951) says no rule aggregates the preferences of several into one coherent ordering without a dictator or restrictions on what may be preferred. "For us" with a plural *us* is therefore not an extension of the design; it is a different theorem, and the book should say so rather than list it as future work.
 
 **What it would take.** Either a restriction Arrow allows — a single-peaked domain, or a dictator by rotation, or a market in which owners bid for the court's attention — or a redefinition of "the owner" as a role the construction's own loops fill: the sovereign as an office whose holder is elected by record, which is Ostrom's nested unit one level up and would need its own chapter 4.
 
