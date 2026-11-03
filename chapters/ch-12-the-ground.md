@@ -1,6 +1,6 @@
 # 12. The ground: where the regress stops, and why
 
-*Draft 2, the author session, 3 November 2026 — renumbered on the construction. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The reading of §12.7 is the author's default pending Guy's answer to [G](ii), recorded as decision D18 in `plan.md`.*
+*Draft 3, the author session, 3 November 2026 — renumbered on the construction; §12.7 settled on Shafer–Vovk alone (D36). Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*
 
 ## The figure: the trilemma
 
@@ -77,7 +77,7 @@ What checks the court? Not a proof of its own soundness: Gödel's second theorem
 
 Concretely: each layer's promotion is a bet against a null — that items are completed without repair no more often than the predecessor's rate; that the aggregate forecasts no better than the base rate — and the wealth of that bet, *E*ₜ, is a test supermartingale whose history is one sequence from the layer's first window onward [CHARTER A4.1: "*E* is never set back to 1 and no α is split. Ville's inequality then holds for the whole sequence at the layer's α"]. A window that fails does not start again; it continues the same product. The court's claims about itself — counsel's forecasts that a window will cross, that an amendment will bite, that the kernel will stay within its bound — are on the same ledger as its claims about the world and scored by the same rule [`data/counsel-forecasts.md`; seqs 37–42, 60, 121, 180–185]. So the whole institution is one sequential test against the null that it is not working, and a court that was fooling itself would be seen going broke: its wealth would sit at one, its forecasts about itself would lose to the base rate, and the acts tables would show its operator back in the loop. None of that can be hidden, because all of it is a fold over a log two checkers agree on.
 
-Two readings of this are possible, and the book must choose one as operative. The first stops at Shafer and Vovk: the court is a bettor against its own null, its wealth is its evidence, and nothing more is claimed. The second names an ideal the first falls short of — Garrabrant et al.'s logical induction, a market over an institution's own claims that cannot be exploited in the long run by any efficiently computable trader — and reads jack as a crude, priced instance of it, with the missing piece being traders rather than a mixture over a fixed roster. The author's default, pending Guy's ruling [`plan.md` D18, [G](ii)], is the first as the operative claim and the second as one paragraph, stated as an ideal and not as a property: what the record supports is a test supermartingale, and the market reading is a conjecture about what the court would become if its election ran over an open roster. The difference matters for a referee: the first claim is proved by the kernel and A4; the second is not yet a claim about anything that exists.
+The claim stops here, at Shafer and Vovk: the court is a bettor against its own null, its wealth is its evidence, and the kernel and amendment A4 are what prove it. Nothing is named as an ideal above that, because nothing above it was built or shaped what was built; chapter 15 §15.3 says in one sentence what the book does not claim of a related construction.
 
 ## 12.8 Why here, and not higher or lower
 
@@ -99,4 +99,4 @@ The residues understated. Each section names what its stop does not cover. A ref
 
 The sovereign's residue exercised. If the sovereign revoked keys and stopped the court, the chapter's claim is only that the record would show it; it makes no claim that the court would survive. That is the one place the design accepts an authority, and the book should be read as saying so.
 
-And §12.7's operative reading reversed by the ruling it awaits: if Guy wants the market reading as the claim, the chapter must then say what in the record instantiates a market, and the author's present answer is: nothing yet.
+
