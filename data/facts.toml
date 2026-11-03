@@ -40,12 +40,14 @@ phrase = [
 # ------------------------------------------------------------------ the herald
 
 [fact.herald_merges_since_201]
-# Every entry signed by the herald since herald-2 was declared at seq 201. The
-# claim in the prose is that all of them are merges; the second fact checks that.
+# Every entry signed by herald-2 since it was declared at seq 201. By key, not by
+# principal: herald-1 shared the principal and signed seqs 204 and 207 before its
+# revocation at 217, which made a fold by principal read 85 (Guy's review, gfrminsite
+# #37). The claim in the prose is that all of them are merges; the second fact checks it.
 commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
 how = "fold"
-where = { proposer = "herald", seq_gt = 201 }
-value = 85
+where = { key = "herald-2", seq_gt = 201 }
+value = 83
 phrase = [
   { text = "every one of the {n} entries", in = ["essays/necessities/index.md", "chapters/app-a-the-necessities.md"] },
 ]
@@ -53,8 +55,8 @@ phrase = [
 [fact.herald_merge_entries_since_201]
 commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
 how = "fold"
-where = { proposer = "herald", type = "merge", seq_gt = 201 }
-value = 85
+where = { key = "herald-2", type = "merge", seq_gt = 201 }
+value = 83
 
 # ------------------------------------------------------------------ the differential
 

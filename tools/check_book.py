@@ -177,10 +177,24 @@ class Jack:
         self._tmp.cleanup()
 
 
+def signer(entries: list[dict], e: dict) -> str | None:
+    """The key_id whose public key is inside e's SSH signature: who signed it, as
+    distinct from the principal it names. herald-1 and herald-2 share a principal."""
+    import base64
+    blob = base64.b64decode(e["sig"])
+    for k in entries:
+        if k["type"] == "key" and base64.b64decode(k["body"]["pubkey"].split()[1]) in blob:
+            return k["body"]["key_id"]
+    return None
+
+
 def fold(entries: list[dict], spec: dict) -> int:
-    """A count over the log. Filters: type, proposer, seq_gt, seq_le."""
+    """A count over the log. Filters: type, proposer (the principal), key (the key_id
+    that signed), seq_gt, seq_le."""
     n = 0
     for e in entries:
+        if "key" in spec and signer(entries, e) != spec["key"]:
+            continue
         if "type" in spec and e["type"] != spec["type"]:
             continue
         if "proposer" in spec and e["proposer"] != spec["proposer"]:
