@@ -184,9 +184,6 @@ phrase = [
 # year. Add to this only after reading the hit; a real citation goes in sources.md.
 not_names = ["In", "LCF", "Share"]
 # Entries in sources.md that no chapter or essay cites by author and year, on
-# purpose, as "surname year" with accents stripped and in lower case.
-uncited_ok = [
-  # Placed in chapters 1, 3 and 7 of the first draft and orphaned by the re-cut on
-  # the construction (D20). Each is either placed again or dropped: issue to follow.
-  "beer 1972", "blackstone 1765", "good 1965",
-]
+# purpose, as "surname year" with accents stripped and in lower case. Empty since
+# the three orphaned by the re-cut (D20) were placed again in chapters 0 and 4 (#22).
+uncited_ok = []

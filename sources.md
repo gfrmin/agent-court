@@ -45,7 +45,7 @@
 
 - **Conant, R. C. & Ashby, W. R. (1970).** Every good regulator of a system must be a model of that system. *International Journal of Systems Science* 1(2), 89–97. — *Necessity theorem under conditions.* An optimal, no-more-complex-than-necessary regulator is a model of the regulated system. Taken in its weak form: the regulator acts on a representation sufficient to determine the outcome, and nothing outside it. The book notes the theorem is often overstated. Ch. 2 (§2.10), 7.
 - **Ashby, W. R. (1956).** *An Introduction to Cybernetics.* Chapman & Hall. — *Theorem* (requisite variety, ch. 11). *V*(*Z*) ≥ *V*(*D*) − *V*(*R*). Taken: several proposers of several families; no vendor in law. Ch. 2 (§2.10), 5.
-- **Beer, S. (1972).** *Brain of the Firm.* Allen Lane. — *Model.* The Viable System Model. Taken: the nearest institutional ancestor of the five roles; cited in the founding conversation and the essay, not the charter. Ch. 1, 7.
+- **Beer, S. (1972).** *Brain of the Firm.* Allen Lane. — *Model.* The Viable System Model. Taken: the nearest institutional ancestor of the five roles; cited in the founding conversation and the essay, not the charter. Ch. 0 (§0.2).
 - **Burns, B., Grant, B., Oppenheimer, D., Brewer, E. & Wilkes, J. (2016).** Borg, Omega, and Kubernetes. *ACM Queue* 14(1). — *Engineering principle.* Level-triggered reconciliation loses nothing on a missed event. Taken: the clerk reconciles state; it does not handle events. Ch. 2 (§2.10), 3, 7.
 - **Schneider, F. B. (1990).** Implementing fault-tolerant services using the state machine approach: a tutorial. *ACM Computing Surveys* 22(4), 299–319. — *Construction.* A deterministic fold over an ordered log is a replicated state machine. Taken: fold(law, log). Ch. 2 (§2.10), 3.
 - **Lamport, L. (1978).** Time, clocks, and the ordering of events in a distributed system. *Communications of the ACM* 21(7), 558–565. — *Theorem and construction.* Order from causality, not clocks. Taken: the chain orders the record; the kernel never reads a clock. Ch. 2 (§2.10), 3.
@@ -56,7 +56,7 @@
 - **Fuller, L. L. (1964).** *The Morality of Law.* Yale University Press. (Ch. II.) — *Design principle with a catalogue of failures.* Eight ways to fail to make law. Taken: eight checks; congruence as the one prompt-based harnesses fail. Ch. 2 (§2.12), 3.
 - **Coke, E. (1610).** Dr Bonham's Case, 8 Co. Rep. 107a. — *Maxim.* *Nemo iudex in causa sua.* Taken: `self_judged`, by principal. Ch. 2 (§2.4), 3.
 - **Habeas Corpus Act 1679** (31 Cha. 2 c. 2). — *Institution.* A writ derived from custody and the clock that no custodian may let lapse. Taken: the clerk's writs. Ch. 3, 7.
-- **Blackstone, W. (1765–69).** *Commentaries on the Laws of England.* Clarendon Press. — *Doctrine.* Precedent. Taken: a rule enters from a witnessed case. Ch. 3.
+- **Blackstone, W. (1765–69).** *Commentaries on the Laws of England.* Clarendon Press. — *Doctrine.* Precedent. Taken: a rule enters from a witnessed case. Ch. 4 (§4.5).
 - **Jefferson, T. (1789).** Letter to James Madison, 6 September. — *Maxim.* The earth belongs to the living. Taken: windows are maxima; law lapses when undefended. Ch. 3.
 - **Madison, J. (1788).** *The Federalist* No. 51. — *Maxim.* Enable the government to control the governed; then oblige it to control itself. Taken: the build order C0–C1 then C2. Ch. 3, 7.
 - **Ostrom, E. (1990).** *Governing the Commons.* Cambridge University Press. — *Empirical design principles.* Graduated sanctions; monitors accountable to the monitored; nested enterprises. Taken: the escalation ladder; the sovereign as a role, not an operator. Ch. 3, 7.
@@ -89,7 +89,7 @@
 ## Self-improving agents (for chapter 1)
 
 - **Zhang, J., Hu, S., Lu, C., Lange, R. & Clune, J. (2025).** Darwin Gödel Machine: open-ended evolution of self-improving agents. arXiv:2505.22954v2 (26 Sep 2025), Appendix H, "Case Study: Solving Hallucination". — *Construction and a reported failure.* Special tokens logged on real tool use; checking functions hidden from the agent ("objective hacking … occurs more frequently when these functions are not hidden"); node 96 improved the logging honestly, node 114 "removed the logging of special tokens … (despite instructions not to change the special tokens), effectively bypassing our hallucination detection function" (verified against the text, 3 Nov). Taken: the judge fixed, the path to its evidence in the free edge — the first way to get the shape wrong. Ch. 10 (§10.4).
-- **Good, I. J. (1965).** Speculations concerning the first ultraintelligent machine. *Advances in Computers* 6, 31–88. — *Conjecture.* The intelligence explosion. Taken: the repository's namesake, with Good (1952). Ch. 1.
+- **Good, I. J. (1965).** Speculations concerning the first ultraintelligent machine. *Advances in Computers* 6, 31–88. — *Conjecture.* The intelligence explosion. Taken: the repository's namesake, with Good (1952). Ch. 0 (§0.2).
 
 ## Election and learning (for chapter 5; listed now because chapter 2 names them as entrants)
 
