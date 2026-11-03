@@ -193,6 +193,9 @@ def fold(entries: list[dict], spec: dict) -> int:
     return n
 
 
+_RUNS: dict[tuple, str] = {}
+
+
 def recompute(jack: Jack, fid: str, f: dict):
     commit = jack.resolve(f["commit"])
     how = f["how"]
@@ -207,16 +210,23 @@ def recompute(jack: Jack, fid: str, f: dict):
                 total += len(v) if isinstance(v, list) else v
         return total
     if how == "command":
-        wt = jack.worktree(commit)
-        r = subprocess.run([sys.executable, *f["argv"]], cwd=wt,
-                           capture_output=True, text=True)
-        out = r.stdout + r.stderr
+        key = (commit, tuple(f["argv"]))
+        if key not in _RUNS:  # several facts read one invocation; run it once
+            wt = jack.worktree(commit)
+            r = subprocess.run([sys.executable, *f["argv"]], cwd=wt,
+                               capture_output=True, text=True)
+            _RUNS[key] = r.stdout + r.stderr
+        out = _RUNS[key]
         m = re.search(f["extract"], out)
         if not m:
             err(f"facts.toml [{fid}]", f"`{' '.join(f['argv'])}` at {commit[:8]} printed nothing "
                 f"matching {f['extract']!r}:\n{out.strip()[-600:]}")
             return None
         g = m.group(1)
+        if "round" in f:  # a figure the prose prints to fixed decimals, as a string
+            return f"{float(Fraction(g)):.{f['round']}f}"
+        if "." in g:  # a decimal the tool prints; compared as printed
+            return g
         return Fraction(g) if "/" in g else int(g.replace(",", ""))
     err(f"facts.toml [{fid}]", f"unknown method {how!r}")
     return None
@@ -225,7 +235,7 @@ def recompute(jack: Jack, fid: str, f: dict):
 def check_facts(facts: dict, jack: Jack | None, files: list[Path]) -> None:
     for fid, f in facts.get("fact", {}).items():
         value = f["value"]
-        if isinstance(value, str) and "/" in value:
+        if isinstance(value, str) and "/" in value and "round" not in f:
             value = Fraction(value)
         if jack is not None:
             got = recompute(jack, fid, f)

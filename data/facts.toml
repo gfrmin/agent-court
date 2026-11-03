@@ -163,6 +163,72 @@ phrase = [
   { text = "{fraction} ≈", in = ["chapters/app-a-the-necessities.md", "chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md", "essays/necessities/index.md"] },
 ]
 
+# ------------------------------------------------------------------ C2a: the joint table
+# The window promotes only when value E and continued liveness E are both >= 20 on
+# one prefix. These rows are the author's recomputation of counsel's table
+# (transcripts/evidence/counsel-rm-joint-20261103.txt, jack PR #216).
+
+[fact.c2a_value_peak]
+commit = "33fb4a0"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T04:18:22Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103-resolve.json"]
+extract = 'value E ([\d.]+) >= 20'
+value = "20.131519"
+phrase = [
+  { text = "peaked at {n} over 114 events", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "value at 20 or more only between 03:12Z and 04:18Z on 3 November, peaking at {n}", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_liveness_peak]
+commit = "33fb4a0"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-02T04:55:40Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103-resolve.json"]
+extract = 'continued liveness E (\d+/\d+)'
+round = 1
+value = "605.7"
+phrase = [
+  { text = "peaked at {n} [`status.py --subject C2a --as-of 2026-11-02T04:55:40Z", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "peaking at {n}; value", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_joint_maxmin]
+commit = "33fb4a0"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-02T03:10:19Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103-resolve.json"]
+extract = 'value E ([\d.]+) >= 20'
+value = "2.450887"
+phrase = [
+  { text = "smaller of the two ever took was {n}", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "never above {n} (seq 454)", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_liveness_before_expiries]
+commit = "33fb4a0"
+how = "command"
+argv = ["tools/status.py", "--as-of", "2026-11-03T05:59:59Z", "--runs", "transcripts/evidence/runs-tests-20261103.json"]
+extract = 'liveness continued: E (\d+/\d+)'
+round = 2
+value = "2.33"
+phrase = [
+  { text = "from {n} over forty-two items", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "taking liveness from {n} to", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_liveness_after_expiries]
+commit = "33fb4a0"
+how = "command"
+argv = ["tools/status.py", "--as-of", "2026-11-03T06:00:01Z", "--runs", "transcripts/evidence/runs-tests-20261103.json"]
+extract = 'liveness continued: E (\d+/\d+)'
+round = 3
+value = "0.556"
+phrase = [
+  { text = "to {n} over forty-six", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "from 2.33 to {n}", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
 # ------------------------------------------------------------------ the book about itself
 
 [count.appendix_a_rows]
