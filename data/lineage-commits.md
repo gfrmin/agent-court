@@ -1,0 +1,362 @@
+# The predecessors' commit histories — the author's extraction, 3 November 2026
+
+*Bounded fetches (`git fetch --depth=1500`) of the five repositories named in `plan.md` §1; counts, spans, authorship and the turning points as their own commit subjects say them. Used by chapter 14 beside `renavondata/jack/transcripts/PREDECESSORS-20261026.md`. Subjects are quoted verbatim and cut at 140 characters; dates are committer dates.*
+
+
+## credence
+
+- 640 commits, 2026-03-14 → 2026-11-01; authors: Guy Freeman 639, Claude 1
+- by month: 2026-03 44, 2026-04 257, 2026-05 41, 2026-06 229, 2026-07 57, 2026-08 11, 2026-11 1
+
+Turning points, as the commits name them:
+
+- 2026-04-02 — Fix test failures and update stale CLAUDE.md files
+- 2026-04-20 — Move 3 persistence v2: __schema_version marker + MigrationError path for v1
+- 2026-04-20 — Move 3 skin smoke tests: 4 round-trips + v1 snapshot fails-loudly
+- 2026-04-22 — Move 7 Phase 4: SPEC.md §1 + CLAUDE.md frozen-types + paper §1.3 + docstring fix
+- 2026-04-24 — Move 2 Phase 2: FrozenVectorView{T} read-only wrapper
+- 2026-04-24 — Posture 4 Move 2 design doc: §5.1 amendment — Phase 4 pivot narrative
+- 2026-04-25 — Posture 4 Move 6 design doc — apps and BDSL stdlib migration
+- 2026-04-26 — Move 8: credence_agents + credence_router Prevision vocabulary migration
+- 2026-04-26 — Move 8b design doc: expand §5.2 — ParticlePrevision{T} + EnumerationPrevision retirement
+- 2026-04-27 — EnumerationPrevision retired → EnumerationMeasure{T}
+- 2026-04-29 — posture-5/move-2 sub-PR 4 (3/3): instruction decay and retirement
+- 2026-04-29 — posture-5/move-2 sub-PR 5: fail-open behaviour
+- 2026-06-04 — [paper1] B4 methodology: rewrite falsified VOI-exploration claim; OQ5 reversal; pivot 3->4
+- 2026-06-08 — credence-pi #27 stage 2: ship the frozen harm posterior + safety-feature declarations
+- 2026-06-08 — credence-pi #27: safe-to-try default — harm-driven stops are CONFIRMATIONS (ask), not blocks
+- 2026-06-17 — credence-pi eval: retire superseded exercism/swebench cluster; Role headers
+- 2026-06-18 — answer-brain: onDecision hook + app REPL with in-app verdict capture (Stage B)
+- 2026-06-18 — review fix: await the decision log deterministically (no dropped verdicts)
+- 2026-06-18 — credence-pi MVP-B: user-selectable profiles (presets + per-request override)
+- 2026-06-18 — credence-pi MVP-B: fix test_server brain-failure mock for the 4-arg decide-action
+- 2026-06-19 — Merge cleanup/repo-organise: retire the deprecated governance sidecar + repo tidy
+- 2026-06-20 — decouple Move 0: credence-skin artifact, wire client, package demotion
+- 2026-06-20 — decouple Move 0: demote credence-router from public PyPI
+- 2026-06-24 — harden(decouple): fail-loud guards + cross-document ρ test (Move 1 review)
+- 2026-06-24 — test(decouple): accept the Serialization format-version guard as a loud-failure marker
+- 2026-06-25 — harden: guard RhoGroupChannel covariate ≤ 1 + fail loud on an empty V posterior (Phase C review)
+- 2026-06-27 — feat: retire the rand breach in perturb_grammar — the VOC gate (collapse-towers Phase 5)
+- 2026-07-02 — results(dominance_benchmark): first full gate run — headline holds, dominance gate FAILS (halt-the-line)
+- 2026-07-22 — docs(proplang-migration): Phase 0 decision-gate spec
+- 2026-07-22 — docs(proplang-migration): revision 2 — three workstreams overtaken by proplang
+- 2026-07-22 — W1' PRE-STATEMENT: criteria fixed and committed before any real-label p1 exists
+- 2026-07-22 — W1' AMENDMENT 2: round 2 RETRACTED -- the corpus was never pinned
+- 2026-07-22 — W1' RESULTS: PASS on the pre-stated bar -- projection verdict, with the qualifications
+- 2026-07-22 — Phase 0 EXIT DECISION: WAIT -- W1' passed, fragment route not landed
+- 2026-07-22 — review fixes: stale status, superseded-method banner, repaired corpus citation
+- 2026-08-09 — Stage A PRE-STATEMENT: the reading fixed before the numbers exist
+- 2026-08-09 — Stage A: note that latent@1 also receives the verdict ticks
+
+## proplang
+
+- 381 commits, 2026-07-04 → 2026-09-20; authors: Guy Freeman 375, Claude 6
+- by month: 2026-07 306, 2026-08 40, 2026-09 35
+
+Turning points, as the commits name them:
+
+- 2026-07-04 — Phase 1: the frozen oracle — stubs, ported streams, tests, audits
+- 2026-07-04 — Sign MANIFEST.sha256: the oracle is frozen
+- 2026-07-05 — Task 2: freeze the grammar-hygiene oracle — increment protocol canonized, manifest re-signed
+- 2026-07-05 — Author extension: proplang.cabal and cabal.project.freeze join the manifest
+- 2026-07-05 — Archive superseded document versions and seed bundles
+- 2026-07-05 — ExpFam increment plan (step-6 increment 2) — stopped for Task 0 rulings
+- 2026-07-05 — ExpFam Task 2: freeze the expfam oracle — production system canonized, manifest extended
+- 2026-07-05 — ExpFam re-open: three-token shadowing rename in the frozen oracle
+- 2026-07-05 — Membrane Task 2 author pack: freeze worksheet ready, builder stopped
+- 2026-07-06 — Membrane oracle: freeze-review amendments (author-required, pre-tag)
+- 2026-07-06 — Membrane Task 2: freeze applied — pack + boundary queue landed, tag pending
+- 2026-07-06 — Boundary queue: all four items landed at the membrane freeze
+- 2026-07-06 — Ladder Task 0: LADDER_PLAN — register L1-L12, readings measured, stop for rulings
+- 2026-07-06 — Ladder Task 2 pack: freeze worksheet — sealed-sort ruling request, six enumerated edits, one-pin evidence
+- 2026-07-06 — Ladder pack: rulings recorded, edit (7) slotted, freeze dry run verified
+- 2026-07-06 — Ladder Task 2 freeze: seven edits, manifest 49/49 (author rulings + both slots received)
+- 2026-07-06 — Prepost Task 0: PREPOSTERIOR_PLAN — register P1-P12, paired worlds measured, stop for rulings
+- 2026-07-06 — Prepost Task 2 pack: freeze worksheet — six edits, two-literal completeness, the blind-spot clause
+- 2026-07-06 — Prepost Task 2 freeze: seven edits, manifest 56/56 — spec table joins the census
+- 2026-07-06 — CIRL Task 0: CIRL_PLAN — the pointer increment, worlds measured, stop for rulings
+- 2026-07-06 — CIRL Task 2 pack: freeze worksheet — five edits, the empty census with full evidence
+- 2026-07-06 — CIRL Task 2 freeze: five edits, manifest 63/63 — the UTIL sort lands, the census empty
+- 2026-07-06 — Write-up Task 0: WRITEUP_PLAN — the brief comes home, register W1-W9, stop for rulings
+- 2026-07-07 — Write-up: D2 word precision on the author's review — 'a frozen protocol clause'
+- 2026-07-07 — brief-freeze: the brief enters the   repository - verbatim, unannotated, by the author's   hand; manifest 64/64
+- 2026-07-07 — Write-up close freeze: the record's face joins the record — manifest 68/68 (W2)
+- 2026-07-07 — Write-up erratum repair + post-close review record: section 10 states only true things — membrane-freeze carries its recorded delegation (th
+- 2026-07-08 — govhost freeze (H, Task 2): oracle frozen; P5 single-site constant landed (six literals, H-9); R1 ruled ask,block,proceed; stanzas + membran
+- 2026-07-08 — govhost implementation (H, Task 3): Wire.hs + Main.hs filled to 40/40 - the codec, the world builder, and the one-tick step over the frozen 
+- 2026-07-09 — d freeze (D, Task 2): oracle frozen at 49 (22 green / 27 red); R-D6..R-D19 disposed, R-D7 amended (gauge = status-quo zero + dollar-slope, s
+- 2026-07-09 — d oracle repair (r1, delegated): obeysB restored to the frozen Cirl formula (copy-not-reconstruct); gHeadline re-scoped to the measured drif
+- 2026-07-09 — d oracle repair (r2, delegated) + the transcript gate: gDriver's fixture repaired per the full-oracle satisfiability audit (stop report #2 -
+- 2026-07-10 — d implementation (D, Task 3): the six stub bodies filled to 48/48 against the r2 oracle - Model grows uconst/uwalk sorts carrying their decl
+- 2026-07-10 — d build repair (r3, delegated): the govhost EXECUTABLE stanza gains WireU in other-modules - the one line gate 5 needed (the exe-path stanza
+- 2026-07-10 — d report review applied (2026-07-10): the countersignature a condition of closure (R-D22 registered - any delegated freeze-edit obliges an a
+- 2026-07-10 — d report review, second pass (2026-07-10, prose-only): section 2.5's as-built register corrected to the fail-closed dispatch (it still descr
+- 2026-07-10 — d report: locale guard on the section-5 verification block (verification review, 2026-07-10): export LANG=C.UTF-8 prepended and documented -
+- 2026-07-11 — metareasoning substrate (R's enabling refactor, METAREASONING_PLAN section 6): per-hypothesis vocabularies - Model/HypState carry their emis
+- 2026-07-11 — brief-conformance audit + the author review's five findings applied (builder; binds nothing until the boundary sentence): BRIEF_AUDIT.md reg
+- 2026-07-11 — d external review absorbed (2026-07-11, pre-checkpoint): verdict open-no-blockers, dispositions RECOMMEND-with-amendments D1-D3 / AMEND D4-D
+- 2026-07-12 — AGENT_PLAN sec 5d: STOP AND REPORT — Pos does NOT subsume Stats/SId
+- 2026-07-13 — step 1 Phase B (DELEGATED freeze edits): stanza, prodTable 19/2, the pin re-pricing, spacePoints, AGENT_PLAN section 8, manifest 83 rows -- 
+- 2026-07-14 — step 1 Phase C: the ruled semantics land in Eval.hs -- then STOP AND REPORT: frozen group 3 is unsatisfiable as written (pack 6.14)
+- 2026-07-14 — step 1 increment close (pack section 7): as-built register, CL-4 headroom re-measured (2.97e-15 / 1.19e-15 over 200k cases), scratch teardow
+- 2026-07-15 — step 2 Phase A (oracle): the section-1b pin drafted -- sweep exhaustive-at-r1, residue measured before the tolerance (2.83e-13 rel max over 
+- 2026-07-15 — step 2 Phase B enacted (DELEGATED) + Phase C green: the optimisation-law freeze commit -- awaiting optlaw-freeze-r0
+- 2026-07-15 — step 2 CLOSED at optlaw-freeze-r0 (66a48f1, verified): progress register updated, pack section 10 -- the single-tag close; the R-D22 riders 
+- 2026-07-15 — step 3 opened (oracle phase, PRE-ORACLE): sentence-author-pack.md Part I -- the scoping sitting. The falsification inventory measured per-fi
+- 2026-07-15 — step 3 sitting enacted (Part II): D1 A ground-corrected, D2 adopted + capture EXECUTED (MAP component predictives hex-pinned pre-demolition;
+- 2026-07-15 — step 3 pack Part III: the author's verification enacted — the drift400 capture defect convicted+corrected (falsifier: read-at-the-wrong-time
+- 2026-07-15 — step 3 oracle phase: the type surface + test-sentence draft (runtime-red). Surface (Enumerate.hs, the D precedent — declarations real, bodie
+- 2026-07-15 — step 3 pack Part IV: the oracle drafted and prototype-verified — §17 type surface (the carrier-guard catch recorded), §18 the 26-row oracle 
+- 2026-07-15 — step-3 Phase B, sections 20.1-20.2 (delegated freeze edits, R-D22 — delegation recorded verbatim from the author's sitting message, 2026-07-
+- 2026-07-15 — step-3 Phase B, section 20.3 (delegated freeze re-opens, R-D22 — delegation recorded verbatim from the author's sitting message, 2026-07-15:
+- 2026-07-15 — step-3 Phase B, sections 20.4-20.5 (delegated freeze edits, R-D22 — delegation recorded verbatim from the author's sitting message, 2026-07-
+- 2026-07-15 — step-3 Phase B closed (pack SS25-SS26 + the rider-2 manifest): MANIFEST.sha256 regenerated 85->78 rows (13 retired: Acceptance, test-d x6, t
+- 2026-07-15 — the two surfaced defects repaired (delegated freeze edit, R-D22 — the author's word verbatim, 2026-07-15: "fix tge two surfaced issues"): ty
+- 2026-07-15 — step-3 Phase C: THE DEMOLITION (authorized by sentence-freeze-r0, verified) — a hypothesis IS a sentence. Enumerate.hs rebuilt from the free
+- 2026-07-15 — step 4 OPENED under the standing pacing order ("dont wait for my word, unless you need my key") and carried to the freeze gate in one motion
+- 2026-07-15 — step-4 rulings enacted + Phase B (delegated freeze edits, R-D22 — the author's rulings verbatim: D-p1(B), D-p2(stays), D-p3(yes), D-p4(deleg
+- 2026-07-15 — step-4 implementation (authorized by pricing-freeze-r0, verified): ONE PRICING MECHANISM, TWO DECLARED TABLES, as prototyped. chargeBits lan
+- 2026-07-15 — step-4 r1 review enacted (pack Part V; the g2 edit delegated pre-tag by the author, comment-only, R-D22 covered by r1): g2's provenance comm
+- 2026-07-15 — step 5 OPENED (the standing pacing order): actions-author-pack.md Part I — the scoping sitting's document. The wave MEASURED manifest-derive
+- 2026-07-16 — step-5 Part II: the six pre-rulings recorded verbatim-key (D-a1 full assignments + the exponential-option-space caution's third appearance: 
+- 2026-07-16 — step-5 oracle drafted + prototype-verified (pack Part III): test-actions/ 10 rows — g1 the option space's contract (Cartesian order pinned, 
+- 2026-07-16 — step-5 Phase B (delegated freeze edits under the author's SS13 approval + seal, R-D22 — the tag countersigns the whole): src/Membrane FLIPPE
+- 2026-07-16 — step-5 signing items (the author's pre-key verification, enacted): (1) the r0->r1 oracle diff recorded VERBATIM in pack SS19 (two import lin
+- 2026-07-16 — step-5 implementation (authorized by actions-freeze-r0, verified): TRANSCRIPTION from the two-route-verified prototype — menuAssignments (th
+- 2026-07-16 — step-5 as-built (pack Part V, SS20-21): transcription confirmed (fourth consecutive first-run green), the engine's action side described as 
+- 2026-07-16 — step 6 OPENED (actions in the feature stream): stream-author-pack.md Part I — scoping vs AGENT_PLAN step 6 / RIDER 2 / RIDER 3 / proof (ii) 
+- 2026-07-16 — 6b criteria r1 amendment, committed BEFORE the re-run: the r0 persistence indicator E[d1]-E[d0] is identically zero BY THEOREM (label-swap s
+- 2026-07-16 — step-6 evidence executed (pack Part II, sections 9-14): E-b1 8/8 IDENTICAL (the step-6 loop — append at observe + per-assignment exogenous-r
+- 2026-07-16 — step-6 oracle DRAFT + pack Part III (sections 15-20): test-stream/ ten rows six groups — g1 the append pinned by an IN-ROW second route (no 
+- 2026-07-16 — pack section 21: the author's order at this drafting — THE TYPE-DERIVATION AUDIT INSTALLS AT THE STEP-6 FREEZE, not step 9. Gap verified (CL
+- 2026-07-16 — the process-order batch enacted (pack Part IV, sections 22-30 + appendices): eight author orders at one sitting, every claimed gap VERIFIED,
+- 2026-07-16 — step-6 sitting enacted + the freeze executed under delegation (pack Part V; R-D22, the author's re-tag = stream-freeze-r0 owed on this state
+- 2026-07-17 — step-6 implementation (authorized by stream-freeze-r0, verified on 06a8424): ACTIONS IN THE FEATURE STREAM, NO LAG — the E-b1-measured overl
+- 2026-07-17 — step-6 r1 finding enacted (the author's classification order, pack section 41): THE PilotEU SELECTION IS A HOST-SIDE FOLD, NAMED AS WHAT IT 
+- 2026-07-17 — step-6 r2 settlement (the author's direction: finish the language first — no premature optimisation; pack section 42): THE FOLD'S SECTION-1B
+- 2026-07-17 — step 7 OPENED under the standing pacing order at the step-6 close (stream-freeze-r0/r1 both verified): unify-author-pack.md Part I — scoping
+- 2026-07-17 — step-7 evidence executed (pack Part II, sections 7-10; R-D21 prototypes, discarded): E-c1 THE VALUE-PRICE QUESTION IS ANSWERED BY MEASUREMEN
+- 2026-07-17 — step-7 pack Part III (sections 11-15): the drafted amendments and the oracle design. The wire note drafted (ONE PRICED SURFACE: completed-na
+- 2026-07-17 — step-7 oracle DRAFT + pack Part IV (sections 16-20): test-unify/ twelve rows four groups — g1 THE FIRST ASSIGNMENT-PRICED ROWS (the value pr
+- 2026-07-17 — step-7 sitting enacted + THE FROZEN-LAYER SWEEP + the freeze executed under delegation (pack Part V; R-D22, the author's unify-freeze-r0 owe
+- 2026-07-17 — step-7 r0 review enacted, riding the key (pack section 25): G1/G2 -> the two-sided N8 form ('a green that cannot fail is the mirror image of
+- 2026-07-17 — step-7 implementation (authorized by unify-freeze-r0, verified on c0e3378): THE DRIVER RETURNS — the E-c-verified overlay transcribed node f
+- 2026-07-17 — step-7 r1 enacted (pack section 30): the milestone sentence recorded (the host-less window — declared at 3, half-spent at 5, discharged at 7
+- 2026-07-17 — step 8 OPENED under the standing pacing order at the step-7 close (unify r0/r1 both verified; r1 the first delegated builder-key tag since t
+- 2026-07-17 — step-8 E-d1 executed (pack Part II; the r1 carry honored — measurement before design): THE TYPE'S DEATH IS THE STEP. (a) ONE-SITE DELTA MEAS
+- 2026-07-17 — step-8 8b design: THE CRITERIA COMMITTED BEFORE ANY RUN (pack Part III section 8, the 6b discipline / b721bb2 precedent). The visible-fuse w
+- 2026-07-17 — step-8 8b composition attempt EXECUTED (pack Part III section 9; the primitivity gate's clause (a), ToR standard, THE COMPILER AS WITNESS): 
+- 2026-07-17 — step-8 register drafted (pack Part IV, sections 10-11) while the 8b race runs: D-e1 the replacement surface = USay's payload evaluated at th
+- 2026-07-17 — step-8 8b race executed (pack Part V, sections 12-14; every reading against its PRE-COMMITTED bar, no eyeball): P0 HOLDS (fuse visible to le
+- 2026-07-17 — step-8 sitting recorded + the D-e3 foundation repair executed (pack Part VI, sections 15-17): the doctrine framed (no OUTCOME sort because n
+- 2026-07-17 — step-8 the replacement surface SETTLED (pack Part VII, sections 18-19; the build's blueprint persisted before the build): USent newtype over
+- 2026-07-17 — step-8 oracle + THE SEVEN RE-DERIVATIONS executed (pack Part VIII, sections 20-22): the full new-surface overlay COMPILES under exact flags 
+- 2026-07-17 — step-8 FREEZE EXECUTED under the sitting's instruction (pack Part IX; R-D22, the author's outcome-freeze-r0 owed on this state): THE FROZEN-
+- 2026-07-17 — step-8 STOP AND REPORT: the freeze's R-D22 batch was INCOMPLETE — the gates caught it (pack Part X). outcome-freeze-r0 (2bf2a9e, verified) s
+- 2026-07-17 — step-8 batch completed: the five missed rows re-hashed under the author's disposition; GATES 1-7 ALL PASS, manifest 81/81, fourteen suites g
+- 2026-07-17 — step-8 as-built (pack Part XI; authorized by outcome-freeze-r0a, verified on 58e895f): THE CALCULATOR'S LAST ORGAN IS REMOVED — Util a y del
+- 2026-07-17 — step-8 r1 enacted (pack Part XII): THE SHARPENING RULED AND LANDED — two instruments, two failure classes, neither subsumed by the other. (v
+- 2026-07-17 — step 9 OPENED at the step-8 close (r0/r0a/r1 all verified): elim-author-pack.md Part I — scoping + THE TWO-COLUMN CENSUS, and the census FOU
+- 2026-07-17 — step-9 sitting rulings recorded (pack Part II, section 7; eight rulings verbatim + the work order): E-e1a the per-verb gate is LAW (deletion
+- 2026-07-17 — step-9 E-e1 executed + the two unspecified types DRAFTED from the measurements (pack Part III, sections 8-11): E-e1a THE PER-VERB GATE PASSE
+- 2026-07-17 — step-9 E-e2 (the IsEq attempt) + the register (pack Part IV, sections 12-14): E-e2 IS A GENUINE FINDING — over 1225 reachable pairs (positio
+- 2026-07-17 — step-9 Part V: the sitting ruled; ONE pre-implementation STOP (ExpFam/SId arithmetic incoherence)
+- 2026-07-18 — step-9 test-sentence adapted: residue-swap argmaxEU + IsEq->If/Gt + g1d RETIRED
+- 2026-07-18 — step-9 whole-suite retirements: test-cirl, test-prepost, test-expfam
+- 2026-07-18 — step-9 test-hygiene adapted: EXPR reprice lg 19->lg 20 + FN retired
+- 2026-07-18 — step-9 test-actions adapted: g3 VThinkK ladder pins RETIRED + USent residues
+- 2026-07-18 — step-9 test-code adapted: IsEq->If/Gt, gExpFam RETIRED, gPrices repriced
+- 2026-07-18 — step-9 test-outcome adapted: uAt inlined, USent dropped, EU/USay/FnUtil rows retired
+- 2026-07-18 — step-9 freeze batch: frozen-layer inventory I1-I9 + CLAUDE.md clause + manifest re-sign
+- 2026-07-18 — step-10 reflexive-freeze-r0: manifest re-signed to 65 rows
+- 2026-07-20 — R1 tranche-1 SAT transcript: 11/11 overlay-green, 11/11 stub-red; three pre-freeze convictions repaired (g5 enumeration x2, code symmetry, g
+- 2026-07-21 — R1 FREEZE: oracle sealed under the sitting's delegation
+- 2026-07-21 — R1 CLOSED: OB-17 + OB-9 -> DISCHARGED@r1-freeze-r1 (the author's re-tag verified; the sitting's sequenced ledger changes complete)
+- 2026-07-21 — ledger read-back: OB-18 -> DISCHARGED@r1-freeze-r1 (discharged by R0 itself; the SCHEDULED@r-open row outlived its own event — caught by the
+- 2026-07-21 — W3 FREEZE: the arity oracle sealed on the sitting's six rulings
+- 2026-07-21 — W3 CLOSED: OB-5 -> DISCHARGED@w3-freeze-r1 (the author's countersign verified; the sitting's sequenced ledger change)
+- 2026-07-21 — W4 FREEZE: the said oracle sealed on the sitting's rulings + four additions
+- 2026-07-21 — W4 CLOSED: OB-6/7/8/10 -> DISCHARGED@w4-freeze-r1 (the author's countersign verified; the wire's scheduled work done)
+- 2026-07-22 — dispositions-pack: the sitting pack — OB-11..16 briefs, #15-18 triage w/ HEAD probe transcript, frozen-layer inventory (var0 falsified; 6.3 
+- 2026-07-22 — transport freeze package: both countersign riders + the #21 cross-citation
+- 2026-07-22 — transport freeze: the nine-item package executed under recorded delegation
+- 2026-07-25 — Phase D: the exact oracle, staged and SAT-proven; the handoff to the freeze
+- 2026-07-25 — the freeze kit: dry-run-verified mechanics for exact-freeze-r0
+- 2026-07-25 — freeze-day tidy: stray build artifacts removed; lawful-author-pack archived (R16); the lint transcript's attribution recorded (IX.9)
+- 2026-07-25 — exact-freeze-r0: the exact oracle frozen as staged; manifest 96 rows; the four clauses canonized
+- 2026-07-25 — exact-freeze-r0a: the library stanza as amended — PropLang.Report exposed (the frozen Acceptance imports it; the reporting edge is a module 
+- 2026-07-25 — the Phase-2 close: section 12 executed through step 7; the boundary ready for exact-freeze-r1
+- 2026-07-26 — the X.5 sitting record RULED: eight verdicts transcribed (1 = ADOPT dyadic, caveat recorded), execution order + post-sitting checklist appen
+- 2026-07-26 — the freeze review folded in: OB-22/23 minted from the owed-pin parentheticals, R7 pre-ruled, the freeze record drafted
+- 2026-07-26 — dyadic-freeze-r0: the oracle frozen, the five installs landed, manifest 64/64
+- 2026-07-27 — trampoline-freeze-r0: the oracle frozen, the five installs landed, manifest 71/71
+- 2026-07-27 — the completeness boundary OPENS (destination step 4): EXACT_PLAN section 14 chartered — sufficiency by executed interpolation against the de
+- 2026-07-27 — opening review absorbed: the frozen-since citation disambiguated (71->76 was the step-6-era count, one -S occurrence change per tool = conti
+- 2026-07-27 — the CR1/CR2 evidence programs executed (pack Part IV): F5's delta = exactly 3^16 in weight (~25.36 dead bits, predicted then confirmed at ==
+- 2026-07-27 — Phase-A COMPLETE (pack Part IV): EV-CR3 the family walk — 72 cells from four declared axes, shipped == independent reference at exact == in 
+- 2026-07-27 — CR1/CR2 ruled in-session (pack Part VI: split increments; delete) and the F5-deletion increment's ORACLE PHASE done (Part VII): purchaseRows
+- 2026-07-27 — f5 freeze: the deletion oracle sealed (2 rows red on shipped src, SAT 2/2 on the deletion overlay; stanza spliced; manifest extended)
+- 2026-07-27 — f5 implementation GREEN: the forgone term deleted (the frozen deletion.diff applied byte-for-byte, the SAT overlay's prophecy); 9/9 suites p
+- 2026-07-27 — f5 close-out: the applicability sweep (32/36 apply; M34 DISCHARGED-PERMANENT, file deleted — the deletion it proved possible became the dele
+- 2026-07-27 — EV-JP3/JP4: the naive amortization SPREES (breaks the deadlock @58 then buys 62 ticks and never responds — the mirror of F4's disease) and t
+- 2026-07-27 — EV-JP5: the sayable route closed by demonstration — Pos died in the six-cut (the expiry clause fires on the banked positive), and the 9+1 re
+- 2026-07-27 — the jointprep oracle drafted RED 15/15 vs the stub surface: g-jp1 anchors-by-declaration (transcripts derived from frozen t2RowsX via the g3
+- 2026-07-27 — the jointprep oracle SAT 15/15 (red 15/15 re-verified between): the SAT's first run CAUGHT the hi-spine probe artifact — the direction-neutr
+- 2026-07-27 — THE FULL MANDATE ROUND (pack Part XII): six fresh-context reviewers, eleven findings, three in the mandates' own incident lineages — jwThink
+- 2026-07-27 — jp sitting kit: the monolith split into cover + 1-verify/2-freeze/3-sign (the author: 'of course we can use multiple scripts') and REHEARSED
+- 2026-07-28 — jp freeze: the reflexive oracle sealed (15 rows red on the stubs, SAT 15/15 on the one-chooser-everywhere overlay; stanza spliced; the E4 lo
+- 2026-07-28 — the implementation phase's stop-and-report (pack Part XIV): the prophecy's Data.Map vs the library stanza's frozen base-only decision — the 
+- 2026-07-28 — jp freeze-boundary repair: the library stanza's base-only decision amended to GHC-boot-libraries-only (containers added for the DP's lazy me
+- 2026-07-28 — jp implementation GREEN: the one-chooser-everywhere prophecy applied byte-for-byte (withQVals/chooseIdx — every choice evalx of the chooseKS
+- 2026-07-28 — the close kit completed: package-faithful.patch committed (the 5-close rehearsal's first run caught the omission — the [RULING]'s patch exis
+- 2026-07-28 — the certification battery OPENED (pack Part XVI): the consolidated docket tabled (CR3-CR7 + JP2-d6 + M46/M47 + mint-level + the 14.9 wire sc
+- 2026-07-28 — the battery oracle DRAFTED (pin-freeze form, pack Part XVI's build plan executing): test-battery/ 78 rows — g-b1 the 72-cell family (3 grids
+- 2026-07-28 — the battery oracle at 79 rows: the M47 knife-edge cell lands (g-b3.3) — the R-D21 probe measured the window exactly (VoI(1)=0 < 1/20 < VoI(3
+- 2026-07-28 — the OB-20/21 pools land (charter 14.3; CR5's drafted default executing): six mutants — the reasoner class (M56 normalization, M57 refusal-la
+- 2026-07-28 — pack Part XVI continued: the battery construction record through the pools (80 rows green, both UNREACHED verdicts cured, OB-20/21 discharge
+- 2026-07-28 — no red owed (the author's ruling, now a standing memory rule): both knife-edges CONSTRUCTED window-first — the probe found the guard's struc
+- 2026-07-30 — the battery freeze kit assembled (pack Part XVIII; the jp 1/2/3 form, single-tag close): 1-verify runs the 82/82 green LIVE under the stanza
+- 2026-07-30 — the kit rehearsal's first red: 1-verify's live compile assumed the drafting tree's package db — cabal exec reads dist-newstyle/packagedb, wh
+- 2026-07-30 — the battery kit rehearsed two-sided from a fresh clone (pack Part XVIII record): green side end-to-end (live 82/82 in 1-verify; gate 5 = 12 
+- 2026-07-30 — the author's pre-sign review executed (pack Part XVIII record; four holds, none of them a re-run): CR6 re-cut to the two-sentence claim form
+- 2026-07-30 — battery freeze: the certification oracle sealed (82 rows, green live at the sitting, every row red-demonstrated against the committed M42-M6
+- 2026-07-31 — the wire docket's first sitting OPENED (#20, the K-ary readout; EXACT_PLAN section 15): the authorization is battery-freeze-r0's own registe
+- 2026-07-31 — the readout oracle DRAFTED (test-readout/; EXACT_PLAN 15.3's rows, oracle-first): one declared world - namespace [move], no guards, a SINGLE
+- 2026-07-31 — the readout freeze kit staged (jp 1/2/3 form): 1-verify runs the 15/15 LIVE under the stanza's dependency closure and diffs as-built against
+- 2026-07-31 — the freeze kit REHEARSED two-sided from a fresh clone (pack Part VI): green side end to end - 1-verify's live 15/15 under the stanza's depen
+- 2026-08-01 — F10 DISCHARGED (the red constructed, not owed) and five more pre-tag findings, three of them one step from a manifest-frozen document
+- 2026-08-01 — the kit re-rehearsed two-sided from a fresh clone (pack VII.5): green side END TO END for the first time - 1-verify live 19/19, 2-freeze spl
+- 2026-08-01 — the sitting command sheet, and the recovery path 2-freeze never had
+- 2026-08-03 — readout freeze: the K-ary readout sealed (19 rows, live green at the sitting under the stanza's dependency closure; the M64-M72 matrix PLUS 
+- 2026-08-04 — the r1 catch-net staged (pack Part X; EXACT_PLAN 15.7; builder commit, unsigned as recorded): the r0 key act convicted twice over - the -m r
+- 2026-08-04 — the r1 close conferral-amended, interim (register reworded per the pixel-9a verdict's two blocking items - the parse claim retracted for the
+- 2026-08-04 — the r1 close re-rehearsed as conferral-amended (pack X.9): the parity measurement run under the verdict's pre-stated criterion (EVEN, 2 - th
+- 2026-08-05 — the OB-19 heir opening pack: evidence program P0-P5 executed at HEAD (builder commit, pre-sitting; nothing frozen touched) - the bar's denom
+- 2026-08-05 — breadth pack r2: the sitting's verdict recorded, its ordered evidence executed (builder commit) - the x1.09 OVERTURNED by the ordered cells 
+- 2026-08-05 — breadth pack r3: the r2 acceptance's orders executed (builder commit) - the confound swept as a CLASS (every cost cell's window named in XII
+- 2026-08-05 — breadth pack r4: the r3 closing orders executed (builder commit) - the drift re-measured on the RICHEST stream the K=6 world admits (all six
+- 2026-08-06 — heir opening pack r5: the r4 verdict's riders executed (Part XIV; builder commit, unsigned by the author as recorded) - the unprinted number
+- 2026-08-06 — heir opening pack r6: the false claim repaired, the prose-claim gate drafted and first-fired (builder commit) - XIV.5's claim 1 repaired IN 
+- 2026-08-06 — heir opening pack r7: the verdict's orders executed (builder commit) - the three standing r5 convictions DISPOSED (XIV.3's disowned 5%-noise
+- 2026-08-06 — heir opening pack r8: the G2 docket item DISSOLVED by executing the instrument it named (builder commit) - test-writeup/check.sh runs 33/33 
+- 2026-08-06 — heir oracle phase opens (builder commit): the type-surface stub (Breadth + enumerateWithBreadth, wrong-but-total, all 12 frozen suites green
+- 2026-08-06 — heir oracle phase r9 (builder commit): the evidence battery complete and the kit staged - the official mint (final statistic, quiet, stamped
+- 2026-08-06 — heir oracle phase r10 (builder commit): THE MANDATE ROUND'S REPAIR WAVE, complete - six fresh-context reviewers, one mandate each, 40+ findi
+- 2026-08-06 — heir oracle phase r10b (builder commit): THE LITERAL FILL - the ten frozen mint values from the r10 instrument mint (stamp HEAD=574ff4f, src
+- 2026-08-06 — heir oracle phase r10c (builder commit): the final verification wave at r10b bytes - red 12/20 (the exact frozen set; drift ratio 2.0149 vs 
+- 2026-08-06 — heir oracle phase r10d (builder commit): THE PHASE CLOSES - the final fresh-clone rehearsal GREEN SEALED END-TO-END under the repaired drive
+- 2026-08-07 — heir oracle phase r11 (builder commit): THE FREEZE REVIEW EXECUTED - the verdict's two mint-text corrections measured and installed (pack Pa
+- 2026-08-07 — heir oracle phase r11b (builder commit): the amended kit RE-REHEARSED two-sided from a fresh clone at r11 bytes - all four kit-guard reds fi
+- 2026-08-07 — the OB-19 heir ORACLE FREEZE (breadth-freeze-r0): test-breadth/ b1-b8 + gated drift row frozen; the sitting's routed installs land - the sta
+- 2026-08-07 — heir implementation GREEN (Phase 3, builder commit): the prophecy applied byte-for-byte (opening/prophecy.diff, sha256 0599d76..., patch -p0
+- 2026-08-07 — heir close-out (builder commit): the kill matrix executed vs the COMMITTED baseline a2d35d9 (pack Part XX) - pool GROWN by ten: M8 PROMOTED 
+- 2026-08-08 — the #19 sitting's opening round (r1): the banked evidence re-executed at HEAD and the docket reshaped - thetaPoints has zero src occurrences
+- 2026-08-08 — the #19 opening round r2: the author's verdict on r1 applied - F2 restated to the plumbing claim (the leg numbers confirmed as equal-weight 
+- 2026-08-08 — the #19 sitting EXECUTED ON RECORDED DELEGATION (round r3, the sitting commit): the author's verdict on r2 applied - the correction ACCEPTED
+- 2026-09-02 — bench: bench-fold-depth-r01.md + the r02 section — the fold-depth cost report (STOP; the seam-swap judgement is the owner's)
+- 2026-09-02 — selection freeze KIT: the author's freeze.sh + the pack's SAT flag line (builder commit)
+- 2026-09-03 — selection-freeze-r0: the (3) increment's ORACLE FREEZE (author)
+- 2026-09-03 — selection-freeze-r0a: RE-FREEZE for the runEpisode migration (author)
+- 2026-09-03 — selection close-prep pt.3 (builder commit): the selection-freeze-r1 close kit
+- 2026-09-04 — selection-freeze-r1: frozen-layer installs + drift-a re-mint (author)
+- 2026-09-04 — selection-freeze-r1: the selection increment's CLOSE (author)
+- 2026-09-05 — step-5 paper: the freeze-review repairs, the live-host witness, and the close kit (builder commit)
+- 2026-09-05 — test-wire: the wire's fail-closed conformance repair (builder commit)
+- 2026-09-05 — paper-freeze-r0: the conferral brief and its bundle generator (builder commit)
+- 2026-09-05 — paper-freeze-r0: the sitting's Q1 and Q3 findings, repaired (builder commit)
+- 2026-09-05 — paper-freeze-r0: the sitting's three defects, and a failed quiet-box attempt
+- 2026-09-06 — paper-freeze-r0: the quiet-box attempt executed -- and it blocks the close (builder commit)
+- 2026-09-20 — issues: the #26 witness, the #29 clock falsifier, the #15/#17/#25 re-confirmations, and DOCKET.md (builder commit)
+
+## tannen
+
+- 155 commits, 2026-08-24 → 2026-09-29; authors: t 141, tannen builder 12, Guy Freeman 2
+- by month: 2026-08 59, 2026-09 96
+
+Turning points, as the commits name them:
+
+- 2026-08-24 — M0 Session A: spec & laws frozen; drift job; marker check
+- 2026-08-24 — Sitting driver: sk-keygen failure falls through to software-key fallback
+- 2026-08-24 — opening sitting: owner key, signed policy, brief-freeze
+- 2026-08-24 — M0 boundary: signer-role table, DELEGATIONS.md frozen, binding-strength grade
+- 2026-08-25 — m0 boundary sitting: custody set, tag-signer rule, poison fixtures, receipt
+- 2026-08-25 — Post-sitting follow-ups: the poison matrix reaches pytest, four bindings become enforced
+- 2026-08-25 — The receipt clock has never started: same-day boundaries do not count
+- 2026-08-25 — M1 Session A: spec and seventeen laws frozen (BRIEF §8)
+- 2026-08-26 — Apply D0071: a same-day boundary starts the receipt clock
+- 2026-08-26 — D0093: a frozen L1.2 axiom was unsatisfiable; correct it before the tag
+- 2026-08-27 — M1 boundary red team: report, D0103/D0104, fixture-candidate drafts
+- 2026-08-30 — D0117-D0118: a verdict is one bit, and generators are shaped rather than policed
+- 2026-08-31 — m1 boundary sitting: custody set, tag-signer rule, poison fixtures, receipt
+- 2026-08-31 — M2 Session A: spec and nine laws frozen (BRIEF §8)
+- 2026-09-01 — M1->M2 boundary red team: eight findings, one critical, none closed
+- 2026-09-02 — D0148-D0149: what the clean-tree rehearsals corrected, and a verdict that read the clock twice
+- 2026-09-03 — m2 boundary sitting: custody set, tag-signer rule, poison fixtures, receipt
+- 2026-09-04 — M3 Session A: spec and law freeze for the delta executor
+- 2026-09-04 — M3 Session B: the delta executor, implemented against the frozen m3 suite
+- 2026-09-05 — M2->M3 boundary red team: six findings, two critical, none closed
+- 2026-09-05 — D0175: the red team's own report disclosed a fifth home path, and the guard could not see it until it was tracked
+- 2026-09-06 — D0177: the custodian says "author-signed" when the signing failed
+- 2026-09-07 — Digest for 2026-09-07, and the driver stops claiming a commit count
+- 2026-09-07 — D0188: the two ends of the sitting stop being things you type
+- 2026-09-07 — Publication sitting: guard patches, the fourth sibling's citation withdrawn, root files, poison fixtures, receipt
+- 2026-09-08 — D0197-D0199: RT-M3-01 and RT-M3-02 closed on the builder side, and the guard that can retire a frozen law gets the fixture the custody floor
+- 2026-09-09 — D0204-D0205: four false sentences superseded forward, and required_tags derived
+- 2026-09-10 — D0207-D0210: the four rulings of 2026-09-10, the banner retired from a gate that cannot run, and the abort that called a signed tag nothing 
+- 2026-09-10 — M3 driver CLEARED at 00c66cf: 22/22, 2h24m12s, full non-FAST accept path — and two more survivals of the line ruling (2) retired
+- 2026-09-10 — m3 follow-ups 1 and 2: the bindings the sitting made enforceable, the check_laws poison row, and the completeness pass that would have caugh
+- 2026-09-11 — M4 Session A: spec and law freeze for the boundary, and the M3 laws bound from their bytes
+- 2026-09-12 — D0244: the owner folds the pre-budget lock into the check_manifest patch, and sequences the red team first
+- 2026-09-12 — D0245: M3→M4 boundary red team — six findings, two high, none closed
+- 2026-09-13 — D0250: first full rehearsal of the M4 driver stopped at step 9 — two step-5 fixes, still not cleared
+- 2026-09-15 — m4 boundary sitting: the doorway guard, the spend preconditions, required_tags derived, the clock out of DECISIONS.md, three fixtures, custo
+- 2026-09-15 — D0253-D0254: D0229 item 5's false upgrade corrected, and the freeze commit M5 cannot make
+- 2026-09-15 — D0254 applied (owner): a laws-freeze tag is      owed once its spec is committed, not while the   commit is being made
+- 2026-09-16 — M5 Session A: spec and law freeze for the dogfood, and the clamp and doorway M4 left owed
+- 2026-09-16 — Digest 2026-09-16: M5 Session A closed at m5-laws-freeze
+- 2026-09-17 — M5 gate sitting: fold in D0269 (the inbound-dependency amendment) and the measurement recipe's schema/frozen-model checks
+- 2026-09-18 — Right after the sitting: collect/report split, contributing-notice patch, .dogfood PYTHONPATH wiring, D0257/D0265 superseded
+- 2026-09-18 — Fix check_decisions --pytest-report: junit XML reports a strict xfail retirement as <skipped>, and it was read as an undocumented skip
+- 2026-09-19 — M4→M5 boundary red team: 7 findings plus the status audit; RT-14, RT-M2-02 and RT-M2-03 re-audited open
+- 2026-09-19 — Answer the M5 boundary red team: five fixes and two owner rulings (D0272)
+- 2026-09-19 — m5 close sitting: laws.yaml, door data and xfail retirements custody-set; receipt; digest
+
+## wald-charter
+
+- 80 commits, 2026-09-20 → 2026-10-02; authors: Guy Freeman 80
+- by month: 2026-09 65, 2026-10 15
+
+Turning points, as the commits name them:
+
+- 2026-09-21 — SURFACE v0.1 draft 2: fix the score_elicited poison
+- 2026-09-23 — CHARTER v0.2 draft 4: Globals, the after-act, Counts; S15 UNIDENTIFIED; credence's failures as poisons
+- 2026-09-24 — HANDOFF.md: how to continue as wald's author
+- 2026-09-25 — HANDOFF and ERRATA: SURFACE v0.2 draft 9, the erratum on CHARTER v0.2 S14 ruled
+- 2026-09-25 — HANDOFF: gate-first lessons from session 4
+- 2026-09-25 — HANDOFF: state as of 2026-09-25; kit v0.13 and brief 009 next
+- 2026-09-25 — Housekeeping: SURFACE v0.2 in HANDOFF's reading order; INTERFACE's kit v0.11 section says falsifiers, a list; ERRATA queues four cosmetic it
+- 2026-09-25 — Gate: five checks for kit v0.13, each failing on the reference where brief 008's questions show a defect
+- 2026-09-25 — HANDOFF: kit v0.13 on master, untagged; the gate's thirteen checks; mypy not installed here; brief 009 drafted
+- 2026-09-27 — ERRATA: acts with a precondition queued for CHARTER v0.3, the arena's blind-switch table as its §0
+- 2026-09-30 — HANDOFF: state as of 2026-09-30 on steel; why hkaddresses does not depend on wald; its M1 audit first
+- 2026-09-30 — HANDOFF: hkaddresses takes wald as the judge of its act; wald timed as that act's runtime
+- 2026-09-30 — Stage 2 read as measurements: the blind switch priced exactly by the arena's workaround, so nothing forces the precondition yet; an episode'
+- 2026-10-01 — HANDOFF: the arena's stage 2 verdicts printed and merged (PR #4); nothing in them bears on the law; brief 010 written, waiting on the door
+- 2026-10-01 — HANDOFF: brief 010 is on master; the builder's turn
+- 2026-10-01 — HANDOFF: Q6 and Q9's second half are still open, INTERFACE's to close at the next kit bump
+- 2026-10-01 — kit v0.14: Q6 and Q9's second half closed, each pinned and poisoned
+- 2026-10-01 — HANDOFF: kit v0.14's remaining steps, from the seed session's handover
+- 2026-10-01 — HANDOFF: measurements from the Renavon World (2026-10-01)
+- 2026-10-01 — HANDOFF: kit v0.14 shipped; the seed sandbox's first CI run; Q18 waits for the builder
+- 2026-10-02 — HANDOFF: briefs 010-012 merged, wald v0.2.2 released, Q18 answered; the integer-weights brief renumbered 013
+- 2026-10-02 — HANDOFF: brief 010's cost on fresh plates, as the arena measured it; the arena told of v0.2.2
+- 2026-10-02 — HANDOFF: briefs 013 and 014 written and through the door
+- 2026-10-02 — HANDOFF: briefs 013 and 014 merged, wald v0.2.3 released
+
+## wald
+
+- 86 commits, 2026-09-20 → 2026-10-02; authors: Guy Freeman 46, builder 40
+- by month: 2026-09 61, 2026-10 25
+
+Turning points, as the commits name them:
+
