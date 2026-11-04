@@ -1,7 +1,5 @@
 # 11. The loops and the bootstrap
 
-*Draft 2, the author session, 3 November 2026 — the loops from the first draft, the bootstrap new. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a` and `renavondata/assize` at `ff41aaa` (its root `REPORT.md`, `reports/L*/` and the acts tables in the Project). The assize failures F1–F7 are the charter's own table [CHARTER §1].*
-
 ## The figure: the cathedral
 
 A cathedral is built by people who will not see it finished, on foundations laid by people who did not know what would stand on them, to a plan that changes as the walls go up. What makes it possible is not the plan but the order: a crypt that holds before a nave is raised on it, a nave that holds before a tower, each generation's work tested by load before the next builds on it, and the same craft — the same cuts, the same mortar, the same rule for what bears weight — at every course. Gall's law is a mason's: a complex thing that stands was a simple thing that stood. This chapter is the court's masonry. It names the loops the construction has closed, shows that each is bearing load before the next was laid, and says what is bootstrapped when a layer is built by the one below under the same law — because that, and not the agent, is what "self-governing" means.
@@ -20,7 +18,7 @@ The chapters before this built eight such loops, one at a time. Each is restated
 
 **Converts.** Authority into a capability. A party that holds `merge` can merge what the judge admitted; a party that does not cannot; and nothing about either is a rule anyone could argue with.
 
-**Mechanism.** A proposal is a branch whose last `proposal` entry names a commit of it and is signed by a declared key [SPEC §10.7]; the judge runs in a workflow from trunk, extracts trunk's kernel from the trunk commit, runs it and the second checker over the proposal's whole log as data, and refuses on fourteen grounds [SPEC §10; `judge/judge.py:judge`]; the herald merges on green, holding `merge` and nothing else [seq 201]. One hundred and twenty-three merges on the log, every one preceded by a judged proposal [log@6ebea1a: proposal 128, merge 123].
+**Mechanism.** A proposal is a branch whose last `proposal` entry names a commit of it and is signed by a declared key [SPEC §10.7]; the judge runs in a workflow from trunk, extracts trunk's kernel from the trunk commit, runs it and the second checker over the proposal's whole log as data, and refuses on fourteen grounds [SPEC §10; `judge/judge.py:judge`]; the herald merges on green, holding `merge` and nothing else [seq 201]. One hundred and twenty-three merges on the log, every one preceded by a judged proposal [log@6b800e14: proposal 128, merge 123].
 
 ## 11.2 The reconciliation loop: state + clock → writs → escalation
 
@@ -40,7 +38,7 @@ The chapters before this built eight such loops, one at a time. Each is restated
 
 **Converts.** Opinion into wealth, and wealth into anytime-valid evidence.
 
-**Mechanism.** A `forecast` entry — a claim, a per-mille probability, a deadline — and a `resolution` by another principal, with hashed evidence, once [SPEC §5, §7]; log-loss by `jack score`; the aggregate by `tools/value.py`; the wealth processes of A4 [CHARTER A4.3–4]. Three hundred and eleven forecasts and 209 resolutions on the log [log@6ebea1a]. The reviewer's own reads of a brief are forecasts on this ledger — `review.forecast`, p 0.192 on average, resolved 0 in all five cases so far [`jack score @6ebea1a`] — which is to say that a cold read bets on whether its finding will stand, and is scored on it.
+**Mechanism.** A `forecast` entry — a claim, a per-mille probability, a deadline — and a `resolution` by another principal, with hashed evidence, once [SPEC §5, §7]; log-loss by `jack score`; the aggregate by `tools/value.py`; the wealth processes of A4 [CHARTER A4.3–4]. Three hundred and eleven forecasts and 209 resolutions on the log [log@6b800e14]. The reviewer's own reads of a brief are forecasts on this ledger — `review.forecast`, p 0.192 on average, resolved 0 in all five cases so far [`jack score @6ebea1a`] — which is to say that a cold read bets on whether its finding will stand, and is scored on it.
 
 ## 11.4 The election loop: Hedge and EXP3 over proposers
 
@@ -100,7 +98,7 @@ The eight loops are not eight independent devices. Three properties of how they 
 
 **Nested trust.** Each loop is judged by the loop before it. The election consumes the scores; the scores consume the ledger; the ledger is entries the record loop admitted; the record loop runs the kernel two checkers agree on. Trust decreases as one descends, and nothing is trusted that is not also measured. The ground loop — the record and the score — was built first and promoted before any descent began [CHARTER §8 as amended by A3; seqs 0, 188, 337], which is the sovereign's reset of the programme on 10 October stated as architecture: the ground before the court, the court before the agent.
 
-**One book.** Because the wealth is never reset and every loop's claims are entries, the eight loops are not eight tests but one. The institution is a single bet against the null that it is not working, and chapter 12 §12.7 says what that buys: a court that was fooling itself would be seen going broke.
+**One book.** Because the wealth is never reset and every loop's claims are entries, the eight loops are, in the book's construction, one test: a single bet against the null that it is not working. Chapter 12 §12.7 says what that requires and what it buys: a court that was fooling itself would be seen going broke.
 
 ## 11.9a The ninth loop: the agent
 
@@ -124,7 +122,7 @@ What rises from level to level is not intelligence. It is *authority*: at each l
 
 ## 11.11 Why layers, and why this order — Gall (1977), Hayek (1973)
 
-**Result** (empirical regularity, stated as such). A complex system that works is invariably found to have evolved from a simple system that worked; a complex system designed from scratch never works and cannot be patched into working. Hayek's distinction between grown order and made order is the same observation about institutions: the rules that work are found, not designed, and a rule's justification is the case that forced it. Neither is a theorem. Both are the summary of enough failures that building against them is a bet against the base rate, and chapter 14 is seven draws from it.
+**Result** (empirical regularity, stated as such). A complex system that works is invariably found to have evolved from a simple system that worked; a complex system designed from scratch never works and cannot be patched into working. Hayek's distinction between grown order and made order is the same observation about institutions: the rules that work are found, not designed, and a rule's justification is the case that forced it. Neither is a theorem. Both are the summary of enough failures that building against them is a bet against the base rate, and chapter 14 is six draws from it, with jack the seventh.
 
 **What it forces.** The core is built in layers, each a simple system that works — promoted on pre-stated criteria — before the next is begun; rules of conduct enter from cases, not foresight; and the cost, which is serial windows, is paid and recorded.
 
@@ -157,3 +155,7 @@ A loop that is open after all. The test is whether its failure produces a number
 The composition claims. "One book" depends on A4.1 holding at every window from here on; a reset anywhere, however well argued, breaks it, and chapter 13 must check each exit against it.
 
 And the ninth loop built before its brief. That would not show the chapter wrong; it would show the programme abandoning Gall, and the plan that withdrew exactly that proposal is the record of why it should not.
+
+---
+
+*Draft note. Draft 2, the author session, 3 November 2026 — the loops from the first draft, the bootstrap new. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a` and `renavondata/assize` at `ff41aaa` (its root `REPORT.md`, `reports/L*/` and the acts tables in the Project). The assize failures F1–F7 are the charter's own table [CHARTER §1].*

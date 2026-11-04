@@ -1,7 +1,5 @@
 # 15. Residue: what was not built, and what would force it
 
-*Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2.*
-
 ## The figure: the surveyor's margin
 
 Old maps mark the edge of the surveyed country with a line and leave the rest blank, or they fill it with what the cartographer supposed was there, and the two kinds of map are told apart centuries later by which one misled an expedition. This chapter is the blank margin, labelled. Each thing the court does not yet do is written in the only form the programme allows for the unbuilt: not a design — nothing here is designed in anticipation of a brief, which is the rule that withdrew "prepare C3 now" [`transcripts/PLAN-20261030.md`] — but a claim, with what would force it and a bet. proplang's close called the same thing "named, demand-gated residue that re-enters only through the two-sided gate with a measurement" [`data/lineage-sessions.md`, proplang], and the chapter keeps that discipline: a residue is admitted to the book when it can be stated so that it could be wrong.
@@ -78,7 +76,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **Not built; the same machinery, other objects.** The record, the pre-stated brief, the sealed judge and the e-process are not specific to code or to racing. A pre-registered experiment is a brief; a result is a resolution with hashed evidence; a replication is a second checker. A vendor's record is a ledger; a procurement is an election. A deployed model's promotion gate is a window with a null taken from its predecessor.
 
-**What would force each.** A user other than the author with a world that charges. The book claims nothing here beyond the observation that the mechanisms are general; chapter 16's referee is right that *n* = 1.
+**What would force each.** A user other than the owner with a world that charges. The book claims nothing here beyond the observation that the mechanisms are general; chapter 16's referee is right that *n* = 1.
 
 **Bet.** Someone other than the author runs a court on jack's kernel for a purpose other than building an agent, before 2027-12-31: *p* 0.25.
 
@@ -86,7 +84,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **Not built.** The ladder's first two rungs run as acts of the runner since 3 November, but they are not entries: the record shows the resolutions they produce, not that a rung fired or that it was owed. The third rung, the writ to the sovereign, is a line printed by the clerk (chapter 5 §5.4; chapter 11 §11.14).
 
-**What would force it.** The case is already on the record: four expiries at 06:00Z on 3 November that cost the liveness process a factor of 4.2 [seqs 517, 521, 623, 625; chapter 6 §6.2], each preceded by hours of a printed escalation nobody acted on.
+**What would force it.** The case is already on the record: four expiries at 06:00Z on 3 November that cost the liveness process a factor of 4.2 [seqs 517, 521, 623, 625; chapter 6 §6.4], each preceded by hours of a printed escalation nobody acted on.
 
 **Likely mechanism.** Counsel's draft for C2c names two: `tools/jack due`, which computes the due list from the record, and an `UNATTENDED` line that refuses `promote` while a writ to the sovereign is unanswered [agent-court#18; design input, not a commitment].
 
@@ -108,4 +106,8 @@ Prove its own soundness (chapter 10 §10.2; chapter 12). Score the owner's wishe
 
 ## 15.13 What would show this chapter wrong
 
-The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should resolve about half and half, and a second edition in which they all came true would mean the author bet too safely, as counsel's early forecasts on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should come true about five or six times in fourteen — the probabilities sum to 5.4 — and a second edition in which they all came true would mean the author was miscalibrated, as counsel's early forecasts were in the other direction on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+
+---
+
+*Draft note. Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2.*

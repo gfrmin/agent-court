@@ -1,10 +1,8 @@
 # 5. The clerk
 
-*Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*
-
 ## The figure: the writ
 
-Habeas corpus is a demand addressed to whoever holds a prisoner: produce the body, and say by what authority you hold it. What made it an institution rather than a sentiment was the Act of 1679, which put a deadline on the answer and a penalty on the custodian who let it pass; the writ ran from the state of affairs — someone is held — and not from anyone's complaint. Empires fail on the other side of this. The frontier stalls, the garrison waits for orders, and the order is lost on the road because the system that was to carry it reacted to messengers rather than to the state of the frontier. A courier watching the road is how the predecessor court found its stalls [CHARTER §1, F3]. This chapter builds the clerk: the thing that reads the state of the record and the clock, derives every obligation the state implies, gives each a deadline, and escalates when the deadline passes — without being told.
+Habeas corpus is a demand addressed to whoever holds a prisoner: produce the body, and say by what authority you hold it. What made it an institution rather than a sentiment was the Act of 1679, which put a deadline on the answer and a penalty on the custodian who let it pass; the writ ran from the state of affairs — someone is held — and not from anyone's complaint. Empires fail on the other side of this. The frontier stalls, the garrison waits for orders, and the order is lost on the road because the system that was to carry it reacted to messengers rather than to the state of the frontier. The predecessor court found its stalls the same way: a human watching a phone [CHARTER §1, F3]. This chapter builds the clerk: the thing that reads the state of the record and the clock, derives every obligation the state implies, gives each a deadline, and escalates when the deadline passes — without being told.
 
 ## 5.1 What we have, and what it cannot do
 
@@ -14,7 +12,7 @@ We have a law of three rules over a record (chapter 4). The record now holds pro
 
 **Result** (theorem). Take a property to be a set of infinite executions. A *safety* property is one whose violation is visible at a finite point: every execution outside it has a finite prefix none of whose extensions is inside. A *liveness* property can never be refuted by a finite prefix: every finite prefix has some extension inside it. Every property is the intersection of a safety and a liveness property. Lamport (1977) drew the distinction — nothing bad ever happens; something good eventually happens — and this is its exact form.
 
-**What it forces.** "Nothing invalid was ever admitted" is safety: one entry refutes it, and a replay of the prefix checks it exactly (chapter 4; appendix A §A.14). "Obligations do not rot" is liveness: no finite record refutes it, so the only honest claim about it has a *deadline* in it — "by then, or escalated" — and the only honest test of it is statistical. A liveness obligation stated without a deadline is untestable in principle. So every obligation the clerk derives must carry one, and the clerk's output must be something a test can count (chapter 6).
+**What it forces.** "Nothing invalid was ever admitted" is safety: one entry refutes it, and a replay of the prefix checks it exactly (chapter 4; appendix A §A.9). "Obligations do not rot" is liveness: no finite record refutes it, so the only honest claim about it has a *deadline* in it — "by then, or escalated" — and the only honest test of it is statistical. A liveness obligation stated without a deadline is untestable in principle. So every obligation the clerk derives must carry one, and the clerk's output must be something a test can count (chapter 6).
 
 **Mechanism.** The charter states the division in these words: "recognition and adjudication carry safety, writs carry liveness" [CHARTER §4]. The deadline is the charter's third maxim: "Every obligation is derived from present state and the clock, carries a deadline, and escalates when the deadline passes. No component waits for an event; each reconciles state" [CHARTER §2.3].
 
@@ -24,11 +22,11 @@ We have a law of three rules over a record (chapter 4). The record now holds pro
 
 **What it forces.** The clerk keeps no state of its own and subscribes to nothing. It reads the record and the clock, computes what is owed, and prints it; a tick missed costs nothing because the next tick computes the same answer.
 
-**The witness.** Before the clerk existed, the court tried to hold its obligations in a session's memory. Four forecasts — three by the sovereign, one by counsel — expired undischarged in the ledger's first window and were resolved one, eight and nearly four hours late [seqs 45, 46, 47, 56; their resolutions at seqs 52, 69, 70, 108]. The clerk's brief names those four as its forcing witness, and the lesson is the maxim's second sentence made concrete: a reminder is an event, and a missed event is a lost obligation.
+**The witness.** Before the clerk existed, the court tried to hold its obligations in a session's memory. Four forecasts — three by the sovereign, one by counsel — expired undischarged in the ledger's first window and were resolved about an hour late (seq 45), eight hours late (seqs 46 and 47) and nearly four hours late (seq 56) [their resolutions at seqs 52, 69, 70, 108]. The clerk's brief names those four as its forcing witness, and the lesson is the maxim's second sentence made concrete: a reminder is an event, and a missed event is a lost obligation.
 
 ## 5.4 The clerk
 
-`tools/clerk.py` is 88 lines and is the builder's [BRIEF-C1b §The clerk]. Run on a timer or by hand, it prints every open writ — the obligation, who may discharge it, the deadline — and marks one past its deadline **ESCALATED**, naming the sovereign. Three writ classes exist, because three kinds of obligation have witnesses on the record and "a class with no witness is not built":
+`tools/clerk.py` is 88 lines and is the builder's [BRIEF-C1b §The clerk]. Run on a timer or by hand, it prints every open writ — the obligation, who may discharge it, the deadline — and marks one past its deadline **ESCALATED**, naming the sovereign. Three writ classes exist — a fourth, W2 for wishes, was dropped on the cold read because it had no witness [`transcripts/REPLY-REVIEW-C1b-v2.md`, F5] — because three kinds of obligation have witnesses on the record and "a class with no witness is not built":
 
 - **W1, a forecast.** Every `forecast` entered after a window's opening is a writ from its entry; its holders are every key with `resolution` power whose principal is not the forecaster's; its deadline is `resolves_by` itself — "the obligation the entry already carries"; it is discharged by a `resolution`. A writ is overdue when the clock is strictly after the deadline. The brief refused a grace period on the ground that every late case on the record would have been timely under one, "which would leave the deadline no witness".
 - **W3, an unwitnessed merge.** A `merge` entry on `main` whose commit had no green `tests` run before the merge commit's time; held by counsel; discharged by a line naming it as precedent. Its witness is a merge that landed before its run finished [REPORT.md, C1a §4.4, as transcript].
@@ -47,3 +45,7 @@ We have a record, a law, and a clerk that turns the record's promises into deadl
 ## 5.7 What would show this chapter wrong
 
 A liveness claim made from a replay, or a safety claim made from a statistic — the division of §5.2 crossed. An obligation without a deadline, which would be untestable. A writ class built with no witness, or a witness with no class: the brief's rule is that the two match, and a referee can check the three classes against the record's late cases. And a rung of the ladder that is a sentence rather than an act: that was true of all three until 3 November (§5.4), and is still true of the top one. The writ to the sovereign is read by a person, which is to say the ladder ends in him; the chapter claims only that it ends there visibly, and chapter 12 §12.4 prices what that costs.
+
+---
+
+*Draft note. Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*

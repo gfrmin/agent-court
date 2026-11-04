@@ -1,7 +1,5 @@
 # 13. The evidence: the windows
 
-*Draft 0, the author session, 3 November 2026 — the frame and what the author can recompute today; each window's section is completed from counsel's `data/<layer>-exit.md` as it lands, with every figure re-run by the author on the clone. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*
-
 ## The figure: the laboratory notebook
 
 A result in a notebook is worth what the entry before it says: what was to be measured, how, and what would count as failure — written before the measurement, in ink. Everything after that is a number against a line that was already there. This chapter is the court's notebook. Each window is reported as the pre-registered experiment it was: its criteria, null, attack list and maximum duration as committed before it opened; what the record shows at the exit prefix; what counsel forecast about it and how that scored; and what the window's precedents cost. Nothing here is a number the author did not recompute.
@@ -16,7 +14,7 @@ Pre-stated: the charter's §9 criteria as amended by A1.5 — every pin killed w
 
 ## 13.3 C1a — the ledger (25–31 October)
 
-Pre-stated [BRIEF-C1]: pins killed; checkers agreeing; kernel within 500 and `judge/scope.json` unchanged from the installing push; at least twenty forecasts by three proposers, ten resolutions, five world-typed with hashed evidence; the score vectors reproduced; no veto. Opened at seq 30 (A3's activation, 2026-10-25T16:44:10Z); closed at seq 188 (2026-10-31T10:42:10Z), day six of fourteen, by the first `promote` under A5. Recomputed at the exit prefix [`status.py --subject C1a --as-of 2026-10-31T10:42:10Z --runs transcripts/evidence/runs-tests-20261031.json @6b800e14`]: every criterion met; 63 forecasts by four proposers, 19 resolutions, 12 world-typed with evidence whose hashes the tool recomputed from the files; counted code 5,998 of 6,900; procedure : object 127 : 32; no forecast unresolved past its deadline. Counsel's six forecasts on the window [seqs 37–42] resolved five of six, all but J6 — a checker disagreement on a simulated log — as counsel bet; their log-loss is in `data/counsel-forecasts.md`. The window's precedents: four forecasts expired undischarged (chapter 5 §5.3); a resolution counsel's herald entered wrongly and the kernel would not let anyone correct [REPORT.md, C1a §4.2, as transcript]; three brief versions blocked on defects the previous version introduced.
+Pre-stated [BRIEF-C1]: pins killed; checkers agreeing; kernel within 500 and `judge/scope.json` unchanged from the installing push; at least twenty forecasts by three proposers, ten resolutions, five world-typed with hashed evidence; the score vectors reproduced; no veto. Opened at seq 30 (`amend A3`, in force from seq 31, 2026-10-25T16:44:10Z); closed at seq 188 (2026-10-31T10:42:10Z), day six of fourteen, by the first `promote` under A5. Recomputed at the exit prefix [`status.py --subject C1a --as-of 2026-10-31T10:42:10Z --runs transcripts/evidence/runs-tests-20261031.json @6b800e14`]: every criterion met; 63 forecasts by four proposers, 19 resolutions, 12 world-typed with evidence whose hashes the tool recomputed from the files; counted code 5,998 of 6,900 as `status.py` prints it (the cap in force at that instant was 6,200, raised to 6,900 at seq 197 that afternoon); procedure : object 127 : 32; no forecast unresolved past its deadline. Counsel's six forecasts on the window [seqs 37–42] resolved five of six, all but J6 — a checker disagreement on a simulated log — as counsel bet; their log-loss is in `data/counsel-forecasts.md`. The window's precedents: four forecasts expired undischarged (chapter 5 §5.3); a resolution counsel's herald entered wrongly and the kernel would not let anyone correct [REPORT.md, C1a §4.2, as transcript]; three brief versions blocked on defects the previous version introduced.
 
 ## 13.4 C1b — the clerk (31 October – 1 November)
 
@@ -37,3 +35,7 @@ The running table is `data/counsel-forecasts.md`, recomputed by the author from 
 ## 13.8 What would show this chapter wrong
 
 A figure in it that a reader with the clone cannot reproduce with the stated invocation. A criterion reported `met` whose evidence file is not committed. A window's stated end moved, or its wealth reset, between the brief and the exit. And the ordinary way an experiment is wrong: a crossing on paper that the next window undoes — which is why the wealth is one process and chapter 11 §11.12 names the convergence tests.
+
+---
+
+*Draft note. Draft 0, the author session, 3 November 2026 — the frame and what the author can recompute today; each window's section is completed from counsel's `data/<layer>-exit.md` as it lands, with every figure re-run by the author on the clone. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*

@@ -1,14 +1,12 @@
 # 16. How it could be wrong
 
-*Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2.*
-
 ## The figure: the referee
 
 A referee's report is the one document about a piece of work that was written by someone with no stake in its being right. The author of this book has every stake, and so has its counsel, whose forecasts about it are on the ledger. So the book does what the court does: it writes the referee's case first, in the referee's terms, and leaves the referee the job of finding what it missed.
 
 ## 16.1 The referee's case
 
-*n* = 1. One operator, one world that charges (two streams of it), one author's lineage, and a few weeks of running. Nothing in the book establishes that the construction transfers to a team, to a world that charges in a different currency, or to an operator who does not share the author's tolerance for formality.
+*n* = 1. One operator, one world that charges (two streams of it), one owner's lineage, and a few weeks of running. Nothing in the book establishes that the construction transfers to a team, to a world that charges in a different currency, or to an operator who does not share the owner's tolerance for formality.
 
 The proposers are language-model sessions whose failures the counsel loop spent nights patching — the harness that was wrong three times, the brief that went seven versions, the forecasts that expired in a session's memory. The book reports these as evidence for the thesis (the loops exist because the failures occurred), and a referee may read them as evidence against it (the system needed its designer awake).
 
@@ -40,3 +38,7 @@ Not optimality of the mechanism; only Wald's narrow optimality of the decision p
 ## 16.4 What would show this chapter wrong
 
 A falsifier the construction admits that this list omits. The list is the author's; a referee who adds to it has done the book a service, and the addition belongs here with the referee's name on it.
+
+---
+
+*Draft note. Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2.*

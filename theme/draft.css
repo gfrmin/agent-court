@@ -1,6 +1,6 @@
 /* A Court for Agents — draft banner and type */
 main::before {
-  content: "DRAFT · first draft of 3 November 2026 · every number carries its provenance tag; chapters 6, 7 and 13 await the C2a and C2b exits";
+  content: "DRAFT · first draft, November 2026 · chapters 6, 7 and 13 await the C2a and C2b window exits";
   display: block;
   font-family: var(--mono-font, monospace);
   font-size: 0.78em;
@@ -19,3 +19,9 @@ main { max-width: 42em; }
 main h1 { font-weight: 600; }
 main table { font-size: 0.9em; }
 main blockquote { border-left: 3px solid #b8860b; }
+/* Provenance tags (theme/provenance.js): the evidence, set small so the argument reads first */
+.prov { font-size: 0.78em; color: var(--icons, #8a8a8a); }
+.prov code, .prov code.hljs { font-size: 0.92em; background: none !important; color: inherit; padding: 0; }
+.hide-prov .prov { display: none; }
+#prov-toggle { font-family: var(--mono-font, monospace); font-size: 0.75em; width: auto; padding: 0 0.5em; }
+@media print { .hide-prov .prov { display: inline; } }

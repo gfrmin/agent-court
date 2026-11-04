@@ -1,7 +1,5 @@
 # 2. Every suggestion is a bet
 
-*Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The four results here are set out row by row, with hypotheses, in appendix A.*
-
 ## The figure: the tipster
 
 A racing tipster tells you the favourite will win the seventh. You cannot inspect the tip. You can read his reasoning, which is fluent, and his record, which he wrote. The only thing that tells you whether to pay for the next tip is the one thing neither of you controls: the seventh race, run. And even that tells you nothing unless the tip was fixed before the off, the result was recorded by someone other than him, and the thing he is paid on is a number that rewards him for saying what he actually believes rather than what sounds confident. Every tipping service that has lasted has those four properties; every one that has not had the reasoning and the record. The helpers of chapter 0 are tipsters, and this chapter is the four properties.
@@ -34,7 +32,7 @@ We have a loop (chapter 1) that keeps suggestions that paid and discards those t
 
 **Result** (theorem). A scoring rule is *proper* if, whatever the forecaster believes, reporting that belief maximises its expected score, and *strictly proper* if it is the unique maximiser. The logarithmic score, ln *P*(*y*), is strictly proper; on a grid of reports, truthfulness holds to within the grid.
 
-**What it forces.** The score is the one thing in the construction that will be rigid at every level, so it must be one that cannot be gamed by shading. Among strictly proper scores the logarithmic one is chosen by a second consideration. Under it, the Bayes mixture over *K* forecasters is the posterior predictive, so aggregating is conditioning (chapter 0), and its loss telescopes to at most ln *K* more than the best of them at η = 1, with no tuning constant. Other mixable losses reach a bound of that form through Vovk's (1990) aggregating algorithm, the Brier score even at η = 1. But for them the forecast is produced by a substitution step, not by the mixture itself, so the aggregate is not conditioning. The bound alone would not force the log score; the bound together with conditioning does. That bound will be the only constant the election is allowed to carry (chapter 7).
+**What it forces.** The score is the one thing in the construction that will be rigid at every level, so it must be one that cannot be gamed by shading. Among strictly proper scores the logarithmic one is chosen by a second consideration. Under it, the Bayes mixture over *K* forecasters is the posterior predictive, so aggregating is conditioning (chapter 0), and its loss telescopes to at most ln *K* more than the best of them at η = 1 — η being the learning rate at which the mixture's weights respond to losses — with no tuning constant. Other mixable losses reach a bound of that form through Vovk's (1990) aggregating algorithm; the Brier score reaches it even at η = 1. But for them the forecast is produced by a substitution step, not by the mixture itself, so the aggregate is not conditioning. The bound alone would not force the log score; the bound together with conditioning does. That bound will be the only constant the election is allowed to carry (chapter 7).
 
 **Mechanism.** Probabilities are per mille because canonical lines admit integers only and because 1–999 bounds the log-loss without a clipping rule [SPEC §5]. The score is log-loss, computed outside the kernel by `jack score` [SPEC §12.11]. The base-rate forecaster every value test runs against is Laplace's rule over the resolved prefix of the forecast's type, clipped to [1/1000, 999/1000] so that a difference of two losses is bounded by *B* = ln 999 [BRIEF-C2a §Scope, the base rate; CHARTER A4.4].
 
@@ -57,3 +55,7 @@ We now know what a suggestion is: a claim, with a probability fixed before the o
 ## 2.7 What would show this chapter wrong
 
 A helper whose suggestions can be verified rather than scored — a policy whose outputs are checkable by inspection. Rice says not in a language that can write the next version of itself; a restricted language may escape it (chapter 10 §10.5). A score in the court that is not strictly proper, or a resolution by a forecaster's second key — the pins `forecast_before_cutoff`, `rigged`, `revision` and `self_judged` exist so these fire in CI rather than in a reader's hand. And the one that would matter most: an outcome stream that the proposers turn out to control — a catalogue that reads the election, a results page a session can edit. The hashes in the tree and the resolver's key make that an act with a signature on it, and chapter 12 §12.5 says what residue remains.
+
+---
+
+*Draft note. Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The four results here are set out row by row, with hypotheses, in appendix A.*

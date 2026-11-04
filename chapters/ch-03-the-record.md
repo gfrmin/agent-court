@@ -1,7 +1,5 @@
 # 3. The record
 
-*Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The kernel quoted is the one at that commit; appendix B carries it whole.*
-
 ## The figure: the mast
 
 Ulysses wanted to hear the sirens and knew he would want, when he heard them, to go to them. So he had himself bound to the mast and told the crew to tighten the ropes if he asked to be freed. The point of the ropes is not that they are strong; it is that the Ulysses who tied them is not the one who will want them untied, and the ropes do not care which Ulysses is asking. A vow is the same thing in words: a commitment made by someone who knows that the person who will have to keep it will have reasons not to. The record this chapter builds is a mast for a system: every entry on it was put there by someone, at a position, under a signature, and no later party — not the one who wrote it, not the one who governs it — can move it. The loop of chapter 1 will want to rewrite its past; the record is what makes that impossible rather than forbidden.
@@ -30,8 +28,12 @@ The second half of chapter 2's requirement — outcomes recorded by someone else
 
 ## 3.6 What this chapter leaves open
 
-We have a record: seven members, one serialisation, a hash chain, a signature with one encoding, time as a monotone field. Anyone with a key can append to it, and the record will faithfully say who. It does not yet say who *may* — which keys exist, what each is allowed to write, how that changes — nor what counts as a valid entry beyond its shape, nor who decides when a proposal to extend the record should be accepted. Those are the three questions Hart says every legal system must answer, and answering them with the smallest possible law is chapter 4.
+We have a record: seven members, one serialisation, a hash chain, a signature with one encoding, time as a monotone field. Anyone with a key can append to it, and the record will faithfully say who. It does not yet say who *may* — which keys exist, what each is allowed to write, how that changes — nor what counts as a valid entry beyond its shape, nor who decides when a proposal to extend the record should be accepted. Those are the three questions Hart's secondary rules answer, and together, on his account, they are enough for a legal system; and answering them with the smallest possible law is chapter 4.
 
 ## 3.7 What would show this chapter wrong
 
 A line on the record that two checkers read differently — the differential compares every proper prefix of every seeded log for this reason, and a disagreement turns the judge red [SPEC §9a; §10.5]. A rewrite that verifies: an edit to a past line that leaves the chain intact, which would mean the hash or the signature rule is weaker than stated. A second valid encoding of one signature, which the empty-reserved-field rule exists to exclude. And a timestamp doing more than its rule allows — a tool reading the clock inside a fold — which chapter 1's mechanism rows already forbid.
+
+---
+
+*Draft note. Draft 1, the author session, 3 November 2026. Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. The kernel quoted is the one at that commit; appendix B carries it whole.*
