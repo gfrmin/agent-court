@@ -1,3 +1,5 @@
 book-site/
 /mdbook
 __pycache__/
+# The clone of renavondata/jack that tools/check_book.py reads (--jack .jack), as CI makes it.
+/.jack/
