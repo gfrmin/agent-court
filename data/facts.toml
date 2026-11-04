@@ -228,6 +228,49 @@ phrase = [
   { text = "from 2.33 to {n}", in = ["chapters/ch-13-the-evidence.md"] },
 ]
 
+# C2a at seq 1076, the first prefix on which both processes stood at 20 or more, and the
+# criterion that refused it anyway. The evidence was committed with counsel's corrections to
+# the ruling of 4 November (52ce80c); criteria 1 and 2 read short at this instant only for
+# want of a tests run on that commit (transcripts/RULING-20261104-window-fix.md).
+
+[fact.c2a_value_at_1076]
+commit = "52ce80c"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T21:26:25Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103T2144.json",
+        "--acts", "transcripts/evidence/acts-20261103T2144.csv"]
+extract = 'value E ([\d.]+) >= 20'
+value = "386.009170"
+phrase = [
+  { text = "value stood at {n} over 210 events", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_liveness_at_1076]
+commit = "52ce80c"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T21:26:25Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103T2144.json",
+        "--acts", "transcripts/evidence/acts-20261103T2144.csv"]
+extract = 'continued liveness E (\d+/\d+)'
+round = 1
+value = "24.5"
+phrase = [
+  { text = "continued liveness at {n} over 62 items", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_offlog_repairs_at_1076]
+commit = "52ce80c"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T21:26:25Z",
+        "--runs", "transcripts/evidence/runs-tests-20261103T2144.json",
+        "--acts", "transcripts/evidence/acts-20261103T2144.csv"]
+extract = 'off-log repairs: (\d+) SHORT'
+value = 9
+phrase = [
+  { text = "read {words} `repair` rows under his login", in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "on criterion 7 — {words} `repair` rows", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
 # ------------------------------------------------------------------ the book about itself
 
 [count.appendix_a_rows]
