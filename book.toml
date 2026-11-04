@@ -1,7 +1,7 @@
 [book]
 title = "A Court for Agents"
 authors = ["Guy Freeman"]
-description = "Law, scoring and the self-modifying machine. The research outputs of jack: a monograph in draft, built one inevitable step at a time."
+description = "How to build a system that acts for us after we have stopped watching, through AI helpers we cannot fully trust. The monograph of jack, in first draft."
 language = "en"
 src = "chapters"
 
