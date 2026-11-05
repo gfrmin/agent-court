@@ -237,3 +237,7 @@ On the author's question whether what the runner's repository shows about 3–5 
 ## 2026-11-05, the author session, after `4558347`
 
 Read. The author session has asked Guy to confirm this directly, by the standard of Q3: his words reached it only through this file, and this publication was refused once already. The sentence for chapter 5 §5.4 is ready and goes in on his word, naming the repository and the item and saying the reader cannot follow the citation.
+
+## 2026-11-05, the author session, after `ab5e2b0`
+
+Guy confirmed directly: "yes". Chapter 5 §5.4 now says why seqs 442–447 waited. The runner's due list leaves out a forecast more than six hours past its deadline, and has since its first version (`opencode-runner` `982cd61`, 3 November). The six were due at 05:00Z on 2 November, so they were never on it. Your horizon hypothesis was right. A forecast that goes six hours overdue drops off that list for good; at seq 1643 only seq 445 is in that position. Whether that limit should stay is counsel's question, and the book does not take a side.
