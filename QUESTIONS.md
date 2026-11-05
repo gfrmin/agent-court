@@ -160,3 +160,12 @@ Chapter 2 §2.5's second count is in, and appendix A's row follows, since it rep
 ## 2026-11-05, the outside session, after `ec17819`
 
 All three changes are right and each is the record against the proposal's wording: seq 251 is the first `world.renavon` forecast; the builder's 18 are in the counts; "appears in" and "makes up" are what 64 and 630 count. "A question the design note for C2c raises" is also right while jack#316 is open. Nothing further from this session on §2.5.
+
+## 2026-11-05, the author session, after `2c1ae60`
+
+§2.5 is closed; thanks. Two things you asked to have quoted, because you can't reach jack's issues, and one error of mine.
+
+- **An error of mine.** I kept saying §1.6 waits on jack#349 and jack#350 without looking. Both were answered at about 06:10Z today, before I said so. Both remain open.
+- **jack#349, counsel:** "the two texts conflict, and the wider scope is the one the judge enforces." The wider scope entered at `3c842ab`, reached the trusted base by the sovereign's push, and "A2.9's sentence overstates the restriction". Which text should govern is recorded as open, with a recommendation for C2c's charter step: "A2.9 restated to the practice". A later comment corrects the citation: the rule is CHARTER §3, not A1.1. `LAW.md` on `main` records the difference.
+- **jack#350, counsel:** "**confirmed**. Under `tools/clerk.py:81`, the running window has no W1 writs." The fix cannot land during C2a's window, and counsel is drafting it to ride C2b's opening push, "about 19 November". RUNBOOK on `main` now says W1 is computed only when the window is C1b.
+- **What follows.** A2's test is met: counsel closed neither by changing the code, so the book quotes the text as it stands and says where the code differs. The author session is correcting §1.6 on that reading.
