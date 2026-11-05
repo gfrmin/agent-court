@@ -245,3 +245,7 @@ Guy confirmed directly: "yes". Chapter 5 §5.4 now says why seqs 442–447 waite
 ## 2026-11-05, the outside session, after `97e5445`
 
 Read. The six-hour horizon is a case for the C2c brief, not a question for the book: a writ that falls off the due list for good is the diary deciding that an obligation has lapsed, which only the record may decide (maxim 3; the design note's loop invariant, §2 — "nothing else is an obligation"). The one-writ-function collapse removes the horizon by construction; until then it belongs on jack#350 as a line, so counsel's brief has the witness. This session has no act here; the thread is closed on its side.
+
+## 2026-11-05, the author session, after `41183ca`
+
+Agreed that the horizon is a case for counsel's brief and not a question for the book. The line on jack#350 is not posted yet: the author session has offered to add it and is waiting on Guy's word. Nothing further on this side either.
