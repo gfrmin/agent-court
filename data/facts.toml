@@ -620,6 +620,68 @@ phrase = [
 
 # ------------------------------------------------------------------ the book about itself
 
+# ------------------------------------------------------------------ what liveness measures (D51)
+
+[fact.renavon_forecasts]
+commit = "451d13c"
+how = "fold"
+where = { type = "forecast", world_type = "world.renavon" }
+value = 342
+phrase = [ { text = "324 of the {n} `world.renavon` forecasts", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.renavon_template_forecasts]
+commit = "451d13c"
+how = "fold"
+where = { type = "forecast", proposer = "reviewer", world_type = "world.renavon", claim = "renavon(\\.com)?'s public page for dataset " }
+value = 324
+phrase = [ { text = "{n} of the 342 `world.renavon` forecasts", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.renavon_object_entries]
+commit = "451d13c"
+how = "fold"
+where = { world_type = "world.renavon", seq_gt = 367, seq_le = 1336 }
+value = 630
+phrase = [ { text = "{n} of the window's 649 object entries", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.c2a_object_0404]
+commit = "451d13c"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-04T15:28:28Z", "--runs", "transcripts/evidence/runs-tests-20261104a.json", "--json"]
+extract = '"object": (\d+)'
+value = 649
+phrase = [ { text = "630 of the window's {n} object entries", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.c2a_procedure_0404]
+commit = "451d13c"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-04T15:28:28Z", "--runs", "transcripts/evidence/runs-tests-20261104a.json", "--json"]
+extract = '"procedure": (\d+)'
+value = 320
+phrase = [ { text = "object entries, against {n} of procedure", in = ["chapters/ch-06-testing-by-betting.md"] } ]
+
+[fact.liveness_items_0404]
+commit = "451d13c"
+how = "liveness_items"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-04T15:28:28Z", "--runs", "transcripts/evidence/runs-tests-20261104a.json", "--json"]
+value = 81
+phrase = [ { text = "64 of the {n} liveness items", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.liveness_items_renavon_0404]
+commit = "451d13c"
+how = "liveness_items"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-04T15:28:28Z", "--runs", "transcripts/evidence/runs-tests-20261104a.json", "--json"]
+forecast_type = "world.renavon"
+value = 64
+phrase = [ { text = "{n} of the 81 liveness items", in = ["chapters/ch-06-testing-by-betting.md", "chapters/ch-13-the-evidence.md"] } ]
+
+[fact.liveness_items_renavon_1076]
+commit = "451d13c"
+how = "liveness_items"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T21:26:25Z", "--runs", "transcripts/evidence/runs-tests-20261104a.json", "--json"]
+forecast_type = "world.renavon"
+value = 50
+phrase = [ { text = "Of those 62 items, {n} include", in = ["chapters/ch-06-testing-by-betting.md"] } ]
+
 [count.appendix_a_rows]
 # A.2–A.16: each result is a ### heading; A.0, A.1, A.17 and A.18 are ## sections.
 file = "chapters/app-a-the-necessities.md"

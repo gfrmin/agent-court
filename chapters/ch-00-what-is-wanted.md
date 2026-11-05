@@ -8,7 +8,7 @@ A will is an instruction to act for someone after they can no longer act for the
 
 We want a system that acts optimally *for us*; that can take what we say and make it binding; that acts through helpers whose suggestions are good but imperfect; and that does so in a world where being wrong costs money, after we have stopped watching. Each part has a precise meaning, and the precise meanings are what the rest of the book builds from.
 
-**For us.** "Optimally" has one coherent meaning once we admit uncertainty: maximise expected utility under beliefs that are probabilities and that change only by conditioning on evidence. That is not a preference; it is a theorem three times over — Cox (1946) for the probabilities, Savage (1954) for the utilities, Wald (1950) for the decisions (a rule that is neither Bayes nor a limit of Bayes rules is dominated by one that is). Everything the system does will be a bet, and a bet is only coherent under those three.
+**For us.** "Optimally" has one coherent meaning once we admit uncertainty: maximise expected utility under beliefs that are probabilities and that change only by conditioning on evidence. That is not a preference; it is a theorem three times over — Cox (1946) for the probabilities, Savage (1954) for the utilities, Wald (1950) for the decisions (a rule that is neither Bayes nor a limit of Bayes rules is dominated by one that is). Everything the system does will be a bet, and a bet is only coherent under those three. That is what the word means. It is not a claim about the court's own procedure, and appendix A §A.17 says why the book makes none.
 
 "For us" is the part the theorems do not settle: *whose* utility. The answer this book takes from its predecessors is the one written first in credence, where this programme began (chapter 14) — the agent's utility is the owner's, unknown, inferred from behaviour, and the ground truth arrives from outside the agent (Hadfield-Menell et al. 2016, cooperative inverse reinforcement learning; `credence/CONSTITUTION.md` §2.5). The owner's wishes are therefore the standard and cannot be graded against themselves. One party in the system will be unscored, and it is the one whose utility is being served. The horizon is discounted: profit is a term in the utility, and so is time, and nothing is optimised for the next quarter that would not be optimised for the next decade at the same rate.
 
@@ -63,4 +63,4 @@ The question mis-posed. If "optimally for us" has a coherent meaning other than 
 
 ---
 
-*Draft note. Draft 2, the author session, 3 November 2026 — rewritten on the construction (`plan.md` §3, D20–D25). Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`.*
+*Draft note. Draft 2, the author session, 3 November 2026 — rewritten on the construction (`plan.md` §3, D20–D25). Provenance tags as `plan.md` §2; the record is `renavondata/jack` at `6ebea1a`. §0.1 corrected 5 November (D51).*

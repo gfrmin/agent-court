@@ -194,9 +194,20 @@ def signer(entries: list[dict], e: dict) -> str | None:
 
 def fold(entries: list[dict], spec: dict) -> int:
     """A count over the log. Filters: type, proposer (the principal), key (the key_id
-    that signed), seq_gt, seq_le."""
+    that signed), seq_gt, seq_le, claim (a regex a forecast's claim must start with),
+    world_type (a forecast of that type, or a resolution of one)."""
+    by_seq = {e["seq"]: e for e in entries}
+
+    def stream(e: dict) -> str | None:
+        f = by_seq.get(e["body"].get("forecast")) if e["type"] == "resolution" else e
+        return f["body"].get("type") if f and f["type"] == "forecast" else None
+
     n = 0
     for e in entries:
+        if "world_type" in spec and stream(e) != spec["world_type"]:
+            continue
+        if "claim" in spec and not re.match(spec["claim"], e["body"].get("claim", "")):
+            continue
         if "key" in spec and signer(entries, e) != spec["key"]:
             continue
         if "type" in spec and e["type"] != spec["type"]:
@@ -256,6 +267,18 @@ def recompute(jack: Jack, fid: str, f: dict):
                 f"matching {f['extract']!r}:\n{out.strip()[-600:]}")
             return None
         return extracted(m.group(1), f)
+    if how == "liveness_items":  # items of a status.py --json run, optionally with a forecast of a type
+        key = (commit, tuple(f["argv"]))
+        if key not in _RUNS:
+            r = subprocess.run([sys.executable, *f["argv"]], cwd=jack.worktree(commit),
+                               capture_output=True, text=True)
+            _RUNS[key] = r.stdout
+        items = json.loads(_RUNS[key])["continued_liveness"]["items"]
+        if "forecast_type" not in f:
+            return len(items)
+        by_seq = {e["seq"]: e for e in jack.log(commit)}
+        return sum(any(by_seq[s]["body"].get("type") == f["forecast_type"] for s in i.get("forecasts", []))
+                   for i in items)
     if how == "text":  # a figure a jack document states: `extract` one, or `count` matches
         body = jack.show(commit, f["path"])
         if body is None:

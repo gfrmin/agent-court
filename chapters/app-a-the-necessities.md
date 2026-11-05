@@ -180,7 +180,7 @@ The results are then applied to one question each: given this object, what can t
 
 **Misapplied if.** A layer is begun before the one below has crossed; a layer that fails is patched in place rather than followed by a new pre-stated window; or a rule enters without a case. One such proposal — "prepare C3 now", design in anticipation of a brief that did not exist — was withdrawn on 30 October on exactly this ground, and the plan that records the withdrawal names Gall [`transcripts/PLAN-20261030.md`].
 
-## A.17 Minimality, sufficiency and the narrow sense of "optimal"
+## A.17 Minimality, sufficiency and "optimal"
 
 The fifteen rows above (A.2–A.16) are the chapter's evidence for the book's first claim (`plan.md` §5): that each component of the core discharges a result, so that removing it is not a simplification but an error. Three further words have to be fixed before chapter 13 can use them.
 
@@ -188,7 +188,7 @@ The fifteen rows above (A.2–A.16) are the chapter's evidence for the book's fi
 
 **Sufficiency.** The chapter does not claim it, and the book claims it only by construction of its falsifiers. The pre-stated ways the programme would be shown wrong are the charter's own [CHARTER §12]: the kernel cannot hold the three secondary rules within readable size; a liveness window fails against its baseline (assize's, as the charter wrote it; jack's own first nine items, as C1b committed it, chapter 6 §6.2); repairs fall only because acts were re-typed; procedure outgrows object. Chapter 13 reports every window as the sequential experiment it is, and says where sufficiency is still a forecast.
 
-**Optimality.** The book never says the mechanism is optimal. The claim it does make is Wald's (1950) and narrow: under his complete class theorem, a decision rule that is not a Bayes rule (or a limit of them) is inadmissible — dominated by one that is. Every discretionary choice the court makes about itself — which proposer to invite, whether a window has crossed, what to put to the sovereign — is made as a bet with a stated probability and scored, so the court's decision procedure is one that cannot be dominated within the class it competes in. A court that chose otherwise would be. That is the optimality claim: of the decision procedure the mechanism forces on everyone inside it, including the sovereign where he forecasts, and not of the mechanism.
+**Optimality.** The book claims no optimality of the court's procedure, and none of the mechanism. Expected utility is what "for us" means (chapter 0 §0.1), and Wald's (1950) complete class theorem says that a rule which is neither Bayes nor a limit of Bayes rules is dominated by one that is. It does not follow that the court's rules are Bayes. Being scored makes a procedure evaluable, not admissible, and the charter, the SPEC and the briefs state no loss for the owner's decisions for any rule to be Bayes against; the log-loss they score by is a scoring rule, not his utility. What the court does is test and bound: it promotes when every criterion holds and *E* ≥ 20, which is a test at a level (chapter 12 §12.2), and an invitation is to be decided by EXP3, which is a regret bound (chapter 7). It works that way because the owner's utility is unknown, and anytime-valid tests and regret bounds hold without it. Expected utility re-enters only where the sovereign prices an act. A prior over windows and a loss ratio, entered as a `budget`, would make promotion a Bayes decision under those numbers; that is a design note's proposal for C2c, not law [`transcripts/RESEARCH-self-similarity-20261105.md`; proposal seq 1575, merge seq 1576, §3.5].
 
 ## A.18 What would show this chapter wrong
 
@@ -204,4 +204,4 @@ And the one that would show the chapter wrong rather than merely incomplete: a c
 
 ---
 
-*Draft note. The first draft of 3 November, kept as the reference table behind chapters 1–11: every result the construction rests on, in four parts — the result with its hypotheses, what it forces, the mechanism, what would show it misapplied. The chapters argue in order; this appendix is for looking a result up. Numbers carry the provenance tags of `plan.md` §2; the record is `renavondata/jack` at `6b800e14`.*
+*Draft note. The first draft of 3 November, kept as the reference table behind chapters 1–11: every result the construction rests on, in four parts — the result with its hypotheses, what it forces, the mechanism, what would show it misapplied. The chapters argue in order; this appendix is for looking a result up. Numbers carry the provenance tags of `plan.md` §2; the record is `renavondata/jack` at `6b800e14`. §A.17 corrected 5 November (D51).*

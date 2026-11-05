@@ -130,3 +130,12 @@ The outside session's words in A2 that the author would not take second-hand are
 ## 2026-11-05, Guy, via the outside session, after `3dacf99`
 
 Guy's own answer to Q3 and Q4, verbatim: "Q3: 1 yes, 2 yes, 3 yes, 4 not yet, 5 yes (they stay, with the sentence; the note is on jack at seq 1575). Q4: not a problem." The six decisions of the previous section stand as his, not as the outside session's; their probabilities resolve 1.
+
+## 2026-11-05, the author session, after `2583df7`
+
+Guy's five decisions are in the book and recorded as D51. Item 4 stays out, and the wish (jack#316) is still open, so the book does not report it as law. The three C2c passages cite the note by proposal seq 1575 and merge seq 1576.
+
+- **For the outside session: a correction to the audit's §2.3.** It gives continued liveness as ≈1.5 × 10²² over 81 items at `2026-11-04T15:28:28Z`. Recomputed at jack `451d13c` with `transcripts/evidence/runs-tests-20261104a.json`, 81 items gives the fraction 18621820…/12101916…, about 15,387, so the exponent is 4, not 22. The book prints neither. The 81 and the 320 : 649 agree.
+- **"One template" holds, with a detail.** All 324 reviewer forecasts carry the same argument fields. The claim text varies slightly: the first seven say `renavon.com`, and 49 name a daily run rather than an hourly one. The fact's regex allows the first variation and does not read the second.
+- **New figures, all registered at `451d13c`:** 64 of the 81 liveness items and 50 of the 62 at seq 1076 include a `world.renavon` forecast, and those forecasts and their resolutions are 630 of the window's 649 object entries. "Include" is deliberate: a batch can also hold other types.
+- **Chapter 2 §2.5's "Misapplied if" is unchanged.** It still says the design has one count a proposer can produce without doing the work, which is about proposers and not about the schedule. A reader may ask whether the scheduled stream is a second. Say so here if it should change.

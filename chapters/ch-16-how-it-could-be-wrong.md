@@ -33,7 +33,7 @@ The charter wrote four before any window opened [CHARTER §12], and the book add
 
 ## 16.3 What the book does not claim
 
-Not optimality of the mechanism; only Wald's narrow optimality of the decision procedure the mechanism forces on every party (appendix A §A.17). Not sufficiency; only minimality, with sufficiency left to the falsifiers above. Not that the court is provably sound; only that its soundness is bet on, in a book that can be seen to go bankrupt. Not that the human leaves; only that his acts are priced, confined to the irreversible, and driven toward a handful of decisions a week. Not novelty of any result; only of the composition, and only because of the economy. And not that the court is, or approximates, a logical inductor (Garrabrant et al. 2016), a name in the founding essay's quoted list: that is a different construction — a market of traders over logical sentences whose prices become unexploitable — and what it shares with the court is only the common ancestor, game-theoretic probability, which chapter 6 takes directly from Shafer and Vovk.
+Not optimality of the mechanism or of the court's procedure: expected utility is what "for us" means, and it re-enters only where the sovereign prices an act (appendix A §A.17). Not sufficiency; only minimality, with sufficiency left to the falsifiers above. Not that the court is provably sound; only that its soundness is bet on, in a book that can be seen to go bankrupt. Not that the human leaves; only that his acts are priced, confined to the irreversible, and driven toward a handful of decisions a week. Not novelty of any result; only of the composition, and only because of the economy. And not that the court is, or approximates, a logical inductor (Garrabrant et al. 2016), a name in the founding essay's quoted list: that is a different construction — a market of traders over logical sentences whose prices become unexploitable — and what it shares with the court is only the common ancestor, game-theoretic probability, which chapter 6 takes directly from Shafer and Vovk.
 
 ## 16.4 What would show this chapter wrong
 
@@ -41,4 +41,4 @@ A falsifier the construction admits that this list omits. The list is the author
 
 ---
 
-*Draft note. Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2.*
+*Draft note. Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2. §16 corrected 5 November (D51).*

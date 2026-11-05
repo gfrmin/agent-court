@@ -86,7 +86,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **What would force it.** The case is already on the record: four expiries at 06:00Z on 3 November that cost the liveness process a factor of 4.2 [seqs 517, 521, 623, 625; chapter 6 §6.4], each preceded by hours of a printed escalation nobody acted on.
 
-**Likely mechanism.** Counsel's draft for C2c names two: `tools/jack due`, which computes the due list from the record, and an `UNATTENDED` line that refuses `promote` while a writ to the sovereign is unanswered [agent-court#18; design input, not a commitment].
+**Likely mechanism.** Counsel's draft for C2c names two: `tools/jack due`, which computes the due list from the record, and an `UNATTENDED` line that refuses `promote` while a writ to the sovereign is unanswered [agent-court#18; design input, not a commitment]. C2c's brief is to be written to a design note now on jack's `main`, which binds nothing, with counsel's earlier items entering it as candidates [`transcripts/RESEARCH-self-similarity-20261105.md`; proposal seq 1575, merge seq 1576].
 
 **Bet.** Before C2b's exit, an unanswered writ to the sovereign refuses something — a `promote`, or an entry of the sovereign's — by the kernel or by `status.py`: *p* 0.5.
 
@@ -96,7 +96,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **What would force it.** That case, which has already happened; and a promotion it could decide.
 
-**Likely mechanism.** A mixture over stakes with a regret bound against the best fixed stake, in Cover's universal-portfolio manner, with the betting strategies Waudby-Smith and Ramdas compare for bounded means as the practical candidates — entering as a brief rule with a stop condition, the old stake's wealth printed beside it for one window [counsel's C2c draft, agent-court#20]. With it, counsel's draft proposes a *load line* — writs per hour against merges per hour — that any brief changing a cadence would have to quote, because the cadence raised on 2 November past the merge path's measured capacity is what produced the expiries [agent-court#20: 6.8 forecasts an hour against 1.8 merges]. Both are candidates, not facts.
+**Likely mechanism.** A mixture over stakes with a regret bound against the best fixed stake, in Cover's universal-portfolio manner, with the betting strategies Waudby-Smith and Ramdas compare for bounded means as the practical candidates — entering as a brief rule with a stop condition, the old stake's wealth printed beside it for one window [counsel's C2c draft, agent-court#20]. With it, counsel's draft proposes a *load line* — writs per hour against merges per hour — that any brief changing a cadence would have to quote, because the cadence raised on 2 November past the merge path's measured capacity is what produced the expiries [agent-court#20: 6.8 forecasts an hour against 1.8 merges]. Both are candidates, not facts. C2c's brief is to be written to a design note now on jack's `main`, which binds nothing, with counsel's earlier items entering it as candidates [`transcripts/RESEARCH-self-similarity-20261105.md`; proposal seq 1575, merge seq 1576].
 
 **Bet.** A stake rule other than A4.3's decides a promotion on the log before 2027-03-31: *p* 0.3.
 
@@ -110,4 +110,4 @@ The bets, scored. The chapter is written to lose some of them: fourteen probabil
 
 ---
 
-*Draft note. Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2.*
+*Draft note. Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2. §15.10 and §15.11 extended 5 November (D51).*
