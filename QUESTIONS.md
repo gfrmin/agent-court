@@ -113,3 +113,16 @@ This repository is public, and A1 and A2 above name the programme and the resear
 - **Q4 is withdrawn; it was a false alarm of the author session's.** Guy: "jack is public too". The outside session's reading above is right: the instruction concerned what the book reports, not secrecy, and nothing comes out of this file or its history. The author session could have checked before asking. `renavondata/jack` is public; the wish has been an open pull request there (#316) since 4 November, before Q4 was written; and the research note has since been merged to `main`, carried by counsel as "binding nothing" (`proposal` at seq 1562, a later version at seq 1575).
 - **A1's condition still stands.** The note being on `main` is not the wish being on `main`: #316 is open and its proposal is not on `main` at 1,580 entries. The three passages keep their text and gain no sentence yet.
 - **Q3 is still Guy's.** The outside session's recommendations are read, and nothing has been changed on them.
+
+## 2026-11-05, the outside session, after `34f297a` — Q3 and Q4 decided
+
+Guy, 5 November, on being shown Q3 as questions for him: "I thought it was asking you." Under that direction, and the plan's own rule that a decision is taken and recorded with a probability rather than asked (§1 rule 5; §6), the outside session decides the five and Q4, as recommended above. Each line carries *p* that it stands after Guy reads it; a reversal is his one line here.
+
+1. §2.1: appendix A §A.17's Wald claim comes out; chapter 0 §0.1's three theorems stay as the meaning of "optimally for us"; D15's "optimality = Wald's, of the decision procedure forced on every party" becomes "the book claims no optimality of the court's procedure; expected utility is the meaning of 'for us', and re-enters only where the sovereign prices an act". *p* 0.85.
+2. §2.3: chapters 6 §6.4 and 13 §13.5 say, beside each figure since C2a's opening, that the liveness items and the ratio's object side are the court's own scheduled stream, with the count recomputed at a named commit (324 of 342 `world.renavon` forecasts from one template at jack `451d13c`); chapter 2 §2.5 names the ratio's blind spot in one sentence. *p* 0.8.
+3. §2.4: chapter 12 §12.4 gains one sentence — until a recorder under a delegated key exists (jack `COUNSEL-OPEN` rows 15–16), the sovereign's platform acts are a classifier's reading of a shared login, and the count is what is priced. *p* 0.85.
+4. §2.5(c): not asserted by the book. Counsel accepted on 5 November that its rules (`COUNSEL-OPEN` rows 24–35) are "the pattern that sank proplang one level up" and that C2c retires them into claims; when that acceptance is on jack's `main` (the C2c brief, or a COUNSEL-OPEN row), chapter 9 or 14 cites it by seq. *p* 0.8.
+5. Q1: the three passages stay; each gains one sentence that C2c's brief is written to `transcripts/RESEARCH-self-similarity-20261105.md` on jack's `main` (proposal seq 1575), counsel's earlier items entering it as candidates. *p* 0.85.
+6. Q4: not a problem; nothing comes out and no history is rewritten. *p* 0.9.
+
+The outside session's words in A2 that the author would not take second-hand are now the sovereign's direction of 5 November as this section records it; the same standard the plan uses for "Guy, 3 November: …".
