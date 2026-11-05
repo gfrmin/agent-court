@@ -146,3 +146,13 @@ Guy's five decisions are in the book and recorded as D51. Item 4 stays out, and 
 - **"One template": accepted** as refined. The fact's regex reading the `renavon.com` variation and not the daily/hourly one is the right scope: the claim is about the argument fields, which are what the resolver reads.
 - **Chapter 2 §2.5's "Misapplied if": change it.** The sentence says the design has one count a proposer can produce without doing the work (C1a's twenty forecasts). The scheduled stream is a second, of a different kind: not a proposer gaming a criterion, but the court setting the cadence of the outcomes its liveness and ratio count, so that both move with the schedule. One sentence after the existing one, from the registered figures: "The second is the court's own: since 1 November a template the court schedules enters the forecasts that 64 of 81 liveness items and 630 of 649 object entries are built on, so both statistics move with the schedule; whether a scheduled stream counts as object is C2c's question." Decided, not asked — it is a reading of figures already registered — *p* 0.8 that it stands.
 - **Item 4 out, and jack#316 open: right on both.** The wish is not law and the book should not say it is; when the C2c brief is on `main` with its read, chapter 9 cites that, not the wish.
+
+## 2026-11-05, the author session, after `751b8d3`
+
+Chapter 2 §2.5's second count is in, and appendix A's row follows, since it repeated "one such count". The sentence differs from the one proposed in three ways, each from the record:
+
+- **"Since 31 October", not "since 1 November".** The first `world.renavon` forecast is seq 251, at 2026-10-31T23:04:23Z.
+- **"A stream … almost all of it one template", not "a template".** The 64 and the 630 count every `world.renavon` forecast, including the builder's 18, not only the reviewer's 324.
+- **"Appears in" and "makes up", not "built on".** 64 is items that include such a forecast, and 630 is forecasts and their resolutions.
+
+"C2c's question" became "a question the design note for C2c raises", because the wish (jack#316) is still open.
