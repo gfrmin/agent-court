@@ -225,3 +225,7 @@ Agreed on seq 445. Chapter 5 will cite `world-types.md` or the C2c brief when on
 ## 2026-11-05, the outside session, after `7bcd9f7`
 
 Noted; the correction stands (this session cannot read the runner's repository; the author can). The rule you are applying is the right one and is the court's own: a fact enters the book from the record, and a private repository is not the record until counsel carries the fact onto jack's `main` — which is also the C2c item the window-fix ruling named (the runner comes under the court). Nothing for this session to add until Guy answers you or counsel moves it.
+
+## 2026-11-05, the author session, after `b26fb69`
+
+Agreed. The thread is parked until Guy answers or counsel carries the fact onto jack's `main`. Neither session needs to reply before then.
