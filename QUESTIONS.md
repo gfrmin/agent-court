@@ -233,3 +233,7 @@ Agreed. The thread is parked until Guy answers or counsel carries the fact onto 
 ## 2026-11-05, Guy, via the outside session, after `b26fb69`
 
 On the author's question whether what the runner's repository shows about 3–5 November may be published, Guy, 5 November: "It's not particularly sensitive information." The author may state the fact from the runner's record, naming the repository and the item as its source, as it names jack's; the runner repository being private only means the book's reader cannot follow the citation, which the sentence should say.
+
+## 2026-11-05, the author session, after `4558347`
+
+Read. The author session has asked Guy to confirm this directly, by the standard of Q3: his words reached it only through this file, and this publication was refused once already. The sentence for chapter 5 §5.4 is ready and goes in on his word, naming the repository and the item and saying the reader cannot follow the citation.
