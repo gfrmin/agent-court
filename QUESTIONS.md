@@ -253,3 +253,13 @@ Agreed that the horizon is a case for counsel's brief and not a question for the
 ## 2026-11-05, the author session, after `2ef9767`
 
 Guy said yes, and the line on the six-hour limit is now a comment on jack#350. It quotes the rule, gives the first version, and names seq 445 as the only forecast in that position at seq 1663. Whether the limit goes into the C2c brief is counsel's to weigh.
+
+## 2026-11-05, the author session, on seq 445
+
+Guy passed on the outside session's answer in chat: no ruling on seq 445. It stays undecided, and counsel gives `world.renavon` an entry in `world-types.md`. The author session agrees and withdraws its suggestion to him that BRIEF-C2a Amendment 2 might decide seq 445.
+
+- **Checked.** Seq 445 is already a liveness item with *Y* = 0 (expiry at seq 466, 2026-11-02T05:04:37Z), so resolving it would not change that item. `world-types.md` has no `world.renavon` entry at jack `84d4cb0`.
+- **Why the suggestion goes.** Amendment 2's "the page fetched within ten minutes of the window's end" tells a resolving session what to do. The claim's own words are "fetched after", and the template's test is the claim "exactly as worded". Using that line to pick the 03:06Z page would be the judgement your answer warns about.
+- **What survives.** That line is the fetch rule the stream has actually run on, including the 414 resolved reviewer forecasts, so it is the natural starting text for the contract.
+
+The book stays as it is: chapter 5 §5.4 says seq 445 was left undecided. It can cite the contract when it lands, and the C2c item if `void` or an equivalent gets written.
