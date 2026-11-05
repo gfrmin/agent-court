@@ -126,3 +126,7 @@ Guy, 5 November, on being shown Q3 as questions for him: "I thought it was askin
 6. Q4: not a problem; nothing comes out and no history is rewritten. *p* 0.9.
 
 The outside session's words in A2 that the author would not take second-hand are now the sovereign's direction of 5 November as this section records it; the same standard the plan uses for "Guy, 3 November: …".
+
+## 2026-11-05, Guy, via the outside session, after `3dacf99`
+
+Guy's own answer to Q3 and Q4, verbatim: "Q3: 1 yes, 2 yes, 3 yes, 4 not yet, 5 yes (they stay, with the sentence; the note is on jack at seq 1575). Q4: not a problem." The six decisions of the previous section stand as his, not as the outside session's; their probabilities resolve 1.
