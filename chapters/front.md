@@ -2,7 +2,7 @@
 
 ## Law, scoring and the self-modifying machine
 
-**Guy Freeman**, with two Claude sessions (`claude-fable-5-1`): *counsel*, which drafts the court's briefs, and the *author session*, which recomputes every figure and writes the chapters. Their acts and forecasts are scored in the text like anyone's.
+**Guy Freeman**, with two Claude sessions (`claude-fable-5-1`): *counsel*, which drafts the court's briefs, and the *author session*, which recomputes the figures and writes the chapters. Their acts and forecasts are scored in the text like anyone's.
 
 *First draft, November 2026. The monograph of [jack](https://github.com/renavondata/jack), a court for a self-modifying agent, built one inevitable step at a time. The agent arrives at layer C3 and the first edition cuts there; until then this draft proves that the court works, not that the agent does. Its source is the public repository [gfrmin/agent-court](https://github.com/gfrmin/agent-court), where the book's gaps and errata are tracked as issues; findings about jack itself are raised on [jack's tracker](https://github.com/renavondata/jack/issues). The founding essay is [The Science Was Done. The Engineering Wasn't.](https://gfrm.in/posts/the-science-was-done/) (1 November 2026).*
 
@@ -16,7 +16,7 @@ The system is built in *layers* (C0, C1a, C1b, C2a and on). Each is tried in a *
 
 ### How it was written
 
-The chapters are drafted by a Claude session that holds no key on the court and may change nothing in it; the owner reads each one and rules on the few questions the record cannot decide; every figure is recomputed by script on a clone of jack before a chapter is committed, and a chapter that prints a number the script cannot reproduce does not build. Nothing is revised after its bet resolves. The afterword says the rest.
+The chapters are drafted by a Claude session that holds no key on the court and may change nothing in it; the owner reads each one and rules on the few questions the record cannot decide; every figure registered in `data/facts.toml` is recomputed by script on a clone of jack, and a chapter that prints another number in a registered phrase does not build. A figure not yet registered carries its provenance tag but no such check; the first edition's cut registers the rest. Nothing is revised after its bet resolves. The afterword says the rest.
 
 ### How to read it
 

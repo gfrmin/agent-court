@@ -5,13 +5,18 @@
 #
 # A phrase is a template with one placeholder, written as the number would be
 # printed: {n} plain, {comma} with thousands separators, {fraction} as p/q,
-# {words} / {Words} as an English number word. The rest of the phrase is matched
+# {words} / {Words} as an English number word, {instant} as a UTC timestamp. The rest
+# of the phrase is matched
 # literally (spaces match any whitespace), so it should be specific enough to mean
 # only this figure: "100,000 seeded logs and {comma} prefixes", not "{comma}
 # prefixes", which would also catch the other run of record.
 #
 # `in` names the files that must carry the phrase at least once. A phrase found in
 # a file not named is still checked, which is how a stale copy is caught.
+#
+# `how` is fold (a count over the log), files (a field summed over transcripts), command
+# (a jack tool run at the commit) or text (a figure a jack document states, by `extract`
+# or `count`).
 #
 # To change a figure: change `commit` and `value` together, run the checker, and
 # fix every place it names. Never change `value` alone.
@@ -269,6 +274,348 @@ value = 9
 phrase = [
   { text = "read {words} `repair` rows under his login", in = ["chapters/ch-06-testing-by-betting.md"] },
   { text = "on criterion 7 — {words} `repair` rows", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+# ------------------------------------------------------------------ registered 5 November (D49)
+# The figures the argument rests on that were still loose: the null and where it came from,
+# the level, the cap's history, the assize baseline, and the ledger's headline scores.
+
+[fact.c1b_p0]
+# The null, as the brief derives it from jack's own replay through seq 163: not assize's series.
+commit = "6ebea1a"
+how = "text"
+path = "transcripts/BRIEF-C1b-draft.md"
+extract = 'Laplace \(5 \+ 1\)/\(9 \+ 2\) =\s+(\d+/\d+)'
+value = "6/11"
+phrase = [
+  { text = '*p*₀ = {fraction} for C1b', in = ["chapters/ch-12-the-ground.md"] },
+  { text = 'at *p*₀ = {fraction}', in = ["chapters/ch-13-the-evidence.md"] },
+  { text = 'At *p*₀ = {fraction}', in = ["chapters/ch-12-the-ground.md"] },
+  { text = 'with *p*₀ = {fraction} committed', in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = 'and *p*₀ = {fraction}.', in = ["chapters/ch-06-testing-by-betting.md"] },
+]
+
+[fact.c1b_p0_own_replay]
+commit = "6ebea1a"
+how = "text"
+path = "transcripts/BRIEF-C1b-draft.md"
+extract = 'four successes, Laplace (\d+/\d+)'
+value = "5/11"
+phrase = [
+  { text = "The brief's own attribution gives {fraction}", in = ["chapters/ch-06-testing-by-betting.md"] },
+]
+
+[fact.c1b_p0_items]
+commit = "6ebea1a"
+how = "text"
+path = "transcripts/BRIEF-C1b-draft.md"
+extract = 'yields (\w+) items'
+value = 9
+phrase = [
+  { text = 'through seq 163 gives {words} items', in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = "jack's own first {words} items", in = ["chapters/ch-16-how-it-could-be-wrong.md"] },
+]
+
+[fact.c1b_live_E_decimal]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json",
+        "--acts", "transcripts/evidence/acts-20261101.csv"]
+extract = 'live E (\d+/\d+)'
+round = 2
+value = "25.52"
+phrase = [
+  { text = '214358881/8398080 ≈ {n} [', in = ["chapters/ch-06-testing-by-betting.md"] },
+  { text = '214358881/8398080 ≈ {n}; counted', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.level_threshold]
+commit = "6ebea1a"
+how = "text"
+path = "CHARTER.md"
+extract = 'reach \*Eₜ\* ≥ (\d+) \(α'
+value = 20
+phrase = [
+  { text = '| the level | *E* ≥ {n} |', in = ["chapters/ch-12-the-ground.md"] },
+]
+
+[fact.level_alpha]
+commit = "6ebea1a"
+how = "text"
+path = "CHARTER.md"
+extract = '≥ 20 \(α = (\d\.\d+)'
+value = "0.05"
+phrase = [
+  { text = 'α = {n} is a convention', in = ["chapters/ch-12-the-ground.md"] },
+  { text = 'level-{n} rejection', in = ["chapters/ch-06-testing-by-betting.md"] },
+]
+
+# The cap's history, from SPEC §10's paragraph before the scope block. Five raises; only three are findings.
+
+[fact.cap_c0]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'the cap (\d+)\.'
+value = 3000
+phrase = [
+  { text = '{comma} at C0', in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.cap_c1_opening]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'opened at (\d+) on 19 October'
+value = 4500
+phrase = [
+  { text = "{comma} at C1's opening", in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.cap_second]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'raised to (\d+) the same day'
+value = 5500
+phrase = [
+  { text = '{comma} the next day', in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.cap_third]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'raised to (\d+) on 25 October'
+value = 6200
+phrase = [
+  { text = "{comma} at C1a's installing push", in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.cap_fourth]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'raised to (\d+) on 31 October'
+value = 6900
+phrase = [
+  { text = '{comma} at seq 197', in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.cap_fifth]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+extract = 'raised to (\d+) at the opening of C2a'
+value = 7800
+phrase = [
+  { text = '{comma} at seq 367', in = ["chapters/ch-04-the-smallest-law.md"] },
+  { text = '| the cap | {comma} counted lines', in = ["chapters/ch-12-the-ground.md"] },
+]
+
+[fact.cap_findings]
+commit = "6ebea1a"
+how = "text"
+path = "SPEC.md"
+count = 'finding against the pre-statement'
+value = 3
+phrase = [
+  { text = 'cap has moved {words} times against', in = ["chapters/ch-04-the-smallest-law.md", "chapters/ch-08-language-into-law.md"] },
+  { text = 'cap moved {words} times against', in = ["chapters/ch-16-how-it-could-be-wrong.md"] },
+  { text = 'five raises and {words} findings', in = ["chapters/ch-04-the-smallest-law.md"] },
+]
+
+[fact.c1a_counted]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1a", "--as-of", "2026-10-31T10:42:10Z",
+        "--runs", "transcripts/evidence/runs-tests-20261031.json"]
+extract = 'counted (\d+)/'
+value = 5998
+phrase = [
+  { text = 'counted code {comma} of 6,900', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c1a_forecasts]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1a", "--as-of", "2026-10-31T10:42:10Z",
+        "--runs", "transcripts/evidence/runs-tests-20261031.json"]
+extract = 'forecasts (\d+)/'
+value = 63
+phrase = [
+  { text = '{n} forecasts by four proposers', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c1b_counted]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C1b", "--as-of", "2026-11-01T11:31:58Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json",
+        "--acts", "transcripts/evidence/acts-20261101.csv"]
+extract = 'counted (\d+)/'
+value = 6882
+phrase = [
+  { text = 'counted {comma} of 6,900', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+# C2a on the morning of 3 November. The tags named no instant until 5 November, so they
+# reran but printed a later figure; as-of fixes the instant the prose reports.
+
+[fact.c2a_liveness_0434]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T04:34:00Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json"]
+extract = 'liveness continued: E (\d+/\d+)'
+round = 2
+value = "1.44"
+phrase = [
+  { text = 'about {n} over forty items', in = ["chapters/ch-13-the-evidence.md"] },
+  { text = 'it stood at about {n} at 04:34Z', in = ["chapters/ch-06-testing-by-betting.md"] },
+]
+
+[fact.c2a_ratio_procedure_0434]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T04:34:00Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json"]
+extract = '(?s)window C2a.*?A3\.4 ratio: procedure (\d+)'
+value = 170
+phrase = [
+  { text = 'the ratio {n} : 269', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_ratio_object_0434]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T04:34:00Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json"]
+extract = '(?s)window C2a.*?A3\.4 ratio: procedure \d+ : object (\d+)'
+value = 269
+phrase = [
+  { text = 'the ratio 170 : {n}', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_overdue_0434]
+commit = "6b800e14fc80eaf22137de6aa739a483c5a7f552"
+how = "command"
+argv = ["tools/status.py", "--subject", "C2a", "--as-of", "2026-11-03T04:34:00Z",
+        "--runs", "transcripts/evidence/runs-tests-20261101b.json"]
+extract = '(?s)window C2a.*?J7: (\d+) of'
+value = 6
+phrase = [
+  { text = '{words} builder forecasts overdue on 2 November', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+# The two readings of C2a's stated end, as the record states them; unruled.
+
+[fact.c2a_end_earlier]
+commit = "523e7da"
+how = "text"
+path = "transcripts/CASES.md"
+extract = 'read two ways: (\S+Z) by'
+value = "2026-11-15T15:04:14Z"
+phrase = [
+  { text = "{instant} by the brief's", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.c2a_end_later]
+commit = "523e7da"
+how = "text"
+path = "transcripts/CASES.md"
+extract = 'and (\S+Z) by A5\.2'
+value = "2026-11-17T12:00:00Z"
+phrase = [
+  { text = '{instant} by "a brief states no other date"', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+# A2.8 is law-in-waiting: nothing maps it. These hold the sentence in chapter 4 §4.5 to the commit it names.
+
+[fact.a2_8_rows_in_law]
+commit = "523e7da"
+how = "text"
+path = "LAW.md"
+count = 'A2\.8'
+value = 0
+
+[fact.a2_8_rows_in_map]
+commit = "523e7da"
+how = "text"
+path = "tools/enforcement.json"
+count = 'A2\.8|head hash|monitor'
+value = 0
+
+# The assize baseline jack's figures are reported beside.
+
+[fact.assize_decisions]
+commit = "6ebea1a"
+how = "text"
+path = "CHARTER.md"
+extract = '\| decisions \|[^\n]*\| (\d+) \|\n'
+value = 88
+phrase = [
+  { text = '{n} decisions and 121 repairs', in = ["chapters/ch-11-the-loops-and-the-bootstrap.md", "chapters/ch-12-the-ground.md", "chapters/ch-14-lineage.md"] },
+]
+
+[fact.assize_repairs]
+commit = "6ebea1a"
+how = "text"
+path = "CHARTER.md"
+extract = '\| repairs \|[^\n]*\| (\d+) \|\n'
+value = 121
+phrase = [
+  { text = '88 decisions and {n} repairs', in = ["chapters/ch-11-the-loops-and-the-bootstrap.md", "chapters/ch-12-the-ground.md", "chapters/ch-14-lineage.md"] },
+]
+
+# The ledger's headline scores at the book's pin.
+
+[fact.counsel_loss]
+commit = "6ebea1a"
+how = "command"
+argv = ["tools/jack", "score"]
+extract = '\| counsel \| 82 \| 40 \| [\d.]+ \| [\d.]+ \| (\d\.\d+) \|'
+round = 3
+value = "0.593"
+phrase = [
+  { text = 'of which 40 are resolved, at a mean log-loss of {n} against', in = ["chapters/ch-12-the-ground.md"] },
+  { text = 'forty resolved at a mean log-loss of {n} against', in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.counsel_base_loss]
+commit = "6ebea1a"
+how = "command"
+argv = ["tools/jack", "score"]
+extract = '\| counsel \| 82 \| 40 \| [\d.]+ \| [\d.]+ \| [\d.]+ \| (\d\.\d+) \|'
+round = 3
+value = "0.685"
+phrase = [
+  { text = 'against {n} for the base-rate forecaster', in = ["chapters/ch-12-the-ground.md"] },
+  { text = "against the base rate's {n} on the same events, as of", in = ["chapters/ch-13-the-evidence.md"] },
+]
+
+[fact.guy_loss]
+commit = "6ebea1a"
+how = "command"
+argv = ["tools/jack", "score"]
+extract = '\| guy \| 3 \| 3 \| [\d.]+ \| [\d.]+ \| (\d\.\d+) \|'
+round = 3
+value = "0.655"
+phrase = [
+  { text = 'at a mean log-loss of {n} [', in = ["chapters/ch-12-the-ground.md"] },
+]
+
+[fact.review_forecast_mean_p]
+commit = "6ebea1a"
+how = "command"
+argv = ["tools/jack", "score"]
+extract = '\| reviewer \| review\.forecast \| 5 \| (\d\.\d+) \|'
+round = 3
+value = "0.192"
+phrase = [
+  { text = 'five resolved, mean p {n}, all 0', in = ["chapters/ch-08-language-into-law.md"] },
+  { text = '`review.forecast`, p {n} on average', in = ["chapters/ch-11-the-loops-and-the-bootstrap.md"] },
 ]
 
 # ------------------------------------------------------------------ the book about itself

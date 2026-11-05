@@ -101,6 +101,8 @@ def placeholder_re(style: str) -> str:
         return r"\d{1,3}(?:,\d{3})+|\d+"
     if style == "fraction":
         return r"\d+/\d+"
+    if style == "instant":
+        return r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ"
     return r"\d+(?:\.\d+)?"  # not [\d.]+, which takes a sentence's full stop as part of "82."
 
 
@@ -208,6 +210,21 @@ def fold(entries: list[dict], spec: dict) -> int:
 _RUNS: dict[tuple, str] = {}
 
 
+def extracted(g: str, f: dict):
+    """A figure as captured from a tool's output or a document: rounded when the prose
+    prints it to fixed decimals, a decimal or an instant as printed, a ratio as a
+    Fraction, a number word or a digit string as an integer."""
+    if "round" in f:
+        return f"{float(Fraction(g)):.{f['round']}f}"
+    if "." in g:
+        return g
+    if "/" in g:
+        return Fraction(g)
+    if g.lower() in NUMBER_WORDS:
+        return NUMBER_WORDS.index(g.lower())
+    return int(g.replace(",", "")) if re.fullmatch(r"[\d,]+", g) else g
+
+
 def recompute(jack: Jack, fid: str, f: dict):
     commit = jack.resolve(f["commit"])
     how = f["how"]
@@ -234,12 +251,19 @@ def recompute(jack: Jack, fid: str, f: dict):
             err(f"facts.toml [{fid}]", f"`{' '.join(f['argv'])}` at {commit[:8]} printed nothing "
                 f"matching {f['extract']!r}:\n{out.strip()[-600:]}")
             return None
-        g = m.group(1)
-        if "round" in f:  # a figure the prose prints to fixed decimals, as a string
-            return f"{float(Fraction(g)):.{f['round']}f}"
-        if "." in g:  # a decimal the tool prints; compared as printed
-            return g
-        return Fraction(g) if "/" in g else int(g.replace(",", ""))
+        return extracted(m.group(1), f)
+    if how == "text":  # a figure a jack document states: `extract` one, or `count` matches
+        body = jack.show(commit, f["path"])
+        if body is None:
+            err(f"facts.toml [{fid}]", f"{f['path']} is not in jack at {commit[:8]}")
+            return None
+        if "count" in f:
+            return len(re.findall(f["count"], body))
+        m = re.search(f["extract"], body)
+        if not m:
+            err(f"facts.toml [{fid}]", f"{f['path']} at {commit[:8]} has nothing matching {f['extract']!r}")
+            return None
+        return extracted(m.group(1), f)
     err(f"facts.toml [{fid}]", f"unknown method {how!r}")
     return None
 

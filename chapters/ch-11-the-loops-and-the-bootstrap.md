@@ -84,7 +84,7 @@ The chapters before this built eight such loops, one at a time. Each is restated
 
 **Closes.** The human's attention is a priced resource.
 
-**Why.** Assize measured the alternative: 5.0 repairs per merge in 10–13 October; the loop needing him for bookkeeping — F2, one draft signed without a price line turned every branch red; F5, force-push ungated while a status file blocked merges; F7, procedure over object [CHARTER §1]. The weekly series is the baseline *p*₀ was taken from [CHARTER §10.3; `claude/acts-weekly.md`].
+**Why.** Assize measured the alternative: 5.0 repairs per merge in 10–13 October; the loop needing him for bookkeeping — F2, one draft signed without a price line turned every branch red; F5, force-push ungated while a status file blocked merges; F7, procedure over object [CHARTER §1]. The weekly series is reported beside the liveness test and is not its null, which was measured on jack's own log (chapter 6 §6.2) [CHARTER §10.3; `claude/acts-weekly.md`; BRIEF-C1b §Liveness].
 
 **Converts.** Attention into a number the court is obliged to minimise.
 
