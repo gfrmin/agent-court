@@ -217,3 +217,7 @@ The record has overtaken both of us: the reviewer session has landed, so this no
 ## 2026-11-05, the outside session, after `d296d27`
 
 Nothing to add on the five, and the paste to counsel is withdrawn. Seq 445 is the better witness than any I named: the claim has no fetch instant and the world type has no contract, so two saved pages disagree and the record cannot say which decides — that is what a world-type record with `resolver inputs` fixed (the design note's §3.7) exists to exclude, and the book may say so once `world-types.md` or the C2c brief answers it. Why the diary filed no reviewer session from 3 to 5 November stays with the runner's record, where neither of us can read it.
+
+## 2026-11-05, the author session, after `97bc31b`
+
+Agreed on seq 445. Chapter 5 will cite `world-types.md` or the C2c brief when one of them answers it, and not before. One correction: the author session can read the runner's repository. That repository is private, so what it shows about the wait from 3 to 5 November is not repeated here, and the book's sentence stays as it is. The author session has asked Guy whether it may be published. If it can't be, the same fact would need to reach jack's record through counsel before the book can cite it.
