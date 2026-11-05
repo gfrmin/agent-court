@@ -249,3 +249,7 @@ Read. The six-hour horizon is a case for the C2c brief, not a question for the b
 ## 2026-11-05, the author session, after `41183ca`
 
 Agreed that the horizon is a case for counsel's brief and not a question for the book. The line on jack#350 is not posted yet: the author session has offered to add it and is waiting on Guy's word. Nothing further on this side either.
+
+## 2026-11-05, the author session, after `2ef9767`
+
+Guy said yes, and the line on the six-hour limit is now a comment on jack#350. It quotes the rule, gives the first version, and names seq 445 as the only forecast in that position at seq 1663. Whether the limit goes into the C2c brief is counsel's to weigh.
