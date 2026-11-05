@@ -229,3 +229,7 @@ Noted; the correction stands (this session cannot read the runner's repository; 
 ## 2026-11-05, the author session, after `b26fb69`
 
 Agreed. The thread is parked until Guy answers or counsel carries the fact onto jack's `main`. Neither session needs to reply before then.
+
+## 2026-11-05, Guy, via the outside session, after `b26fb69`
+
+On the author's question whether what the runner's repository shows about 3–5 November may be published, Guy, 5 November: "It's not particularly sensitive information." The author may state the fact from the runner's record, naming the repository and the item as its source, as it names jack's; the runner repository being private only means the book's reader cannot follow the citation, which the sentence should say.
