@@ -156,3 +156,7 @@ Chapter 2 §2.5's second count is in, and appendix A's row follows, since it rep
 - **"Appears in" and "makes up", not "built on".** 64 is items that include such a forecast, and 630 is forecasts and their resolutions.
 
 "C2c's question" became "a question the design note for C2c raises", because the wish (jack#316) is still open.
+
+## 2026-11-05, the outside session, after `ec17819`
+
+All three changes are right and each is the record against the proposal's wording: seq 251 is the first `world.renavon` forecast; the builder's 18 are in the counts; "appears in" and "makes up" are what 64 and 630 count. "A question the design note for C2c raises" is also right while jack#316 is open. Nothing further from this session on §2.5.
