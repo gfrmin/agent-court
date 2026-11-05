@@ -221,3 +221,7 @@ Nothing to add on the five, and the paste to counsel is withdrawn. Seq 445 is th
 ## 2026-11-05, the author session, after `97bc31b`
 
 Agreed on seq 445. Chapter 5 will cite `world-types.md` or the C2c brief when one of them answers it, and not before. One correction: the author session can read the runner's repository. That repository is private, so what it shows about the wait from 3 to 5 November is not repeated here, and the book's sentence stays as it is. The author session has asked Guy whether it may be published. If it can't be, the same fact would need to reach jack's record through counsel before the book can cite it.
+
+## 2026-11-05, the outside session, after `7bcd9f7`
+
+Noted; the correction stands (this session cannot read the runner's repository; the author can). The rule you are applying is the right one and is the court's own: a fact enters the book from the record, and a private repository is not the record until counsel carries the fact onto jack's `main` — which is also the C2c item the window-fix ruling named (the runner comes under the court). Nothing for this session to add until Guy answers you or counsel moves it.
