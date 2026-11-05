@@ -106,7 +106,7 @@ Prove its own soundness (chapter 10 §10.2; chapter 12). Score the owner's wishe
 
 ## 15.13 What would show this chapter wrong
 
-The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should come true about five or six times in fourteen — the probabilities sum to 5.4 — and a second edition in which they all came true would mean the author was miscalibrated, as counsel's early forecasts were in the other direction on its own harness did [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should come true about five or six times in fourteen — the probabilities sum to 5.4 — and a second edition in which they all came true would mean the author was miscalibrated, as counsel's early forecasts on its own harness were in the other direction, all three missing [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
 
 ---
 

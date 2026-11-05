@@ -54,7 +54,7 @@ We now know what a suggestion is: a claim, with a probability fixed before the o
 
 ## 2.7 What would show this chapter wrong
 
-A helper whose suggestions can be verified rather than scored — a policy whose outputs are checkable by inspection. Rice says not in a language that can write the next version of itself; a restricted language may escape it (chapter 10 §10.5). A score in the court that is not strictly proper, or a resolution by a forecaster's second key — the pins `forecast_before_cutoff`, `rigged`, `revision` and `self_judged` exist so these fire in CI rather than in a reader's hand. And the one that would matter most: an outcome stream that the proposers turn out to control — a catalogue that reads the election, a results page a session can edit. The hashes in the tree and the resolver's key make that an act with a signature on it, and chapter 12 §12.5 says what residue remains.
+A helper whose suggestions can be verified rather than scored — a policy whose outputs are checkable by inspection. Rice says not in a language that can write the next version of itself; a restricted language may escape it (chapter 10 §10.5). A score in the court that is not strictly proper, or a resolution by a forecaster's second key — the pins `forecast_before_cutoff`, `rigged`, `revision` and `self_resolution_admitted` exist so these fire in CI rather than in a reader's hand. And the one that would matter most: an outcome stream that the proposers turn out to control — a catalogue that reads the election, a results page a session can edit. The hashes in the tree and the resolver's key make that an act with a signature on it, and chapter 12 §12.5 says what residue remains.
 
 ---
 

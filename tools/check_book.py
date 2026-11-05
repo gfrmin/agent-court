@@ -3,7 +3,7 @@
 
 The prose keeps literal numbers, names and quotations — it is read raw on GitHub, in
 review diffs and in the book mdBook renders. Nothing is substituted. Instead this script fails when the prose and the thing it
-reports disagree. Four checks:
+reports disagree. These checks:
 
   facts      every figure in data/facts.toml is recomputed from renavondata/jack at
              the commit it is pinned to, and every phrase that prints it prints the
@@ -13,8 +13,12 @@ reports disagree. Four checks:
   citations  every "Author (Year)" in a chapter has an entry in sources.md,
              and every entry there is cited somewhere or listed as uncited on purpose.
   quotes     every quotation attributed to a jack document (CHARTER, SPEC, LAW, a
-             BRIEF, a bare amendment clause such as A2.10) occurs verbatim in that
-             document at the commit the citing file pins.
+             BRIEF, a bare amendment clause such as A2.10), by a tag after it or a
+             [TAG: "…"] before it, occurs verbatim in that document at the commit the
+             citing file pins.
+  seqs       every "seq N" is on the log, and `verb …` [seq N] names an entry of that type.
+  tags       every complete status.py, value.py or jack score tag reruns at its commit,
+             and a status.py or value.py tag names its instant with --as-of.
 
 Usage:
   tools/check_book.py --jack PATH      # all four; PATH is a clone of renavondata/jack
@@ -442,6 +446,10 @@ QUOTE = re.compile(r'"([^"\n]{12,}?)"|“([^”\n]{12,}?)”')
 DOC = re.compile(r"\b(CHARTER|SPEC|LAW(?:\.md)?|BRIEF-[A-Z0-9a-z]+|A\d+\.\d+|RUNBOOK)\b")
 
 
+# A quotation whose document tag comes first: [CHARTER §3: "…"].
+TAG_BEFORE = re.compile(r"\[\s*(CHARTER|SPEC|LAW(?:\.md)?|BRIEF-[A-Z0-9a-z]+|A\d+\.\d+|RUNBOOK)\b[^\]\n\"“”;]*:\s*$")
+
+
 def norm(s: str) -> str:
     s = s.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     s = re.sub(r"[*_`]", "", s)
@@ -481,6 +489,8 @@ def check_quotes(facts: dict, jack: Jack, files: list[Path]) -> None:
             tail = text[m.end():m.end() + 90]
             d = DOC.search(tail)
             if not d or d.start() > 60:
+                d = TAG_BEFORE.search(text[max(0, m.start() - 60):m.start()])
+            if not d:
                 continue
             path = doc_path(jack, commit, d.group(1))
             where = f"{rel(p)}:{line_of(text, m.start())}"
@@ -507,6 +517,40 @@ def check_quotes(facts: dict, jack: Jack, files: list[Path]) -> None:
                 pos = i + len(part)
 
 
+# ---------------------------------------------------------------- seq references
+
+SEQS = re.compile(r"\bseqs? (\d+(?:(?:, | and |–|, and )\d+)*)(?![\d-])")
+# The verb must carry an argument: a bare `merge` or `decision` beside a seq is usually a power.
+TYPED_SEQ = re.compile(r"`(transmute|amend|push|merge|key|decision) [^`]+`[^\[\n]{0,12}\[seq (\d+)\]")
+ENTRY_TYPE = {"transmute": "decision"}
+
+
+def check_seqs(jack: Jack, files: list[Path]) -> int:
+    """Every `seq N` names an entry that exists on the log, and where the prose names an
+    entry's verb directly before its tag (`amend A3` [seq 30]), an entry of that type."""
+    entries = jack.log("HEAD")
+    types = {e["seq"]: e["type"] for e in entries}
+    n = 0
+    for p in files:
+        text = strip_code_keep_verbs(p.read_text(encoding="utf-8"))
+        for m in SEQS.finditer(text):
+            for s in map(int, re.findall(r"\d+", m.group(1))):
+                n += 1
+                if s not in types:
+                    err(f"{rel(p)}:{line_of(text, m.start())}", f"seq {s} is not on the log (last {max(types)})")
+        for m in TYPED_SEQ.finditer(text):
+            want, s = ENTRY_TYPE.get(m.group(1), m.group(1)), int(m.group(2))
+            if types.get(s) != want:
+                err(f"{rel(p)}:{line_of(text, m.start())}", f"names `{m.group(1)}` at seq {s}, "
+                    f"which is a {types.get(s)} entry")
+    return n
+
+
+def strip_code_keep_verbs(text: str) -> str:
+    """Fenced blocks blanked; inline code kept, since a verb in backticks is what is checked."""
+    return re.sub(r"```.*?```", lambda m: re.sub(r"[^\n]", " ", m.group()), text, flags=re.S)
+
+
 # ---------------------------------------------------------------- provenance tags
 
 TAG = re.compile(r"`((?:tools/)?(?:status|value|count_kernel)\.py|jack score)((?:\s+[^`@…<]+?)?)\s+@([0-9a-f]{7,40})`")
@@ -522,6 +566,9 @@ def check_tags(jack: Jack, files: list[Path]) -> int:
         text = p.read_text(encoding="utf-8")
         for m in TAG.finditer(text):
             tool, args, commit = m.group(1), m.group(2).split(), m.group(3)
+            if tool.endswith(("status.py", "value.py")) and "--as-of" not in args:
+                err(f"{rel(p)}:{line_of(text, m.start())}", f"provenance tag `{m.group(0).strip('`')}` "
+                    "names no --as-of, so it prints a different figure on every later day")
             key = (tool, " ".join(args), commit)
             if key not in seen:
                 try:
@@ -558,6 +605,10 @@ def main() -> int:
     facts = tomllib.loads((ROOT / "data" / "facts.toml").read_text(encoding="utf-8"))
     files = prose_files()
     jack = Jack(a.jack.resolve()) if a.jack else None
+    if jack is not None and jack.git("rev-parse", "--is-shallow-repository").strip() == "true":
+        print(f"check_book: {a.jack} is a shallow clone; status.py and the pinned commits need full history "
+              "(git fetch --unshallow)", file=sys.stderr)
+        return 1
     try:
         check_facts(facts, jack, files)
         check_counts(facts, files)
@@ -566,11 +617,12 @@ def main() -> int:
         if jack is not None:
             check_quotes(facts, jack, files)
             ntags = check_tags(jack, files)
+            nseqs = check_seqs(jack, files)
     finally:
         if jack is not None:
             jack.close()
 
-    scope = (f"facts, counts, citations, quotes, {ntags} provenance tags rerun" if jack
+    scope = (f"facts, counts, citations, quotes, {ntags} provenance tags rerun, {nseqs} seqs" if jack
              else "counts, citations, phrases (no jack)")
     if errors:
         print(f"check_book: {len(errors)} problem(s) [{scope}]")

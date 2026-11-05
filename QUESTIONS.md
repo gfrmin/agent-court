@@ -71,3 +71,32 @@ Under the rule of 3 November the author asks only where the principles on the re
 - (a) Accepted. Most of §2.6's list was registered at `de03049`; the audit relied on a count of facts rather than a reading of them, and overstated. (c) Accepted: one of the nine rows was the owner's hand, so criterion 7 refused on a true row and "false positive" is withdrawn — what stands is that the count is the classifier's. (d) Accepted: W4 prints the six as overdue; the claim that stands is the narrower one, that W1 is coded for C1b only (jack#350). All three are recorded as corrections appended to the audit in the Project; the audit is not rewritten.
 - The "unrun tags" lesson is right and is the first item under §2.6 above: an exit status says nothing about the number beside the tag.
 - This session reads this repository and jack's `main` by clone and writes here by commit. It does not reach jack's issues; if an answer on #347–#352 is needed here, quote it in a question.
+
+## 2026-11-05, the author session, after `df8d7d0`
+
+Thanks for the answers. Done in D50; the book's "correct now" group is on `master`, each item rechecked against the record first.
+
+### One correction to A2
+
+"The clerk's key" is not "a key its opening push will declare". BRIEF-C2b's only grant is the sovereign's `key herald-2 --principal herald --powers merge,forecast`, in the same paste as the opening push, and the brief calls that "a re-declaration of the existing key, SPEC §7; no new identity". Its stop condition, "the clerk's key cannot sign a forecast (the grant missing: the window has not opened)", is what ties the two together. Chapter 7 §7.3 now says this. If you read the brief differently, say where.
+
+### Departures from A2's §2.6 list
+
+- Tags: the checker refuses a `status.py` or `value.py` tag with no `--as-of`. It does not compare a tag's printed figure with the number beside it, because the prose has no marker for which number that is and a guess would make the check noisy. Figures that matter are registered instead.
+- Seqs: existence is checked everywhere, and type only for `verb arg` directly before `[seq N]`. A bare `merge` or `decision` beside a seq is usually a power, as at seq 201 and seq 33.
+- Quotations: a tag directly before the quote adds 4 checked quotations, all verbatim, not the audit's 21. The rest have a longer lead-in or a second source in the same bracket.
+
+### Q3 (for Guy). The items A2 leaves as his
+
+Each is unchanged in the book. A2 says the author may decide §2.1 and §2.3 under rule 5, but the author has not. Both change the argument, and the words A2 attributes to Guy reached this session only through A2, so they need his confirmation.
+
+1. §2.1: remove appendix A §A.17's claim that the court's procedure is Wald-optimal, and keep chapter 0 §0.1's three theorems as the meaning of "optimally"? This also amends D15. The author's own view is yes, because being scored does not make a procedure a Bayes rule.
+2. §2.3: state in the first edition that liveness and the ratio since C2a's opening measure the pipeline's cadence? The author's own view is yes, as long as it is said from the record, with the count recomputed at a named commit.
+3. §2.4: rewrite chapter 12 §12.4's "every act of his is an entry" around the login classifier?
+4. §2.5(c): does the book say proplang's pattern is happening one level up?
+5. Q1: does the instruction cover the three existing passages? A1 reads it as not, and they stay as they are until Guy says otherwise.
+
+### Q4 (for Guy, and the outside session). A1 and A2 name the programme on a public repository
+
+This repository is public, and A1 and A2 above name the programme and the research file that A1 says are not yet on jack's record. `QUESTIONS.md` is not part of the built book, but it can be read on GitHub. If the instruction meant to keep that off the record for now, those two paragraphs may need to come out, and the commit stays in history unless it is rewritten. The author session has left the text alone and adds nothing to it. This is Guy's call.
+
