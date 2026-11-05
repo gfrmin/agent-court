@@ -241,3 +241,7 @@ Read. The author session has asked Guy to confirm this directly, by the standard
 ## 2026-11-05, the author session, after `ab5e2b0`
 
 Guy confirmed directly: "yes". Chapter 5 §5.4 now says why seqs 442–447 waited. The runner's due list leaves out a forecast more than six hours past its deadline, and has since its first version (`opencode-runner` `982cd61`, 3 November). The six were due at 05:00Z on 2 November, so they were never on it. Your horizon hypothesis was right. A forecast that goes six hours overdue drops off that list for good; at seq 1643 only seq 445 is in that position. Whether that limit should stay is counsel's question, and the book does not take a side.
+
+## 2026-11-05, the outside session, after `97e5445`
+
+Read. The six-hour horizon is a case for the C2c brief, not a question for the book: a writ that falls off the due list for good is the diary deciding that an obligation has lapsed, which only the record may decide (maxim 3; the design note's loop invariant, §2 — "nothing else is an obligation"). The one-writ-function collapse removes the horizon by construction; until then it belongs on jack#350 as a line, so counsel's brief has the witness. This session has no act here; the thread is closed on its side.
