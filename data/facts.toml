@@ -683,12 +683,13 @@ value = 50
 phrase = [ { text = "Of those 62 items, {n} include", in = ["chapters/ch-06-testing-by-betting.md"] } ]
 
 [count.appendix_a_rows]
-# A.2–A.16: each result is a ### heading; A.0, A.1, A.17 and A.18 are ## sections.
+# A.2–A.16 and, from 10 November, A.19–A.25: each result is a ### heading; A.0, A.1,
+# A.17 and A.18 are ## sections, as is the "Meaning and measurement" group heading.
 file = "chapters/app-a-the-necessities.md"
 pattern = '^### A\.\d+ '
-expect = 15
+expect = 22
 phrase = [
-  { text = "The {words} rows above", in = ["chapters/app-a-the-necessities.md"] },
+  { text = "The {n} rows of this appendix", in = ["chapters/app-a-the-necessities.md"] },
 ]
 
 [count.residue_bets]
@@ -696,9 +697,53 @@ phrase = [
 # held twelve; this count is why that cannot recur.
 file = "chapters/ch-15-residue.md"
 pattern = '\*p\* 0\.\d+'
-expect = 14
+# 14 in the first draft; 18 from 10 November, when §§15.14–15.16 added four (D55).
+expect = 18
 phrase = [
   { text = "{words} probabilities between", in = ["chapters/ch-15-residue.md"] },
+]
+
+# ------------------------------------------------------------------ 10 November 2026: the outside read
+# Figures added with appendix A §§A.19–A.25, chapters 12 §12.5 and 15 §§15.14–15.16,
+# at main 4f1a9ea (2026-11-09T15:52:21+02:00). Folds only; the counts over `args`
+# members those sections also give (931 of 949 `world.renavon` forecasts carry
+# `args.model`) cannot be expressed as a fold filter and carry their tag unchecked.
+
+[fact.forecasts_4f1a9ea]
+commit = "4f1a9eadfbeecbe6e7bc1533a64326c8ea02a986"
+how = "fold"
+where = { type = "forecast" }
+value = 1129
+phrase = [
+  { text = "of the {comma} forecasts on the log at `4f1a9ea`", in = ["chapters/app-a-the-necessities.md", "chapters/ch-12-the-ground.md"] },
+  { text = "of the {comma} forecasts at `4f1a9ea`", in = ["chapters/app-a-the-necessities.md", "chapters/ch-15-residue.md"] },
+]
+
+[fact.renavon_forecasts_4f1a9ea]
+commit = "4f1a9eadfbeecbe6e7bc1533a64326c8ea02a986"
+how = "fold"
+where = { type = "forecast", world_type = "world.renavon" }
+value = 949
+phrase = [
+  { text = "{n} of the 1,129 forecasts", in = ["chapters/app-a-the-necessities.md", "chapters/ch-12-the-ground.md", "chapters/ch-15-residue.md"] },
+]
+
+[fact.resolutions_4f1a9ea]
+commit = "4f1a9eadfbeecbe6e7bc1533a64326c8ea02a986"
+how = "fold"
+where = { type = "resolution" }
+value = 1045
+phrase = [
+  { text = "the {comma} resolutions at `4f1a9ea`", in = ["chapters/app-a-the-necessities.md", "chapters/ch-15-residue.md"] },
+]
+
+[fact.counsel_programme_forecasts_4f1a9ea]
+commit = "4f1a9eadfbeecbe6e7bc1533a64326c8ea02a986"
+how = "fold"
+where = { type = "forecast", world_type = "counsel.programme" }
+value = 73
+phrase = [
+  { text = "{n} forecasts of type `counsel.programme`", in = ["chapters/app-a-the-necessities.md"] },
 ]
 
 # ------------------------------------------------------------------ citations

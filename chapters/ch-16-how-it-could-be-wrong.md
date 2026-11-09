@@ -31,6 +31,12 @@ The charter wrote four before any window opened [CHARTER §12], and the book add
 - A predecessor that reached a litigant — a scored loop on a world that charged, for longer, cheaper — which would make the lineage a sequence of abandonments and "only the economy is new" false. Chapter 14.
 - The founding essay and the record disagreeing on a point the book takes the record's side of (`plan.md` E1), and a reader finding the essay right.
 
+Three registered on 10 November 2026, from the outside read of the construction against semantics and epistemology (appendix A §§A.19–A.25); each is a falsifier of the thesis, not only of a chapter:
+
+- The surrogate failing Prentice's (1989) criterion on the record: a wealth crossing its threshold while the acts table's count of the owner's repairs rises over the same window — the construction's own statistic promoting a layer that made its operator's cost worse. Chapter 12 §12.2, §12.5; appendix A §A.23.
+- A reading applied to forecasts entered before it, a second time, after the first was named: the law looking backward at the one station the kernel cannot see, and the court not closing the station. Chapter 8 §8.3; appendix A §A.19.
+- Agreement of correlated readers counted as evidence: two resolvers or two checkers of one family, or two fetches by one path, found to have agreed on a wrong outcome that an independent reader would have caught (Dietrich & Spiekermann 2013). The differential's 100,000 seeds are not this evidence, since kernel2's independence rests on provenance, not on the differential (chapter 12 §12.1). Appendix A §A.21.
+
 ## 16.3 What the book does not claim
 
 Not optimality of the mechanism or of the court's procedure: expected utility is what "for us" means, and it re-enters only where the sovereign prices an act (appendix A §A.17). Not sufficiency; only minimality, with sufficiency left to the falsifiers above. Not that the court is provably sound; only that its soundness is bet on, in a book that can be seen to go bankrupt. Not that the human leaves; only that his acts are priced, confined to the irreversible, and driven toward a handful of decisions a week. Not novelty of any result; only of the composition, and only because of the economy. And not that the court is, or approximates, a logical inductor (Garrabrant et al. 2016), a name in the founding essay's quoted list: that is a different construction — a market of traders over logical sentences whose prices become unexploitable — and what it shares with the court is only the common ancestor, game-theoretic probability, which chapter 6 takes directly from Shafer and Vovk.
@@ -41,4 +47,4 @@ A falsifier the construction admits that this list omits. The list is the author
 
 ---
 
-*Draft note. Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2. §16 corrected 5 November (D51).*
+*Draft note. Draft 1, the author session, 3 November 2026. This chapter collects what each chapter pre-registered against itself and adds the referee's case, which the book should make before the referee does. Provenance tags as `plan.md` §2. §16 corrected 5 November (D51). §16.2's three registered falsifiers added 10 November by an outside session (D55).*

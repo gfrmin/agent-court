@@ -26,7 +26,7 @@ Old maps mark the edge of the surveyed country with a line and leave the rest bl
 
 **Not built.** The election runs over a roster frozen at each window's opening [BRIEF-C2a §Scope, the entrants]; C2b's invitation draws among the same principals. Entry is by the sovereign's key declaration (chapter 4 §4.3).
 
-**What would force it.** A proposer the sovereign has not declared wanting in — a third model family, an outside party, another agent — with a record to show. The moment admission is by record rather than by declaration, the mixture over a fixed roster becomes a market in the ordinary sense: participants with stakes, admitted by performance, paid by score. That is Hayek's price system and Ostrom's graduated membership, both already in the sources, and it is where the book would use the word "market" if it ever does — as an engineering consequence of chapter 7, not as a philosophy of chapter 12.
+**What would force it.** A proposer the sovereign has not declared wanting in — a third model family, an outside party, another agent — with a record to show. The moment admission is by record rather than by declaration, the mixture over a fixed roster becomes a market in the ordinary sense: participants with stakes, admitted by performance, paid by score. That is Hayek's price system and Ostrom's (1990) graduated membership, both already in the sources, and it is where the book would use the word "market" if it ever does — as an engineering consequence of chapter 7, not as a philosophy of chapter 12.
 
 **Likely mechanism.** C2b's `invite`/`accept` is the seam [BRIEF-C2b, preamble]: a key granted by the clerk on a pre-stated record rather than by the sovereign's hand, under a rule with its witnesses.
 
@@ -106,8 +106,42 @@ Prove its own soundness (chapter 10 §10.2; chapter 12). Score the owner's wishe
 
 ## 15.13 What would show this chapter wrong
 
-The bets, scored. The chapter is written to lose some of them: fourteen probabilities between 0.2 and 0.6 should come true about five or six times in fourteen — the probabilities sum to 5.4 — and a second edition in which they all came true would mean the author was miscalibrated, as counsel's early forecasts on its own harness were in the other direction, all three missing [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+The bets, scored. The chapter is written to lose some of them: eighteen probabilities between 0.2 and 0.7 should come true about seven or eight times in eighteen — the probabilities sum to 7.55, the fourteen of the first draft to 5.4 and the four of §§15.14–15.16 to 2.15 — and a second edition in which they all came true would mean the author was miscalibrated, as counsel's early forecasts on its own harness were in the other direction, all three missing [REPORT.md §8.4, as transcript]. An item built that is not here — the margin had a town on it. An item here that was designed rather than named — the chapter has broken the one rule it set itself. And §15.6 shown to be an extension after all: a mechanism for several owners that needed no new theorem. The author would be glad to be wrong about that one, and does not expect to be.
+
+## Added 10 November 2026: the layers the kernel does not read
+
+*Three items found by an outside read of the construction against the literatures of semantics and epistemology (appendix A §§A.19–A.25). They follow §15.13 rather than precede it so that §15.13's numbering, which other texts cite, stands; their three bets are outside §15.13's fourteen and are scored with them at the next edition.*
+
+## 15.14 Interpretation fixed at commitment
+
+**Not built.** A forecast is scored against a paragraph of `transcripts/world-types.md`, and no forecast on the log names the bytes of the paragraph it was entered under [log@4f1a9ea: the `args` members of `world.renavon` forecasts]. A reading appended on 28 October says of itself that it "binds the forecasts already entered" [`transcripts/world-types.md`, the paragraph headed "Reading"] — Rex's third failure at the station the kernel does not see (chapter 8 §8.3).
+
+**What would force it.** A resolution disputed on a reading between parties with keys, or the first window whose statistic turns on a forecast whose type was re-read after its entry. The first instance is on the record and was not disputed; the second has not arisen.
+
+**Likely mechanism.** The hash of the binding text carried by the forecast, as its probability is; a resolution citing other bytes refused by the verb before signing, as `jack resolve` already refuses a self-resolution; a reading entered as a new version of the type that binds later forecasts only, in Horty's (2011) sense; and a third outcome for the case the fixed text does not decide, which is a change to the schema [SPEC §5] and so to the kernel, the second checker and the vectors together.
+
+**Bet.** A forecast carrying the hash of its world type's text is on the log before 2026-12-31: *p* 0.7. A third outcome exists in the schema before 2027-03-31: *p* 0.4.
+
+## 15.15 A second measurement
+
+**Not built.** Every resolution is one fetch, by one session, under one key, following one template [`transcripts/sessions/stream-resolve.md`], and the 1,045 resolutions at `4f1a9ea` carry no member beyond the three the schema requires [log@4f1a9ea: `resolution` body members] — so neither the model that read the page nor the path it was fetched by is on the record. The hash in the tree proves the saved bytes unchanged since the commit, not that the URL served them (appendix A §A.21). The kernel has two implementations from two families; the measurement of the world has one.
+
+**What would force it.** A resolution shown wrong by a copy of the page the court never saved; or two resolvers disagreeing on one event, which cannot happen until there are two.
+
+**Likely mechanism.** A second fetch by a different path and a different family — another host, or a third party's archive — hashed beside the first; the model and the path recorded on the resolution, which the schema's optional members already allow [SPEC §5]; and on disagreement, no resolution and a writ, never a 0 charged to the forecaster for the court's failure to measure.
+
+**Bet.** A resolution on the log cites two independently fetched copies of its evidence before 2027-01-31: *p* 0.5.
+
+## 15.16 Who operates the world
+
+**Not built.** The declaration of world types records for each type whether the court schedules it and whether its resolver reads the record [`transcripts/world-types.json`: `scheduled_by`, `reads_record`]. It does not record who operates the process the outcome comes from. `world.renavon` is 949 of the 1,129 forecasts at `4f1a9ea` [log@4f1a9ea: forecasts by type] and resolves on a page the owner's own marketplace publishes; it gates the value test (chapter 12 §12.5). Scheduled and operated are different properties: a hand-filed race forecast is unscheduled and uncontrolled; a cron forecast on the catalogue is both.
+
+**What would force it.** It has: a stream operated by a party holding a key is the greater part of the only value test the court has run. What has not yet forced it is a *disputed* case — an owner's act on the catalogue that changed an outcome a forecaster had staked on.
+
+**Likely mechanism.** An `operator` member in the declaration — a party, or none — and a rule that a type whose operator holds a key enters no statistic that gates a promotion or an election weight; or, if the stream is to stay evidence, a committed randomisation of some of the operator's own acts, which is Forssell and Ljung's (1999) external excitation (appendix A §A.22).
+
+**Bet.** Every declared type carries an operator, and no owner-operated type gates a promotion or an election weight, before 2027-01-31: *p* 0.55.
 
 ---
 
-*Draft note. Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2. §15.10 and §15.11 extended 5 November (D51).*
+*Draft note. Draft 1, the author session, 3 November 2026. Every item below is stated in one form: what the court does not do, the case or measurement that would force it, the mechanism it would most likely take, and the author's probability that it exists by a named date. The probabilities are the author's bets, recorded here so that the book's next edition can score them; they are not on jack's ledger, which holds only forecasts by keys the court has declared. Provenance tags as `plan.md` §2. §15.10 and §15.11 extended 5 November (D51). §§15.14–15.16 added 10 November by an outside session, figures at `4f1a9ea` (D55).*
