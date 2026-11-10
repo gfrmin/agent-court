@@ -18,6 +18,10 @@ The system is built in *layers* (C0, C1a, C1b, C2a and on). Each is tried in a *
 
 The chapters are drafted by a Claude session that holds no key on the court and may change nothing in it; the owner reads each one and rules on the few questions the record cannot decide; every figure registered in `data/facts.toml` is recomputed by script on a clone of jack, and a chapter that prints another number in a registered phrase does not build. A figure not yet registered carries its provenance tag but no such check; the first edition's cut registers the rest. Nothing is revised after its bet resolves. The afterword says the rest.
 
+### What the book binds
+
+Nothing. The court's own law has a word for a text in this book's position — *commentary*, as `LAW.md` uses it: a text that maps the law and binds nothing until an amendment enacts a sentence of it or a pin kills its mutant. The book is cited in the court's briefs and notes as the statement of the thesis the windows are tested against, and a commentary that is cited becomes law by acceptance unless the direction of binding is fixed. It is fixed here, one way: a sentence of this book binds the court only when it has entered the record by the court's procedure — a criterion in a window's file, a pin, an amendment — and the chapter then cites the entry that made it so. The book, for its part, cites the court at a seq or a commit; the court cites the book at a commit. Citation runs both ways by hash; binding runs one way, by entry. Additions after a draft is read are appended and dated, as the charter's amendments are, rather than written into the text they correct, so that what the owner read and what was added since can be told apart.
+
 ### How to read it
 
 Statisticians may start at chapter 6, where the tests are theorems. Readers from AI safety at chapters 2 and 10, the bet and the lock. Institutional economists at chapters 4, 8 and 14, the law and its price. Anyone who evaluates or assures AI systems for a living at chapters 2, 6 and 13 — the bet, the test and the evidence — and then 10. Everyone else at chapter 0, which is the question — and chapter 16 second, which is the referee's case, written first so that the referee can be answered from the record rather than argued with.
@@ -26,7 +30,7 @@ The bracketed tags are the book's evidence, not its argument, and they are set s
 
 ### Conventions
 
-`[seq N]` is an entry of jack's `log.jsonl`; `[CHARTER §n]`, `[SPEC §n]`, `[BRIEF-…]` a clause of a court document; `[status.py … @commit]` a tool run the reader can repeat; `[REPORT.md …, as transcript]` what counsel reported, never the source of a number. The "figure" that opens each chapter is a piece of ordinary human life that has the chapter's shape; it illustrates and never evidences. Each chapter ends with what it leaves open and what would show it wrong, and closes with a note of its draft and the commit of jack its figures were recomputed at.
+`[seq N]` is an entry of jack's `log.jsonl`; `[log@commit: …]` a count over the log at a named commit, recomputed from the file; `[CHARTER §n]`, `[SPEC §n]`, `[BRIEF-…]` a clause of a court document; `[status.py … @commit]` a tool run the reader can repeat; `[REPORT.md …, as transcript]` what counsel reported, never the source of a number. The "figure" that opens each chapter is a piece of ordinary human life that has the chapter's shape; it illustrates and never evidences. Each chapter ends with what it leaves open and what would show it wrong, and closes with a note of its draft and the commit of jack its figures were recomputed at.
 
 ### The court's words, in the field's
 
