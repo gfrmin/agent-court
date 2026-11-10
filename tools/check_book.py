@@ -19,11 +19,15 @@ reports disagree. These checks:
   seqs       every "seq N" is on the log, and `verb …` [seq N] names an entry of that type.
   tags       every complete status.py, value.py or jack score tag reruns at its commit,
              and a status.py or value.py tag names its instant with --as-of.
+  authors    a commit's author is the role that made it (plan.md §1.7, D57): no commit
+             of this repository since the rule carries a Claude-Session or
+             Co-Authored-By: Claude trailer under one of the owner's names. It needs
+             this repository's full history and fails without it.
 
 Usage:
-  tools/check_book.py --jack PATH      # all four; PATH is a clone of renavondata/jack
+  tools/check_book.py --jack PATH      # every check; PATH is a clone of renavondata/jack
                                        # with full history (status.py needs it)
-  tools/check_book.py --no-jack        # counts and citations only, for a quick local run
+  tools/check_book.py --no-jack        # counts, citations and authors, for a quick local run
 
 Exit status 0 when every check passes, 1 otherwise. Nothing is written anywhere.
 Standard library only (Python 3.11+, for tomllib).
@@ -618,6 +622,44 @@ def check_tags(jack: Jack, files: list[Path]) -> int:
 
 # ---------------------------------------------------------------- main
 
+# ---------------------------------------------------------------- the book's own history
+
+CLAUDE_TRAILER = re.compile(r"^(?:Claude-Session:|Co-Authored-By:[ \t]*Claude\b)", re.I | re.M)
+
+
+def check_authors(facts: dict) -> int:
+    """plan.md §1.7 (D57): a commit's author is the role that made it. Every commit in
+    the history of this tree that the anchor (the last commit before the rule) does not
+    contain is read, and one whose message carries a Claude trailer while its author's
+    name is one of the owner's is an error. History that cannot be read is an error
+    too, never a pass. Returns the number of commits read."""
+    conf = facts["authorship"]
+    anchor, owner = conf["after"], {n.casefold() for n in conf["owner_names"]}
+
+    def git(*args: str) -> subprocess.CompletedProcess:
+        return subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True)
+
+    if git("rev-parse", "--is-shallow-repository").stdout.strip() != "false":
+        err("authors", "this is not a full clone of the book's repository, so the commits since the "
+                       "rule cannot all be read (git fetch --unshallow; fetch-depth: 0 in a workflow)")
+        return 0
+    if git("merge-base", "--is-ancestor", anchor, "HEAD").returncode != 0:
+        err("authors", f"HEAD does not descend from {anchor[:7]}, the last commit before the rule")
+        return 0
+    log = git("log", "-z", "--format=%H%x1f%an%x1f%B", f"{anchor}..HEAD")
+    if log.returncode != 0:
+        err("authors", f"git log failed: {log.stderr.strip()}")
+        return 0
+    n = 0
+    for rec in filter(None, (r.strip("\n") for r in log.stdout.split("\0"))):
+        sha, name, body = rec.split("\x1f", 2)
+        n += 1
+        if name.strip().casefold() in owner and CLAUDE_TRAILER.search(body):
+            err("authors", f"commit {sha[:7]} carries a Claude trailer and is authored as \"{name}\": "
+                           "a session commits under its own role (plan.md §1.7)")
+    return n
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     g = ap.add_mutually_exclusive_group(required=True)
@@ -636,6 +678,7 @@ def main() -> int:
         check_facts(facts, jack, files)
         check_counts(facts, files)
         check_citations(facts, files)
+        nauthors = check_authors(facts)
         ntags = 0
         if jack is not None:
             check_quotes(facts, jack, files)
@@ -646,7 +689,7 @@ def main() -> int:
             jack.close()
 
     scope = (f"facts, counts, citations, quotes, {ntags} provenance tags rerun, {nseqs} seqs" if jack
-             else "counts, citations, phrases (no jack)")
+             else "counts, citations, phrases (no jack)") + f", authors of {nauthors} commits since the rule"
     if errors:
         print(f"check_book: {len(errors)} problem(s) [{scope}]")
         for e in errors:

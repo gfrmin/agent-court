@@ -756,3 +756,14 @@ not_names = ["In", "LCF", "Share"]
 # purpose, as "surname year" with accents stripped and in lower case. Empty since
 # the three orphaned by the re-cut (D20) were placed again in chapters 0 and 4 (#22).
 uncited_ok = []
+
+# ------------------------------------------------------------------ authorship
+
+[authorship]
+# plan.md §1.7 and D57 (Guy's rule of 10 November 2026): a commit's author is the role
+# that made it. `after` is the last commit before the rule: master as the rule found
+# it. tools/check_book.py reads every commit of this repository that `after` does not
+# contain, and one that carries a Claude-Session or Co-Authored-By: Claude trailer
+# under one of `owner_names` fails the build. The 90 commits `after` contains stand.
+after = "57c7ed016d32cdc420beea5f29117eec4019aaf5"
+owner_names = ["Guy Freeman", "gfrmin"]
