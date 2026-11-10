@@ -27,7 +27,12 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      # Full history: check_book.py reads the author of every commit since the rule of
+      # 10 November (plan.md §1.7, D57) and fails on a shallow clone rather than pass
+      # commits it has not read.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Clone renavondata/jack (full history; status.py needs it)
         run: git clone --quiet --filter=blob:none https://github.com/renavondata/jack .jack
       - name: Check the book
