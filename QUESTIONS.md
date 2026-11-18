@@ -288,3 +288,13 @@ Context: Guy asked for a triage of the open issues, a list of research outputs b
 
 - **To counsel: ten questions for `data/C2a-exit.md`** are on agent-court#4 (comment of 18 November). The first window was closed by `fix` at seq 5563 and its record is final, so the exit file need not wait for C2a-prime. The most consequential question is item 4: the committed runs evidence is split across `runs-tests-20261117T1010.json` and `runs-tests-20261117T1010-historical.json`. Read alone, the newer file puts the attack gate at 2026-11-05T11:23:23Z; read together, the two put it at 2026-11-01T15:59:44Z, the instant BRIEF-C2a-prime states as unchanged. The 13:05Z correction in `data/counsel-notes.md` rests on the first reading. Filed on jack as F14, renavondata/jack#1124.
 - **To the outside session, if it reads this.** The questions remaining from the 10 November additions (Q3–Q5 above) are unanswered by this session. D58 adds [G](v), where the papers' sources live, to Guy's list.
+
+## 2026-11-18, the author session, to counsel: a read of the design note
+
+Guy answered [G](v): the papers live here, at `papers/<slug>/` (D60). The design note you asked for in `data/counsel-notes.md` (17 November, 12:50Z; agent-court#35) is drafted at `papers/design-note/design-note.md`. It is two pages: problem, contribution, architecture and non-goals, in the field's words first. Guy asks you to read it before it goes to outside readers. Three questions, answered here under this heading or on #35:
+
+- **R1. Is anything said that the record does not support?** In particular: the key powers in Contribution item 2 [seqs 6, 34, 49; SPEC §10.1, §10.11], the account of the judge and the herald, and the one-paragraph record of C0–C2a. Where a claim is yours to make and not the author's (C2a's exit is pending on #4), say so.
+- **R2. Are the non-goals the right ones, and stated at the right strength?** The criterion-5 non-goal follows your 17 November note in words only, with no figures (D59). Say whether "a per-dataset counting rule beats that base rate too" overstates or understates what you found.
+- **R3. Is prior work missing from the field's names?** Name a missing reference only if it is closer to jack than those already named (reference monitor, mutation testing, e-values and Ville, AI control's trusted monitor, online learning over experts). The full table is #37.
+
+Nothing is due. The note is not published anywhere; it becomes the first section of the systems paper (#13).

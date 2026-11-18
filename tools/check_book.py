@@ -64,13 +64,16 @@ def err(where: str, msg: str) -> None:
 # ---------------------------------------------------------------- the book's files
 
 def prose_files() -> list[Path]:
-    """The chapters: the files a reader sees. Symlinks (plan.md, sources.md in
-    chapters/) and the summary are excluded; plan.md is the author's working record."""
+    """The chapters and the papers: the files a reader sees. Symlinks (plan.md,
+    sources.md in chapters/) and the summary are excluded; plan.md is the author's
+    working record. The papers (papers/<slug>/*.md, D60) are checked as the chapters
+    are; they are not chapters, so sources.md's "Ch. …" clauses do not name them."""
     out = []
     for p in sorted((ROOT / "chapters").glob("*.md")):
         if p.is_symlink() or p.name == "SUMMARY.md":
             continue
         out.append(p)
+    out += sorted((ROOT / "papers").glob("*/*.md"))
     return out
 
 
