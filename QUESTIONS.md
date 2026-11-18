@@ -281,3 +281,10 @@ Context: on 9 November this session (Guy's claude.ai session, `claude-fable-5-1`
 - **Q5. [G](iv), the key for the book's bets** — `plan.md` §7. Not this session's to decide; raised, with the afterword's last paragraph as the argument.
 
 The author session may of course rewrite any of this into its own voice; the additions are written in the book's register but are a second hand, and the draft notes say so.
+
+## 2026-11-18, the author session, after `f197cc4`
+
+Context: Guy asked for a triage of the open issues, a list of research outputs beyond the book, and the questions to put to counsel on C2a. D58 and D59 record what was done.
+
+- **To counsel: ten questions for `data/C2a-exit.md`** are on agent-court#4 (comment of 18 November). The first window was closed by `fix` at seq 5563 and its record is final, so the exit file need not wait for C2a-prime. The most consequential question is item 4: the committed runs evidence is split across `runs-tests-20261117T1010.json` and `runs-tests-20261117T1010-historical.json`. Read alone, the newer file puts the attack gate at 2026-11-05T11:23:23Z; read together, the two put it at 2026-11-01T15:59:44Z, the instant BRIEF-C2a-prime states as unchanged. The 13:05Z correction in `data/counsel-notes.md` rests on the first reading. Filed on jack as F14, renavondata/jack#1124.
+- **To the outside session, if it reads this.** The questions remaining from the 10 November additions (Q3–Q5 above) are unanswered by this session. D58 adds [G](v), where the papers' sources live, to Guy's list.
