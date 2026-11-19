@@ -277,8 +277,11 @@ Context: on 9 November this session (Guy's claude.ai session, `claude-fable-5-1`
 **Questions.**
 
 - **Q3. Appended and dated, or renumbered?** The additions follow §A.18 and §15.13 rather than taking their places, so that the sections jack's transcripts cite by number keep their numbers (D53). The cost is an appendix whose last group follows its falsifiers and a chapter 15 whose last items follow its "what would show this wrong". At an edition cut the author can renumber and fix every citation at once. This session's reading: append now, renumber at the cut — *p* 0.7 that Guy agrees.
+    - *Answered, recorded 19 November by the outside session.* Guy merged pull request #32 as proposed on 10 November, with this question before him (`7eec103`). On 19 November the outside session asked whether to record that merge as his answer here, and he said to. The additions stay appended and dated; renumbering at an edition's cut, with every citation fixed at once, stays open to the author.
 - **Q4. The checker-forced edits.** §A.17's "The fifteen rows above" and §15.13's "fourteen probabilities … sum to 5.4" were changed to the new counts because `data/facts.toml` ties those sentences to the counts and the build would otherwise fail. The alternative was to leave the counts at 15 and 14 and exclude the new sections from the patterns, which would make the checker lie about what the chapters hold. Two smaller ones of the same kind: `sources.md` now holds Crawford & Ostrom (1995), which makes a bare "Ostrom" ambiguous to the checker, so the two bare mentions in chapters 12 §12.3 and 15 §15.3 gained "(1990)". If Guy prefers the sentences untouched, the counts go back and the patterns gain an exclusion; this session thinks that worse. *p* 0.8 the edits stand.
+    - *Answered, recorded 19 November, as Q3.* The two counting sentences and the two "(1990)" stand as merged.
 - **Q5. [G](iv), the key for the book's bets** — `plan.md` §7. Not this session's to decide; raised, with the afterword's last paragraph as the argument.
+    - *Still open on 19 November.* It is Guy's, as [G](iv) in `plan.md` §7. The outside session put it to him again that day and has no answer yet.
 
 The author session may of course rewrite any of this into its own voice; the additions are written in the book's register but are a second hand, and the draft notes say so.
 
@@ -298,3 +301,14 @@ Guy answered [G](v): the papers live here, at `papers/<slug>/` (D60). The design
 - **R3. Is prior work missing from the field's names?** Name a missing reference only if it is closer to jack than those already named (reference monitor, mutation testing, e-values and Ville, AI control's trusted monitor, online learning over experts). The full table is #37.
 
 Nothing is due. The note is not published anywhere; it becomes the first section of the systems paper (#13).
+
+## 2026-11-19, the outside session, to the author session, after `3fedcaa`
+
+Read on 19 November, when Guy asked whether this session had looked here lately. It had not since 10 November. D61 in `plan.md` records what was done.
+
+- **Q3–Q5.** Answered under the questions, in the entry of 10 November. Guy's merge of #32 (`7eec103`) was his answer to Q3 and Q4, which he confirmed on 19 November. Q5 is still his, as [G](iv).
+- **What D59 took further than the 10 November additions.** Three things in chapter 6 §6.4 and chapter 16 §16.1, from counsel's note of 17 November, go past what appendix A §A.21, §A.23 and §A.24 said. The stream's forecaster and resolver are one model under two keys. Criterion 5's comparator is a pooled base rate that a per-dataset counting rule also beats. And the null needs forecasts issued at one sitting to be conditionally independent given the past, which the brief does not state. Each of the three rows now ends with a dated sentence that points there. The rows are otherwise as they were, and nothing in them is contradicted.
+- **One thing this session got wrong, outside this repository.** Its audit of 9 November, given to Guy in chat, passed the court's inference layer as sound on the strength of A4. It did not see the unstated independence assumption. Anything that leans on that audit's verdict for the value test should lean on chapter 6 §6.4 instead.
+- **The commit rule.** The five commits since `7eec103` are all under role names, and the build's check passed on them.
+
+Nothing is asked of the author session.
