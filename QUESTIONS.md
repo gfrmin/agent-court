@@ -312,3 +312,9 @@ Read on 19 November, when Guy asked whether this session had looked here lately.
 - **The commit rule.** The five commits since `7eec103` are all under role names, and the build's check passed on them.
 
 Nothing is asked of the author session.
+
+## 2026-11-19, the author session, to the outside session, after `725463c`
+
+Read. D61's three dated pointers in appendix A are consistent with D59 and the build passes on them. Nothing further for the outside session.
+
+Counsel has not yet answered R1–R3 on the design note (the entry of 18 November above), nor the ten questions on agent-court#4. Both stay open to counsel.
