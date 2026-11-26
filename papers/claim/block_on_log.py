@@ -7,9 +7,12 @@ Without --rev it uses the working tree.
 
 Events (members' forecasts, outcomes) come from judge/value.py's own selection, with
 no_attack_gate=True so that every event since C2a's opening counts. A sitting is the set of
-value events sharing a forecast cutoff, fixed at the cutoff: it includes events that never
-resolve, which leave the bet (assumption (B) of the paper) but count for when the sitting is
-done (their deadline). Base rates, mixture weights and stakes use only what is recorded
+value events sharing a forecast cutoff. An event belongs to a sitting only if some party
+forecast it before the cutoff, so membership is fixed by what was recorded then. A sitting is
+scored once it is done: every member event resolved or past its deadline, by the time of
+observation (the last log entry, or as_of). Sittings not yet done are pending and not scored.
+The statistic is computed on the events of the sitting that resolved, and the null is stated
+for that statistic. Base rates, mixture weights and stakes use only what is recorded
 before the cutoff. Sittings are split greedily into lag classes so that every earlier
 sitting of a class is done before the next one's cutoff (assumption (A)); class number l,
 counted from 1 in order of creation, has the fixed threshold l(l+1)/alpha, and since
@@ -80,11 +83,12 @@ def clip(p): return min(max(p, 0.001), 0.999)
 def lik(p, y): return p if y else 1 - p
 
 # every forecast's physical event, resolved or not, with its deadline
+T_obs = as_of or max(e["ts"] for e in es)
 fkey = {}
 for e in es:
     if e["type"] == "forecast" and (as_of is None or e["ts"] <= as_of):
         ident = val.event(e)
-        if ident and ident[1] > opening:
+        if ident and ident[1] > opening and e["ts"] < ident[1]:      # forecast before the cutoff
             k, c = ident
             d = fkey.setdefault(k, {"cutoff": c, "deadline": e["body"].get("resolves_by", c)})
             d["deadline"] = max(d["deadline"], e["body"].get("resolves_by", c))
@@ -121,8 +125,12 @@ for k, d in fkey.items():
                    Y=r["Y"] if r else None, fc={w: float(p) for w, (s_, p) in r["forecasts"].items()} if r else {}))
 sittings = collections.defaultdict(list)
 for e in ev: sittings[e["cutoff"]].append(e)
+pending = [c for c in sittings if max(e["done"] for e in sittings[c]) > T_obs]
+for c in pending: del sittings[c]
+ev = [e for c in sittings for e in sittings[c]]
 order = sorted(sittings)
 unresolved = sum(1 for e in ev if e["Y"] is None)
+late_only = sum(1 for k in resolved if k not in fkey)
 
 classes, last_done, assign = [], [], {}
 for c in order:
@@ -133,7 +141,8 @@ for c in order:
     else:
         assign[c] = len(classes); classes.append([]); last_done.append(done)
     classes[assign[c]].append(c)
-print(f"sittings {len(order)} (events forecast {len(ev)}, never resolved {unresolved}); lag classes {len(classes)}: {[len(x) for x in classes]}")
+print(f"observed to {T_obs}; sittings done {len(order)}, pending {len(pending)}; events in done sittings {len(ev)}, of which expired unresolved {unresolved}; resolved events with no forecast before the cutoff (not members) {late_only}")
+print(f"lag classes {len(classes)}: {[len(x) for x in classes]}")
 
 def stake(S, Q, m): return min(max(0.0, S / (2 + Q)), 1 - 1 / (m + 1))
 def prob(e, k, b): return b if k == "base" else clip(e["fc"].get(k, b))
