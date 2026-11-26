@@ -2,7 +2,9 @@
 
 This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 6 (revised for cold reads 1 and 2).
+- `draft.md`: the paper, draft 7 (abstract fixed first; Lean core added).
+- `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
+- `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
 - `READ-PROMPT.md`: the instructions for the outside cold read.
 - `sim_filtration.py`: the simulations behind the examples in §4.3.
 - `block_on_log.py`: the block-form recomputation in §7 (`python3 block_on_log.py --rev e580b64` in a jack checkout).

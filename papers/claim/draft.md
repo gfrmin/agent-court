@@ -3,7 +3,7 @@
 **Guy Freeman**
 Independent researcher, Hong Kong · [email]
 
-*Draft 6, 26 November 2026. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and two outside cold reads (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348; `claude/claim/REVIEW-cold-2.md`, gemini-4-argon, #1362), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
+*Draft 7, 26 November 2026. The abstract was fixed first (`claude/claim/05-what-the-paper-is-about.md`), and the text aligned to it. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and two outside cold reads (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348; `claude/claim/REVIEW-cold-2.md`, gemini-4-argon, #1362), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
 - *Square brackets give the check behind each fact about the implementation:*
   - *`seq n` is an entry of `renavondata/jack` `log.jsonl`;*
   - *`CHARTER`, `SPEC` and `REPORT` are files at `origin/main` `e580b64`;*
@@ -14,11 +14,13 @@ Independent researcher, Hong Kong · [email]
 
 ## Abstract
 
-An agent that may rewrite its own programs poses a principal–agent problem that monitoring alone cannot solve. No general procedure decides by inspection whether a change to an arbitrary program is an improvement (Rice). An agent cannot soundly trust, by proofs in its own theory, a successor that reasons in that theory (Löb). A measure within the agent's reach decays once it becomes a target (Goodhart). Under assumptions we state, these results call for a loop that acts on a model of what it governs, a lock outside the modifier's reach, and a proper score on outcomes that no scored party controls.
+Systems that rewrite their own code are now practical, and the evaluator that judges them is usually trusted rather than tested. Three results say why trust is not enough. Whether a change to an arbitrary program is an improvement cannot be decided by inspection (Rice). An agent cannot, by proofs in its own theory, trust a successor that reasons in that theory (Löb). A measure within the agent's reach decays once it becomes a target (Goodhart).
 
-We derive a governing institution with these parts. Its law is a fold over a signed, append-only record. Every claim of merit, the principal's included, is a forecast under the logarithmic score, resolved by another party. The institution's own layers gain powers only by anytime-valid tests of predictive value and of liveness, and liveness is measured by the principal's repairs. Six propositions state the guarantees. We show by example and simulation that the natural per-event form of the value test loses its level when outcomes resolve together, while a block form keeps it. Recomputed validly on the reference implementation's record, its value evidence survives against a base rate pooled across datasets, and vanishes against a base rate per dataset.
+We propose that the institution which judges a self-modifying agent be built before the agent, imposed first on the model sessions that build it, and granted powers only by anytime-valid tests on its own record. Its law is a fold over a signed, append-only log. Every claim of merit, the principal's included, is a forecast under the logarithmic score, resolved by another party. Each layer is promoted only when sequential tests of predictive value and of liveness, measured by the principal's repairs, both pass.
 
-We argue that the law should exist before the agent, and be tested first on the model sessions that build it. The implementation has run in public since October 2026; no self-modifying agent has yet been built under it.
+Six propositions state what this guarantees, and their statistical core is machine-checked in Lean. We show by example, simulation and proof that the natural per-event test of value loses its level when outcomes resolve together, and we give a block form that keeps it. Applied to the public record of a reference implementation, the valid test finds an advantage over a base rate pooled across datasets, and none over a base rate kept per dataset. The institution's own book thus shows that its first evidence of value came from a weak baseline. Making such failures visible on the record is what a judge of self-modification must do.
+
+No self-modifying agent has yet been built under this design.
 
 ---
 
@@ -28,13 +30,13 @@ Systems that modify their own code are now practical, and so are their failure m
 
 The difficulty is old in economics and older in law. Delegation carries agency costs: monitoring, bonding and residual loss [Jensen & Meckling 1976]. A signal is worth contracting on in proportion to what it reveals of the agent's action [Holmström 1979]. When the agent can rewrite the instrument the principal reads, the signal stops being informative. Kolt [2026a] argues that the classical remedies — incentives, monitoring, enforcement — strain under AI agents. He warns that legal alignment "will need to contend with the prospect of actors that shape the very laws that govern them" [Kolt 2026b]. This paper is about that case.
 
-**Thesis.** Self-modification can be permitted only where the modifier cannot reach the institution that scores it. That institution must be built first, tested first on its builders, and must keep a book on itself rather than a proof of itself.
+**The main idea.** A self-modifying agent can be trusted only as far as an institution it cannot reach can test it. That institution must be built first, tested first on its builders, and given powers only by sequential tests on its own record. The tests must themselves be valid. The institution keeps a book on itself rather than a proof of itself, and the book must be able to show the institution wrong.
 
 **Contributions.**
 1. *A conditional design analysis* (§3). For results from computability, probability, control, law and security, we state when each binds an evaluator of a self-modifying agent, what it requires, and how this design meets it. We do not prove that no other mechanism would serve, and claim neither sufficiency nor optimality.
-2. *Six propositions* (§4), stating the construction's guarantees exactly. The value test is given in a block form, which keeps its level when outcomes resolve together, and whose regret bound holds for the quantity tested. We show by example and simulation that the per-event form does not keep its level.
+2. *Six propositions* (§4), stating the construction's guarantees exactly. The value test is given in a block form, which keeps its level when outcomes resolve together, and whose regret bound holds for the quantity tested. We show by example and simulation that the per-event form does not keep its level. Propositions 1(b), 2(a) and 3–5 are machine-checked in Lean 4 with Mathlib.
 3. *A principle of construction* (§5). Law comes before the agent and is tested first on its builders. What a bootstrap raises is authority. Every regress of justification but one stops without an authority, and that one, the owner of the utility, is confined and priced.
-4. *A reference implementation* (§7), public, with a signed log that dates each step. Recomputed validly, its value evidence survives only against a base rate pooled across datasets.
+4. *Evidence from a public record* (§7). A reference implementation has run in public since October 2026, with a signed log that dates each step. Recomputed validly, its value evidence survives only against a base rate pooled across datasets. The institution's own book thus shows that its first evidence of value came from a weak baseline.
 
 This is a design paper with proved guarantees and one empirical check. It contains no evaluation of a self-modifying agent: in the reference implementation the agent is the last layer, and it has not been built.
 
@@ -122,6 +124,12 @@ We claim no *sufficiency*: it is left to falsifiers stated in advance (§7). Nor
 ## 4 The construction and its guarantees
 
 Propositions 1, 2 and 6 hold by construction. Their value lies in stating exactly what is guaranteed and what is not, in a form that can be checked against the code. Propositions 3–5 carry the statistical content. None is mathematically new: the block mixture is the Bayes mixture of online learning, and Proposition 5 is the intersection–union principle. What we claim is their application to an institution, and the exact statement of what each does and does not guarantee.
+
+**Machine-checked core.** Propositions 1(b), 2(a), 3(b), 4(b) and 5 are checked in Lean 4 [de Moura & Ullrich 2021] against Mathlib [The mathlib Community 2020]. So are 3(a) and 4(a), for every finite horizon. There the wealth is shown to be a non-negative supermartingale under the null, and Ville's inequality is derived from Mathlib's optional stopping theorem. The proofs use only Lean's standard axioms, and they are ancillary files of this paper. Not formalised are:
+- the grid clause of 2(a);
+- the bounds that the stake rules keep;
+- the unbounded horizon, which follows by continuity of measure;
+- Propositions 1(a), 1(c), 2(b) and 6, which hold by construction of the code.
 
 ### 4.1 The record, and law as a fold
 
@@ -402,6 +410,12 @@ The charter states in advance what would show the construction wrong [CHARTER §
 
 ---
 
+## 9 Conclusion
+
+What judges a self-modifying agent must lie outside the agent's reach, and must itself be judged by something other than trust. We have argued for an institution that is built before the agent, binds its builders first, holds its law as a fold over a signed record, prices every claim as a forecast, and gains powers only by sequential tests on its own record. The guarantees are modest and exact. The first test of the construction is whether its record can show it wrong. It can: the valid test of value, run on the reference implementation's record, finds no advantage over a base rate kept per dataset. Under this design, the value the next layer claims should be measured against that baseline.
+
+---
+
 ## Disclosure
 
 Model sessions from three providers' families drafted the charter, the specification and most of the code. Since 19 October 2026 they have acted under keys declared on the record. The second kernel was written by a different family from the first. This paper was drafted by a model session that holds no key, working from the repository, the book and the literature; the author read and revised it. No model is an author. The author is responsible for every claim.
@@ -410,7 +424,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 
 - Repository, with the log, kernels, judge, briefs and rulings: github.com/renavondata/jack.
 - Book: *A Court for Agents*, gfrm.in/book; source at github.com/gfrmin/agent-court.
-- Ancillary files of this paper: `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §7 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
+- Ancillary files of this paper: `lean/`, the Lean proofs of §4 (`lake build`, with a table from propositions to theorems); `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §7 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
 - Founding note: "The Science Was Done. The Engineering Wasn't.", gfrm.in, 1 November 2026.
 
 ---
@@ -436,6 +450,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 - Conant, R. C. & Ashby, W. R. (1970). Every good regulator of a system must be a model of that system. *Int. J. Systems Science* 1(2):89–97. doi:10.1080/00207727008920220
 - Crawford, S. E. S. & Ostrom, E. (1995). A grammar of institutions. *American Political Science Review* 89(3):582–600. doi:10.2307/2082975
 - Dawid, A. P. (1984). Present position and potential developments: Some personal views. Statistical theory: The prequential approach. *JRSS A* 147(2):278–292. doi:10.2307/2981683
+- de Moura, L. & Ullrich, S. (2021). The Lean 4 theorem prover and programming language. *CADE-28*, LNCS 12699:625–635. doi:10.1007/978-3-030-79876-5_37
 - Dennis, J. B. & Van Horn, E. C. (1966). Programming semantics for multiprogrammed computations. *Communications of the ACM* 9(3):143–155. doi:10.1145/365230.365252
 - Dietrich, F. & Spiekermann, K. (2013). Independent opinions? On the causal foundations of belief formation and jury theorems. *Mind* 122(487):655–685. doi:10.1093/mind/fzt074
 - Freeman, G. (2026). *A Court for Agents: Law, scoring and the self-modifying machine.* gfrm.in/book; source github.com/gfrmin/agent-court.
@@ -470,6 +485,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 - Lamport, L. (1978). Time, clocks, and the ordering of events in a distributed system. *Communications of the ACM* 21(7):558–565. doi:10.1145/359545.359563
 - Löb, M. H. (1955). Solution of a problem of Leon Henkin. *Journal of Symbolic Logic* 20(2):115–118. doi:10.2307/2266895
 - Madison, J. (1788). *The Federalist* No. 51.
+- The mathlib Community (2020). The Lean mathematical library. *CPP 2020*, 367–381. doi:10.1145/3372885.3373824
 - McCain, M., Millar, T., Huang, S. et al. (2026). Measuring AI agent autonomy in practice. Anthropic, 18 February 2026. anthropic.com/research/measuring-agent-autonomy
 - Miller, M. S. (2006). *Robust Composition: Towards a Unified Approach to Access Control and Concurrency Control.* PhD thesis, Johns Hopkins University.
 - Murphy, A. H. (1973). A new vector partition of the probability score. *Journal of Applied Meteorology* 12(4):595–600. doi:10.1175/1520-0450(1973)012<0595:ANVPOT>2.0.CO;2
