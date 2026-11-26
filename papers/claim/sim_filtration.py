@@ -20,7 +20,10 @@ The figures in the paper's Example (section 4.3) come from:
   python3 sim_filtration.py --roster 20 300 2000   # the full construction (below)
 Seeded, so the output is reproducible.
 
---roster runs Proposition 3's full construction: a Bayes mixture with uniform prior over a
+--roster runs Proposition 3's full construction. It is NOT a true null for the joint score: the
+mixture of the two constant members represents the shared outcome, which the base rate's product
+cannot, so the block form's null fails there. Kept for reference; the paper does not use it.
+The construction: a Bayes mixture with uniform prior over a
 roster of three, the base rate (1/2) and two members that always forecast 0.95 and 0.05,
 none with any skill. It compares the block form with the implementation's form
 (judge/value.py at e580b64), which updates both the stake and the mixture weights
