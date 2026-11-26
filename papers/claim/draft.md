@@ -46,8 +46,8 @@ The object has four parts [Freeman 2026, App. A.1]:
 - **The world** charges for being wrong. Its outcomes come from processes outside the agent: a race result, a dataset's modification time, a test run on a commit.
 - **The policy** inside the agent is a large language model: general, cheap and unreliable in ways that cannot be listed in advance.
 
-In this setting, three results shape what governs the object. Two of them are what the book calls *lock* and *score* [Freeman 2026, §0.2]:
-- **Lock.** That a change is an improvement is a semantic property of programs, and no procedure decides such properties for arbitrary programs [Rice 1953]. Proofs remain possible for particular programs and restricted languages, but a self-modifying agent's changes are not confined to such a class. By Löb's theorem, an agent reasoning in a fixed formal theory cannot trust a successor that reasons in the same theory [Löb 1955; Yudkowsky & Herreshoff 2013]. Neither result forbids checking the agent from outside, against a fixed specification. So we put the evaluation rule outside the modifier's reach.
+In this setting, three results bear on what governs the object. Two of them are what the book calls *lock* and *score* [Freeman 2026, §0.2]:
+- **Lock.** That a change is an improvement is a semantic property of programs, and no procedure decides such properties for arbitrary programs [Rice 1953]. Proofs remain possible for particular programs and restricted languages, but a self-modifying agent's changes are not confined to such a class. By Löb's theorem, an agent that adopts a successor only on a proof, in its own consistent theory, that the successor's conclusions are sound cannot in general obtain that proof for a successor reasoning in the same theory [Löb 1955; Yudkowsky & Herreshoff 2013]. This obstructs proof-based self-trust, not every form of trust. Neither result forbids checking the agent from outside, against a fixed specification. So we put the evaluation rule outside the modifier's reach.
 - **Score.** Under expected-score incentives, a proper score can be held fixed at every level without rewarding misreport [Brier 1950; Good 1952; Savage 1971; Gneiting & Raftery 2007], on outcomes the scored parties do not control [Goodhart 1975]. Only forecasts actually issued, and outcomes actually realised, count [Dawid 1984]. A proper score is not immune to Goodhart's law: a weak comparator, an omitted objective or strategic participation can still be exploited (§8).
 - **Anytime validity.** The operator reads the record when he likes and acts when it suits him. A test whose level survives such looking is naturally built from a test supermartingale, by Ville's inequality [Ville 1939; Shafer & Vovk 2019; Ramdas et al. 2023].
 
@@ -71,7 +71,7 @@ Table 1 maps each ingredient of the design to the results behind it, condensed f
 | | Löb 1955; Yudkowsky & Herreshoff 2013 | The evaluation rule is held outside the agent's theory, not re-derived by it | Judge and score behind keys the agent does not hold |
 | | Anderson 1972; Saltzer & Schroeder 1975 | The monitor is always invoked, tamper-proof and small | Judge runs from trunk [CHARTER §3]; 450-line kernel; invalid entries refused, with a reason [SPEC §§8–9] |
 | **A fold** | Conant & Ashby 1970 | The governor holds a model of what it governs | State is a fold over the record |
-| | Hart 1961 | Recognition, change, adjudication | The core holds exactly these three, in code; rules of conduct enter only from cases |
+| | Hart 1961 | Recognition, change, adjudication | The core holds exactly these three, in code; rules of conduct are to enter only from cases, and none has yet (§8) |
 | | Fuller 1964 | Law must be prospective, promulgated, clear | Prospectivity by the fold (Proposition 1); rules and the checker's digest are entries |
 | **Forecasts** | Dawid 1984 | Only issued forecasts and realised outcomes count | Probability fixed at entry; one resolution; no revision |
 | | Savage 1971; Gneiting & Raftery 2007 | A score held fixed should reward belief | Log score on a per-mille grid (Proposition 2) |
@@ -89,7 +89,7 @@ Two points about the record complete the table. Signatures and hash chains prove
 
 Propositions 1, 2 and 6 hold by construction. Their value lies in stating exactly what is guaranteed and what is not, in a form that can be checked against the code. Propositions 3–5 carry the statistical content. None is mathematically new: the block mixture is the Bayes mixture of online learning, and Proposition 5 is the intersection–union principle. What we claim is their application to an institution, and the exact statement of what each does and does not guarantee.
 
-**Machine-checked core.** Propositions 1(b), 2(a), 3(b), 4(b) and 5 are checked in Lean 4 [de Moura & Ullrich 2021] against Mathlib [The mathlib Community 2020]. So are 3(a) and 4(a), for every finite horizon. There the wealth is shown to be a non-negative supermartingale under the null, and Ville's inequality is derived from Mathlib's optional stopping theorem. The proofs use only Lean's standard axioms, and they are ancillary files of this paper. The bridges from the paper's definitions to the Lean statements are informal: the product construction, the clipping and the stake rules. Three statements are narrower than the propositions they serve. For 2(a), Lean proves that the expected score has its unique maximum at the belief, not strict concavity. For 4(b), it proves the inequality, not that independent windows attain it. For 5, it takes the component bounds as hypotheses. Not formalised are:
+**Machine-checked core.** Propositions 1(b), 2(a), 3(b), 4(b) and 5 are checked in Lean 4 [de Moura & Ullrich 2021] against Mathlib [The mathlib Community 2020]. So are 3(a) and 4(a), for every finite horizon. There the wealth is shown to be a non-negative supermartingale under the null, and Ville's inequality is derived from Mathlib's optional stopping theorem. The proofs use only Lean's standard axioms, and they are ancillary files of this paper. The bridges from the paper's definitions to the Lean statements are informal: the product construction, the clipping and the stake rules. Three statements are narrower than the propositions they serve. For 2(a), Lean proves that the expected score has its unique maximum at the belief, not strict concavity. For 4(b), it proves the union bound on measures, and the independent case only as an inequality between real numbers, without modelling independent events. For 5, it takes the component bounds as hypotheses. Not formalised are:
 - the grid clause of 2(a);
 - the bounds that the stake rules keep;
 - the unbounded horizon, which follows by continuity of measure;
@@ -102,7 +102,7 @@ A *log* is a sequence of entries $e_0, e_1, \dots$. Each entry is a canonical JS
 The state $S_i$ is a function of $e_0, \dots, e_{i-1}$ alone. The kernel reads from it what it needs to admit or refuse $e_i$ [SPEC §7; `kernel/check.py`]:
 - the hash of the last line and the last timestamp;
 - the declared keys, each with a principal and a set of powers, which are entry types, and every public key ever declared, so that none is reused;
-- the identifiers of amendments already entered;
+- the identifiers of amendments already entered, and of those a `transmute` decision has made mutable;
 - the forecasts recorded and resolved.
 
 The state also carries the charter and trusted-base digests in force. The judge reads these from the entries; the kernel does not.
@@ -143,7 +143,7 @@ Part (a) concerns the expected score. A party rewarded by a non-linear function 
 
 The logarithmic score is chosen among proper scores for a second reason. Under it, the Bayes mixture of forecasters is itself a forecaster, and its regret against the best of $K$ is at most $\ln K$ with nothing to tune [Freeman 2026, §A.5].
 
-A forecast belongs to a procedure, not to a mind. A fixed template, model and prompt has a log-loss on a stream whether or not it believes anything [Freeman 2026, §A.20]. So the counsel session that drafted the charter, and the operator himself, forecast on the same ledger and are scored in the same way. Both keys hold the power to forecast, and by seq 7809 counsel had entered 100 forecasts and the operator 3 [seqs 31, 33; log at seq 7809].
+A forecast belongs to a procedure, not to a mind. A fixed template, model and prompt has a log-loss on a stream whether or not it believes anything [Freeman 2026, §A.20]. So the counsel session that drafted the charter, and the operator himself, forecast on the same ledger and are scored in the same way. Both keys hold the power to forecast, and by seq 7809 counsel had entered 100 forecasts and the operator 3 [seqs 31, 33; log at seq 7809], scored on the ledger by `tools/entry.py` (`score`). None of them is a value event of §6, where both parties count as abstentions.
 
 ### 4.3 Promotion by betting
 
@@ -218,24 +218,24 @@ How may the evaluator itself change? Let $E$ be the evaluator in force, and let 
 1. The operator enters a grant naming a table of $E$'s outputs on $R$.
 2. The grant marks, for each row $r \in R$, the lines $\mu(r)$ expected to change, together with what those lines will then say.
 
-The specification admits the push installing $E'$ only if, on every row, $E'$'s output equals $E$'s outside $\mu(r)$ and agrees with the grant on $\mu(r)$ [SPEC §10, "The promotion evaluator"]. In the implementation this is enforced only in part. The judge checks that the installing push carries a specification named in such a grant [`judge/judge.py`, `installing_push`]. CI replays three of the table's 706 rows [`tests/promotion_replay_spot.py`]. The full replay is a reviewer's session, not a gate [`transcripts/sessions/c2a-3-replay.md`; grant seq 6851; push seq 7281].
+The specification admits the push installing $E'$ only if, on every row, $E'$'s output equals $E$'s outside $\mu(r)$ and agrees with the grant on $\mu(r)$. It also requires the same agreement, under the same marks, at every first-parent commit after $T$ up to the installing push's parent, against $E$ run there [SPEC §10, "The promotion evaluator"]. Write $R^+$ for $R$ together with those commits. In the implementation this is enforced only in part. The judge checks that the installing push carries a specification named in such a grant [`judge/judge.py`, `installing_push`]. CI replays three of the table's 706 rows [`tests/promotion_replay_spot.py`]. The full replay is a reviewer's session, not a gate [`transcripts/sessions/c2a-3-replay.md`; grant seq 6851; push seq 7281].
 
 **Proposition 6 (replay-bound change).**
 
-(a) If $E'$ meets the admission condition then, on every row of $R$ read with the inputs the table records, every unmarked criterion line and every unmarked promotion verdict is the same under $E'$ as under $E$.
+(a) If $E'$ meets the admission condition then, on every commit of $R^+$ read with the inputs the specification states, every unmarked criterion line and every unmarked promotion verdict is the same under $E'$ as under $E$.
 
 (b) Each `promote` after the installing push is assessed with one historical evaluator: the one in force at its `seq`. A later evaluator does not change that verdict, although the current judge drives the assessment and may re-run it.
 
-(c) Nothing is certified about $E'$ on any other input: after $T$, or on a recorded prefix read with different evidence, such as another table of the operator's acts.
+(c) Nothing is certified about $E'$ on any other input: after the installing push's parent, or on a recorded prefix read with different evidence, such as another table of the operator's acts.
 
 *Proof.*
 - (a) By the admission condition.
 - (b) This is item 15's dispatch [SPEC §10, item 15]; it needs no replay.
 - (c) Agreement on finitely many inputs fixes nothing elsewhere. $\square$
 
-Part (c) is the lock's residue: the future behaviour of $E'$ is governed like all code here, by review, by mutants that must be killed, and by the next replay. What the rule removes is the silent re-judging of the past, by which a new judge might find that a failed window had passed after all. Marked outputs may still change, but only as the grant says and before the new evaluator is built, so Proposition 6 is not a conservative extension in the logician's sense. The Red Queen Gödel Machine takes the other path, by intent. It gates each evaluator replacement on an evaluator-independent anchor, then discards the utility records that depended on the replaced evaluator [Iacob et al. 2026, §3.2]. That suits an optimiser. For a court, past verdicts are history.
+Part (c) is the lock's residue: the future behaviour of $E'$ is governed like all code here, by review, by mutant pins, and by the next replay. What the rule removes is the silent re-judging of the past, by which a new judge might find that a failed window had passed after all. Marked outputs may still change, but only as the grant says and before the new evaluator is built, so Proposition 6 is not a conservative extension in the logician's sense. The Red Queen Gödel Machine takes the other path, by intent. It gates each evaluator replacement on an evaluator-independent anchor, then discards the utility records that depended on the replaced evaluator [Iacob et al. 2026, §3.2]. That suits an optimiser. For a court, past verdicts are history.
 
-The kernel exists twice, in Python and in Go. The second was written from the specification alone by a different model family, and CI fails on any disagreement between the two [CHARTER §5; SPEC §9a]. This guarantees only that no entry is admitted on which the two disagree. Independently written programs fail together far more often than independence predicts [Knight & Leveson 1986], and so do language models [Kim et al. 2025].
+The kernel exists twice, in Python and in Go. The second was written without reading the first, from the specification and its test vectors, by Codex at C0 and by Gemini for C1a's changes [REPORT §8; `kernel2/NOTES.md`]. The judge refuses any proposal on whose log the two disagree, and CI runs 300 simulated logs through both [SPEC §10, item 5; `.github/workflows/tests.yml`]. This guarantees only that no entry is admitted on which the two disagree. Independently written programs fail together far more often than independence predicts [Knight & Leveson 1986], and so do language models [Kim et al. 2025].
 
 ### 4.5 The principal, priced
 
@@ -269,13 +269,13 @@ What the layers raise is authority, not intelligence [Freeman 2026, §11.10]. In
 Before the agent exists, the only proposers are those building the institution: model sessions acting as builders, reviewers and counsel, the merging process, and the operator [seqs 0, 34, 51, 201]. The charter binds them by the means it will use on the agent: "Whatever counsel and builders are forbidden is what the agent of C3 is forbidden, by the same judge, keys and amendment path; nothing is imposed on the agent that was not first imposed on us" [CHARTER A2.10].
 
 We argue for this on three grounds:
-1. **Rules of conduct enter only from cases** [CHARTER A2.1; Hart 1961; Hayek 1973]. A rule that binds the agent but has never refused a builder's act enters the agent's era as a guess.
+1. **Rules of conduct should enter only from cases** [CHARTER A2.1; Hart 1961; Hayek 1973]. A rule that binds the agent but has never refused a builder's act enters the agent's era as a guess.
 2. **The nulls must predate the windows they judge** (Proposition 4). The builders' record is the nearest record that does.
 3. **The builders run the agent's policy class.** They are frontier model sessions, so a law that is usable by its builders, and that holds against their accidents, has been exercised by the very policy class the agent will use.
 
 What this does *not* establish is resistance to an adversary, since builders are not adversaries. That is a separate obligation. The charter requires a simulator of named attacks — self-judging, retroactive, forged, forking, stalling and others — to run clean before any model touches a layer [CHARTER §6], and the agent's layer will need a red team in the sense of AI control [Greenblatt et al. 2024].
 
-Self-improving systems usually build the agent first and wrap it in governance that is trusted rather than tested [Zhang et al. 2025, 2026]. Even designs with a frozen evaluator build the frozen zone outside the law it enforces [Neal 2026]. The nearest precedents are partial. SEA recommends deploying its statistical gate first, before its other loop controllers [Sengupta 2026, §4.4]. Nomic's players are subject to the rules they change [Suber 1990]. And a compiler that compiles itself has long made its builders its first users [Thompson 1984]. We know of no earlier design that subjects the model sessions building an AI's governing law to that law before the AI exists. In the implementation they have been subject to it since their keys were declared [seqs 6–8, 19 October 2026]. Builder and reviewer keys have since signed 6,621 of the log's 7,810 entries. Most of these are the hourly stream: 5,919 forecasts and resolutions, and about 620 proposals that carry them. About 80 are reviews, reads and fixes [log at seq 7809]. So the law has been exercised far more by routine than by construction.
+Self-improving systems usually build the agent first and wrap it in governance that is trusted rather than tested [Zhang et al. 2025, 2026]. Even designs with a frozen evaluator build the frozen zone outside the law it enforces [Neal 2026]. The nearest precedents are partial. SEA recommends deploying its statistical gate first, before its other loop controllers [Sengupta 2026, §4.4]. Nomic's players are subject to the rules they change [Suber 1990]. And a compiler that compiles itself has long made its builders its first users [Thompson 1984]. We know of no earlier design that subjects the model sessions building an AI's governing law to that law before the AI exists. In the implementation they have been subject to it since their keys were declared [seqs 6–8, 19 October 2026]. Builder and reviewer keys have since signed 6,621 of the log's 7,810 entries. Most of these are the hourly streams: 5,919 forecasts and resolutions, and about 620 of the 702 proposals, which carry them. The other 80 or so are reads and reviews, code and pins, fixes, and other forecasts [log at seq 7809]. So the law has been exercised far more by routine than by construction.
 
 ---
 
@@ -290,7 +290,7 @@ The design runs in public as `renavondata/jack`. The charter's SHA-256 is in the
 | C0, the record | genesis, seq 0 (14 Oct) | promoted by a signed tag before windows existed; not pre-registered |
 | C1a, the ledger | `promote`, seq 188 (31 Oct) | every pre-stated criterion met |
 | C1b, the clerk | `promote`, seq 337 (1 Nov) | $M = 214358881/8398080 \approx 25.5$ over nine items, $p_0 = 6/11$ |
-| C2a, value | opened at seq 367 (1 Nov) | value wealth (per-event form) crossed early; **failed** on nine repair rows found off the record; `fix` at seq 5563 |
+| C2a, value | opened at seq 367 (1 Nov) | value wealth (per-event form) crossed early; **failed**: nine rows off the record that a classifier labels as repairs; `fix` at seq 5563 |
 | C2a′ | opened at seq 5564 (17 Nov) | **failed** on a fault in the evaluator's check of an unchanged scope; ended by veto at seq 7180 |
 | C2a, third window | brief read, grant at seq 7615 (24 Nov) | opens at the first push after 2026-11-30T00:00Z |
 | C2b, C2c, C3 | — | not opened; no agent exists |
@@ -313,7 +313,7 @@ So the record gives evidence that the stream's forecaster beats a base rate pool
 
 The implementation's own per-event figure on the same events, about $1.5 \times 10^{60}$, is not comparable evidence. It compounds about six bets per sitting, and has no guaranteed level when outcomes within a sitting are dependent. Holding its stakes, weights and base rates to what was known before each cutoff, and counting only resolutions made by the deadline, still leaves it near $10^{58}$. One bet per sitting in a single process gives about $1.7 \times 10^{10}$, and the split into lag classes accounts for the rest. Compounding, not leakage, accounts for most of the gap, though the ablations do not use exactly the same events.
 
-The charter states in advance what would show the construction wrong [CHARTER §12]: that the kernel cannot hold the three secondary rules within readable size; that a liveness window fails against its committed baseline; that repairs fall only because acts were re-typed; or that procedure outgrows object by more than five to one in a window. That last ratio counts entries about the institution against entries about the world. For C2a′ the count stood at 459 to 1,786 [`judge/status.py` at seq 7809]. The evaluator counted from seq 5565 to seq 7809, past the veto that ended the window at seq 7180. The count classes as procedure the proposals that carry stream forecasts, and the ratio can be padded (§8).
+The charter states in advance what would show the construction wrong [CHARTER §12]: that the kernel cannot hold the three secondary rules within readable size; that a liveness window fails against its committed baseline; that repairs fall only because acts were re-typed; or that procedure outgrows object by more than five to one in a window. That last ratio counts entries about the institution against entries about the world. For C2a′ it stood at 320 to 1,296 when the veto at seq 7180 ended the window, and the evaluator's count ran on to 459 to 1,786 by seq 7809 [`judge/status.py --subject C2a`, as of each]. The count classes as procedure the proposals that carry stream forecasts, and the ratio can be padded (§8).
 
 ---
 
