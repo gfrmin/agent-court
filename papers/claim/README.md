@@ -2,7 +2,7 @@
 
 This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 11 (revised for cold read 5).
+- `draft.md`: the paper, draft 12 (held to its abstract: §3 cut to the ingredients the abstract names; new title).
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
 - `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
 - `READ-PROMPT.md`: the instructions for the outside cold read.
