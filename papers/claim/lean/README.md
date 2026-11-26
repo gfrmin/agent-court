@@ -23,4 +23,4 @@ Every theorem depends only on Lean's standard axioms (`propext`, `Classical.choi
 - the grid clause of 2(a);
 - that the stake rules keep `0 ≤ λ < 1` and `λ < 1/p₀`, which are simple bounds;
 - the unbounded horizon, which follows from the finite one by continuity of measure;
-- Props. 1(a), 1(c), 2(b) and 6, which hold by construction of the code.
+- Props. 1(a), 2(b) and 6, which hold by construction of the code.

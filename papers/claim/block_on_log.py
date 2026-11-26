@@ -119,21 +119,23 @@ def make_base(by):
     return base
 
 ev = []
+late = 0
 for k, d in fkey.items():
     r = resolved.get(k)
+    if r and ts_of[r["resolution_seq"]] > d["deadline"]:
+        r = None; late += 1          # resolved after its deadline: it expired at the deadline
     ev.append(dict(key=k, cutoff=d["cutoff"], done=ts_of[r["resolution_seq"]] if r else d["deadline"],
                    Y=r["Y"] if r else None, fc={w: float(p) for w, (s_, p) in r["forecasts"].items()} if r else {}))
 sittings = collections.defaultdict(list)
 for e in ev: sittings[e["cutoff"]].append(e)
-pending = [c for c in sittings if max(e["done"] for e in sittings[c]) > T_obs]
-for c in pending: del sittings[c]
-ev = [e for c in sittings for e in sittings[c]]
-order = sorted(sittings)
-unresolved = sum(1 for e in ev if e["Y"] is None)
+all_order = sorted(sittings)
+pending = {c for c in sittings if max(e["done"] for e in sittings[c]) > T_obs}
+order = [c for c in all_order if c not in pending]
+unresolved = sum(1 for c in order for e in sittings[c] if e["Y"] is None)
 late_only = sum(1 for k in resolved if k not in fkey)
 
 classes, last_done, assign = [], [], {}
-for c in order:
+for c in all_order:                  # classes are assigned to every sitting, pending or not
     done = max(e["done"] for e in sittings[c])
     for i, d in enumerate(last_done):
         if d < c:
@@ -141,8 +143,9 @@ for c in order:
     else:
         assign[c] = len(classes); classes.append([]); last_done.append(done)
     classes[assign[c]].append(c)
-print(f"observed to {T_obs}; sittings done {len(order)}, pending {len(pending)}; events in done sittings {len(ev)}, of which expired unresolved {unresolved}; resolved events with no forecast before the cutoff (not members) {late_only}")
-print(f"lag classes {len(classes)}: {[len(x) for x in classes]}")
+n_done_events = sum(len(sittings[c]) for c in order)
+print(f"observed to {T_obs}; sittings done {len(order)}, pending {len(pending)}; events in done sittings {n_done_events}, of which expired unresolved {unresolved} (resolved only after the deadline: {late}); resolved events with no forecast before the cutoff (not members) {late_only}")
+print(f"lag classes {len(classes)}: sittings per class {[len(x) for x in classes]}; scored per class {[sum(1 for c in x if c not in pending) for x in classes]}")
 
 def stake(S, Q, m): return min(max(0.0, S / (2 + Q)), 1 - 1 / (m + 1))
 def prob(e, k, b): return b if k == "base" else clip(e["fc"].get(k, b))

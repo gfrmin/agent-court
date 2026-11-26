@@ -2,7 +2,7 @@
 
 This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 9 (Peyton Jones structure; backing audit).
+- `draft.md`: the paper, draft 10 (revised for cold read 4).
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
 - `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
 - `READ-PROMPT.md`: the instructions for the outside cold read.
@@ -11,5 +11,6 @@ This branch holds the draft of the arXiv paper on jack's theory, "Law Before the
 - `REVIEW-cold-1.md`: cold read 1 (gpt-6.1-sol, opencode-runner #1348) with its disposition.
 - `REVIEW-cold-2.md`: cold read 2 (gemini-4-argon, opencode-runner #1362) with its disposition.
 - `REVIEW-cold-3.md`: cold read 3 (gpt-6.1-sol, opencode-runner #1364) with its disposition.
+- `REVIEW-cold-4.md`: cold read 4 (gemini-4-argon, #1365), a backing audit, with its disposition.
 
 The working notes are in Guy's Project under `claude/claim/`: the outline, reading log, self-reviews, self-check and LaTeX build.
