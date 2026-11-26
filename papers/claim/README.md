@@ -2,7 +2,7 @@
 
 This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 24, the release candidate (cold read 13 accepted draft 23; three of its final edits; cold read 12's corrections; cold read 11's corrections; cold read 10 accepted draft 20; its clarifications are in; cold read 9 and the adviser's answers; two fixes from the adviser's audit; strongest backed claims, not softened ones; kernel authorship checked per revision; held to its abstract since draft 12; revised for cold read 8, which accepted; stands alone, citing the book once as provenance).
+- `draft.md`: the paper, draft 26 (paragraph pass and adversarial read 1; earlier: cold read 13 accepted draft 23; three of its final edits; cold read 12's corrections; cold read 11's corrections; cold read 10 accepted draft 20; its clarifications are in; cold read 9 and the adviser's answers; two fixes from the adviser's audit; strongest backed claims, not softened ones; kernel authorship checked per revision; held to its abstract since draft 12; revised for cold read 8, which accepted; stands alone, citing the book once as provenance).
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
 - `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
 - `READ-PROMPT.md`: the instructions for the outside cold read.
@@ -24,3 +24,6 @@ This branch holds the draft of the arXiv paper on jack's theory, "Law Before the
 - `REVIEW-cold-14.md`: cold read 14 (gpt-6.1-sol, #1389), accept: the final change, draft 23 to 24.
 
 The working notes are in Guy's Project under `claude/claim/`: the outline, reading log, self-reviews, self-check and LaTeX build.
+- `REVIEW-adversarial-1.md`: adversarial read 1 (gpt-6.1-sol, #1394), reject, with its disposition.
+- `07-paragraph-review.md`: the claim session's paragraph-by-paragraph pass of draft 24.
+- `04-selfcheck.md`: every factual claim checked against its source, round by round.

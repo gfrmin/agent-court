@@ -182,7 +182,7 @@ def run(by):
             for x in per_event:
                 lam = min(max(0.0, sum(prior) / (2 + sum(y * y for y in prior))), 1 - 1 / (len(prior) + 2))
                 We *= 1 + lam * x
-            De += [(max(e["done"] for e in block), x) for x in per_event]
+            De += [(max(e["done"] for e in sittings[c]), x) for x in per_event]  # whole sitting done, so inclusion is known at the cutoff
     return W, peak, W1, We
 
 for by in ("type", "dataset"):
