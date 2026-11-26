@@ -289,3 +289,13 @@
 | 7 | Artikis, Sergot & Pitt 2009 (ACM TOCL 10(1):1–42) and Artikis 2012 (J. Logic Comput. 22(6):1301–1334) | reference lists of later papers by the same group | ✓ bibliographic details from those lists |
 | 8 | The operator's three forecasts are all `world.assize`; none is on the freshness stream | log at `e580b64` | ✓ |
 
+## Round 21 (26 November, draft 27 after adversarial read 2)
+
+| § | Claim | Source | Result |
+|---|---|---|---|
+| 4.3 | The counted-line cap was raised three times against the pre-statement (4,500 → 5,500 on 19 Oct; 6,200 on 25 Oct; 6,900 on 31 Oct at seq 197, after C1b's window opened at seq 188), each recorded as a finding | SPEC §10 (line 547); BRIEF-C1b criterion 3; seq 197 push at 13:04:49Z | ✓ added |
+| 4.3 | Assumption (A) now also requires that none of B_m's own outcomes be realised when its forecasts close | the reader's point; the block statistic needs it | ✓ fixed |
+| 4.3 | Simulation intervals: 530/4,000 = 13.3% (12.2–14.3%); 1,007/2,000 = 50.4% (48.2–52.5%); 0/4,000, upper bound 0.075% | normal approximation; rule of three | ✓ |
+| 8 | Proper scores, including the logarithmic, decompose into reliability and resolution | Bröcker, arXiv:0806.0813 (doi:10.1002/qj.456) | ✓ corrected; drafts to 26 called a log-score analogue open |
+| 7 | Schneier & Kelsey (1999), secure audit logs | ACM TISSEC 2(2) | ✓ added |
+
