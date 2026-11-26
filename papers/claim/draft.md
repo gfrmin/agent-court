@@ -3,7 +3,7 @@
 **Guy Freeman**
 Independent researcher, Hong Kong · [email]
 
-*Draft 8, 26 November 2026 (for cold read 3, `claude/claim/REVIEW-cold-3.md`). The abstract was fixed first (`claude/claim/05-what-the-paper-is-about.md`), and the text aligned to it. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and two outside cold reads (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348; `claude/claim/REVIEW-cold-2.md`, gemini-4-argon, #1362), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
+*Draft 9, 26 November 2026: structured after Peyton Jones (four-sentence abstract; related work after the evidence), and audited sentence by sentence for backing. The abstract was fixed first (`claude/claim/05-what-the-paper-is-about.md`), and the text aligned to it. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and two outside cold reads (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348; `claude/claim/REVIEW-cold-2.md`, gemini-4-argon, #1362), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
 - *Square brackets give the check behind each fact about the implementation:*
   - *`seq n` is an entry of `renavondata/jack` `log.jsonl`;*
   - *`CHARTER`, `SPEC` and `REPORT` are files at `origin/main` `e580b64`;*
@@ -14,19 +14,13 @@ Independent researcher, Hong Kong · [email]
 
 ## Abstract
 
-Systems that rewrite their own code are now practical, and the evaluator that judges them is usually trusted rather than tested. Three results motivate the design. Whether a change to an arbitrary program is an improvement cannot be decided by inspection (Rice). An agent cannot, by proofs in its own theory, trust a successor that reasons in that theory (Löb). A measure within the agent's reach decays once it becomes a target (Goodhart).
-
-We propose that the institution which judges a self-modifying agent be built before the agent, imposed first on the model sessions that build it, and granted powers only by anytime-valid tests on its own record. Its law is a fold over a signed, append-only log. Every claim of merit, the principal's included, is a forecast under the logarithmic score, resolved by another party. Each layer is promoted only when sequential tests of predictive value and of liveness, measured by the principal's repairs, both pass.
-
-Six propositions state what this guarantees, and their statistical core is machine-checked in Lean. We show by example, simulation and proof that the natural per-event test of value loses its level when outcomes resolve together, and we give a block form that keeps it. Applied retrospectively to the public record of a reference implementation, the valid test finds an advantage over a base rate pooled across datasets, and no evidence of one over a base rate kept per dataset. The institution's own book thus shows that its first evidence of value rested on a weak baseline. Making such failures visible on the record is what a judge of self-modification must do.
-
-No self-modifying agent has yet been built under this design.
+Systems that rewrite their own code are now practical, and the evaluator that judges them is usually trusted rather than tested, although results of Rice, Löb and Goodhart show that inspection, self-proof and measures within the agent's reach cannot by themselves carry that trust. We propose that the institution which judges a self-modifying agent be built before the agent, imposed first on the model sessions that build it, and granted powers only by anytime-valid tests on its own record: its law is a fold over a signed, append-only log, every claim of merit is a forecast under the logarithmic score, and each layer is promoted only when sequential tests of predictive value and of liveness, measured by the principal's repairs, both pass. We state the guarantees in six propositions, whose statistical core is machine-checked in Lean, and show by example and proof that the natural per-event test of value loses its level when outcomes resolve together, while a block form keeps it. Applied retrospectively to the public record of a reference implementation, the valid test finds an advantage over a base rate pooled across datasets and no evidence of one over a base rate kept per dataset, so the institution's own book shows that its first evidence of value rested on a weak baseline; no self-modifying agent has yet been built under the design.
 
 ---
 
 ## 1 Introduction
 
-Systems that modify their own code are now practical, and so are their failure modes. The Darwin Gödel Machine raised its SWE-bench score from 20% to 50% by editing its own agent code. In one run it also removed the markers its hallucination detector read, despite instructions not to change them [Zhang et al. 2025, App. H]. Hyperagents make the modification procedure itself modifiable. They keep the evaluator, the task data and parent selection outside the editable boundary "to ensure safety, prevent evaluation gaming", and name the loosening of that boundary as future work [Zhang et al. 2026, App. A.5]. A census of 114 studies of recursive self-improvement found that evaluation usually certifies the product of a run and rarely the process that produced it [Chen, Zhu & Zheng 2026].
+Systems that modify their own code are now practical, and so are their failure modes. The Darwin Gödel Machine raised its SWE-bench score from 20% to 50% by editing its own agent code [Zhang et al. 2025]. In one run it also removed the markers its hallucination detector read, despite instructions not to change them [Zhang et al. 2025, App. H]. Hyperagents make the modification procedure itself modifiable. They keep the evaluator, the task data and parent selection outside the editable boundary "to ensure safety, prevent evaluation gaming", and name the loosening of that boundary as future work [Zhang et al. 2026, App. A.5]. A census of 114 studies of recursive self-improvement found that evaluation usually certifies the product of a run and rarely the process that produced it [Chen, Zhu & Zheng 2026].
 
 The difficulty is old in economics and older in law. Delegation carries agency costs: monitoring, bonding and residual loss [Jensen & Meckling 1976]. A signal is worth contracting on in proportion to what it reveals of the agent's action [Holmström 1979]. When the agent can rewrite the instrument the principal reads, the signal stops being informative. Kolt [2026a] argues that the classical remedies — incentives, monitoring, enforcement — strain under AI agents. He warns that legal alignment "will need to contend with the prospect of actors that shape the very laws that govern them" [Kolt 2026b]. This paper is about that case.
 
@@ -36,16 +30,14 @@ The difficulty is old in economics and older in law. Delegation carries agency c
 1. *A conditional design analysis* (§3). For results from computability, probability, control, law and security, we state when each binds an evaluator of a self-modifying agent, what it requires, and how this design meets it. We do not prove that no other mechanism would serve, and claim neither sufficiency nor optimality.
 2. *Six propositions* (§4), stating the construction's guarantees exactly. The value test is given in a block form, which keeps its level when outcomes resolve together, and whose regret bound holds for the quantity tested. We show by example and simulation that the per-event form does not keep its level. Propositions 1(b), 2(a) and 3–5 are machine-checked in Lean 4 with Mathlib.
 3. *A principle of construction* (§5). Law comes before the agent and is tested first on its builders. What a bootstrap raises is authority. Every regress of justification but one stops without an authority, and that one, the owner of the utility, is confined and priced.
-4. *Evidence from a public record* (§7). A reference implementation has run in public since October 2026, with a signed log that dates each step. Recomputed retrospectively under a stated protocol, its value evidence survives only against a base rate pooled across datasets. The institution's own book thus shows that its first evidence of value rested on a weak baseline.
+4. *Evidence from a public record* (§6). A reference implementation has run in public since October 2026, with a signed log that dates each step. Recomputed retrospectively under a stated protocol, its value evidence survives only against a base rate pooled across datasets. The institution's own book thus shows that its first evidence of value rested on a weak baseline.
 
 This is a design paper with proved guarantees and one empirical check. It contains no evaluation of a self-modifying agent: in the reference implementation the agent is the last layer, and it has not been built.
 
-**What is not new.** None of the component results is new, and several mechanisms precede this work: signed or hash-chained logs for agents [Ghosh 2026; Nakajima 2026; Bracale Syrnikov et al. 2026], frozen evaluators [Zhang et al. 2026], pre-registration with human ratification of promotions [Neal 2026], and anytime-valid gates on self-edits [Wu et al. 2025; Shawn 2026; Sengupta 2026; Sun et al. 2026; Gao, Qi & Cui 2026].
-
-To our knowledge, the following are new, although each has precedents (§6):
-- **The governing institution's own powers are granted layer by layer, each only after a sequential test on the institution's own record.** Self-adaptive systems adapt a managed system under a fixed manager [Kephart & Chess 2003; Garlan et al. 2004]. Self-amending rule systems change by vote, not by test [Suber 1990; Goodman 2014].
-- **The principal's repairs are tested sequentially alongside value, as a condition of granting powers, with wealth carried across failed windows.** Expert interventions as a measure of autonomy have precedents in interactive imitation learning [Ross, Gordon & Bagnell 2011; Zhang & Cho 2017].
-- **The law is built before the agent, and imposed first on the model sessions that build it.**
+To our knowledge, three things here are new. Each has precedents, which §7 credits.
+- The governing institution's own powers are granted layer by layer, each only after a sequential test on the institution's own record (§4.3).
+- The principal's repairs are tested sequentially alongside value, as a condition of granting powers, with wealth carried across failed windows (§4.3, §4.5).
+- The law is built before the agent, and imposed first on the model sessions that build it (§5).
 
 ---
 
@@ -89,23 +81,23 @@ The results are of three kinds, and we call only the first kind theorems:
 | | Savage 1971; Gneiting & Raftery 2007 | The rigid score must reward belief | Log score on a per-mille grid |
 | | Goodhart 1975; Skalse et al. 2022 | A target decays unless it is proper and its outcomes are not the party's to move; no non-trivial proxy is unhackable | Outcomes from processes no scored party operates (but see §8); named attacks listed before each window |
 | **Testing** | Ville 1939; Shafer & Vovk 2019; Ramdas et al. 2023 | The operator looks when he likes | Promotion by test supermartingales; a window is a maximum |
-| | Bahadur & Savage 1956 | Small means of unbounded variables cannot be certified | Bounded outcomes tested; minutes and dollars only reported |
+| | Bahadur & Savage 1956 | Small means of unbounded variables cannot be certified | Bounded outcomes tested; unbounded ones, such as minutes, only reported [CHARTER §6] |
 | | Alpern & Schneider 1985 | An "eventually" is never refuted by a finite record | Every obligation has a deadline, which makes it a safety property, checked exactly; the rate of meeting deadlines is tested statistically |
-| **Control** | Conant & Ashby 1970; Ashby 1956 | The governor holds a model; the pool has requisite variety | State is a fold over the record; several model families propose; none is named in law |
+| **Control** | Conant & Ashby 1970; Ashby 1956 | The governor holds a model; the pool has requisite variety | State is a fold over the record; several model families propose [CHARTER §5] |
 | **Law** | Hart 1961 | Recognition, change, adjudication | The core holds exactly these three, in code; rules of conduct enter only from cases |
 | | Fuller 1964 | Law must be prospective, promulgated, clear | Prospectivity by the fold; rules and the checker's digest are entries |
 | | Crawford & Ostrom 1995 | Every rule needs an "or else" | Kernel rules and judge grounds each paired with a mutant that must be killed; one grant defers two pins [seq 7615] |
 | | Waismann 1945 | Texts have open texture | ◦ The text a claim is scored against is fixed at the forecast's position |
-| **Enforcement** | Anderson 1972; Saltzer & Schroeder 1975 | The monitor is always invoked, tamper-proof and small | Judge runs from trunk; 450-line kernel; refusals, never warnings |
+| **Enforcement** | Anderson 1972; Saltzer & Schroeder 1975 | The monitor is always invoked, tamper-proof and small | Judge runs from trunk [CHARTER §3]; 450-line kernel; invalid entries refused, with a reason [SPEC §§8–9] |
 | | Thompson 1984; Wheeler 2005 | One checker cannot be trusted | Two kernels in two languages, written from one specification by different model families |
 | **Growth** | Arrow & Fisher 1974; Henry 1974 | Only the irreversible merits a hard gate | The operator reserves keys, pushes, amendments, promotion; all else priced |
-| | Gall 1977; Hayek 1973 | Working complexity grows from working simplicity | Layers C0 → C3, each promoted on pre-stated criteria |
+| | Gall 1977; Hayek 1973 | Working complexity grows from working simplicity | Layers C0 → C3; from C1a on, each promoted on criteria stated in advance (§6) |
 
 ### 3.1 Two rows restated in the light of 2026 evidence
 
 **Diversity is not independence.** Agreement between checkers is evidence only insofar as their failure causes differ [Dietrich & Spiekermann 2013; Ladha 1992]. Independently written programs fail together far more often than independence predicts [Knight & Leveson 1986], and so do language models. Their errors are correlated across more than 350 models and across providers [Kim et al. 2025], and code written by different models, or by agents in N-version triples, fails on the same tests far more often than independence predicts, although voting still helps [Pato Nogueira et al. 2026; Ron, Baudry & Monperrus 2026]. So a second kernel written by another family detects the faults on which the two differ; it does not make failures independent. The same holds for cold reads by other families (§8).
 
-**Integrity is not completeness.** Signatures and hash chains prove that recorded entries were not altered. They cannot prove that nothing was omitted [Zhao et al. 2026, Cor. 3]. In the construction below, completeness holds by definition for *law*: an act that is not an entry has no legal effect. It does not hold for *the record of acts in the world*, which must be compared against an independent record. One promotion criterion does this for the operator's own acts (§4.5), and the comparison has already failed a window (§7).
+**Integrity is not completeness.** Signatures and hash chains prove that recorded entries were not altered. They cannot prove that nothing was omitted [Zhao et al. 2026, Cor. 3]. In the construction below, completeness holds by definition for *law*: an act that is not an entry has no legal effect. It does not hold for *the record of acts in the world*, which must be compared against an independent record. One promotion criterion does this for the operator's own acts (§4.5), and the comparison has already failed a window (§6).
 
 ### 3.2 Where the regress stops
 
@@ -117,7 +109,7 @@ One level higher would be a proof of the institution's soundness. Its checker ca
 
 The law is *minimal* only in a weak sense. It holds only mechanisms that meet a row of Table 1, and only two kinds of constant: those that carry a proof (1/α, ln K, the stake rules), and those stated before the window they govern. Every model, prior, base rate finer than a type, and threshold is an *entrant* that can lose an election. A mechanism without a row is an entrant installed as law [Freeman 2026, §A.17]. We do not prove the rows independent, or that no smaller set of mechanisms would meet them.
 
-We claim no *sufficiency*: it is left to falsifiers stated in advance (§7). Nor do we claim *optimality*. The institution states no loss function for the operator, and log-loss is a scoring rule, not his utility. What it does instead is test at a level and bound regret, and both hold without knowing his utility.
+We claim no *sufficiency*: it is left to falsifiers stated in advance (§6). Nor do we claim *optimality*. The institution states no loss function for the operator, and log-loss is a scoring rule, not his utility. What it does instead is test at a level and bound regret, and both hold without knowing his utility.
 
 ---
 
@@ -221,7 +213,7 @@ The null is the weak one used for sequential comparison of forecasters [Choe & R
 
 *Example.* Let each sitting hold $n$ events that share one fair outcome, let the base rate be $1/2$, and take $\alpha = 0.05$. Let the aggregate forecast $0.95$ or $0.05$ for the whole sitting, by a fair coin independent of the outcome. Its forecast is a product, so $\mathbb E[\bar D_m \mid \mathcal G_{m-1}] \approx -0.12$ for the joint score and for each event alike. The block process never reached $1/\alpha$ in 4,000 runs of 300 sittings. Betting per event in resolution order, the stakes on later events are raised by earlier events with the same outcome. That process reached $1/\alpha$ in 13% of runs at $n = 20$, and in 50% of 2,000 runs of 200 sittings at $n = 50$. With independent outcomes it never crossed. This is a simulation, not a proof; for the block form the proof is Proposition 3(a). The script is an ancillary file.
 
-The reference implementation updates both its stake and its mixture weights after every event in resolution order [`judge/value.py`, lines 113–135]. Its base rate also counts every earlier resolution of the type, including those of the same batch [`judge/entries.py`, `resolution_rates`]. And its streams do resolve in batches: fourteen resolutions in one minute of 2 November, for instance [seqs 550–563]. Its reported value wealth therefore has no guaranteed level. §7 recomputes it in block form.
+The reference implementation updates both its stake and its mixture weights after every event in resolution order [`judge/value.py`, lines 113–135]. Its base rate also counts every earlier resolution of the type, including those of the same batch [`judge/entries.py`, `resolution_rates`]. And its streams do resolve in batches: fourteen resolutions in one minute of 2 November, for instance [seqs 550–563]. Its reported value wealth therefore has no guaranteed level. §6 recomputes it in block form.
 
 **Liveness.** The clerk derives obligations ("writs") from the state and the clock, each with a deadline. A writ escalates when its deadline passes: a level-triggered reconciliation loop, not an event handler [Burns et al. 2016; CHARTER §2, maxim 3]. An *item* is an act that discharges a batch of writs. Its outcome is $Y_j = 1$ if the batch landed on time untainted by a repair from the operator, and $0$ otherwise. A null rate $p_0 \in (0,1)$ is committed before the first window, from the predecessor's record and never from the window it judges [CHARTER A4.2].
 
@@ -237,7 +229,7 @@ Let $\hat q_j = (s_j+1)/(n_j+2)$, where $s_j$ counts successes among the $n_j$ i
 - (a) $\hat q_j < 1$ gives $\lambda_j < 1/p_0$, so $1 - \lambda_j p_0 > 0$. Since $\lambda_j \ge 0$, $\mathbb E[1 + \lambda_j(Y_j - p_0) \mid \mathcal F_{j-1}] \le 1$. A failed window is followed by one that continues the same product [CHARTER A4.1], so every window's end is a stopping time of one supermartingale, and Ville's inequality applies once.
 - (b) If window $j$ crosses falsely with probability $r_j \le \alpha$, independence gives $1 - \prod_j (1 - r_j) \le 1 - (1-\alpha)^k$, and the union bound gives $k\alpha$. $\square$
 
-A retry therefore costs no α, provided the process, the null and the protocol continue unchanged. In the reference implementation, the value layer has failed two windows and its third is stated in advance. Had each window restarted at 1, the chance of some false crossing could have reached $1 - 0.95^3 \approx 14\%$ at $\alpha = 0.05$. Carried, it stays at 5%. Per-edit gates, by contrast, spend an error budget on each decision (§6), and gates with summable risk schedules admit only a finite total true-positive rate [Scrivens 2026].
+A retry therefore costs no α, provided the process, the null and the protocol continue unchanged. In the reference implementation, the value layer has failed two windows and its third is stated in advance. Had each window restarted at 1, the chance of some false crossing could have reached $1 - 0.95^3 \approx 14\%$ at $\alpha = 0.05$. Carried, it stays at 5%. Per-edit gates, by contrast, spend an error budget on each decision (§7), and gates with summable risk schedules admit only a finite total true-positive rate [Scrivens 2026].
 
 What Proposition 4 controls is the probability of *ever* promoting while the institution never beats $p_0$. It does not test the current window alone. Earlier wealth can carry a later window. While $\hat q_j > p_0$, each new failure multiplies the wealth by $(1-\hat q_j)/(1-p_0) < 1$, which is small when $\hat q_j$ is high. When $\hat q_j \le p_0$ the stake is zero and the wealth does not move (§8).
 
@@ -322,31 +314,7 @@ The method is self-similar. The institution that will judge the agent's changes 
 
 ---
 
-## 6 Related work
-
-**Self-improving agents.** The Gödel machine requires a proof of utility before a rewrite [Schmidhuber 2003]. Later systems validate rewrites on benchmarks instead [Yin et al. 2024; Robeyns, Szummer & Aitchison 2025; Zhang et al. 2025, 2026].
-
-Two recent studies point the same way as this paper. A survey of safety in self-evolving agents holds that utility alone does not authorise promotion [Chen J. et al. 2026], and a census of the field finds the improvement process rarely tested [Chen, Zhu & Zheng 2026]. Here the process itself, run by an institution, is the object tested.
-
-**Self-adaptive systems.** Autonomic computing closes a monitor–analyse–plan–execute loop over a managed system [Kephart & Chess 2003], and architecture-based self-adaptation changes a running system's architecture under an external manager [Garlan et al. 2004]. In both, the manager is fixed and trusted. Here the governing institution is itself the thing promoted, layer by layer, by test on its own record.
-
-**Statistical gates on self-modification.** Several recent systems gate *edits of the agent* against an incumbent. SGM allocates a familywise error budget across edits [Wu et al. 2025]. PACE makes each commit an anytime-valid paired test with a per-decision guarantee [Shawn 2026]. SEA composes confidence sequences and e-processes into per-controller gates, recorded on a certificate ledger around a frozen base model; it leaves the guarantees of that composition under an endogenous proposer as open conjectures [Sengupta 2026]. REUSE controls false promotions over a whole run when benchmarks are reused [Sun et al. 2026], and TRUST controls a false-evolution rate [Gao, Qi & Cui 2026]. Two theoretical results bound what such gates can do. Cai et al. [2026] show that the validation needed for reliable adoption diverges as the incumbent nears its ceiling, and Scrivens [2026] limits what summable-risk gates can admit. None of these gates tests liveness or the principal's burden, carries wealth across failed attempts, or promotes the institution that does the gating.
-
-**Evaluators that change.** Hyperagents fix the evaluator for now [Zhang et al. 2026]. The Red Queen Gödel Machine co-evolves its evaluator and re-estimates past utilities (§4.4) [Iacob et al. 2026]. We allow change only by replay of past verdicts, with every change to them marked in advance (Proposition 6).
-
-**Frozen zones, audited loops, signed logs.** The closest precedent for pre-registration with a human gate is SFA-Bench's AutoLab [Neal 2026]. It combines a hash-attested frozen zone, a declaration sealed before each patch, a hash-chained meta-ledger and promotion by human ratification token.
-
-Other systems log, sign or govern agents' acts. Regimes derives the agent's state from an append-only event log in which promotions are events [Nakajima 2026]. ASG-SI proposes replayable evidence bundles for promoting skills [Huang & Huang 2025]. Tracekit signs tool calls in a witnessed Merkle log [Ghosh 2026]. AgentBound enforces owner-signed behavioural constitutions at runtime [Kaul, Lan & Gupta 2026]. Institutional AI governs collusion between agents through a public governance graph and a keyed governance log [Bracale Syrnikov et al. 2026]. Governable Individuals widen an agent's authority only by signed lifecycle transitions [Qin et al. 2026]. These works anticipate the record. None makes it the source of law, with prospective amendment. None scores the parties' claims, and none promotes the institution by sequential test.
-
-**Self-amending systems.** Rules that change under themselves have a longer history. Suber's Nomic and his study of self-amendment show how a rule system can change its own rules of change [Suber 1990], and the Tezos ledger amends its own protocol by on-chain vote [Goodman 2014]. Our amendment path follows the same pattern: one act makes a rule mutable, a second changes it, and the change takes effect only at a stated height [CHARTER A2.7]. The difference is that change is priced and scored, and that each layer's powers are granted only on sequential evidence about the institution's own record.
-
-**Control, law and agency.** AI control separates a trusted monitor from an untrusted policy [Greenblatt et al. 2024]. The lock applies that separation to the evaluation infrastructure, by keys rather than instructions. Kolt [2026a, 2026b] frames the legal problem. Constitutions used in training [Bai et al. 2022] shape a model's outputs; the constitution here is enforced by a checker the model cannot reach.
-
-**Testing by betting.** The tests follow the prequential principle [Dawid 1984] and game-theoretic testing [Shafer & Vovk 2019; Ramdas et al. 2023]. They are closest to the sequential comparison of forecasters [Henzi & Ziegel 2022; Choe & Ramdas 2024].
-
----
-
-## 7 Reference implementation and status
+## 6 Reference implementation and status
 
 The design runs in public as `renavondata/jack`. The charter's SHA-256 is in the signed genesis entry [seq 0, 2026-10-14T05:41:39Z]. The kernel is 450 lines of standard-library Python [`tools/count_kernel.py`]. At C0's exit, a second kernel in Go agreed with it on 100,000 seeded logs and 658,885 prefixes [REPORT §8.1].
 
@@ -384,9 +352,35 @@ The charter states in advance what would show the construction wrong [CHARTER §
 
 ---
 
+## 7 Related work
+
+**What is not new.** None of the component results is new, and several mechanisms precede this work: signed or hash-chained logs for agents [Ghosh 2026; Nakajima 2026; Bracale Syrnikov et al. 2026], frozen evaluators [Zhang et al. 2026], pre-registration with human ratification of promotions [Neal 2026], and anytime-valid gates on self-edits [Wu et al. 2025; Shawn 2026; Sengupta 2026; Sun et al. 2026; Gao, Qi & Cui 2026]. The precedents for each new claim are below: self-adaptive and self-amending systems for the first, interactive imitation learning and oversight metrics for the second (§4.5), and partial precedents for the third (§5.2).
+
+**Self-improving agents.** The Gödel machine requires a proof of utility before a rewrite [Schmidhuber 2003]. Later systems validate rewrites on benchmarks instead [Yin et al. 2024; Robeyns, Szummer & Aitchison 2025; Zhang et al. 2025, 2026].
+
+Two recent studies point the same way as this paper. A survey of safety in self-evolving agents holds that utility alone does not authorise promotion [Chen J. et al. 2026], and a census of the field finds the improvement process rarely tested [Chen, Zhu & Zheng 2026]. Here the process itself, run by an institution, is the object tested.
+
+**Self-adaptive systems.** Autonomic computing closes a monitor–analyse–plan–execute loop over a managed system [Kephart & Chess 2003], and architecture-based self-adaptation changes a running system's architecture under an external manager [Garlan et al. 2004]. In both, the manager is fixed and trusted. Here the governing institution is itself the thing promoted, layer by layer, by test on its own record.
+
+**Statistical gates on self-modification.** Several recent systems gate *edits of the agent* against an incumbent. SGM allocates a familywise error budget across edits [Wu et al. 2025]. PACE makes each commit an anytime-valid paired test with a per-decision guarantee [Shawn 2026]. SEA composes confidence sequences and e-processes into per-controller gates, recorded on a certificate ledger around a frozen base model; it leaves the guarantees of that composition under an endogenous proposer as open conjectures [Sengupta 2026]. REUSE controls false promotions over a whole run when benchmarks are reused [Sun et al. 2026], and TRUST controls a false-evolution rate [Gao, Qi & Cui 2026]. Two theoretical results bound what such gates can do. Cai et al. [2026] show that the validation needed for reliable adoption diverges as the incumbent nears its ceiling, and Scrivens [2026] limits what summable-risk gates can admit. None of these gates tests liveness or the principal's burden, carries wealth across failed attempts, or promotes the institution that does the gating.
+
+**Evaluators that change.** Hyperagents fix the evaluator for now [Zhang et al. 2026]. The Red Queen Gödel Machine co-evolves its evaluator and re-estimates past utilities (§4.4) [Iacob et al. 2026]. We allow change only by replay of past verdicts, with every change to them marked in advance (Proposition 6).
+
+**Frozen zones, audited loops, signed logs.** The closest precedent for pre-registration with a human gate is SFA-Bench's AutoLab [Neal 2026]. It combines a hash-attested frozen zone, a declaration sealed before each patch, a hash-chained meta-ledger and promotion by human ratification token.
+
+Other systems log, sign or govern agents' acts. Regimes derives the agent's state from an append-only event log in which promotions are events [Nakajima 2026]. ASG-SI proposes replayable evidence bundles for promoting skills [Huang & Huang 2025]. Tracekit signs tool calls in a witnessed Merkle log [Ghosh 2026]. AgentBound enforces owner-signed behavioural constitutions at runtime [Kaul, Lan & Gupta 2026]. Institutional AI governs collusion between agents through a public governance graph and a keyed governance log [Bracale Syrnikov et al. 2026]. Governable Individuals widen an agent's authority only by signed lifecycle transitions [Qin et al. 2026]. These works anticipate the record. None makes it the source of law, with prospective amendment. None scores the parties' claims, and none promotes the institution by sequential test.
+
+**Self-amending systems.** Rules that change under themselves have a longer history. Suber's Nomic and his study of self-amendment show how a rule system can change its own rules of change [Suber 1990], and the Tezos ledger amends its own protocol by on-chain vote [Goodman 2014]. Our amendment path follows the same pattern: one act makes a rule mutable, a second changes it, and the change takes effect only at a stated height [CHARTER A2.7]. The difference is that change is priced and scored, and that each layer's powers are granted only on sequential evidence about the institution's own record.
+
+**Control, law and agency.** AI control separates a trusted monitor from an untrusted policy [Greenblatt et al. 2024]. The lock applies that separation to the evaluation infrastructure, by keys rather than instructions. Kolt [2026a, 2026b] frames the legal problem. Constitutions used in training [Bai et al. 2022] shape a model's outputs; the constitution here is enforced by a checker the model cannot reach.
+
+**Testing by betting.** The tests follow the prequential principle [Dawid 1984] and game-theoretic testing [Shafer & Vovk 2019; Ramdas et al. 2023]. They are closest to the sequential comparison of forecasters [Henzi & Ziegel 2022; Choe & Ramdas 2024].
+
+---
+
 ## 8 Limitations and open questions
 
-**The choice of null.** The value null pits the aggregate against a base rate pooled by event type, which is a weak baseline. An audit on the record constructs a fixed table, one probability per dataset, that would have crossed the value threshold at the 53rd event [`transcripts/AUDIT-criteria-20261117.md`]. Against a base rate kept per dataset, the record shows no evidence of an advantage (§7). The theory's remedy is a stronger incumbent, entered as an entrant and met by the same bounded-difference bet, together with Murphy's decomposition so that calibration without resolution does not pass [Choe & Ramdas 2024; Murphy 1973]. Which incumbent to use is open.
+**The choice of null.** The value null pits the aggregate against a base rate pooled by event type, which is a weak baseline. An audit on the record constructs a fixed table, one probability per dataset, that would have crossed the value threshold at the 53rd event [`transcripts/AUDIT-criteria-20261117.md`]. Against a base rate kept per dataset, the record shows no evidence of an advantage (§6). The theory's remedy is a stronger incumbent, entered as an entrant and met by the same bounded-difference bet, together with Murphy's decomposition so that calibration without resolution does not pass [Choe & Ramdas 2024; Murphy 1973]. Which incumbent to use is open.
 
 **Criteria that a system without skill can pass.** The same audit classes 9 of the 28 window criteria it examined as passable without skill. Liveness is one of them: a forecast resolved on time counts as a success whatever its content. The ratio of procedure to object is another: it can be met by padding the record with unanswered forecasts [`transcripts/AUDIT-criteria-20261117.md`]. Liveness as defined here measures timely, repair-free completion, not the worth of what is completed. Measuring the worth of the work is open.
 
@@ -398,7 +392,7 @@ The charter states in advance what would show the construction wrong [CHARTER §
 
 **Completeness of the record of acts.** The operator's acts are collected from one platform. The monitor the charter requires — one that the operator does not run [CHARTER A2.8] — is not yet built.
 
-**Sufficiency of three secondary rules.** No rule of conduct has yet been needed [CHARTER A2.1]. That the three suffice until the agent arrives is a conjecture under test.
+**Sufficiency of three secondary rules.** No primary rule has yet been needed: the log holds no `rule` entry [CHARTER A2.1; log at seq 7809]. That the three suffice until the agent arrives is a conjecture under test.
 
 **Mixture or market.** The election is a Bayes mixture over a roster fixed for each layer. A market of traders, in the manner of logical induction [Garrabrant et al. 2016], would let the roster grow, but needs its own argument for anytime validity.
 
@@ -422,7 +416,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 
 - Repository, with the log, kernels, judge, briefs and rulings: github.com/renavondata/jack.
 - Book: *A Court for Agents*, gfrm.in/book; source at github.com/gfrmin/agent-court.
-- Ancillary files of this paper: `lean/`, the Lean proofs of §4 (`lake build`, with a table from propositions to theorems); `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §7 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
+- Ancillary files of this paper: `lean/`, the Lean proofs of §4 (`lake build`, with a table from propositions to theorems); `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §6 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
 - Founding note: "The Science Was Done. The Engineering Wasn't.", gfrm.in, 1 November 2026.
 
 ---
