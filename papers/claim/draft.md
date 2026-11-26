@@ -5,8 +5,7 @@ Independent researcher, Hong Kong · [email]
 
 - *Square brackets give the check behind each fact about the implementation:*
   - *`seq n` is an entry of `renavondata/jack` `log.jsonl`;*
-  - *`CHARTER`, `SPEC` and `REPORT` are files at `origin/main` `e580b64`;*
-  - *citations of Freeman 2026 refer to gfrmin/agent-court at `007a007`.*
+  - *`CHARTER`, `SPEC` and `REPORT` are files at `origin/main` `e580b64`.*
 
 ---
 
@@ -40,18 +39,18 @@ To our knowledge, three things here are new. Each has precedents, which §7 cred
 
 ## 2 Setting
 
-The object has four parts [Freeman 2026, App. A.1]:
+The object has four parts:
 - **The agent** rewrites its own programs and keeps or discards the result by what it earns. It goes on doing so after it stops being watched.
 - **The operator** is the principal and owner of the utility. He is one person, whose attention is the scarcest resource in the system.
 - **The world** charges for being wrong. Its outcomes come from processes outside the agent: a race result, a dataset's modification time, a test run on a commit.
 - **The policy** inside the agent is a large language model: general, cheap and unreliable in ways that cannot be listed in advance.
 
-In this setting, three results bear on what governs the object. Two of them are what the book calls *lock* and *score* [Freeman 2026, §0.2]:
+In this setting, three results bear on what governs the object:
 - **Lock.** That a change is an improvement is a semantic property of programs, and no procedure decides such properties for arbitrary programs [Rice 1953]. Proofs remain possible for particular programs and restricted languages, but a self-modifying agent's changes are not confined to such a class. By Löb's theorem, an agent that adopts a successor only on a proof, in its own consistent theory, that the successor's conclusions are sound cannot in general obtain that proof for a successor reasoning in the same theory [Löb 1955; Yudkowsky & Herreshoff 2013]. This obstructs proof-based self-trust, not every form of trust. Neither result forbids checking the agent from outside, against a fixed specification. So we put the evaluation rule outside the modifier's reach.
 - **Score.** Under expected-score incentives, a proper score can be held fixed at every level without rewarding misreport [Brier 1950; Good 1952; Savage 1971; Gneiting & Raftery 2007], on outcomes the scored parties do not control [Goodhart 1975]. Only forecasts actually issued, and outcomes actually realised, count [Dawid 1984]. A proper score is not immune to Goodhart's law: a weak comparator, an omitted objective or strategic participation can still be exploited (§8).
 - **Anytime validity.** The operator reads the record when he likes and acts when it suits him. A test whose level survives such looking is naturally built from a test supermartingale, by Ville's inequality [Ville 1939; Shafer & Vovk 2019; Ramdas et al. 2023].
 
-The book's third result, *loop*, is that the simplest optimal regulator is a model of what it regulates [Conant & Ashby 1970]. Here it motivates holding the institution's state as a fold over its record, and no more. These results motivate the construction's ingredients; they do not fix how each is built (§3).
+A fourth, which we call *loop*, is that the simplest optimal regulator is a model of what it regulates [Conant & Ashby 1970]. Here it motivates holding the institution's state as a fold over its record, and no more. These results motivate the construction's ingredients; they do not fix how each is built (§3).
 
 **Threat model.** We trust the operator's genesis key and his reading of what he signs, the host and CI provider that run the judge, and SHA-256 and Ed25519. We trust no proposer, including the model sessions that build the institution and, later, the agent. We trust no claim that the record cannot recompute, with two exceptions. Promotion evidence is checked for presence and hash, not truth, and its contents are attested by the operator [SPEC §10, item 15]. And a resolution's outcome is taken as entered: the kernel checks that it names an outcome and some evidence [SPEC §5], not that the evidence implies it. One resolution on the record is known to be wrong, and stands [REPORT, C1a §4]. Times are likewise those the entries carry, checked only for format and order. The guarantees below therefore concern the recorded outcomes and times. The construction aims to make every untrusted party's influence pass through entries that the checker admits and the ledger scores. It does not defend against a compromised host, or against an operator acting against his own utility.
 
@@ -61,7 +60,7 @@ The book's third result, *loop*, is that the simplest optimal regulator is a mod
 
 ## 3 Why these ingredients
 
-Table 1 maps each ingredient of the design to the results behind it, condensed from the book's appendix [Freeman 2026, App. A]. Each row is a design argument, not a theorem about all designs, and other responses are possible. Among the results, Rice, Löb, Ville, Alpern–Schneider, the propriety of the log score and the option-value results of Arrow–Fisher and Henry are theorems within their own models. Conant–Ashby holds under stated conditions. The rest are principles from statistics, law, security and engineering, with records of failure behind them. We claim neither that the ingredients suffice, which the falsifiers of §6 put to the record, nor that they are optimal: log loss is a scoring rule, not the operator's utility.
+Table 1 maps each ingredient of the design to the results behind it. Each row is a design argument, not a theorem about all designs, and other responses are possible. Among the results, Rice, Löb, Ville, Alpern–Schneider, the propriety of the log score and the option-value results of Arrow–Fisher and Henry are theorems within their own models. Conant–Ashby holds under stated conditions. The rest are principles from statistics, law, security and engineering, with records of failure behind them. We claim neither that the ingredients suffice, which the falsifiers of §6 put to the record, nor that they are optimal: log loss is a scoring rule, not the operator's utility.
 
 **Table 1. The ingredients, the results behind them, and this design's response.**
 
@@ -141,9 +140,9 @@ Part (b) is *nemo iudex in causa sua* [Coke 1610], enforced by the kernel. It do
 
 Part (a) concerns the expected score. A party rewarded by a non-linear function of its score, such as its weight in the mixture or a promotion, may gain by another report. We do not claim truthful reporting is optimal for those rewards.
 
-The logarithmic score is chosen among proper scores for a second reason. Under it, the Bayes mixture of forecasters is itself a forecaster, and its regret against the best of $K$ is at most $\ln K$ with nothing to tune [Freeman 2026, §A.5].
+The logarithmic score is chosen among proper scores for a second reason. Under it, the Bayes mixture of forecasters is itself a forecaster, and its regret against the best of $K$ is at most $\ln K$ with nothing to tune [Cesa-Bianchi & Lugosi 2006, §9]; Proposition 3(b) restates this for blocks.
 
-A forecast belongs to a procedure, not to a mind. A fixed template, model and prompt has a log-loss on a stream whether or not it believes anything [Freeman 2026, §A.20]. So the counsel session that drafted the charter, and the operator himself, may forecast on the same ledger and are scored in the same way [seqs 31, 33; `tools/entry.py`, `score`]. None of their forecasts is among the value events of §6.
+A forecast belongs to a procedure, not to a mind. A fixed template, model and prompt has a log-loss on a stream whether or not it believes anything. So the counsel session that drafted the charter, and the operator himself, may forecast on the same ledger and are scored in the same way [seqs 31, 33; `tools/entry.py`, `score`]. None of their forecasts is among the value events of §6.
 
 ### 4.3 Promotion by betting
 
@@ -262,7 +261,7 @@ In this design, each layer presupposes the one before it:
 
 This is Gall's rule [Gall 1977] and Madison's order: "you must first enable the government to control the governed; and in the next place oblige it to control itself" [Madison 1788]. Each layer is promoted before the next layer's window opens [CHARTER §8]. This is an argument from the design's own dependencies, not a universal necessity. Governance could be developed alongside an agent held in containment; §5.2 argues against that course, but we do not claim it impossible.
 
-What the layers raise is authority, not intelligence [Freeman 2026, §11.10]. In the design, a layer gains its powers by promotion, under the same three secondary rules; keys are the operator's grants, among the irreversible acts he reserves (§4.5). Not every power in the implementation came by test. C0 predates windows, and the merging process received `merge` by the operator's grant once the record showed accepted proposals waiting on a person, before any promotion [seq 51]. From C1a on, its layers have been promoted only on its own record, and it changes its law only by its own procedure. The institution that will judge the agent's changes was thus built from proposals that its own kernel judged and its own ledger scored.
+What the layers raise is authority, not intelligence. In the design, a layer gains its powers by promotion, under the same three secondary rules; keys are the operator's grants, among the irreversible acts he reserves (§4.5). Not every power in the implementation came by test. C0 predates windows, and the merging process received `merge` by the operator's grant once the record showed accepted proposals waiting on a person, before any promotion [seq 51]. From C1a on, its layers have been promoted only on its own record, and it changes its law only by its own procedure. The institution that will judge the agent's changes was thus built from proposals that its own kernel judged and its own ledger scored.
 
 ### 5.2 The builders are the first subjects
 
@@ -353,7 +352,7 @@ Other systems log, sign or govern agents' acts. Regimes derives the agent's stat
 
 **Correlated readers and checkers.** The weight of agreement between the two kernels, or between cold reads by different model families, is bounded by their shared error (§4.4). That error should be estimated against executable or human references [Kim et al. 2025; Chen, Zhu & Zheng 2026]. In the implementation, cross-family reads gate law-level texts by procedure, not yet by code.
 
-**Who operates the world.** One of the two scored streams, the freshness of datasets, resolves from pages on the operator's own data marketplace, and the operator may forecast [Freeman 2026, §A.22]. That is the performative case Table 1 warns against.
+**Who operates the world.** One of the two scored streams, the freshness of datasets, resolves from pages of renavon.com, a data marketplace the author operates, and the operator's key holds the power to forecast [forecasts of type `world.renavon`; seq 33]. That is the performative case Table 1 warns against.
 
 **Completeness of the record of acts.** The operator's acts are collected from one platform. The monitor the charter requires — one that the operator does not run [CHARTER A2.8] — is not yet built.
 
@@ -375,12 +374,11 @@ We have argued that what judges a self-modifying agent should lie outside the ag
 
 ## Disclosure
 
-Model sessions from three providers' families drafted the charter, the specification and most of the code. Since 19 October 2026 they have acted under keys declared on the record. The second kernel was written by a different family from the first. This paper was drafted by a model session that holds no key, working from the repository, the book and the literature; the author read and revised it. No model is an author. The author is responsible for every claim.
+Model sessions from three providers' families drafted the charter, the specification and most of the code. Since 19 October 2026 they have acted under keys declared on the record. The second kernel was written without reading the first (§4.4). This paper was drafted by a model session that holds no key, working from the repository and the literature; the author read and revised it. It develops part of the author's book-length account of the programme [Freeman 2026], which is not peer-reviewed. The paper is meant to stand alone, and relies on the book for no claim. No model is an author. The author is responsible for every claim.
 
 ## Code and data
 
 - Repository, with the log, kernels, judge, briefs and rulings: github.com/renavondata/jack.
-- Book: *A Court for Agents*, gfrm.in/book; source at github.com/gfrmin/agent-court.
 - Ancillary files of this paper: `lean/`, the Lean proofs of §4 (`lake build`, with a table from propositions to theorems); `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §6 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
 - Founding note: "The Science Was Done. The Engineering Wasn't.", gfrm.in, 1 November 2026.
 
@@ -406,7 +404,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 - Dawid, A. P. (1984). Present position and potential developments: Some personal views. Statistical theory: The prequential approach. *JRSS A* 147(2):278–292. doi:10.2307/2981683
 - de Moura, L. & Ullrich, S. (2021). The Lean 4 theorem prover and programming language. *CADE-28*, LNCS 12699:625–635. doi:10.1007/978-3-030-79876-5_37
 - Dennis, J. B. & Van Horn, E. C. (1966). Programming semantics for multiprogrammed computations. *Communications of the ACM* 9(3):143–155. doi:10.1145/365230.365252
-- Freeman, G. (2026). *A Court for Agents: Law, scoring and the self-modifying machine.* gfrm.in/book; source github.com/gfrmin/agent-court.
+- Freeman, G. (2026). *A Court for Agents: Law, scoring and the self-modifying machine.* Online book, not peer-reviewed. gfrm.in/book; source github.com/gfrmin/agent-court, commit 007a007.
 - Fuller, L. L. (1964). *The Morality of Law.* Yale University Press.
 - Gall, J. (1977). *Systemantics: How Systems Work and Especially How They Fail.* Quadrangle.
 - Gao, Z., Qi, Z. & Cui, Y. (2026). Trustworthy recursive self-improvement with statistical guarantees. arXiv:2611.10787.
