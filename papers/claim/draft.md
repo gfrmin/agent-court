@@ -3,7 +3,7 @@
 **Guy Freeman**
 Independent researcher, Hong Kong · [email]
 
-*Draft 5, 25 November 2026. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and the first outside cold read (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
+*Draft 6, 26 November 2026. Claim session. Revised for three referee-style self-reviews (`claude/claim/03-review-round1.md`) and two outside cold reads (`claude/claim/REVIEW-cold-1.md`, gpt-6.1-sol, runner issue #1348; `claude/claim/REVIEW-cold-2.md`, gemini-4-argon, #1362), and checked claim by claim (`claude/claim/04-selfcheck.md`). A LaTeX build with Figure 1 is generated from this file.*
 - *Square brackets give the check behind each fact about the implementation:*
   - *`seq n` is an entry of `renavondata/jack` `log.jsonl`;*
   - *`CHARTER`, `SPEC` and `REPORT` are files at `origin/main` `e580b64`;*
@@ -16,7 +16,7 @@ Independent researcher, Hong Kong · [email]
 
 An agent that may rewrite its own programs poses a principal–agent problem that monitoring alone cannot solve. No general procedure decides by inspection whether a change to an arbitrary program is an improvement (Rice). An agent cannot soundly trust, by proofs in its own theory, a successor that reasons in that theory (Löb). A measure within the agent's reach decays once it becomes a target (Goodhart). Under assumptions we state, these results call for a loop that acts on a model of what it governs, a lock outside the modifier's reach, and a proper score on outcomes that no scored party controls.
 
-We derive a governing institution with these parts. Its law is a fold over a signed, append-only record. Every claim of merit, the principal's included, is a forecast under the logarithmic score, resolved by another party. The institution's own layers gain powers only by anytime-valid tests of predictive value and of liveness, and liveness is measured by the principal's repairs. Six propositions state the guarantees. We show by example and simulation that the natural per-event form of the value test loses its level when outcomes resolve together, while a block form keeps it. Recomputed in block form, the reference implementation's record still rejects its value null, but by a margin some 56 orders of magnitude smaller than the per-event figure.
+We derive a governing institution with these parts. Its law is a fold over a signed, append-only record. Every claim of merit, the principal's included, is a forecast under the logarithmic score, resolved by another party. The institution's own layers gain powers only by anytime-valid tests of predictive value and of liveness, and liveness is measured by the principal's repairs. Six propositions state the guarantees. We show by example and simulation that the natural per-event form of the value test loses its level when outcomes resolve together, while a block form keeps it. Recomputed validly on the reference implementation's record, its value evidence survives against a base rate pooled across datasets, and vanishes against a base rate per dataset.
 
 We argue that the law should exist before the agent, and be tested first on the model sessions that build it. The implementation has run in public since October 2026; no self-modifying agent has yet been built under it.
 
@@ -31,10 +31,10 @@ The difficulty is old in economics and older in law. Delegation carries agency c
 **Thesis.** Self-modification can be permitted only where the modifier cannot reach the institution that scores it. That institution must be built first, tested first on its builders, and must keep a book on itself rather than a proof of itself.
 
 **Contributions.**
-1. *A conditional design analysis* (§3). For results from computability, probability, control, law and security, we state the assumption under which each binds an evaluator of a self-modifying agent, what it requires, and the mechanism by which this design meets the requirement. Each mechanism is there for a stated result. We do not prove that no other mechanism would serve, and we claim neither sufficiency nor optimality.
-2. *Six propositions* (§4). They state the construction's guarantees exactly and in a form that can be checked against the code. None is mathematically deep. The value test is given in a block form, which keeps its level when outcomes resolve together, and whose regret bound holds for the quantity tested. We show by example and simulation that the per-event form does not keep its level.
+1. *A conditional design analysis* (§3). For results from computability, probability, control, law and security, we state when each binds an evaluator of a self-modifying agent, what it requires, and how this design meets it. We do not prove that no other mechanism would serve, and claim neither sufficiency nor optimality.
+2. *Six propositions* (§4), stating the construction's guarantees exactly. The value test is given in a block form, which keeps its level when outcomes resolve together, and whose regret bound holds for the quantity tested. We show by example and simulation that the per-event form does not keep its level.
 3. *A principle of construction* (§5). Law comes before the agent and is tested first on its builders. What a bootstrap raises is authority. Every regress of justification but one stops without an authority, and that one, the owner of the utility, is confined and priced.
-4. *A reference implementation* (§7). It runs in public, and its signed log dates each step. Recomputed in block form, its value evidence falls from about $10^{60}$ to about $2 \times 10^4$.
+4. *A reference implementation* (§7), public, with a signed log that dates each step. Recomputed validly, its value evidence survives only against a base rate pooled across datasets.
 
 This is a design paper with proved guarantees and one empirical check. It contains no evaluation of a self-modifying agent: in the reference implementation the agent is the last layer, and it has not been built.
 
@@ -60,7 +60,7 @@ In this setting, three results fix the shape of what governs the object [Freeman
 - **Lock.** That a change is an improvement is a semantic property of programs, and no procedure decides such properties for arbitrary programs [Rice 1953]. Proofs remain possible for particular programs and restricted languages, but a self-modifying agent's changes are not confined to such a class. By Löb's theorem, an agent reasoning in a fixed formal theory cannot trust a successor that reasons in the same theory [Löb 1955; Yudkowsky & Herreshoff 2013]. Neither result forbids checking the agent from outside, against a fixed specification. So a loop that modifies itself needs a fixed point outside the modifier's reach.
 - **Score.** The one measure that can be held fixed at every level without rewarding misreport is a proper score [Brier 1950; Good 1952; Savage 1971; Gneiting & Raftery 2007], on outcomes the loop does not control [Goodhart 1975]. Only forecasts actually issued, and outcomes actually realised, count [Dawid 1984]. A proper score is not immune to Goodhart's law: a weak comparator, an omitted objective or strategic participation can still be exploited (§8).
 
-Our claim is that loop, lock and score, under the assumptions just stated, fix what the governing institution must contain, though not how each part is built.
+Our claim is that loop, lock and score, under the assumptions just stated, constrain what the governing institution must contain, though not how each part is built.
 
 **Threat model.** We trust the operator's genesis key and his reading of what he signs, the host and CI provider that run the judge, and SHA-256 and Ed25519. We trust no proposer, including the model sessions that build the institution and, later, the agent; and no claim or evidence string that the record cannot recompute. The construction aims to make every untrusted party's influence pass through entries that the checker admits and the ledger scores. It does not defend against a compromised host, or against an operator acting against his own utility.
 
@@ -92,7 +92,7 @@ The results are of three kinds, and we call only the first kind theorems:
 | **Control** | Conant & Ashby 1970; Ashby 1956 | The governor holds a model; the pool has requisite variety | State is a fold over the record; several model families propose; none is named in law |
 | **Law** | Hart 1961 | Recognition, change, adjudication | The core holds exactly these three, in code; rules of conduct enter only from cases |
 | | Fuller 1964 | Law must be prospective, promulgated, clear | Prospectivity by the fold; rules and the checker's digest are entries |
-| | Crawford & Ostrom 1995 | Every rule needs an "or else" | Kernel rules and judge grounds each paired with a mutant that must be killed |
+| | Crawford & Ostrom 1995 | Every rule needs an "or else" | Kernel rules and judge grounds each paired with a mutant that must be killed; one grant defers two pins [seq 7615] |
 | | Waismann 1945 | Texts have open texture | ◦ The text a claim is scored against is fixed at the forecast's position |
 | **Enforcement** | Anderson 1972; Saltzer & Schroeder 1975 | The monitor is always invoked, tamper-proof and small | Judge runs from trunk; 450-line kernel; refusals, never warnings |
 | | Thompson 1984; Wheeler 2005 | One checker cannot be trusted | Two kernels in two languages, written from one specification by different model families |
@@ -109,7 +109,7 @@ The results are of three kinds, and we call only the first kind theorems:
 
 Each regress of justification ends in one of seven places, and only one of them is an authority [Freeman 2026, ch. 12]. The checker ends in *size and diversity*: a kernel one person can read, and a second author who agrees with it. The constants end in *theorems or elections*, the adviser in *scoring*, value in *the world*, randomness in *a named assumption* on the record, and the institution in *a book that can go bankrupt*. The operator is the one authority, as *owner of the utility*; his acts are unscored but priced, and confined to the irreversible.
 
-One level higher would be a proof of the institution's soundness within its own theory, which Gödel's second incompleteness theorem and Löb's theorem forbid [Gödel 1931; Löb 1955]. One level lower — trusting a judge, a vendor, a number or an adviser — is where earlier attempts stopped.
+One level higher would be a proof of the institution's soundness. Its checker can be verified from outside against the specification, but whether the institution serves its owner is an empirical question, and it is put to the book. One level lower — trusting a judge, a vendor, a number or an adviser — is where earlier attempts stopped.
 
 ### 3.3 Minimality, sufficiency, optimality
 
@@ -141,16 +141,16 @@ This differs from an event-sourced runtime [Nakajima 2026] in one respect. Such 
 
 (a) For any extension $L' = L \Vert M$, every entry of $L$ receives the same verdict in $L'$ as in $L$.
 
-(b) Any linked log $L^* \neq L$ whose last line also hashes to $h$ yields a SHA-256 collision. So a computationally bounded adversary produces one with at most its advantage in finding collisions.
+(b) Any linked log $L^* \neq L$ that begins with a genesis entry (`seq` 0) and whose last line also hashes to $h$ yields a SHA-256 collision. So a computationally bounded adversary produces one with at most its advantage in finding collisions.
 
-(c) An amendment entered at seq $a$ with activation height $k > a$ governs only entries at positions $\ge k$.
+(c) In the state the kernel folds, the charter in force at position $i$ is the one named by the latest `amend` with activation height $\le i$. So an amendment entered at seq $a$ with activation height $k > a$ is not in force before $k$.
 
 *Proof.*
 - (a) $V(S_i, e_i)$ depends only on $e_0, \dots, e_i$.
-- (b) Compare $L$ and $L^*$ from the last line backwards. If two lines with equal hashes differ, they are a collision. If they are equal, their `parent` fields are equal, so the lines before them hash alike, and the comparison continues. Since $L^* \neq L$, a difference is found before both logs are exhausted. A difference in length counts too: a genesis line is then compared with a line that has a parent.
+- (b) Compare $L$ and $L^*$ from the last line backwards. If two lines with equal hashes differ, they are a collision. If they are equal, their `parent` fields are equal, so the lines before them hash alike, and the comparison continues. Since $L^* \neq L$, a difference is found before both logs are exhausted. If one log is longer, the comparison reaches the other's genesis line paired with a line of positive `seq`; the two differ and hash alike, because the next lines' `parent` fields agree.
 - (c) The charter in force at $i$ comes from the latest `amend` with activation height $\le i$, and the kernel refuses any activation height not above the entry's own `seq` [SPEC §7]. $\square$
 
-Proposition 1 is Fuller's prospectivity, proved of a data structure. The kernel never reads a clock: order comes from the chain [Lamport 1978; Schneider 1990], and `ts` is a field that may not decrease.
+Proposition 1 is Fuller's prospectivity, proved of a data structure. In the implementation the charter is named by its digest, and one effect of an amendment is immediate: no push is lawful between $a$ and $k$ [SPEC §10, item 12]. The kernel never reads a clock: order comes from the chain [Lamport 1978; Schneider 1990], and `ts` is a field that may not decrease.
 
 Authority is a capability [Dennis & Van Horn 1966; Miller 2006]. A party without a key holding the power `merge` cannot merge, and there is nothing to argue with. In the implementation, builders' keys hold `proposal`, `spec_conflict`, `forecast` and `resolution` [seq 34]; the merging process holds `merge` alone [seq 201]; and only the operator's genesis key holds `key`, `push`, `amend` and `decision` [seqs 0, 1, 33]. A `key` entry that would leave no key able to declare keys is refused, because that loss is irreversible [CHARTER A2.5].
 
@@ -180,7 +180,7 @@ A *layer* is a set of mechanisms, together with the powers they confer. It is bu
 
 The hypotheses concern the *institution*, not a candidate. The statistics are computed over the live record of every party's acts and claims during the window. Promotion grants powers to the next layer; it does not adopt one edit over an incumbent.
 
-**Value.** Let resolved events be grouped into finite, non-empty *blocks* $B_1, B_2, \dots$, each block's membership fixed before any of its outcomes is realised, under assumption (A): every outcome of the blocks before $B_m$ is realised before the forecasts of $B_m$ close. A sitting at which several events are forecast together is one block. Let $\mathcal G_{m-1}$ be the information recorded before $B_m$'s forecasts close. By (A) it contains the outcomes, scores and stakes of every earlier block, and none of $B_m$'s outcomes. Where horizons overlap, so that (A) fails for consecutive sittings, the sittings are split into lag classes within which it holds, and each class is a process of its own [Henzi & Ziegel 2022].
+**Value.** Let resolved events be grouped into finite, non-empty *blocks* $B_1, B_2, \dots$, each block's membership fixed before any of its outcomes is realised, under assumption (A): every outcome of the blocks before $B_m$ is realised before the forecasts of $B_m$ close. A sitting at which several events are forecast together is one block. Let $\mathcal G_{m-1}$ be the information recorded before $B_m$'s forecasts close. By (A) it contains the outcomes, scores and stakes of every earlier block, and none of $B_m$'s outcomes. Where horizons overlap, so that (A) fails for consecutive sittings, the sittings are split into lag classes within which it holds, and each class is a process of its own [Henzi & Ziegel 2022]. If the classes are formed from the data, class $\ell$, numbered in order of creation, needs a threshold fixed in advance, such as $\ell(\ell+1)/\alpha$; since $\sum_\ell \alpha/(\ell(\ell+1)) = \alpha$, the chance that some class crosses its threshold is at most $\alpha$. An event that never resolves leaves its block's bet. That is valid under assumption (B): whether an event resolves is independent of its block's outcomes, given $\mathcal G_{m-1}$.
 
 For event $i$ in block $B_m$, with outcome $Y_i$:
 - $b_i$ is the base-rate forecaster's probability: the past frequency for the event's type;
@@ -209,7 +209,7 @@ $$\ln 999\sum_{m\le t}|B_m|\,\bar D_m \;\ge\; \max_k \sum_{m \le t}\sum_{i\in B_
 
 The null is the weak one used for sequential comparison of forecasters [Choe & Ramdas 2024]. By part (b), the aggregate's cumulative log loss is never more than $\ln K$ above the base rate's, whatever the outcomes. Part (b) bounds the size-weighted sum $\sum_m |B_m|\bar D_m$, that is, the aggregate's log loss; the wealth bets on the unweighted block averages, so (b) is not a bound on the wealth. Rejecting $H_0^{\mathrm{val}}$ shows that, at some block, the aggregate had a conditional advantage over the base rate. It does not show a persistent advantage, nor skill beyond what a finer base rate would capture (§8).
 
-*Remark (one bet per sitting).* Assumption (A) and block betting make the null mean "no advantage at the time of forecasting". Simultaneous resolution is harmless in itself. The fault is conditioning a later bet on outcomes that the forecast-time null excludes, which a per-event bet in resolution order does whenever outcomes resolve together; the process then need not be a supermartingale under the natural null. Freezing the stakes within a sitting does not cure this, since a product of correlated factors need not be a supermartingale either; hence one factor per block. The joint forecast matters too. Built from the marginals $q_i$, part (b) would fail: when members disagree within a block, the product of the mixture's marginals can lose more than $\ln K$ to the best member.
+*Remark (one bet per sitting).* Assumption (A) and block betting make the null mean "no advantage at the time of forecasting". Simultaneous resolution is harmless in itself. The fault is conditioning a later bet on outcomes that the forecast-time null excludes, which a per-event bet in resolution order does whenever outcomes resolve together; the process then need not be a supermartingale under the natural null. Freezing the stakes within a sitting does not cure this, since a product of correlated factors need not be a supermartingale either; hence one factor per block. If outcomes within a sitting were independent given $\mathcal G_{m-1}$, one bet per event with stakes fixed at the cutoff would also be valid, and would compound faster. The block form gives up that power so as not to need the assumption. The joint forecast matters too. Built from the marginals $q_i$, part (b) would fail: when members disagree within a block, the product of the mixture's marginals can lose more than $\ln K$ to the best member.
 
 *Examples.* Let each sitting hold $n$ events that share one fair outcome, let the base rate be $1/2$, and take $\alpha = 0.05$.
 1. Let the aggregate forecast $0.95$ or $0.05$ for the whole sitting, by a fair coin independent of the outcome, so that $\mathbb E[\bar D_m \mid \mathcal G_{m-1}] \approx -0.12$. The block process never reached $1/\alpha$ in 4,000 runs of 300 sittings. Betting per event in resolution order, the stakes on later events are raised by earlier events with the same outcome. That process reached $1/\alpha$ in 13% of runs at $n = 20$, and in 50% of 2,000 runs of 200 sittings at $n = 50$.
@@ -221,7 +221,7 @@ The reference implementation updates both its stake and its mixture weights afte
 
 **Liveness.** The clerk derives obligations ("writs") from the state and the clock, each with a deadline. A writ escalates when its deadline passes: a level-triggered reconciliation loop, not an event handler [Burns et al. 2016; CHARTER §2, maxim 3]. An *item* is an act that discharges a batch of writs. Its outcome is $Y_j = 1$ if the batch landed on time untainted by a repair from the operator, and $0$ otherwise. A null rate $p_0 \in (0,1)$ is committed before the first window, from the predecessor's record and never from the window it judges [CHARTER A4.2].
 
-Let $\hat q_j = (s_j+1)/(n_j+2)$, where $s_j$ counts successes among the $n_j$ items resolved before item $j$, since the layer's first window. Items are indexed in the order in which their outcomes are realised, and $\mathcal F_{j-1}$ is the record before $Y_j$ is realised. If several items are realised together, they count as one: the process takes the single factor $1 + \lambda_j(\bar Y_j - p_0)$ on their mean outcome, with the stake computed from items realised earlier, and the null and proof below apply with $\bar Y_j$ for $Y_j$. Let $\lambda_j = \max\big(0, (\hat q_j - p_0)/(p_0(1-p_0))\big)$, and $M_t = \prod_{j \le t}(1 + \lambda_j(Y_j - p_0))$ [CHARTER A4.3].
+Let $\hat q_j = (s_j+1)/(n_j+2)$, where $s_j$ counts successes among the $n_j$ items resolved before item $j$, since the layer's first window. Items are indexed in the order in which their outcomes are realised, and $\mathcal F_{j-1}$ is the record before $Y_j$ is realised. If several items are realised together, they count as one: the process takes the single factor $1 + \lambda_j(\bar Y_j - p_0)$ on their mean outcome, with the stake computed from items realised earlier, and the null and proof below apply with $\bar Y_j$ for $Y_j$. The reference implementation does not yet do this. It scores simultaneous items one by one [`judge/status.py`, `score_items`], and about 190 of its 641 items so far share a timestamp with another [log at seq 7809]. Let $\lambda_j = \max\big(0, (\hat q_j - p_0)/(p_0(1-p_0))\big)$, and $M_t = \prod_{j \le t}(1 + \lambda_j(Y_j - p_0))$ [CHARTER A4.3].
 
 **Proposition 4 (liveness, with wealth carried across windows).** Let $H_0^{\mathrm{live}}$ be: $\mathbb E[Y_j \mid \mathcal F_{j-1}] \le p_0$ for every item from the layer's first window on.
 
@@ -251,11 +251,11 @@ How may the evaluator itself change? Let $E$ be the evaluator in force, and let 
 1. The operator enters a grant naming a table of $E$'s outputs on $R$.
 2. The grant marks, for each row $r \in R$, the lines $\mu(r)$ expected to change, together with what those lines will then say.
 
-The push installing $E'$ is admitted only if, on every row, $E'$'s output equals $E$'s outside $\mu(r)$ and agrees with the grant on $\mu(r)$ [SPEC §10, "The promotion evaluator"; grant seq 6851; push seq 7281].
+The specification admits the push installing $E'$ only if, on every row, $E'$'s output equals $E$'s outside $\mu(r)$ and agrees with the grant on $\mu(r)$ [SPEC §10, "The promotion evaluator"]. In the implementation this is enforced only in part. The judge checks that the installing push carries a specification named in such a grant [`judge/judge.py`, `installing_push`]. CI replays three of the table's 706 rows [`tests/promotion_replay_spot.py`]. The full replay is a reviewer's session, not a gate [`transcripts/sessions/c2a-3-replay.md`; grant seq 6851; push seq 7281].
 
 **Proposition 6 (replay-bound change).**
 
-(a) On every row of $R$, read with the inputs the table records, every unmarked criterion line and every unmarked promotion verdict is the same under $E'$ as under $E$.
+(a) If $E'$ meets the admission condition then, on every row of $R$ read with the inputs the table records, every unmarked criterion line and every unmarked promotion verdict is the same under $E'$ as under $E$.
 
 (b) No `promote` already on the record is re-judged.
 
@@ -279,7 +279,7 @@ When the operator forecasts, he is scored like anyone else (§4.2). His *acts* a
 
 Acts the operator takes *off* the record are collected from the hosting platform's own event history, which is an independent record. A window fails if a repair is found there [BRIEF-C2a, criterion 7].
 
-Human oversight load has been measured before, for instance as interventions per session [McCain et al. 2026] or as the share of consequential actions taken without approval [Kolluri et al. 2026]. In interactive imitation learning, an expert's interventions drive the learner's training [Ross, Gordon & Bagnell 2011], and a learned safety policy decides when to hand control back to the expert [Zhang & Cho 2017]. To our knowledge, this is the first such measure that is tested sequentially and made a condition of granting powers.
+Human oversight load has been measured before, for instance as interventions per session [McCain et al. 2026] or as the share of consequential actions taken without approval [Kolluri et al. 2026]. In interactive imitation learning, an expert's interventions drive the learner's training [Ross, Gordon & Bagnell 2011], and a learned safety policy decides when to hand control back to the expert [Zhang & Cho 2017]. To our knowledge, this is the first such measure that is tested sequentially and made a condition of granting powers. It measures timely, repair-free completion, not the worth of the work (§8).
 
 ---
 
@@ -360,15 +360,29 @@ The design runs in public as `renavondata/jack`. The charter's SHA-256 is in the
 
 Each failure illustrates the construction. In C2a's first window the value test crossed early, but comparison with the platform's independent record of the operator's acts found nine repairs off the record, so under the conjunctive rule (Proposition 5) the window could not be promoted. The second failure, C2a′, was a fault in the judge, not in the judged. The evaluator was then moved into the trusted base by a push whose changed lines had been marked in advance [grant seq 6851; push seq 7281], and the failed window stayed failed.
 
-**The value evidence, recomputed.** We recomputed the implementation's value test in block form on its own record. We took every value event from C2a's opening (seq 367) to seq 7809, 2,820 events in all, as selected by the implementation's own code but without its gate on the attack simulator [`block_on_log.py`, an ancillary file]. Events sharing a forecast cutoff form a sitting, giving 478 sittings. Base rates and mixture weights use only outcomes realised before a sitting's cutoff. Because horizons overlap, the sittings fall into six lag classes within which assumption (A) holds, and each class is a test supermartingale of its own. On these events the implementation's per-event wealth is about $1.5 \times 10^{60}$. In block form, the two large classes (213 and 194 sittings) end at about $2.1 \times 10^4$ and $1.6 \times 10^4$. The union-bound threshold for some class to cross at $\alpha = 0.05$ is $6/\alpha = 120$. So the record still rejects the value null, and validly. But the per-event figure overstates the evidence by a factor of about $10^{56}$, because its bets, weights and base rates used outcomes realised in the same batch. What remains shows that the forecasters beat a base rate pooled across datasets, which the audit's fixed table of one probability per dataset also does (§8).
+**The value evidence, recomputed.** We recomputed the implementation's value test validly on its own record [`block_on_log.py`, an ancillary file].
+- **Events.** They are the ones the implementation's own code selects, from C2a's opening (seq 367) to seq 7809, without its gate on the attack simulator. 2,846 events were forecast, and 2,820 of them resolved.
+- **Forecasters.** Almost all the forecasts come from one party: 2,795 from the reviewer sessions and 12 from builders.
+- **Sittings.** A sitting is the set of events sharing a forecast cutoff, fixed at that cutoff; there are 482. Base rates, weights and stakes use only what was recorded before the cutoff.
+- **Classes.** The sittings fall into six lag classes, with the thresholds $\ell(\ell+1)/\alpha$ of §4.3.
 
-The charter states in advance what would show the construction wrong [CHARTER §12]: that the kernel cannot hold the three secondary rules within readable size; that a liveness window fails against its committed baseline; that repairs fall only because acts were re-typed; or that procedure outgrows object by more than five to one in a window. That last ratio counts entries about the institution against entries about the world. In the current count it stood at 459 to 1,786 on 25 November [`judge/status.py` at seq 7809].
+The results depend on the base rate:
+- **Pooled across datasets,** as in the implementation: the first two classes end at about $2.1 \times 10^4$ and $1.3 \times 10^4$, above their thresholds of 40 and 120. So the value null is rejected, validly.
+- **Kept per dataset:** no class's wealth ever exceeds 1.
+
+So the record shows that the stream's forecaster knows which datasets are usually fresh, and nothing more. The audit's fixed table of one probability per dataset does as well (§8).
+
+The implementation's own per-event figure on the same events, about $1.5 \times 10^{60}$, is not comparable evidence. It compounds about six bets per sitting, and has no guaranteed level when outcomes within a sitting are dependent. Holding its stakes, weights and base rates to what was known before each cutoff still leaves it near $10^{60}$. One bet per sitting in a single process gives about $3.6 \times 10^{10}$, and the split into lag classes accounts for the rest. So the gap comes from how many bets are compounded, not from leaked outcomes.
+
+The charter states in advance what would show the construction wrong [CHARTER §12]: that the kernel cannot hold the three secondary rules within readable size; that a liveness window fails against its committed baseline; that repairs fall only because acts were re-typed; or that procedure outgrows object by more than five to one in a window. That last ratio counts entries about the institution against entries about the world. In the current count it stood at 459 to 1,786 on 25 November [`judge/status.py` at seq 7809], though the ratio can be padded (§8).
 
 ---
 
 ## 8 Limitations and open questions
 
-**The choice of null.** The value null pits the aggregate against a base rate pooled by event type, which is a weak baseline. An audit on the record constructs a fixed table, one probability per dataset, that would have crossed the value threshold at the 53rd event [`transcripts/AUDIT-criteria-20261117.md`]. Recomputed in block form (§7), the record's evidence is still above threshold, but only against this weak baseline. The theory's remedy is a stronger incumbent, entered as an entrant and met by the same bounded-difference bet, together with Murphy's decomposition so that calibration without resolution does not pass [Choe & Ramdas 2024; Murphy 1973]. Which incumbent to use is open.
+**The choice of null.** The value null pits the aggregate against a base rate pooled by event type, which is a weak baseline. An audit on the record constructs a fixed table, one probability per dataset, that would have crossed the value threshold at the 53rd event [`transcripts/AUDIT-criteria-20261117.md`]. Against a base rate kept per dataset, the record shows no advantage at all (§7). The theory's remedy is a stronger incumbent, entered as an entrant and met by the same bounded-difference bet, together with Murphy's decomposition so that calibration without resolution does not pass [Choe & Ramdas 2024; Murphy 1973]. Which incumbent to use is open.
+
+**Criteria that a system without skill can pass.** The same audit classes 9 of the 28 window criteria it examined as passable without skill. Liveness is one of them: a forecast resolved on time counts as a success whatever its content. The ratio of procedure to object is another: it can be met by padding the record with unanswered forecasts [`transcripts/AUDIT-criteria-20261117.md`]. Liveness as defined here measures timely, repair-free completion, not the worth of what is completed. Measuring the worth of the work is open.
 
 **Validity against recency.** Carrying wealth keeps the level over the institution's life but lets old evidence carry a new window. A fresh process per window at a split α, or a change-detecting e-process, would trade validity for recency. The right trade for promotion is open.
 
@@ -396,7 +410,7 @@ Model sessions from three providers' families drafted the charter, the specifica
 
 - Repository, with the log, kernels, judge, briefs and rulings: github.com/renavondata/jack.
 - Book: *A Court for Agents*, gfrm.in/book; source at github.com/gfrmin/agent-court.
-- Ancillary files of this paper: `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §7, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
+- Ancillary files of this paper: `sim_filtration.py`, the simulations of §4.3; `block_on_log.py`, the recomputation of §7 with its ablations and both base rates, run in any checkout of the repository as `python3 block_on_log.py --rev e580b64`; it reads that commit by `git show` and writes nothing.
 - Founding note: "The Science Was Done. The Engineering Wasn't.", gfrm.in, 1 November 2026.
 
 ---
@@ -432,7 +446,6 @@ Model sessions from three providers' families drafted the charter, the specifica
 - Garrabrant, S., Benson-Tilsen, T., Critch, A., Soares, N. & Taylor, J. (2016). Logical induction. arXiv:1609.03543.
 - Ghosh, B. (2026). Tracekit: Tamper-evident intent-reasoning-action auditing for AI agents. arXiv:2609.35659.
 - Gneiting, T. & Raftery, A. E. (2007). Strictly proper scoring rules, prediction, and estimation. *JASA* 102(477):359–378. doi:10.1198/016214506000001437
-- Gödel, K. (1931). Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I. *Monatshefte für Mathematik und Physik* 38:173–198. doi:10.1007/BF01700692
 - Good, I. J. (1952). Rational decisions. *JRSS B* 14(1):107–114. doi:10.1111/j.2517-6161.1952.tb00104.x
 - Goodhart, C. A. E. (1975). Problems of monetary management: The U.K. experience. *Papers in Monetary Economics*, vol. I. Reserve Bank of Australia.
 - Goodman, L. M. (2014). Tezos — a self-amending crypto-ledger. White paper, 2 September 2014. tezos.com/whitepaper.pdf

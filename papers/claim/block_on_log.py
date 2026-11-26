@@ -4,15 +4,23 @@ Usage, from any checkout of renavondata/jack:
   python3 block_on_log.py --rev e580b64 [as_of]
 reads log.jsonl and the judge's code as of that commit by `git show`, and writes nothing.
 Without --rev it uses the working tree.
-Rows (events, members' forecasts, outcomes) come from judge/value.py's own selection,
-with no_attack_gate=True so that every event since C2a's opening counts. Then:
-  implementation form: judge/value.py's own wealth (per event, resolution order);
-  block form: sittings = events sharing a cutoff; base rate and mixture weights use only
-  outcomes realised before the sitting's cutoff; one bet per sitting on the joint mixture
-  (Proposition 3); sittings split greedily into lag classes so that assumption (A) holds
-  within each class; each class is its own test supermartingale, and the union bound
-  gives the threshold L/alpha for "some class crosses".
+
+Events (members' forecasts, outcomes) come from judge/value.py's own selection, with
+no_attack_gate=True so that every event since C2a's opening counts. A sitting is the set of
+value events sharing a forecast cutoff, fixed at the cutoff: it includes events that never
+resolve, which leave the bet (assumption (B) of the paper) but count for when the sitting is
+done (their deadline). Base rates, mixture weights and stakes use only what is recorded
+before the cutoff. Sittings are split greedily into lag classes so that every earlier
+sitting of a class is done before the next one's cutoff (assumption (A)); class number l,
+counted from 1 in order of creation, has the fixed threshold l(l+1)/alpha, and since
+sum_l alpha/(l(l+1)) = alpha, "some class crosses its threshold" has probability at most alpha.
+
+Printed: the implementation's per-event wealth; two ablations that explain the gap (per event
+with nothing leaked; one block process without classes, which is not valid when horizons
+overlap); and the block-form test against two base rates, pooled by type (as the
+implementation) and by dataset.
 """
+
 import math, sys, collections, json, subprocess, importlib.abc, importlib.util
 
 args = sys.argv[1:]
@@ -53,82 +61,127 @@ else:
     lines = open("log.jsonl").read().splitlines()
 
 from judge import value as val
+from bisect import bisect_left
+
 es = [json.loads(l) for l in lines if l]
 as_of = args[0] if args else None
+ALPHA = 0.05
+LN = math.log(999)
 v = val.value(es, as_of=as_of, no_attack_gate=True)
 rows = v["rows"]
 ts_of = {e["seq"]: e["ts"] for e in es}
-types = {}
-for r, f, _, _ in val.resolution_rates(es):
-    types[r["seq"]] = (f["body"].get("type", "free"), r["ts"], r["body"]["outcome"])
-roster = list(rows[0]["weights_before"].keys()) if rows else []
+roster = list(rows[0]["weights_before"].keys())
+opening = v["opening"]
 print(f"events {len(rows)}; roster {roster}; implementation-form E = {float(v['E_value']):.6g}")
+cnt = collections.Counter(who for r in rows for who in r["forecasts"])
+print("forecasts by party in these events:", dict(cnt))
 
-LN = math.log(999)
 def clip(p): return min(max(p, 0.001), 0.999)
 def lik(p, y): return p if y else 1 - p
 
-# base rate known at time t for a type: Laplace over resolutions realised strictly before t
-res_by_type = collections.defaultdict(list)
-for seq, (typ, ts, y) in types.items():
-    res_by_type[typ].append((ts, y))
-for k in res_by_type: res_by_type[k].sort()
-def base_at(typ, t):
-    s = n = 0
-    for ts, y in res_by_type[typ]:
-        if ts >= t: break
-        s += y; n += 1
-    return clip((s + 1) / (n + 2))
+# every forecast's physical event, resolved or not, with its deadline
+fkey = {}
+for e in es:
+    if e["type"] == "forecast" and (as_of is None or e["ts"] <= as_of):
+        ident = val.event(e)
+        if ident and ident[1] > opening:
+            k, c = ident
+            d = fkey.setdefault(k, {"cutoff": c, "deadline": e["body"].get("resolves_by", c)})
+            d["deadline"] = max(d["deadline"], e["body"].get("resolves_by", c))
+resolved = {r["key"]: r for r in rows}
+
+def group(key, by):
+    typ = key[0]
+    if by == "type": return typ
+    return (typ, key[2]) if typ == "world.renavon" else (typ, key[-1])
+
+# prequential Laplace base rates from every resolution, by group, as of a time
+res_events = []
+for r, f, _, _ in val.resolution_rates(es):
+    if as_of is not None and r["ts"] > as_of: continue
+    ident = val.event(f)
+    res_events.append((r["ts"], ident[0] if ident else None, f["body"].get("type", "free"), r["body"]["outcome"]))
+def make_base(by):
+    seqs = collections.defaultdict(list)
+    for ts, key, typ, y in sorted(res_events, key=lambda x: x[0]):
+        g = typ if by == "type" else (group(key, by) if key else None)
+        if g is not None: seqs[g].append((ts, y))
+    cum = {g: ([t for t, _ in L], [0] + list(__import__("itertools").accumulate(y for _, y in L))) for g, L in seqs.items()}
+    def base(key, t):
+        g = group(key, by) if by != "type" else key[0]
+        if g not in cum: return 0.5
+        times, cs = cum[g]; n = bisect_left(times, t)
+        return clip((cs[n] + 1) / (n + 2))
+    return base
 
 ev = []
-for r in rows:
-    typ = r["key"][0]
-    rts = ts_of[r["resolution_seq"]]
-    ev.append(dict(key=r["key"], typ=typ, cutoff=r["cutoff"], rts=rts, Y=r["Y"],
-                   fc={k: float(p) for k, (s, p) in r["forecasts"].items()}))
+for k, d in fkey.items():
+    r = resolved.get(k)
+    ev.append(dict(key=k, cutoff=d["cutoff"], done=ts_of[r["resolution_seq"]] if r else d["deadline"],
+                   Y=r["Y"] if r else None, fc={w: float(p) for w, (s_, p) in r["forecasts"].items()} if r else {}))
 sittings = collections.defaultdict(list)
 for e in ev: sittings[e["cutoff"]].append(e)
 order = sorted(sittings)
+unresolved = sum(1 for e in ev if e["Y"] is None)
 
-# lag classes: a sitting joins the first class whose previous sitting's outcomes were all realised before its cutoff
-classes, last_done = [], []
-assign = {}
+classes, last_done, assign = [], [], {}
 for c in order:
-    done = max(e["rts"] for e in sittings[c])
+    done = max(e["done"] for e in sittings[c])
     for i, d in enumerate(last_done):
         if d < c:
             assign[c] = i; last_done[i] = done; break
     else:
         assign[c] = len(classes); classes.append([]); last_done.append(done)
     classes[assign[c]].append(c)
-L = len(classes)
+print(f"sittings {len(order)} (events forecast {len(ev)}, never resolved {unresolved}); lag classes {len(classes)}: {[len(x) for x in classes]}")
 
 def stake(S, Q, m): return min(max(0.0, S / (2 + Q)), 1 - 1 / (m + 1))
-W = [1.0] * L; S = [0.0] * L; Q = [0.0] * L; M = [0] * L; peak = [1.0] * L
-for c in order:
-    block = sittings[c]
-    # weights: Bayes posterior over the roster from every event realised before this cutoff
-    logw = {k: 0.0 for k in roster}
-    for e in ev:
-        if e["rts"] < c:
-            b = base_at(e["typ"], e["cutoff"])
+def prob(e, k, b): return b if k == "base" else clip(e["fc"].get(k, b))
+
+def run(by):
+    base = make_base(by)
+    done_events = sorted((e for e in ev if e["Y"] is not None), key=lambda e: e["done"])
+    logw = {k: 0.0 for k in roster}; ptr = 0
+    L = len(classes)
+    W = [1.0] * L; S = [0.0] * L; Q = [0.0] * L; M = [0] * L; peak = [1.0] * L
+    W1 = 1.0; S1 = Q1 = 0.0; M1 = 0                      # one block process, no classes
+    We = 1.0; De = []                                     # per event, nothing leaked
+    for c in order:
+        while ptr < len(done_events) and done_events[ptr]["done"] < c:
+            e = done_events[ptr]; b = base(e["key"], e["cutoff"])
+            for k in roster: logw[k] += math.log(lik(prob(e, k, b), e["Y"]))
+            ptr += 1
+        mx = max(logw.values()); w = {k: math.exp(x - mx) for k, x in logw.items()}; z = sum(w.values()); w = {k: x / z for k, x in w.items()}
+        block = [e for e in sittings[c] if e["Y"] is not None]
+        if not block: continue
+        lb = 0.0; prods = {k: 0.0 for k in roster}; per_event = []
+        for e in block:
+            b = base(e["key"], c); lb += math.log(lik(b, e["Y"]))
+            q = 0.0
             for k in roster:
-                p = clip(e["fc"].get(k, b)) if k != "base" else b
-                logw[k] += math.log(lik(p, e["Y"]))
-    mx = max(logw.values()); w = {k: math.exp(x - mx) for k, x in logw.items()}; z = sum(w.values()); w = {k: x / z for k, x in w.items()}
-    lb = 0.0; prods = {k: 0.0 for k in roster}
-    for e in block:
-        b = base_at(e["typ"], c)
-        lb += math.log(lik(b, e["Y"]))
-        for k in roster:
-            p = clip(e["fc"].get(k, b)) if k != "base" else b
-            prods[k] += math.log(lik(p, e["Y"]))
-    lq = math.log(sum(w[k] * math.exp(prods[k]) for k in roster))
-    D = (lq - lb) / (len(block) * LN)
-    i = assign[c]; M[i] += 1
-    lam = stake(S[i], Q[i], M[i]); W[i] *= 1 + lam * D; S[i] += D; Q[i] += D * D
-    peak[i] = max(peak[i], W[i])
-print(f"sittings {len(order)}; lag classes L = {L}; sittings per class {[len(x) for x in classes]}")
-print("block-form final wealth per class:", [f"{x:.4g}" for x in W])
-print("block-form running maximum per class:", [f"{x:.4g}" for x in peak])
-print(f"threshold for some class at alpha=0.05 with the union bound: L/alpha = {L/0.05:g}")
+                p = prob(e, k, b); prods[k] += math.log(lik(p, e["Y"])); q += w[k] * p
+            per_event.append(math.log(lik(q, e["Y"]) / lik(b, e["Y"])) / LN)
+        D = (math.log(sum(w[k] * math.exp(prods[k]) for k in roster)) - lb) / (len(block) * LN)
+        i = assign[c]; M[i] += 1
+        lam = stake(S[i], Q[i], M[i]); W[i] *= 1 + lam * D; S[i] += D; Q[i] += D * D; peak[i] = max(peak[i], W[i])
+        M1 += 1; lam = stake(S1, Q1, M1); W1 *= 1 + lam * D; S1 += D; Q1 += D * D
+        if by == "type":
+            prior = [x for (t, x) in De if t < c]
+            for x in per_event:
+                lam = min(max(0.0, sum(prior) / (2 + sum(y * y for y in prior))), 1 - 1 / (len(prior) + 2))
+                We *= 1 + lam * x
+            De += [(max(e["done"] for e in block), x) for x in per_event]
+    return W, peak, W1, We
+
+for by in ("type", "dataset"):
+    W, peak, W1, We = run(by)
+    thr = [(l + 1) * (l + 2) / ALPHA for l in range(len(W))]
+    crossed = [l + 1 for l in range(len(W)) if peak[l] >= thr[l]]
+    print(f"\nbase rate pooled by {by}:")
+    if by == "type":
+        print(f"  ablation, per event with nothing leaked (stakes, weights, base before the cutoff): {We:.4g}")
+        print(f"  ablation, one block process without lag classes (not valid here): {W1:.4g}")
+    print("  block form, final wealth by class:", [f"{x:.4g}" for x in W])
+    print("  block form, running maximum by class:", [f"{x:.4g}" for x in peak])
+    print("  thresholds l(l+1)/alpha:", [f"{x:g}" for x in thr])
+    print(f"  classes crossing their threshold: {crossed if crossed else 'none'}")
