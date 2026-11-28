@@ -4,7 +4,7 @@ This branch holds the arXiv paper on jack's theory and everything behind it. It 
 
 ## The paper
 
-- `draft.md`: the final text, draft 29 of 28 November 2026. It is the release candidate, read in full by cold reads 15 and 16, and the change from draft 28 by cold read 17.
+- `draft.md`: draft 30 of 28 November 2026, under review. It restates the design as growth by test (a layer frozen, and the next begun, only on passing), after counsel's note (`REVIEW-counsel-1.md`). Draft 29, the earlier release candidate, is `history/draft-d29.md`.
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text was written.
 - `release/law-before-the-agent.md`: the gfrm.in post (Hugo, `draft: true`). The line `arXiv:XXXX.XXXXX` needs the real identifier.
 - `release/arxiv-metadata.md`: the title, the ASCII abstract to paste, comments, categories and licence.
@@ -64,6 +64,7 @@ Both adversarial reads rejected on one ground: the mechanism that grants powers 
 Three more reviews:
 - `REVIEW-adviser-1.md`: the adviser's audit of the release text against the record.
 - `REVIEW-adviser-2.md`: the adviser's answers to `notes/QUESTIONS-to-counsel-1.md`.
+- `REVIEW-counsel-1.md`: counsel's note on windows and tests, with its disposition (draft 30).
 - `07-paragraph-review.md`: the claim session's paragraph-by-paragraph pass over draft 24.
 
 ## Working record
@@ -72,7 +73,7 @@ Three more reviews:
   - `runner-read-N.md` is cold read N; `11b` re-ran read 11.
   - `A1` and `A2` are the adversarial reads; `A2b` re-ran A2 on GPT after a Gemini server error.
   - `READ-PROMPT.md` is the first cold-read prompt.
-- `history/`: earlier drafts, `draft-d4.md` to `draft-d28.md`, and `draft-r3-before.md`.
+- `history/`: earlier drafts, `draft-d4.md` to `draft-d29.md`, and `draft-r3-before.md`.
   - Drafts 1–3 and 16 were not kept as separate files.
   - Drafts 20 to 29 are also in this branch's commits.
 - `notes/`: the claim session's working notes:

@@ -318,3 +318,14 @@
 | 6 | assize is the programme's earlier repository, whose record supplies the charter's baseline | CHARTER §1, "Evidence from assize" | ✓ introduced |
 | 8 | Choe & Ramdas 2024a back the stronger incumbent and the bounded-difference bet, not a resolution check | arXiv:2110.00115 (read 16: "resolution" appears only for grid resolution) | ✓ citation moved |
 | 5.2 | Reads and reviews: titles naming the word read or review (whole word; "reviewer" excluded) | log at seq 7809; reads 15 and 16 reproduce 46 | ✓ worded |
+
+## Round 23 (28 November, draft 30 after counsel's note on windows and tests)
+
+| § | Claim | Source | Result |
+|---|---|---|---|
+| 4.3, 5.1 | Promotion means a layer is "frozen, and the next begins"; a failed window is fixed by a change entry and starts again | CHARTER §6, promotion rule, at `e580b64` | ✓ quoted |
+| 5.1 | Key grants are the operator's decisions, and the charter does not tie them to promotion | CHARTER §7 ("a capability grant (money, releases, keys)"); no mention of keys in §6's promotion rule | ✓ |
+| 5.1 | C1b's window opened at C1a's promotion (seq 188); C2a's at seq 367, after C1b's (seq 337); C2b not begun | REPORT, C1a and C1b reports ("C1b opened at the same instant"; "the window opened at seq 188"); log | ✓ |
+| 5.1 | One promotion rested on a sequential test (C1b, M ≈ 25.5); C1a's rested on exact criteria: pins, checker agreement, kernel size, counts of forecasts and resolutions | REPORT, C1a report §1 (criteria 1–6), C1b report §1 | ✓; drafts to 29 implied by omission that promotions were test-based |
+| 5.1 | No key entry has followed a promotion; the rule that would tie keys to promotion is in neither the charter nor the code | log (key entries after 337: 2254–2255 only); CHARTER; adviser's answer 5 | ✓ |
+| Abstract, 1, 8, 9 | The design's claim is now growth by test (freeze and begin the next), not "powers only by test", which the charter never said and which would be circular for the layer under test | counsel's note of 28 November; CHARTER §6 | ✓ restated |
