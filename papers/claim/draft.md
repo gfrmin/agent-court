@@ -1,7 +1,7 @@
 # Law Before the Agent: Testing the Institution That Judges Self-Modifying AI
 
 **Guy Freeman**
-Independent researcher, Hong Kong · [email]
+Independent researcher, Hong Kong · mail@gfrm.in
 
 - *Square brackets give the check behind each fact about the implementation:*
   - *`seq n` is an entry of `renavondata/jack` `log.jsonl`;*
@@ -11,7 +11,7 @@ Independent researcher, Hong Kong · [email]
 
 ## Abstract
 
-Systems that rewrite their own code are now practical. Results of Rice, Löb and Goodhart limit what inspection, self-proof and measures within an agent's reach can establish about such systems, yet in the leading examples the evaluator that judges them is held fixed and trusted as infrastructure. We propose that the institution which judges a self-modifying agent be built before the agent, imposed first on the model sessions that build it, and granted powers only by anytime-valid tests on its own record. Its law is a fold over a signed, append-only log; claims of merit count only as forecasts under the logarithmic score; and a layer is promoted only when its sequential tests pass, of liveness, measured by the principal's repairs, and, once there are forecasts to aggregate, of predictive value. We state the guarantees in six propositions, whose statistical core is machine-checked in Lean, show by example and simulation that the natural per-event test of value loses its level when outcomes resolve together, and prove that a block form keeps it. Applied retrospectively to the public record of a reference implementation, the block-form test finds an advantage over a base rate pooled across datasets and no evidence of one over a base rate kept per dataset, so the institution's own book shows that its first evidence of value rested on a weak baseline. The implementation has not yet tied its powers to these tests, and no self-modifying agent has yet been built under the design.
+Systems that rewrite their own code are now practical. Results of Rice, Löb and Goodhart limit what inspection, self-proof and measures within an agent's reach can establish about such systems, yet in the leading examples the evaluator that judges them is held fixed and trusted as infrastructure. We propose that the institution which judges a self-modifying agent be built before the agent, imposed first on the model sessions that build it, and granted powers only by anytime-valid tests on its own record. Its law is a fold over a signed, append-only log; claims of merit count only as forecasts under the logarithmic score; and a layer is promoted only when its sequential tests pass, of liveness, measured by the principal's repairs, and, once there are forecasts to aggregate, of predictive value. We state the guarantees in six propositions, whose statistical core is machine-checked in Lean, show by example and simulation that the natural per-event test of value loses its level when outcomes resolve together, and prove that a block form keeps it. Applied retrospectively to the public record of a reference implementation, the block-form test finds an advantage over a base rate pooled across datasets and no evidence of one over a base rate kept per dataset, so the institution's own book shows that its first evidence of value rested on a weak baseline. The paper offers a design and an audit, not an evaluation: the implementation has not yet tied its powers to these tests, and no self-modifying agent has yet been built under the design.
 
 ---
 
@@ -374,7 +374,7 @@ Secure audit logs are older still [Schneier & Kelsey 1999]. Other systems log, s
 
 **Mixture or market.** The election is a Bayes mixture over a roster fixed for each layer. A market of traders, in the manner of logical induction [Garrabrant et al. 2016], would let the roster grow, but needs its own argument for anytime validity.
 
-**No controlled comparison.** The evidence is one case history. The experiment that would test the design is a controlled comparison against simpler governance, such as a frozen evaluator with per-edit gates, under repeated runs and deliberate attacks. We have not run it.
+**No controlled comparison.** The evidence is one case history, from an implementation that does not yet grant powers on passing (§5.1). The experiment that would test the design has two steps: tie each grant to a passed test, then compare the result against simpler governance, such as a frozen evaluator with per-edit gates, under repeated runs and deliberate attacks. We have run neither.
 
 **One principal; a short record.** The construction serves one owner of the utility. Kolt's principle of inclusivity [2026a] asks for more. The evidence so far covers one operator, two streams and six weeks. The agent, C3, is still a forecast.
 
