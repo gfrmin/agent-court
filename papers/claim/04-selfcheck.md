@@ -329,3 +329,17 @@
 | 5.1 | One promotion rested on a sequential test (C1b, M ≈ 25.5); C1a's rested on exact criteria: pins, checker agreement, kernel size, counts of forecasts and resolutions | REPORT, C1a report §1 (criteria 1–6), C1b report §1 | ✓; drafts to 29 implied by omission that promotions were test-based |
 | 5.1 | No key entry has followed a promotion; the rule that would tie keys to promotion is in neither the charter nor the code | log (key entries after 337: 2254–2255 only); CHARTER; adviser's answer 5 | ✓ |
 | Abstract, 1, 8, 9 | The design's claim is now growth by test (freeze and begin the next), not "powers only by test", which the charter never said and which would be circular for the layer under test | counsel's note of 28 November; CHARTER §6 | ✓ restated |
+
+## Round 24 (28 November, draft 31 after adversarial read 3 and cold read 18)
+
+| § | Claim | Source | Result |
+|---|---|---|---|
+| 5.1 | C2b grants no key: `herald-2` keeps `merge` alone; the `forecast` power was struck from C2b's opening | BRIEF-C2b-draft, Amendment 10 clause 3; RUNBOOK line 277 | ✓ corrected; draft 30 said C2b's keys would be the first case of a key rule |
+| 5.1, Table 2 | C1a and C1b are two windows of one layer, C1, "promoted at C1b's exit"; so both layers promoted so far followed §6's rule: C0 on safety alone, C1 on a sequential liveness test | CHARTER A3.2; §6 ("C0, which produces nothing yet, needs safety alone") | ✓ added |
+| 4.3 | Departures from pre-statement: the cap (three raises, the third in C1b's window); the attribution rule (adopted in C1b's window, 1 Nov); A5 (entered at seq 137 during C1a's window, which closed early under it) | SPEC §10; BRIEF-C1b Amendments 1 and 2; log seq 137; REPORT, C1a report | ✓ now three, not one |
+| 5.1 | A rule tying keys to promotion can only require the earlier layer's promotion, since a layer holds its own powers while tested | §4.3's argument; read 18 | ✓ restated |
+| 5.1 | "Nothing is built on a layer that has not passed" was too broad: C2b and C2c code was pre-built on branches while C2a was unpromoted; what waits is the next layer's window | BRIEF-C2b-draft lines 689–696 | ✓ corrected |
+| 4 | Proposition 6 restates the specification's admission condition and is enforced only in part; it does not hold by construction of the code | §4.4; `pins/replay.py` line 49 | ✓ corrected |
+| 4.3 | The independence alternative needs forecasts, not only stakes, fixed at the cutoff | the reader's point | ✓ |
+| 6 | Rejecting the strong null is evidence of a conditional advantage at some sitting, not that the forecaster "beats" the base rate | Proposition 3; Choe & Ramdas 2024a | ✓ reworded |
+| 7 | Minsky & Ungureanu (2000), law-governed interaction, ACM TOSEM 9(3):273–305, doi:10.1145/352591.352592 | Crossref record | ✓ added |
