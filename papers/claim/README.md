@@ -1,34 +1,84 @@
-# The claim paper (draft, not the book)
+# The claim paper: "Law Before the Agent"
 
-This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
+This branch holds the arXiv paper on jack's theory and everything behind it. It was written at Guy's request by the claim session, which holds no key on jack. The paper is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 29, the final text (cold read 17 accepted the change from 28; cold reads 15 and 16's verified edits; draft 28 stated the scope as a design and an audit, at Guy's choice of 28 Nov 2026; earlier: adversarial read 2's verified fixes; paragraph pass and adversarial read 1; earlier: cold read 13 accepted draft 23; three of its final edits; cold read 12's corrections; cold read 11's corrections; cold read 10 accepted draft 20; its clarifications are in; cold read 9 and the adviser's answers; two fixes from the adviser's audit; strongest backed claims, not softened ones; kernel authorship checked per revision; held to its abstract since draft 12; revised for cold read 8, which accepted; stands alone, citing the book once as provenance).
-- `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
-- `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
-- `READ-PROMPT.md`: the instructions for the outside cold read.
-- `sim_filtration.py`: the simulations behind the examples in §4.3.
-- `block_on_log.py`: the block-form recomputation in §7 (`python3 block_on_log.py --rev e580b64` in a jack checkout).
-- `REVIEW-cold-1.md`: cold read 1 (gpt-6.1-sol, opencode-runner #1348) with its disposition.
-- `REVIEW-cold-2.md`: cold read 2 (gemini-4-argon, opencode-runner #1362) with its disposition.
-- `REVIEW-cold-3.md`: cold read 3 (gpt-6.1-sol, opencode-runner #1364) with its disposition.
-- `REVIEW-cold-4.md`: cold read 4 (gemini-4-argon, #1365), a backing audit, with its disposition.
-- `REVIEW-cold-5.md`: cold read 5 (gpt-6.1-sol, #1368) with its disposition.
-- `REVIEW-cold-6.md`: cold read 6 (gemini-4-argon, #1369) with its disposition.
-- `REVIEW-cold-7.md`: cold read 7 (gpt-6.1-sol, #1371) with its disposition.
-- `REVIEW-cold-8.md`: cold read 8 (gemini-4-argon, #1372), accept, with its disposition.
-- `REVIEW-cold-9.md`: cold read 9 (gpt-6.1-sol, #1375), with its disposition and the adviser's answers.
-- `REVIEW-cold-10.md`: cold read 10 (gemini-4-argon, #1381), accept, with its disposition.
-- `REVIEW-cold-11.md`: cold read 11 (gpt-6.1-sol, #1385), with its disposition.
-- `REVIEW-cold-12.md`: cold read 12 (gpt-6.1-sol, #1387), with its disposition.
-- `REVIEW-cold-13.md`: cold read 13 (gpt-6.1-sol, #1388), accept.
-- `REVIEW-cold-14.md`: cold read 14 (gpt-6.1-sol, #1389), accept: the final change, draft 23 to 24.
+## The paper
 
-The working notes are in Guy's Project under `claude/claim/`: the outline, reading log, self-reviews, self-check and LaTeX build.
-- `REVIEW-adversarial-1.md`: adversarial read 1 (gpt-6.1-sol, #1394), reject, with its disposition.
-- `07-paragraph-review.md`: the claim session's paragraph-by-paragraph pass of draft 24.
-- `04-selfcheck.md`: every factual claim checked against its source, round by round.
-- `REVIEW-adversarial-2.md`: adversarial read 2 (gpt-6.1-sol, #1400), reject, with its disposition.
-- `REVIEW-cold-15.md`: cold read 15 (gpt-6.1-sol, #1446), minor revision, on the release candidate (draft 28), with its disposition.
-- `REVIEW-cold-16.md`: cold read 16 (gemini-4-argon, #1447), accept, on the release candidate (draft 28), with its disposition.
-- `REVIEW-cold-17.md`: cold read 17 (gpt-6.1-sol, #1448), accept: the final change, draft 28 to 29.
-- `release/law-before-the-agent.md` and `release/arxiv-metadata.md`: the gfrm.in post (Hugo, `draft: true`) and the arXiv metadata, built from draft 29 by the claim session's `release.sh`.
+- `draft.md`: the final text, draft 29 of 28 November 2026. It is the release candidate, read in full by cold reads 15 and 16, and the change from draft 28 by cold read 17.
+- `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text was written.
+- `release/law-before-the-agent.md`: the gfrm.in post (Hugo, `draft: true`). The line `arXiv:XXXX.XXXXX` needs the real identifier.
+- `release/arxiv-metadata.md`: the title, the ASCII abstract to paste, comments, categories and licence.
+
+## Ancillary files (these go to arXiv in `anc/`)
+
+- `lean/`: the machine-checked core (Lean 4 + Mathlib; run `lake build`). Its README maps propositions to theorems.
+- `sim_filtration.py`: the simulations of §4.3.
+- `block_on_log.py`: the recomputation of §6. Run it in a jack checkout as `python3 block_on_log.py --rev e580b64`; it writes nothing.
+- `04-selfcheck.md`: every factual claim checked against its source, round by round (rounds 1–22).
+
+## Building the release
+
+`build/release.sh` writes `build/release/`, which git ignores. It holds:
+- `law-before-the-agent.pdf`;
+- `law-before-the-agent-arxiv.tar.gz`, the tarball to upload, compiled once in a clean directory as arXiv would (pdflatex, no BibTeX);
+- the post and the metadata.
+
+```sh
+cd papers/claim/build
+CLAIM_EMAIL=mail@gfrm.in CLAIM_DATE="November 2026" ./release.sh
+```
+
+It needs Python 3, pandoc, pdflatex with TikZ, and `pdfinfo`. Its parts:
+- `md2tex.py` converts `draft.md` to `paper.tex`;
+- `figure.tex` is the construction diagram;
+- `release_md.py` writes the post and the metadata.
+
+## The reviews
+
+Each review file holds its disposition table, followed by the reader's report verbatim.
+
+| Read | Model | Runner issue | Verdict | Note |
+|---|---|---|---|---|
+| `REVIEW-cold-1.md` | gpt-6.1-sol | #1348 | major revision | |
+| `REVIEW-cold-2.md` | gemini-4-argon | #1362 | major revision | |
+| `REVIEW-cold-3.md` | gpt-6.1-sol | #1364 | major revision | |
+| `REVIEW-cold-4.md` | gemini-4-argon | #1365 | minor revision | a backing audit |
+| `REVIEW-cold-5.md` | gpt-6.1-sol | #1368 | minor revision | |
+| `REVIEW-cold-6.md` | gemini-4-argon | #1369 | minor revision | |
+| `REVIEW-cold-7.md` | gpt-6.1-sol | #1371 | minor revision | |
+| `REVIEW-cold-8.md` | gemini-4-argon | #1372 | accept | |
+| `REVIEW-cold-9.md` | gpt-6.1-sol | #1375 | minor revision | with the adviser's answers |
+| `REVIEW-cold-10.md` | gemini-4-argon | #1381 | accept | |
+| `REVIEW-cold-11.md` | gpt-6.1-sol | #1385 | minor revision | |
+| `REVIEW-cold-12.md` | gpt-6.1-sol | #1387 | minor revision | |
+| `REVIEW-cold-13.md` | gpt-6.1-sol | #1388 | accept | draft 23 |
+| `REVIEW-cold-14.md` | gpt-6.1-sol | #1389 | accept | the change from 23 to 24 |
+| `REVIEW-adversarial-1.md` | gpt-6.1-sol | #1394 | reject | draft 24, hostile brief |
+| `REVIEW-adversarial-2.md` | gpt-6.1-sol | #1400 | reject | draft 26, hostile brief |
+| `REVIEW-cold-15.md` | gpt-6.1-sol | #1446 | minor revision | draft 28, all edits taken |
+| `REVIEW-cold-16.md` | gemini-4-argon | #1447 | accept | draft 28, all edits taken |
+| `REVIEW-cold-17.md` | gpt-6.1-sol | #1448 | accept | the change from 28 to 29 |
+
+Both adversarial reads rejected on one ground: the mechanism that grants powers by test is neither implemented nor evaluated. Guy chose on 28 November to publish the paper as a design and an audit. The paper says so in its abstract, §1 and §8.
+
+Three more reviews:
+- `REVIEW-adviser-1.md`: the adviser's audit of the release text against the record.
+- `REVIEW-adviser-2.md`: the adviser's answers to `notes/QUESTIONS-to-counsel-1.md`.
+- `07-paragraph-review.md`: the claim session's paragraph-by-paragraph pass over draft 24.
+
+## Working record
+
+- `prompts/`: the exact prompt of every read filed through the courier on renavondata/opencode-runner.
+  - `runner-read-N.md` is cold read N; `11b` re-ran read 11.
+  - `A1` and `A2` are the adversarial reads; `A2b` re-ran A2 on GPT after a Gemini server error.
+  - `READ-PROMPT.md` is the first cold-read prompt.
+- `history/`: earlier drafts, `draft-d4.md` to `draft-d28.md`, and `draft-r3-before.md`.
+  - Drafts 1–3 and 16 were not kept as separate files.
+  - Drafts 20 to 29 are also in this branch's commits.
+- `notes/`: the claim session's working notes:
+  - the reading log and the outline;
+  - the first self-review;
+  - the questions put to counsel;
+  - `issue-book.md`, notes on the book that arose while writing.
+
+Guy's Project, under `claude/claim/`, mirrors most of this. The Project's `02-draft.md` and `release/law-before-the-agent.md` are pointers to this branch.

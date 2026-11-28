@@ -1,0 +1,37 @@
+\begin{figure}[t]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, minimum width=3.3cm, minimum height=1.25cm, font=\small, inner sep=3pt},
+  trusted/.style={box, fill=black!8},
+  tag/.style={font=\scriptsize\itshape, text=black!60},
+  arr/.style={-{Stealth[length=2.2mm]}, thick},
+  lab/.style={font=\scriptsize, fill=white, inner sep=1pt},
+]
+\node[box]     (prop)  at (0,0)     {Proposers\\[-1pt]{\scriptsize builders, reviewers, adviser;}\\[-2pt]{\scriptsize later, the agent}};
+\node[trusted] (kern)  at (4.6,0)   {Kernel $V(S_i,e_i)$\\[-1pt]{\scriptsize two kernels, two languages;}\\[-2pt]{\scriptsize admit or refuse}};
+\node[trusted] (log)   at (9.2,0)   {Signed log\\[-1pt]{\scriptsize append-only,}\\[-2pt]{\scriptsize hash-chained}};
+\node[trusted] (state) at (13.8,0)  {State $S_{i+1}$\\[-1pt]{\scriptsize keys and powers, law}\\[-2pt]{\scriptsize in force, ledger}};
+\node[box]     (op)    at (4.6,2.5) {Operator\\[-1pt]{\scriptsize keys, push, amend,}\\[-2pt]{\scriptsize promote, veto}};
+\node[box]     (world) at (4.6,-2.6){World\\[-1pt]{\scriptsize outcomes no scored}\\[-2pt]{\scriptsize party operates}};
+\node[trusted] (clerk) at (9.2,-2.6){Clerk\\[-1pt]{\scriptsize writs from state}\\[-2pt]{\scriptsize and clock}};
+\node[trusted] (tests) at (13.8,-2.6){Promotion tests\\[-1pt]{\scriptsize value $W$, liveness $M$;}\\[-2pt]{\scriptsize both $\ge 1/\alpha$, no veto}};
+
+\node[tag, above=0pt of kern.north west, anchor=south west] {lock};
+\node[tag, above=0pt of state.north west, anchor=south west] {loop: state is a fold};
+\node[tag, below=0pt of tests.south east, anchor=north east] {score};
+
+\draw[arr] (prop) -- node[lab, above=2pt] {entries} (kern);
+\draw[arr] (op) -- node[lab, right=2pt] {signed acts} (kern);
+\draw[arr] (kern) -- node[lab, above=2pt] {admitted} (log);
+\draw[arr] (log) -- node[lab, above=2pt] {fold} (state);
+\draw[arr, dashed] (state.north) to[bend right=22] node[lab, above] {law in force governs the next entry} (kern.north east);
+\draw[arr] (world.north west) -- node[lab, left=3pt, pos=0.45] {evidence for resolutions} (prop.south east);
+\draw[arr] (state) -- node[lab, right=2pt] {forecasts, resolved} (tests);
+\draw[arr] (state.south west) -- node[lab, pos=0.45, above left=-1pt] {obligations} (clerk.north east);
+\draw[arr] (clerk) -- node[lab, above=2pt] {items} (tests);
+\draw[arr] (tests.south) -- ++(0,-0.9) -| node[lab, pos=0.25, above] {powers of the next layer, by \texttt{promote}} (prop.south);
+\end{tikzpicture}}
+\caption{The construction. Shaded parts form the trusted base, which changes only by the operator's \texttt{push}. Every act, including the operator's, is an entry that the kernel admits or refuses; the state that decides the next entry is a fold over the entries before it (Proposition~\ref{prop:1}). Claims of merit are forecasts that other parties resolve from the world (Proposition~\ref{prop:2}). A layer's powers grow only when both sequential tests cross (Propositions~\ref{prop:3}--\ref{prop:5}); the judge itself changes only by replay (Proposition~\ref{prop:6}).}
+\label{fig:construction}
+\end{figure}
