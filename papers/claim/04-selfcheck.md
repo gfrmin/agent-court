@@ -299,3 +299,22 @@
 | 8 | Proper scores, including the logarithmic, decompose into reliability and resolution | Bröcker, arXiv:0806.0813 (doi:10.1002/qj.456) | ✓ corrected; drafts to 26 called a log-score analogue open |
 | 7 | Schneier & Kelsey (1999), secure audit logs | ACM TISSEC 2(2) | ✓ added |
 
+
+## Round 22 (28 November, draft 29 after cold read 15)
+
+| § | Claim | Source | Result |
+|---|---|---|---|
+| Abstract, 8 | The paper offers a design and an audit, not an evaluation; the experiment that would test the design has two steps, tie each grant to a passed test and then compare with simpler governance | Guy's choice of scope, 28 Nov; §5.1; adversarial reads 1 and 2 | ✓ stated (draft 28) |
+| Table 1 | Layers promoted on criteria stated in advance, with recorded departures | SPEC §10, three raises of the line cap (round 21) | ✓ qualified |
+| 4.1 | Prop. 1(b): logs of different length have last lines with different `seq`, so equal last hashes are a collision at once | entries numbered by position (SPEC §6; kernel) | ✓ shorter proof |
+| 4.3 | Rejection at level α is evidence, not proof, of a conditional advantage at some block | standard | ✓ reworded |
+| 4.3 | The common unit for batched liveness items is an open operational definition | the text's own statement | ✓ labelled |
+| 6, Table 3 | Ablations: 1.52e60 → 2.49e58 → 1.74e10 → 1.99e4; differences 1.785, 48.156, 5.941 orders | `block_on_log.py --rev e580b64`; reproduced by read 15 | ✓ tabulated |
+| 8 | The expected score of a strictly proper score, the logarithmic among them, decomposes into uncertainty, resolution and reliability | Bröcker 2009, eq. (13) and Table 1 ("Ignorance"), arXiv:0806.0813 | ✓ made precise |
+| 8 | The freshness stream is exposed to performative influence; nothing shows that influence occurred | log at seq 7809 (the operator's three forecasts are `world.assize`) | ✓ reworded |
+| Disclosure | 30 Oct to 25 Nov 11:05Z: 965 `builder:`/`reviewer:` issues; 849–855 name their model, by parse; 720 name `gpt-5.4-mini` (84–85%) | REST list of renavondata/opencode-runner issues, 28 Nov; read 15 counted 720 of 853 | ✓ endpoint and count fixed |
+| 4.5 | The repair-typing line entered at 879caf9 (31 Oct) and is unchanged; the `window_fixes` exception was added later, in 4c1f9c97 (11 Nov; on main at 33ee227a, 12 Nov), before its first use at seq 5563 (17 Nov) | `git log -S window_fixes e580b64 -- judge/status.py`; first-parent ancestry; log seq 5563 | ✓ corrected after read 16; drafts to 28 implied both dated from 31 Oct |
+| 6 | Re-attribution: 7 → 1 (acts-20261101), 61 → 1 (acts-20261103), 81 → 9 (acts-20261103T2144), each against its `-raw` twin | `class` column counts at `e580b64` | ✓ both 3 Nov tables now named |
+| 6 | assize is the programme's earlier repository, whose record supplies the charter's baseline | CHARTER §1, "Evidence from assize" | ✓ introduced |
+| 8 | Choe & Ramdas 2024a back the stronger incumbent and the bounded-difference bet, not a resolution check | arXiv:2110.00115 (read 16: "resolution" appears only for grid resolution) | ✓ citation moved |
+| 5.2 | Reads and reviews: titles naming the word read or review (whole word; "reviewer" excluded) | log at seq 7809; reads 15 and 16 reproduce 46 | ✓ worded |

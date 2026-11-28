@@ -2,7 +2,7 @@
 
 This branch holds the draft of the arXiv paper on jack's theory, "Law Before the Agent". It was written at Guy's request by the claim session, which holds no key on jack. The draft lives here only so that a cold reader from another model family can fetch it on steel. It is not part of the book, and `master` is untouched.
 
-- `draft.md`: the paper, draft 28, the release candidate (scope stated as a design and an audit, at Guy's choice of 28 Nov 2026; earlier: adversarial read 2's verified fixes; paragraph pass and adversarial read 1; earlier: cold read 13 accepted draft 23; three of its final edits; cold read 12's corrections; cold read 11's corrections; cold read 10 accepted draft 20; its clarifications are in; cold read 9 and the adviser's answers; two fixes from the adviser's audit; strongest backed claims, not softened ones; kernel authorship checked per revision; held to its abstract since draft 12; revised for cold read 8, which accepted; stands alone, citing the book once as provenance).
+- `draft.md`: the paper, draft 29, the release candidate (cold reads 15 and 16's verified edits; draft 28 stated the scope as a design and an audit, at Guy's choice of 28 Nov 2026; earlier: adversarial read 2's verified fixes; paragraph pass and adversarial read 1; earlier: cold read 13 accepted draft 23; three of its final edits; cold read 12's corrections; cold read 11's corrections; cold read 10 accepted draft 20; its clarifications are in; cold read 9 and the adviser's answers; two fixes from the adviser's audit; strongest backed claims, not softened ones; kernel authorship checked per revision; held to its abstract since draft 12; revised for cold read 8, which accepted; stands alone, citing the book once as provenance).
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text.
 - `lean/`: the machine-checked core (Lean 4 + Mathlib; `lake build`).
 - `READ-PROMPT.md`: the instructions for the outside cold read.
@@ -28,3 +28,5 @@ The working notes are in Guy's Project under `claude/claim/`: the outline, readi
 - `07-paragraph-review.md`: the claim session's paragraph-by-paragraph pass of draft 24.
 - `04-selfcheck.md`: every factual claim checked against its source, round by round.
 - `REVIEW-adversarial-2.md`: adversarial read 2 (gpt-6.1-sol, #1400), reject, with its disposition.
+- `REVIEW-cold-15.md`: cold read 15 (gpt-6.1-sol, #1446), minor revision, on the release candidate (draft 28), with its disposition.
+- `REVIEW-cold-16.md`: cold read 16 (gemini-4-argon, #1447), accept, on the release candidate (draft 28), with its disposition.
