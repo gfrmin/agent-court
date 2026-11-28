@@ -348,5 +348,6 @@
 
 | § | Claim | Source | Result |
 |---|---|---|---|
-| 5.1 | C0 was promoted on safety criteria without a pre-stated window, and was patched in place throughout | REPORT §8.2, item 4 ("No window was stated for C0, and the layer was patched in place throughout") | ✓ corrected; draft 31 said both layers were promoted "under the charter's rule" |
+| 5.1 | C0 was promoted on safety criteria without a pre-stated window, and was patched in place throughout | REPORT §8.3, item 4 ("No window was stated for C0, and the layer was patched in place throughout") | ✓ corrected; draft 31 said both layers were promoted "under the charter's rule" |
 | 4.3, Table 2 | Amendment 2 (attribution by declaration) is commit `5829399d`, 1 Nov 10:33:43Z, before C1b's close at 11:31:58Z; A5 entered at seq 137 (30 Oct 09:59:31Z) in C1a's window, which was to end 8 Nov | read 19's check of `git log`; log | ✓ |
+| 5.1 | The citation for C0's window is REPORT §8.3, item 4, and the patch history is §8.2 | REPORT headings (lines 231, 254) | ✓ corrected after read 20; drafts 32 and round 25 cited §8.2 alone |

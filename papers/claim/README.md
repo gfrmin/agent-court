@@ -4,7 +4,7 @@ This branch holds the arXiv paper on jack's theory and everything behind it. It 
 
 ## The paper
 
-- `draft.md`: draft 32 of 28 November 2026. It restates the design as growth by test (a layer frozen, and the next begun, only on passing), after counsel's note (`REVIEW-counsel-1.md`), adversarial read 3 and cold reads 18–20. Draft 29, the earlier release candidate, is `history/draft-d29.md`.
+- `draft.md`: draft 32 of 28 November 2026, the final text. It restates the design as growth by test (a layer frozen, and the next begun, only on passing), after counsel's note (`REVIEW-counsel-1.md`), adversarial read 3 and cold reads 18–20. Draft 29, the earlier release candidate, is `history/draft-d29.md`.
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text was written.
 - `release/law-before-the-agent.md`: the gfrm.in post (Hugo, `draft: true`). The line `arXiv:XXXX.XXXXX` needs the real identifier.
 - `release/arxiv-metadata.md`: the title, the ASCII abstract to paste, comments, categories and licence.
@@ -14,7 +14,7 @@ This branch holds the arXiv paper on jack's theory and everything behind it. It 
 - `lean/`: the machine-checked core (Lean 4 + Mathlib; run `lake build`). Its README maps propositions to theorems.
 - `sim_filtration.py`: the simulations of §4.3.
 - `block_on_log.py`: the recomputation of §6. Run it in a jack checkout as `python3 block_on_log.py --rev e580b64`; it writes nothing.
-- `04-selfcheck.md`: every factual claim checked against its source, round by round (rounds 1–22).
+- `04-selfcheck.md`: every factual claim checked against its source, round by round (rounds 1–25).
 
 ## Building the release
 
@@ -61,6 +61,7 @@ Each review file holds its disposition table, followed by the reader's report ve
 | `REVIEW-adversarial-3.md` | gpt-6.1-sol | #1456 | reject | draft 30, hostile brief; concedes the promotion/key distinction |
 | `REVIEW-cold-18.md` | gemini-4-argon | #1457 | minor revision | the change from 29 to 30, all points taken |
 | `REVIEW-cold-19.md` | gpt-6.1-sol | #1459 | minor revision | the change from 30 to 31; its one sentence taken |
+| `REVIEW-cold-20.md` | gpt-6.1-sol | #1460 | accept | the change from 31 to 32 |
 
 Both adversarial reads rejected on one ground: the mechanism that grants powers by test is neither implemented nor evaluated. Guy chose on 28 November to publish the paper as a design and an audit. The paper says so in its abstract, §1 and §8.
 

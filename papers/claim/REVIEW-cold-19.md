@@ -8,7 +8,7 @@
   - The C2b branches were pre-built.
   - Minsky & Ungureanu 2000 is confirmed by Crossref.
   - M = 214358881/8398080 ≈ 25.52 was recomputed.
-- **The one remaining point:** one sentence overclaims. It said both layers were promoted "under the charter's rule", but C0 had no pre-stated window and was patched in place (REPORT §8.2). Draft 32 takes the reader's own wording for that sentence. No other change was needed.
+- **The one remaining point:** one sentence overclaims. It said both layers were promoted "under the charter's rule", but C0 had no pre-stated window and was patched in place (REPORT §8.3, item 4). Draft 32 takes the reader's own wording for that sentence. No other change was needed.
 
 ## The report (verbatim)
 
