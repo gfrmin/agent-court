@@ -4,7 +4,7 @@ This branch holds the arXiv paper on jack's theory and everything behind it. It 
 
 ## The paper
 
-- `draft.md`: draft 31 of 28 November 2026. It restates the design as growth by test (a layer frozen, and the next begun, only on passing), after counsel's note (`REVIEW-counsel-1.md`), adversarial read 3 and cold read 18. Draft 29, the earlier release candidate, is `history/draft-d29.md`.
+- `draft.md`: draft 32 of 28 November 2026. It restates the design as growth by test (a layer frozen, and the next begun, only on passing), after counsel's note (`REVIEW-counsel-1.md`), adversarial read 3 and cold reads 18–20. Draft 29, the earlier release candidate, is `history/draft-d29.md`.
 - `ABSTRACT-FIRST.md`: the paper's one idea, contributions and abstract, fixed before the text was written.
 - `release/law-before-the-agent.md`: the gfrm.in post (Hugo, `draft: true`). The line `arXiv:XXXX.XXXXX` needs the real identifier.
 - `release/arxiv-metadata.md`: the title, the ASCII abstract to paste, comments, categories and licence.
@@ -60,6 +60,7 @@ Each review file holds its disposition table, followed by the reader's report ve
 | `REVIEW-cold-17.md` | gpt-6.1-sol | #1448 | accept | the change from 28 to 29 |
 | `REVIEW-adversarial-3.md` | gpt-6.1-sol | #1456 | reject | draft 30, hostile brief; concedes the promotion/key distinction |
 | `REVIEW-cold-18.md` | gemini-4-argon | #1457 | minor revision | the change from 29 to 30, all points taken |
+| `REVIEW-cold-19.md` | gpt-6.1-sol | #1459 | minor revision | the change from 30 to 31; its one sentence taken |
 
 Both adversarial reads rejected on one ground: the mechanism that grants powers by test is neither implemented nor evaluated. Guy chose on 28 November to publish the paper as a design and an audit. The paper says so in its abstract, §1 and §8.
 
@@ -75,7 +76,7 @@ Three more reviews:
   - `runner-read-N.md` is cold read N; `11b` re-ran read 11.
   - `A1`, `A2` and `A3` are the adversarial reads; `A2b` re-ran A2 on GPT after a Gemini server error.
   - `READ-PROMPT.md` is the first cold-read prompt.
-- `history/`: earlier drafts, `draft-d4.md` to `draft-d30.md`, and `draft-r3-before.md`.
+- `history/`: earlier drafts, `draft-d4.md` to `draft-d31.md`, and `draft-r3-before.md`.
   - Drafts 1–3 and 16 were not kept as separate files.
   - Drafts 20 to 29 are also in this branch's commits.
 - `notes/`: the claim session's working notes:
