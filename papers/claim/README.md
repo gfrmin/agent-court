@@ -31,3 +31,4 @@ The working notes are in Guy's Project under `claude/claim/`: the outline, readi
 - `REVIEW-cold-15.md`: cold read 15 (gpt-6.1-sol, #1446), minor revision, on the release candidate (draft 28), with its disposition.
 - `REVIEW-cold-16.md`: cold read 16 (gemini-4-argon, #1447), accept, on the release candidate (draft 28), with its disposition.
 - `REVIEW-cold-17.md`: cold read 17 (gpt-6.1-sol, #1448), accept: the final change, draft 28 to 29.
+- `release/law-before-the-agent.md` and `release/arxiv-metadata.md`: the gfrm.in post (Hugo, `draft: true`) and the arXiv metadata, built from draft 29 by the claim session's `release.sh`.

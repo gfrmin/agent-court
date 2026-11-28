@@ -300,7 +300,7 @@
 | 7 | Schneier & Kelsey (1999), secure audit logs | ACM TISSEC 2(2) | ✓ added |
 
 
-## Round 22 (28 November, draft 29 after cold read 15)
+## Round 22 (28 November, draft 29 after cold reads 15 and 16)
 
 | § | Claim | Source | Result |
 |---|---|---|---|
